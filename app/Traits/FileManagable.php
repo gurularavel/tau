@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\File;
 
 trait FileManagable
 {
-    private string $mode = '0777';
+    private int $mode = 0755;
 
     private string $path = 'uploads';
 
