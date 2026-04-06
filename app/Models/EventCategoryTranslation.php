@@ -4,7 +4,7 @@ namespace App\Models;
 
 class EventCategoryTranslation extends BaseTranslation
 {
-    protected $table = 'Event_category_translations';
+    protected $table = 'event_category_translations';
 
     protected $fillable = [
         'title',
