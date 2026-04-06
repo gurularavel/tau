@@ -1,0 +1,154 @@
+.single-vacancy {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  .main-desc {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    h1 {
+      font-weight: 600;
+      font-size: 56px;
+      line-height: 88px;
+      letter-spacing: 0%;
+      color: #121212;
+    }
+
+    p {
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 28px;
+      letter-spacing: 0%;
+      color: #212121;
+    }
+  }
+
+  .responsibilities {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    h3 {
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 31px;
+      letter-spacing: 0%;
+      color: #121212;
+    }
+
+    ul {
+      list-style-position: inside;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      li {
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 28px;
+        letter-spacing: 0%;
+        color: #212121;
+      }
+    }
+  }
+
+  .apply {
+    width: 247px;
+    height: 48px;
+    border-radius: 60px;
+    background: #d63832;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 34px;
+    letter-spacing: 0%;
+    text-decoration: none;
+    color: #ffffff;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .single-vacancy {
+    margin-top: 60px !important;
+
+    .main-desc {
+      h1 {
+        font-size: 28px !important;
+        line-height: 38px !important;
+      }
+
+      p {
+        font-size: 12px !important;
+        line-height: 23px !important;
+      }
+    }
+
+    .responsibilities {
+      h3 {
+        font-size: 20px !important;
+        line-height: 38px !important;
+      }
+
+      ul {
+        li {
+          font-size: 12px !important;
+          line-height: 23px !important;
+        }
+      }
+    }
+
+    .apply {
+      align-self: center;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  /* All tablet overrides grouped here */
+
+  .single-vacancy {
+    margin-top: 80px;
+
+    .main-desc {
+      h1 {
+        font-size: 40px;
+        line-height: 60px;
+      }
+
+      p {
+        font-size: 18px;
+        line-height: 26px;
+      }
+    }
+
+    .responsibilities {
+      h3 {
+        font-size: 22px;
+        line-height: 32px;
+      }
+
+      ul {
+        gap: 16px;
+
+        li {
+          font-size: 18px;
+          line-height: 26px;
+        }
+      }
+    }
+
+    .apply {
+      width: 220px;
+      height: 44px;
+      font-size: 15px;
+      line-height: 30px;
+    }
+  }
+}

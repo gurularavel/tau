@@ -1,0 +1,31 @@
+.container-fluid,
+.container {
+  width: 100%;
+  margin-inline: auto;
+}
+
+.container-fluid {
+  max-width: 100%;
+}
+
+.container {
+  max-width: 1248px;
+}
+
+@media screen and (max-width: 450px) {
+  .container-fluid {
+    width: 100%;
+  }
+
+  .container {
+    width: calc(100% - 32px);
+    min-width: 343px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    width: calc(100% - 64px);
+    min-width: 704px;
+  }
+}

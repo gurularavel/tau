@@ -1,0 +1,84 @@
+.breadcrumb {
+  &.background {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%),
+      url(../../images/academic-council/breadcrumb.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 456px;
+    max-height: 456px;
+
+    display: flex;
+    flex-direction: column;
+    padding: 83px 119px;
+
+    h1 {
+      font-weight: 700;
+      font-size: 48px;
+      line-height: 88px;
+      letter-spacing: 0%;
+      color: #ffffff;
+    }
+
+    p {
+      width: 639px;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 28px;
+      letter-spacing: 0%;
+      color: #ffffff;
+    }
+  }
+}
+
+.vacancies {
+  margin-top: 120px;
+  overflow-x: scroll;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .breadcrumb {
+
+    h1 {
+      width: 600px !important;
+      max-width: 600px !important;
+      font-size: 32px !important;
+      line-height: 38px !important;
+    }
+
+    p {
+      width: 600px !important;
+      max-width: 600px !important;
+      font-size: 16px !important;
+      line-height: 23px !important;
+
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .breadcrumb {
+    padding: 12px !important;
+
+    align-items: flex-start;
+    justify-content: flex-end;
+
+    h1 {
+      width: 321px !important;
+      max-width: 321px !important;
+      font-size: 28px !important;
+      line-height: 38px !important;
+    }
+
+    p {
+      width: 321px !important;
+      max-width: 321px !important;
+      font-size: 12px !important;
+      line-height: 23px !important;
+    }
+  }
+
+  .vacancies {
+    margin-top: 60px !important;
+  }
+}

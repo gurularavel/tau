@@ -1,0 +1,789 @@
+.directory {
+  margin-top: 120px;
+
+  .directors {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    .director {
+      display: flex;
+      gap: 24px;
+
+      .director-card {
+        width: 486px;
+        height: 681px;
+        max-width: 486px;
+        max-height: 681px;
+        border-radius: 20px;
+        background: #2b3989;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .director-card-content {
+          width: 361px;
+          height: 555px;
+          max-width: 361px;
+          max-height: 555px;
+
+          display: flex;
+          flex-direction: column;
+          gap: 40px;
+
+          .director-card-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+
+            img {
+              width: 240px;
+              height: 240px;
+              border-radius: 50%;
+              object-fit: cover;
+            }
+
+            .director-info {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 16px;
+
+              h4 {
+                font-weight: 600;
+                font-size: 32px;
+                line-height: 38px;
+                letter-spacing: 0%;
+                color: #ffffff;
+              }
+
+              p {
+                font-weight: 600;
+                font-size: 20px;
+                line-height: 38px;
+                letter-spacing: 0%;
+                color: #ffffff;
+              }
+            }
+          }
+
+          .director-card-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 13px;
+
+            .director-email,
+            .director-phone {
+              width: 361px;
+              height: 56px;
+              max-width: 361px;
+              max-height: 56px;
+              border-radius: 10px;
+              background-color: #9b88c645;
+              padding-inline: 18px;
+
+              display: flex;
+              align-items: center;
+              gap: 10px;
+
+              img {
+                width: 20px;
+                height: 20px;
+              }
+
+              p {
+                font-weight: 400;
+                font-size: 20px;
+                line-height: 15px;
+                letter-spacing: 0%;
+                color: #ffffff;
+              }
+            }
+          }
+        }
+      }
+
+      .why-tau {
+        width: 689px;
+        height: 590px;
+        max-width: 689px;
+        max-height: 590px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+
+        h3 {
+          font-weight: 500;
+          font-size: 36px;
+          line-height: 38px;
+          letter-spacing: 0%;
+          color: #000000;
+        }
+
+        p,
+        li {
+          font-weight: 400;
+          font-size: 18px;
+          line-height: 28px;
+          letter-spacing: 0%;
+          color: #000000;
+        }
+
+        ul {
+          list-style-type: square;
+          list-style-position: inside;
+        }
+      }
+    }
+  }
+}
+
+.managers-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  h3 {
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 38px;
+    letter-spacing: 0%;
+    color: #000000;
+  }
+
+  .managers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    .manager {
+      width: 384px;
+      height: 464px;
+      max-width: 384px;
+      max-height: 464px;
+      border-radius: 20px;
+      background: #2b3989;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .manager-card-content {
+        width: 336px;
+        height: 416px;
+        max-width: 336px;
+        max-height: 416px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+
+        .manager-header {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 40px;
+
+          img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+
+          .manager-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+
+            h4 {
+              font-weight: 600;
+              font-size: 24px;
+              line-height: 38px;
+              letter-spacing: 0%;
+              color: #ffffff;
+            }
+
+            p {
+              font-weight: 600;
+              font-size: 18px;
+              line-height: 38px;
+              letter-spacing: 0%;
+              color: #ffffff;
+            }
+          }
+        }
+
+        .manager-card-contact {
+          display: flex;
+          flex-direction: column;
+          gap: 13px;
+
+          .manager-email,
+          .manager-phone {
+            width: 335px;
+            height: 56px;
+            max-width: 335px;
+            max-height: 56px;
+            border-radius: 10px;
+            background-color: #9b88c645;
+            padding-inline: 18px;
+
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            img {
+              width: 20px;
+              height: 20px;
+            }
+
+            p {
+              font-weight: 400;
+              font-size: 20px;
+              line-height: 15px;
+              letter-spacing: 0%;
+              color: #ffffff;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.teachers-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: 40px;
+
+  .teachers-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    h3 {
+      font-weight: 500;
+      font-size: 36px;
+      line-height: 38px;
+      letter-spacing: 0%;
+      color: #000000;
+    }
+
+    .teachers {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+
+      .teacher {
+        width: 384px;
+        height: 167px;
+        max-width: 384px;
+        max-height: 167px;
+        border-radius: 20px;
+        border: 1px solid #e5e5e5;
+        background: #ffffff;
+        padding: 17px;
+
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+
+        .teacher-image {
+          img {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            object-fit: cover;
+          }
+        }
+
+        .teacher-info {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+
+          .teacher-content {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+
+            h4 {
+              font-weight: 500;
+              font-size: 16px;
+              line-height: 26px;
+              letter-spacing: 0%;
+              color: #212121;
+            }
+
+            span {
+              font-weight: 400;
+              font-size: 12px;
+              line-height: 19px;
+              letter-spacing: 0%;
+              color: #2464f3;
+            }
+
+            p {
+              font-weight: 400;
+              font-size: 10px;
+              line-height: 19px;
+              letter-spacing: 0%;
+              color: #4c5564;
+            }
+          }
+
+          .teacher-contact {
+            ul {
+              list-style: none;
+              display: flex;
+              align-items: center;
+              gap: 20px;
+
+              li {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+
+                font-weight: 400;
+                font-size: 10px;
+                line-height: 15px;
+                letter-spacing: 0%;
+                color: #4c5564;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.lab-teachers {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 120px;
+
+  h3 {
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 38px;
+    letter-spacing: 0%;
+    color: #000000;
+  }
+
+  .teachers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+
+    .teacher {
+      width: 384px;
+      height: 167px;
+      max-width: 384px;
+      max-height: 167px;
+      border-radius: 20px;
+      border: 1px solid #e5e5e5;
+      background: #ffffff;
+      padding: 17px;
+
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+
+      .teacher-image {
+        img {
+          width: 80px;
+          height: 80px;
+          border-radius: 10px;
+          object-fit: cover;
+        }
+      }
+
+      .teacher-info {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        .teacher-content {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+
+          h4 {
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 26px;
+            letter-spacing: 0%;
+            color: #212121;
+          }
+
+          span {
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 19px;
+            letter-spacing: 0%;
+            color: #2464f3;
+          }
+
+          p {
+            font-weight: 400;
+            font-size: 10px;
+            line-height: 19px;
+            letter-spacing: 0%;
+            color: #4c5564;
+          }
+        }
+
+        .teacher-contact {
+          ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+            li {
+              display: flex;
+              align-items: center;
+              gap: 6px;
+
+              font-weight: 400;
+              font-size: 10px;
+              line-height: 15px;
+              letter-spacing: 0%;
+              color: #4c5564;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .directory {
+    margin-top: 40px !important;
+
+    h3 {
+      font-size: 28px !important;
+      line-height: 38px !important;
+    }
+
+    .directors {
+      .director {
+        flex-direction: column !important;
+        .director-card {
+          width: 100% !important;
+          width: 100% !important;
+          min-width: 343px !important;
+          height: auto !important;
+          min-height: 382px !important;
+          max-height: none !important;
+          padding: 12px !important;
+
+          .director-card-content {
+            width: 100% !important;
+            height: auto !important;
+            max-width: 100% !important;
+            max-height: none !important;
+            gap: 16px !important;
+
+            .director-card-header {
+              gap: 24px !important;
+              img {
+                width: 100px !important;
+                height: 100px !important;
+              }
+
+              .director-info {
+                gap: 12px !important;
+
+                h4 {
+                  font-size: 24px !important;
+                  line-height: 38px !important;
+                }
+
+                p {
+                  font-size: 20px !important;
+                  line-height: 38px !important;
+                }
+              }
+            }
+
+            .director-card-contact {
+              div {
+                width: 100% !important;
+                height: 32px !important;
+                padding: 8px !important;
+                border-radius: 10px;
+
+                img {
+                  width: 16px !important;
+                  height: 16px !important;
+                }
+
+                p {
+                  font-size: 16px !important;
+                  line-height: 15px !important;
+                }
+              }
+            }
+          }
+        }
+        .why-tau {
+          width: 343px;
+          height: fit-content;
+          max-height: fit-content;
+
+          h3 {
+            font-size: 28px !important;
+            line-height: 38px !important;
+          }
+
+          p,
+          li {
+            font-size: 12px !important;
+            line-height: 23px !important;
+          }
+        }
+      }
+    }
+  }
+
+  .managers-container {
+    margin-top: 60px !important;
+
+    h3 {
+      font-size: 28px !important;
+      line-height: 38px !important;
+    }
+
+    .managers {
+      grid-template-columns: 1fr;
+
+      .manager {
+        width: 100% !important;
+        width: 100% !important;
+        min-width: 343px !important;
+        height: auto !important;
+        min-height: 382px !important;
+        max-height: none !important;
+        padding: 12px !important;
+
+        .manager-card-content {
+          width: 100% !important;
+          height: auto !important;
+          max-width: 100% !important;
+          max-height: none !important;
+          gap: 16px !important;
+
+          .manager-card-header {
+            gap: 24px !important;
+            img {
+              width: 100px !important;
+              height: 100px !important;
+            }
+
+            .manager-info {
+              gap: 12px !important;
+
+              h4 {
+                font-size: 24px !important;
+                line-height: 38px !important;
+              }
+
+              p {
+                font-size: 20px !important;
+                line-height: 38px !important;
+              }
+            }
+          }
+
+          .manager-card-contact {
+            div {
+              width: 100% !important;
+              height: 32px !important;
+              padding: 8px !important;
+              border-radius: 10px;
+
+              img {
+                width: 16px !important;
+                height: 16px !important;
+              }
+
+              p {
+                font-size: 16px !important;
+                line-height: 15px !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .teachers-container {
+    margin-top: 60px !important;
+
+    .teachers-inner {
+      h3 {
+        font-size: 28px !important;
+        line-height: 38px !important;
+      }
+
+      .teachers {
+        grid-template-columns: 1fr;
+
+        .teacher {
+          width: 343px !important;
+          width: 100% !important;
+          min-width: 343px !important;
+        }
+      }
+    }
+  }
+
+  .lab-teachers {
+    margin-top: 60px !important;
+
+    h3 {
+      font-size: 28px !important;
+      line-height: 38px !important;
+    }
+
+    .teachers {
+      grid-template-columns: 1fr;
+
+      .teacher {
+        width: 343px !important;
+        width: 100% !important;
+        min-width: 343px !important;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .directory {
+    margin-top: 100px;
+
+    .directors {
+      .director {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 24px;
+
+        .director-card,
+        .why-tau {
+          width: 100%;
+          max-width: 100%;
+          height: fit-content !important;
+          max-height: fit-content !important;
+        }
+
+        .director-card {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          min-height: min-content;
+
+          .director-card-content {
+            align-items: center;
+            justify-content: center;
+            .director-card-header {
+              display: flex;
+              justify-content: center;
+
+              img {
+                width: 180px;
+                max-width: 180px;
+                height: 180px;
+                max-height: 180px;
+                aspect-ratio: 1 / 1;
+                object-fit: cover;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .managers-container {
+    margin-top: 100px;
+    gap: 32px;
+
+    h3 {
+      font-size: 32px;
+      line-height: 48px;
+    }
+
+    .managers {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      align-self: center !important;
+
+      .manager {
+        max-width: 100% !important;
+
+
+        .manager-card-content {
+          .manager-card-contact {
+            .manager-phone, .manager-email {
+              width: 100%;
+              max-width: 95% !important;
+              align-self: center;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .teachers-container {
+    margin-top: 100px;
+
+    .teachers-inner {
+      h3 {
+        font-size: 32px;
+        line-height: 48px;
+      }
+
+      .teachers {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+
+        .teacher {
+          width: 100%;
+          max-width: none;
+        }
+      }
+    }
+  }
+
+  .lab-teachers {
+    margin-top: 100px;
+    gap: 32px;
+
+    h3 {
+      font-size: 32px;
+      line-height: 48px;
+    }
+
+    .teachers {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+
+      .teacher {
+        width: 100%;
+        max-width: none;
+      }
+    }
+  }
+}

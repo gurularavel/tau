@@ -1,0 +1,237 @@
+.student-projects {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 120px;
+
+  h2 {
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 38px;
+    letter-spacing: 0%;
+    color: #000000;
+  }
+
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+
+    .project {
+      width: 588px;
+      height: 647px;
+      max-width: 588px;
+      max-height: 647px;
+      border-radius: 18px;
+      border-width: 1px;
+      border: 1px solid #2464f3;
+      transition: 0.5s all;
+
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+
+      &:hover {
+        border-left-width: 6px;
+      }
+
+      .project-header {
+        position: relative;
+        img {
+          width: 100%;
+          max-height: 383px;
+          opacity: 1;
+          border-top-left-radius: 18px;
+          border-top-right-radius: 18px;
+          object-fit: cover;
+          display: block;
+        }
+
+        .status {
+          width: 100px;
+          height: 24px;
+          border-radius: 10px;
+          background: #deeafd;
+
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 38px;
+          letter-spacing: 0%;
+          color: #2464f3;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          position: absolute;
+          top: 23px;
+          left: 16px;
+        }
+
+        .timer {
+          width: 60px;
+          height: 60px;
+          border-radius: 6px;
+          background: #deeafd;
+
+          position: absolute;
+          top: 23px;
+          right: 16px;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          img {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+
+      .project-content {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding-inline: 17px;
+        padding-bottom: 10px;
+
+        h3 {
+          font-weight: 700;
+          font-size: 24px;
+          line-height: 38px;
+          letter-spacing: 0%;
+          color: #212121;
+        }
+
+        p {
+          font-weight: 400;
+          font-size: 24px;
+          line-height: 38px;
+          letter-spacing: 0%;
+          color: #212121;
+        }
+
+        .students {
+          display: flex;
+          align-items: center;
+
+          .student {
+            border-radius: 50%;
+
+            &:nth-of-type(odd) {
+              background: #ffbc99;
+            }
+
+            &:nth-of-type(even) {
+              background: #b5e4ca;
+            }
+
+            img {
+              width: 20px;
+              height: 20px;
+              border: none;
+              border-radius: 50%;
+              position: relative;
+              object-fit: cover;
+              display: block;
+
+              &:not(:first-child) {
+                margin-left: -8px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .student-projects {
+    margin-top: 60px !important;
+
+    h2 {
+      font-size: 28px !important;
+      line-height: 38px !important;
+    }
+
+    .projects {
+      grid-template-columns: 1fr;
+
+      .project {
+        width: 100% !important;
+        width: 100% !important;
+        min-width: 343px !important;
+        height: fit-content !important;
+        max-height: fit-content !important;
+
+        .project-header {
+          .timer {
+            width: 32px !important;
+            height: 32px !important;
+
+            img {
+              width: 20px !important;
+              height: 20px !important;
+            }
+          }
+        }
+
+        .project-content {
+          h3 {
+            font-size: 24px !important;
+          }
+
+          p {
+            font-size: 16px !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .student-projects {
+    margin-top: 100px;
+    gap: 32px;
+
+    h2 {
+      font-size: 32px;
+      line-height: 44px;
+    }
+
+    .projects {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+
+      .project {
+        width: 100%;
+        max-width: none;
+        height: auto;
+        max-height: none;
+
+        .project-header {
+          img {
+            max-height: 320px;
+          }
+        }
+
+        .project-content {
+          gap: 12px;
+
+          h3 {
+            font-size: 22px;
+            line-height: 32px;
+          }
+
+          p {
+            font-size: 18px;
+            line-height: 28px;
+          }
+        }
+      }
+    }
+  }
+}

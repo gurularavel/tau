@@ -1,0 +1,634 @@
+.about-structure {
+  margin-top: 20px;
+}
+
+.directory {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  h3 {
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 88px;
+    letter-spacing: 0%;
+    color: #121212;
+  }
+
+  .directors {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    .director {
+      display: flex;
+      gap: 24px;
+
+      .director-card {
+        width: 486px;
+        height: 681px;
+        max-width: 486px;
+        max-height: 681px;
+        border-radius: 20px;
+        background: #2b3989;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .director-card-content {
+          width: 361px;
+          height: 555px;
+          max-width: 361px;
+          max-height: 555px;
+
+          display: flex;
+          flex-direction: column;
+          gap: 40px;
+
+          .director-card-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+
+            img {
+              width: 240px;
+              height: 240px;
+              border-radius: 50%;
+              object-fit: cover;
+            }
+
+            .director-info {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 16px;
+
+              h4 {
+                font-weight: 600;
+                font-size: 32px;
+                line-height: 38px;
+                letter-spacing: 0%;
+                color: #ffffff;
+              }
+
+              p {
+                font-weight: 600;
+                font-size: 20px;
+                line-height: 38px;
+                letter-spacing: 0%;
+                color: #ffffff;
+              }
+            }
+          }
+
+          .director-card-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 13px;
+
+            .director-email,
+            .director-phone {
+              width: 361px;
+              height: 56px;
+              max-width: 361px;
+              max-height: 56px;
+              border-radius: 10px;
+              background-color: #9b88c645;
+              padding-inline: 18px;
+
+              display: flex;
+              align-items: center;
+              gap: 10px;
+
+              img {
+                width: 20px;
+                height: 20px;
+              }
+
+              p {
+                font-weight: 400;
+                font-size: 20px;
+                line-height: 15px;
+                letter-spacing: 0%;
+                color: #ffffff;
+              }
+            }
+          }
+        }
+      }
+
+      .why-tau {
+        width: 689px;
+        height: 590px;
+        max-width: 689px;
+        max-height: 590px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+
+        h3 {
+          font-weight: 500;
+          font-size: 36px;
+          line-height: 38px;
+          letter-spacing: 0%;
+          color: #000000;
+        }
+
+        p,
+        li {
+          font-weight: 400;
+          font-size: 18px;
+          line-height: 28px;
+          letter-spacing: 0%;
+          color: #000000;
+        }
+
+        ul {
+          list-style-type: square;
+          list-style-position: inside;
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    margin-top: 100px;
+    gap: 32px;
+
+    h3 {
+      font-size: 36px;
+      line-height: 56px;
+    }
+
+    .directors {
+      .director {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 24px;
+
+
+        .director-card,
+        .why-tau {
+          width: 100%;
+          max-width: 100%;
+          height: fit-content !important;
+          max-height: fit-content !important;
+
+
+        }
+
+        .director-card {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          min-height: min-content;
+
+          .director-card-content {
+            align-items: center;
+            justify-content: center;
+            .director-card-header {
+              display: flex;
+              justify-content: center;
+
+              img {
+                width: 180px;
+                max-width: 180px;
+                height: 180px;
+                max-height: 180px;
+                aspect-ratio: 1 / 1;
+                object-fit: cover;
+              }
+            }
+          }
+        }
+
+      }
+    }
+  }
+}
+
+.programs-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  h3 {
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 88px;
+    letter-spacing: 0%;
+    color: #121212;
+  }
+
+  .programs {
+    display: grid;
+    grid-template-columns: repeat(4, 282px);
+    gap: 24px;
+
+    .program {
+      width: 282px;
+      height: 278px;
+      max-width: 282px;
+      max-height: 278px;
+      border-radius: 20px;
+      background: #f5fbff;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .program-contents {
+        width: 243px;
+        height: 232px;
+        max-width: 243px;
+        max-height: 232px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .profession {
+          max-width: 211px;
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 150%;
+          letter-spacing: -1.1%;
+          color: #874fff;
+        }
+
+        .info {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+
+          .professor-image {
+            img {
+              width: 60px;
+              height: 60px;
+              opacity: 1;
+              border: 4px dashed #cccccc;
+              border-radius: 50%;
+              object-fit: cover;
+            }
+          }
+
+          .professor-info {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+
+            p {
+              font-weight: 500;
+              font-size: 16px;
+              line-height: 150%;
+              letter-spacing: -1.1%;
+              color: #b3b3b3;
+            }
+          }
+        }
+
+        .description {
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 21px;
+          letter-spacing: 0%;
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    margin-top: 100px;
+    gap: 32px;
+
+    h3 {
+      font-size: 36px;
+      line-height: 56px;
+    }
+
+    .programs {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      align-items: center;
+      justify-content: center;
+
+      .program {
+        width: 100%;
+        max-width: 100% !important;
+
+        .program-contents {
+          width: 100% !important;
+        }
+      }
+    }
+  }
+}
+
+.edu-department,
+.accounting-department {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 20px;
+
+  h3 {
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 88px;
+    letter-spacing: 0%;
+    color: #121212;
+  }
+
+  .department-elements {
+    display: flex;
+    flex-direction: column;
+
+    .department-element {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+
+      .card {
+        width: 282px;
+        height: 278px;
+        max-width: 282px;
+        max-height: 278px;
+        border-radius: 20px;
+        background: #f5fbff;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .card-contents {
+          width: 243px;
+          height: 232px;
+          max-width: 243px;
+          max-height: 232px;
+
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+
+          .profession {
+            max-width: 211px;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 150%;
+            letter-spacing: -1.1%;
+            color: #874fff;
+          }
+
+          .info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            .professor-image {
+              img {
+                width: 60px;
+                height: 60px;
+                opacity: 1;
+                border: 4px dashed #cccccc;
+                border-radius: 50%;
+                object-fit: cover;
+              }
+            }
+
+            .professor-info {
+              display: flex;
+              flex-direction: column;
+              gap: 8px;
+
+              p {
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 150%;
+                letter-spacing: -1.1%;
+                color: #b3b3b3;
+              }
+            }
+          }
+
+          .description {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 21px;
+            letter-spacing: 0%;
+          }
+        }
+      }
+
+      .department-element-contents {
+        width: 894px;
+        height: 252px;
+        max-width: 894px;
+        max-height: 252px;
+        opacity: 1;
+
+        p {
+          font-weight: 500;
+          font-size: 20px;
+          line-height: 28px;
+          letter-spacing: 0%;
+          color: #212121;
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    margin-top: 100px;
+    gap: 32px;
+
+    h3 {
+      font-size: 36px;
+      line-height: 56px;
+    }
+
+    .department-elements {
+
+      .department-element {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 24px;
+
+        .card {
+          .card-contents {
+            .profession, .description {
+              font-size: 14px !important;
+              line-height: 24px !important;
+            }
+          }
+        }
+
+        .department-element-contents {
+          width: fit-content;
+          height: fit-content;
+          max-width: 100%;
+          max-height: 100%;
+
+          p {
+            font-size: 16px;
+            line-height: 24px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .about-structure {
+    margin-top: 60px !important;
+  }
+
+  .directory {
+    margin-top: 40px !important;
+
+    h3 {
+      font-size: 28px !important;
+      line-height: 38px !important;
+    }
+
+    .directors {
+      .director {
+        flex-direction: column !important;
+        .director-card {
+          width: 100% !important;
+          width: 100% !important;
+          min-width: 343px !important;
+          height: auto !important;
+          min-height: 382px !important;
+          max-height: none !important;
+          padding: 12px !important;
+
+          .director-card-content {
+            width: 100% !important;
+            height: auto !important;
+            max-width: 100% !important;
+            max-height: none !important;
+            gap: 16px !important;
+
+            .director-card-header {
+              gap: 24px !important;
+              img {
+                width: 100px !important;
+                height: 100px !important;
+              }
+
+              .director-info {
+                gap: 12px !important;
+
+                h4 {
+                  font-size: 24px !important;
+                  line-height: 38px !important;
+                }
+
+                p {
+                  font-size: 20px !important;
+                  line-height: 38px !important;
+                }
+              }
+            }
+
+            .director-card-contact {
+              div {
+                width: 100% !important;
+                height: 32px !important;
+                padding: 8px !important;
+                border-radius: 10px;
+
+                img {
+                  width: 16px !important;
+                  height: 16px !important;
+                }
+
+                p {
+                  font-size: 16px !important;
+                  line-height: 15px !important;
+                }
+              }
+            }
+          }
+        }
+        .why-tau {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .programs-container {
+    margin-top: 60px !important;
+
+    h3 {
+      font-size: 28px !important;
+      line-height: 38px !important;
+    }
+
+    .programs {
+      grid-template-columns: 1fr;
+
+      .program {
+        width: 100% !important;
+        width: 100% !important;
+        min-width: 343px !important;
+        justify-self: center !important;
+
+        .program-contents {
+          width: 100% !important;
+          max-width: 321px !important;
+        }
+      }
+    }
+  }
+
+  .edu-department,
+  .accounting-department {
+    margin-top: 40px !important;
+
+    h3 {
+      font-size: 28px !important;
+      line-height: 38px !important;
+    }
+
+    .department-elements {
+      .department-element {
+        flex-direction: column !important;
+        align-items: center !important;
+
+
+        .department-element-contents {
+          order: 1;
+          width: 343px !important;
+          height: fit-content !important;
+          max-height: fit-content !important;
+
+          p {
+            font-size: 12px !important;
+            line-height: 23px !important;
+          }
+        }
+
+        .card {
+          width: 100% !important;
+          width: 100% !important;
+          min-width: 343px !important;
+          order: 2;
+
+          .card-contents {
+            width: 100% !important;
+            max-width: 321px !important;
+          }
+        }
+      }
+    }
+  }
+}

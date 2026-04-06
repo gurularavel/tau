@@ -1,0 +1,50 @@
+<?php
+
+namespace App\Repositories;
+
+use App\Models\Partner;
+use App\Repositories\Contracts\PartnerRepositoryInterface;
+use Crud\Repositories\EloquentRepository;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
+
+class PartnerRepository extends EloquentRepository implements PartnerRepositoryInterface
+{
+    public function __construct(Partner $model)
+    {
+        parent::__construct($model);
+    }
+
+    public function create(array $payload): Model
+    {
+        return DB::transaction(function () use ($payload) {
+            $model = parent::create($payload);
+
+
+            return $model;
+        });
+    }
+
+    public function update(Model|int $modelOrModelId, array $payload): Model
+    {
+        return DB::transaction(function () use ($modelOrModelId, $payload) {
+            $model = parent::update($modelOrModelId, $payload);
+
+
+            return $model;
+        });
+    }
+
+    public function viewCount(Model $model): void
+    {
+        $model->increment('view_counts');
+    }
+
+    public function search(string $keyword, array|string $columns = '*'): Collection
+    {
+        return Partner::query()
+
+            ->get($columns);
+    }
+}

@@ -1,0 +1,116 @@
+.student {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 120px;
+
+  .student-content {
+    width: 612px;
+    max-width: 612px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    h2 {
+      font-weight: 500;
+      font-size: 36px;
+      line-height: 38px;
+      letter-spacing: 0%;
+      color: #212121;
+    }
+
+    p {
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 28px;
+      letter-spacing: 0%;
+      color: #212121;
+    }
+  }
+
+  .student-image {
+    width: 512px;
+    height: 546px;
+    max-width: 512px;
+    max-height: 546px;
+    border-radius: 20px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 20px;
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .student {
+    margin-top: 60px !important;
+    flex-direction: column;
+
+    .student-content {
+      width: 100% !important;
+      max-width: 100% !important;
+
+      h2 {
+        font-size: 28px !important;
+        line-height: 38px !important;
+      }
+
+      p {
+        font-size: 12px !important;
+        line-height: 23px !important;
+      }
+    }
+
+    .student-image {
+      width: 100% !important;
+      height: fit-content !important;
+      max-width: 100% !important;
+      max-height: fit-content !important;
+
+      img {
+        width: 100% !important;
+        max-width: 100% !important;
+        max-height: 314px !important;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  /* All tablet overrides grouped here */
+
+  .student {
+    margin-top: 80px;
+    gap: 40px;
+
+    .student-content {
+      width: 55%;
+      max-width: none;
+
+      h2 {
+        font-size: 32px;
+        line-height: 40px;
+      }
+
+      p {
+        font-size: 16px;
+        line-height: 26px;
+      }
+    }
+
+    .student-image {
+      width: 45%;
+      max-width: none;
+      height: auto;
+      max-height: none;
+
+      img {
+        height: auto;
+      }
+    }
+  }
+}

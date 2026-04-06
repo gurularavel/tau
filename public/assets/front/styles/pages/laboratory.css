@@ -1,0 +1,189 @@
+.laboratory-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 120px;
+
+  h2 {
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 38px;
+    letter-spacing: 0%;
+    color: #000000;
+  }
+
+  .labs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+
+    .lab {
+      width: 588px;
+      height: 552px;
+      max-width: 588px;
+      max-height: 552px;
+      border-radius: 20px;
+      background: #ffffff;
+      box-shadow: 0px 4px 40px 0px #00000029;
+
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      .lab-image {
+        width: 588px;
+        height: 338px;
+        max-width: 588px;
+        max-height: 338px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+          border-top-left-radius: 20px;
+          border-top-right-radius: 20px;
+        }
+      }
+
+      .lab-content {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding-inline: 19px;
+        padding-bottom: 10px !important;
+
+        h3 {
+          font-weight: 500;
+          font-size: 32px;
+          line-height: 100%;
+          letter-spacing: 0%;
+          color: #080a12;
+        }
+
+        ul {
+          list-style: square;
+          list-style-position: inside;
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+
+          li {
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 28px;
+            letter-spacing: 0%;
+            color: #080a12;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .laboratory-container {
+    margin-top: 60px !important;
+
+    h2 {
+      font-size: 28px !important;
+      line-height: 38px !important;
+    }
+
+    .labs {
+      grid-template-columns: 1fr;
+
+      .lab {
+        width: 343px !important;
+        height: fit-content !important;
+        width: 100% !important;
+        min-width: 343px !important;
+        max-height: fit-content !important;
+
+        .lab-image {
+          width: 343px !important;
+          height: fit-content !important;
+          width: 100% !important;
+          min-width: 343px !important;
+          max-height: fit-content !important;
+
+          img {
+            width: 343px !important;
+            height: fit-content !important;
+            width: 100% !important;
+            min-width: 343px !important;
+            max-height: fit-content !important;
+          }
+        }
+
+        .lab-content {
+          h3 {
+            font-size: 18px !important;
+          }
+
+          ul {
+            li {
+              font-size: 12px !important;
+              line-height: 23px !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  /* All tablet overrides grouped here */
+
+  .laboratory-container {
+    margin-top: 80px;
+
+    h2 {
+      font-size: 36px;
+      line-height: 42px;
+    }
+
+    .labs {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+
+      .lab {
+        width: 100%;
+        max-width: none;
+        height: auto;
+        max-height: none;
+
+        .lab-image {
+          width: 100%;
+          max-width: none;
+          height: 300px;
+          max-height: 300px;
+
+          img {
+            width: 100%;
+            height: 100%;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+          }
+        }
+
+        .lab-content {
+          h3 {
+            font-size: 28px;
+            line-height: 34px;
+          }
+
+          ul {
+            li {
+              font-size: 16px;
+              line-height: 26px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

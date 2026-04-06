@@ -1,0 +1,187 @@
+.board-of-trustees {
+  margin-top: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+
+  .trustees {
+    display: grid;
+    grid-template-columns: repeat(3, 382px);
+    gap: 25px;
+
+    .trustee {
+      width: 382px;
+      height: 368px;
+      max-width: 382px;
+      max-height: 368px;
+      border-radius: 20px;
+      background: #f5fbff;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .trustee-contents {
+        width: 336px;
+        height: 321px;
+        max-width: 336px;
+        max-height: 321px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        gap: 20px;
+
+        .profession {
+          max-width: 211px;
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 150%;
+          letter-spacing: -1.1%;
+          color: #874fff;
+        }
+
+        .info {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+
+          .trustee-image {
+            img {
+              width: 93px;
+              height: 93px;
+              opacity: 1;
+              border: 4px dashed #cccccc;
+              border-radius: 50%;
+              object-fit: cover;
+            }
+          }
+
+          .professor-info {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+
+            p {
+              font-weight: 500;
+              font-size: 16px;
+              line-height: 150%;
+              letter-spacing: -1.1%;
+              color: #b3b3b3;
+            }
+          }
+        }
+
+        .description {
+          font-weight: 500;
+          font-size: 20px;
+          line-height: 28px;
+          letter-spacing: 0%;
+          color: #000000;
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    margin-top: 100px;
+    gap: 80px;
+
+    .trustees {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      justify-content: center;
+      gap: 24px;
+
+      .trustee {
+        width: 100%;
+        max-width: none;
+        height: auto;
+        max-height: none;
+
+        .trustee-contents {
+          width: 100%;
+          max-width: none;
+          height: auto;
+          max-height: none;
+          gap: 16px;
+          padding: 12px;
+
+          .profession {
+            font-size: 14px;
+            line-height: 24px;
+          }
+
+          .info {
+            .trustee-image {
+              img {
+                width: 88px;
+                height: 88px;
+              }
+            }
+          }
+
+          .description {
+            font-size: 14px;
+            line-height: 24px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .board-of-trustees {
+    margin-top: 60px !important;
+    gap: 60px !important;
+
+    .trustees {
+      grid-template-columns: 1fr;
+
+      .trustee {
+        width: 343px !important;
+        height: fit-content;
+        width: 100% !important;
+        min-width: 343px !important;
+        justify-content: space-between !important;
+
+        .trustee-contents {
+          padding: 12px !important;
+
+          .profession {
+            font-size: 16px !important;
+          }
+
+          .info {
+            .trustee-image {
+              width: 80px !important;
+              height: 80px !important;
+
+              img {
+                width: 80px !important;
+                height: 80px !important;
+              }
+            }
+
+            .professor-info {
+              p::first-child {
+                font-size: 14px !important;
+              }
+
+              p:last-child {
+                font-size: 12px !important;
+              }
+            }
+          }
+
+          .description {
+            font-size: 16px !important;
+            line-height: 28px !important;
+          }
+        }
+      }
+    }
+  }
+}
