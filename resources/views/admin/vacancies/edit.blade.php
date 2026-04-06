@@ -28,7 +28,7 @@
                                     <div class="mb-3 col-lg-8">
                                         <x-admin.crud.input :locale="$locale" :model="$model" :columnName="'title'"
                                             :label="'Title'" :placeholder="'Write a title'" :type="'text'"
-                                            :required="false" />
+                                            :required="true" />
                                     </div>
 
                                     {{-- YENİ: Tərcümə olunan Status sahəsi (məs: Tam ştat, Full-time) --}}

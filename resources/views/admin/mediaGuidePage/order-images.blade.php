@@ -36,7 +36,7 @@
                 <x-admin.crud.page-title :title="$title" />
 
 
-                <x-admin.crud.card :routeName="'mediaGuidePage.order-images.update'" :method="'update'" :model="$model" :backButtonURL="route('admin.mediaGuidePage.show', $model)">
+                <x-admin.crud.card :routeName="'mediaGuidePage.order-images.update'" :method="'update'" :model="$model" :backButtonURL="route('admin.mediaGuidePage.edit', $model)">
 
 
 

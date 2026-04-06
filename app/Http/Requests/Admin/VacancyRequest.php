@@ -30,7 +30,7 @@ class VacancyRequest extends TranslatableRequest
             self::SCENARIO_INSERT => array_merge([
                 'deadline'     => ['nullable', 'date'],
                 'published_at' => ['nullable', 'date'],
-                'is_active'    => ['required', 'boolean'],
+                'is_active'    => ['nullable', 'boolean'],
             ], $this->translations()),
 
             self::SCENARIO_UPDATE => array_merge([
@@ -58,7 +58,6 @@ class VacancyRequest extends TranslatableRequest
         $model = new Vacancy();
         $attributes = $this->translatedAttributes($model);
 
-        // Modelin birbaşa özündə olan (tərcüməsiz) sahələr üçün
         $attributes['deadline']     = __('translate.Deadline');
         $attributes['published_at'] = __('translate.Published');
         $attributes['is_active']    = __('translate.Active');
@@ -74,8 +73,8 @@ class VacancyRequest extends TranslatableRequest
     {
         $rules = [];
         foreach ($this->locales() as $locale) {
-            $rules["title:$locale"]            = ['nullable', 'string', 'max:255'];
-            $rules["status_text:$locale"]      = ['nullable', 'string', 'max:255']; // Yeni əlavə olundu
+            $rules["title:$locale"]            = ['required', 'string', 'max:255'];
+            $rules["status_text:$locale"]      = ['nullable', 'string', 'max:255'];
             $rules["description:$locale"]      = ['nullable', 'string'];
             $rules["content:$locale"]          = ['nullable', 'string'];
             $rules["meta_title:$locale"]       = ['nullable', 'string', 'max:255'];

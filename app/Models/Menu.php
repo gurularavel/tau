@@ -55,7 +55,7 @@ protected $fillable = [
 
 public function children()
 {
-    return $this->hasMany(Menu::class, 'parent_id');
+    return $this->hasMany(Menu::class, 'parent_id')->orderBy('order');
 }
 
 

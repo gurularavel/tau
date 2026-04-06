@@ -1,5 +1,4 @@
 <x-admin.layout>
-
     <style>
         .menu-hidden {
             display: none !important;
@@ -7,23 +6,17 @@
     </style>
 
     <div id="layout-wrapper">
-
         <x-admin.header />
-
         <x-admin.remove-notification />
         <x-admin.crud.success-message :delay="'5000'" />
-
         <x-admin.app-menu />
 
         <div class="vertical-overlay"></div>
 
         <x-admin.crud.main-content>
-
             <x-admin.crud.page-content>
-
                 <x-admin.crud.page-title :title="$title" />
 
-                {{-- Edit və Create üçün card --}}
                 <x-admin.crud.card :routeName="'menus.update'" :method="'update'" :model="$model" :routeNameForBackButton="'menus'">
 
                     <x-admin.crud.nav>
@@ -54,8 +47,6 @@
 
                     <div class="card">
                         <div class="card-body row">
-
-                            {{-- Menu Level --}}
                             <div class="mb-3 col-lg-4">
                                 <label class="form-label">{{ __('translate.Menu Level') }}</label>
                                 <select id="menu-level" class="form-select">
@@ -64,7 +55,6 @@
                                 </select>
                             </div>
 
-                            {{-- Parent menu --}}
                             <div class="mb-3 col-lg-4 menu-field menu-field-parent menu-hidden">
                                 <label class="form-label">{{ __('translate.Parent Menu') }}</label>
                                 <select name="parent_id" id="parent-menu" class="form-select">
@@ -78,19 +68,6 @@
                                 </select>
                             </div>
 
-
-                            {{-- Type dropdown --}}
-                            {{-- <div class="mb-3 col-lg-4 menu-field menu-field-type menu-hidden">
-                                <label class="form-label">{{ __('translate.Type') }}</label>
-                                <select name="type" id="menu-type" class="form-select">
-                                    <option value="link" {{ $model && $model->type=='link' ? 'selected' : '' }}>Link</option>
-                                    <option value="text_block" {{ $model && $model->type=='text_block' ? 'selected' : '' }}>Text block</option>
-                                    <option value="image_block" {{ $model && $model->type=='image_block' ? 'selected' : '' }}>Image block</option>
-                                    <option value="small_block" {{ $model && $model->type=='small_block' ? 'selected' : '' }}>Small block</option>
-                                </select>
-                            </div> --}}
-
-                            {{-- Slug --}}
                             <div class="mb-3 col-lg-4 menu-field menu-field-slug">
                                 <x-admin.crud.input
                                     :locale="''"
@@ -100,120 +77,66 @@
                                     :placeholder="'Write a slug'"
                                     :type="'text'" />
                             </div>
-
-                            {{-- Sorting --}}
-                            {{-- <div class="mb-3 col-lg-4">
-                                <x-admin.crud.input
-                                    :locale="''"
-                                    :model="$model"
-                                    :columnName="'order'"
-                                    :label="'Sorting'"
-                                    :placeholder="'Write a sorting'"
-                                    :type="'text'"
-                                    :required="false"
-                                    :automaticValueFill="$latestSorting" />
-                            </div> --}}
-
                         </div>
                     </div>
 
-                    {{-- Image - Dinamik Gizlənən/Açılan sahə --}}
-                   {{-- Image sahəsi --}}
-<div class="menu-field menu-field-image {{ ($model && ($model->type == 'image_block' || $model->type == 'small_block')) ? '' : 'menu-hidden' }}">
-    <x-admin.crud.image.card :title="'Menu Image'">
-        <x-admin.crud.image.card-body>
-            <x-admin.crud.image.main-image
-                :columnValue="$model ? $model->image : ''"
-                :name="'image'"
-                :folderName="'menus'" />
-        </x-admin.crud.image.card-body>
-    </x-admin.crud.image.card>
-</div>
+                    <div class="menu-field menu-field-image {{ ($model && ($model->type == 'image_block' || $model->type == 'small_block')) ? '' : 'menu-hidden' }}">
+                        <x-admin.crud.image.card :title="'Menu Image'">
+                            <x-admin.crud.image.card-body>
+                                <x-admin.crud.image.main-image
+                                    :columnValue="$model ? $model->image : ''"
+                                    :name="'image'"
+                                    :folderName="'menus'" />
+                            </x-admin.crud.image.card-body>
+                        </x-admin.crud.image.card>
+                    </div>
 
                 </x-admin.crud.card>
-
             </x-admin.crud.page-content>
         </x-admin.crud.main-content>
-
     </div>
 
     <x-admin.back-to-up />
     <x-admin.preloader />
-
 </x-admin.layout>
 
-{{-- <script>
+<script>
 document.addEventListener('DOMContentLoaded', function () {
-
     const menuLevelSelect = document.getElementById('menu-level');
     const parentSelect = document.getElementById('parent-menu');
-    const typeSelect = document.getElementById('menu-type');
-
     const parentWrapper = document.querySelector('.menu-field-parent');
     const slugFields = document.querySelectorAll('.menu-field-slug');
-    const typeFields = document.querySelectorAll('.menu-field-type');
     const imageFields = document.querySelectorAll('.menu-field-image');
 
-    const childMenus = @json($menus->map(function($m){
-        return ['id'=>$m->id, 'title'=>$m->title, 'parent_id'=>$m->parent_id];
-    }));
-
-    function hideAllFields() {
-        [...slugFields, ...imageFields, ...typeFields].forEach(el => el.classList.add('menu-hidden'));
-        parentWrapper.classList.add('menu-hidden');
-    }
-
-    function showFields(fields) {
-        fields.forEach(el => el.classList.remove('menu-hidden'));
-    }
-
-    function updateByMenuLevel() {
+    function updateUI() {
         const level = menuLevelSelect.value;
-        hideAllFields();
+        const parentId = parentSelect.value;
 
         if (level === 'main') {
-            parentSelect.value = '';
+            parentWrapper.classList.add('menu-hidden');
+            // Əsas menyu seçiləndə slug həmişə görünsün
+            slugFields.forEach(el => el.classList.remove('menu-hidden'));
         } else {
-            showFields([parentWrapper]);
+            parentWrapper.classList.remove('menu-hidden');
+            // Alt menyu seçilibsə və valideyn yoxdursa bəzi sahələri gizlədə bilərsiz
+            if (!parentId) {
+                slugFields.forEach(el => el.classList.add('menu-hidden'));
+            } else {
+                slugFields.forEach(el => el.classList.remove('menu-hidden'));
+            }
         }
-        updateByParent();
     }
 
-    function updateByParent() {
-        const parentId = parentSelect.value;
-        [...typeFields, ...slugFields, ...imageFields].forEach(el => el.classList.add('menu-hidden'));
+    menuLevelSelect.addEventListener('change', function() {
+        if (this.value === 'main') {
+            parentSelect.value = '';
+        }
+        updateUI();
+    });
 
-        if (!parentId) return;
+    parentSelect.addEventListener('change', updateUI);
 
-        showFields(typeFields);
-        showFields(slugFields);
-
-
-
-        updateByType();
-    }
-
-function updateByType() {
-    const type = typeSelect.value;
-
-    // Əvvəlcə bütün şəkil sahələrini gizlət
-    imageFields.forEach(el => el.classList.add('menu-hidden'));
-
-    // Seçilmiş tipə görə şəkil sahəsini göstər
-    if (type === 'image_block' || type === 'small_block') {
-        showFields(imageFields);
-    }
-
-    if (type === 'link') {
-        showFields(slugFields);
-    }
-}
-
-    menuLevelSelect.addEventListener('change', updateByMenuLevel);
-    parentSelect.addEventListener('change', updateByParent);
-    typeSelect.addEventListener('change', updateByType);
-
-    // Səhifə yüklənəndə mövcud dataya görə formanı qur
-    updateByMenuLevel();
+    // Səhifə ilk dəfə açılanda vəziyyəti yoxla
+    updateUI();
 });
-</script> --}}
+</script>

@@ -1,4 +1,10 @@
 <x-front.layout :title="$metaTitle" :metaDescription="$metaDescription" :metaKeywords="$metaKeywords" :folder="'student_projects'" :image="$studentProject->image">
+   <style>
+    .club-gallery .zoom-item {
+    cursor: zoom-in;
+}
+
+</style>
     <section class="breadcrumb container-fluid">
         <img src="{{ asset('assets/front/images/academic-council/breadcrumb.jpg') }}" alt="Breadcrumb" />
     </section>
@@ -11,7 +17,7 @@
 
         <div class="club-gallery">
             @foreach ($studentProject->images as $image)
-                            <img src="{{getImage('student_project_images', $image->image)}}" alt="{{ $studentProject->title ?? '' }}" />
+                            <img src="{{getImage('student_project_images', $image->image)}}" alt="{{ $studentProject->title ?? '' }}"  class="zoom-item"/>
 
             @endforeach
 
@@ -19,3 +25,9 @@
     </section>
 
 </x-front.layout>
+
+<script>
+    const lightbox = GLightbox({
+        selector: '.zoom-item'
+    });
+</script>

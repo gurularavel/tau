@@ -64,7 +64,7 @@
                                                 <x-admin.crud.index.status :model="$model" :name="'is_active'" />
 
                                                 <!-- ACTIONS -->
-                                                <x-admin.crud.index.actions :model="$model" :routeName="'academic_calendars'" />
+                                                <x-admin.crud.index.actions :model="$model" :routeName="'academic_calendars'"  :view="false" :delete2="true"/>
 
                                                 @php $count++ @endphp
                                             </tr>

@@ -181,8 +181,6 @@ Route::post('/academic-lookups/event-type', [AcademicLookupController::class, 'e
         Route::resource('student-projects',      StudentProjectsController::class)->names('admin.student_projects');
         Route::resource('projects',              ProjectController::class)->names('admin.projects');
         Route::resource('internship_programs',   InternshipProgramController::class)->names('admin.internship_programs');
-        Route::resource('certificate-page',      CertificatePageController::class)->names('admin.certificatePage');
-        Route::resource('certificates',          CertificateController::class)->names('admin.certificates');
         Route::resource('partners',              PartnerController::class)->names('admin.partners');
         Route::resource('vacancies',             VacancyController::class)->names('admin.vacancies');
         Route::resource('news',                  NewsController::class)->names('admin.news');
@@ -237,7 +235,7 @@ Route::post('/academic-lookups/event-type', [AcademicLookupController::class, 'e
         Route::get('student_clubs/{student_club}/order-images',       [StudentClubController::class,    'showImageOrder'])->name('admin.student_clubs.order-images');
         Route::put('student_clubs/{student_club}/order-images',       [StudentClubController::class,    'updateImageOrder'])->name('admin.student_clubs.order-images.update');
 
-        Route::post('/remove-student_projects-media',               [StudentProjectsController::class,    'removeStudentClubsMedia'])->name('admin.remove-student_projects-media');
+        Route::post('/remove-student_projects-media',               [StudentProjectsController::class,    'removeStudentProjectsMedia'])->name('admin.remove-student_projects-media');
         Route::get('student_projects/{student_project}/order-images',       [StudentProjectsController::class,    'showImageOrder'])->name('admin.student_projects.order-images');
         Route::put('student_projects/{student_project}/order-images',       [StudentProjectsController::class,    'updateImageOrder'])->name('admin.student_projects.order-images.update');
 

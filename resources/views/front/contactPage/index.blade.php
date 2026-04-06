@@ -52,7 +52,7 @@
     <section class="contact container-fluid">
         <div class="contact-breadcrumb">
             <img class="wave1" src="{{ asset('assets/front/images/contact/wave1.svg') }}" alt="Wave 1" />
-            <h1>{{ __('translate.Contact us') }}</h1>
+            <h1>{{ $contactPage->title ?? '' }}</h1>
             <p>
                 {{ $contactPage->description ?? '' }}
 

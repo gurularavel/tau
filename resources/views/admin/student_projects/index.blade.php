@@ -94,7 +94,7 @@
                                                 <x-admin.crud.index.image :columnName="$model->image" :folderName="'student_projects'" />
                                                 <x-admin.crud.index.title :columnName="$model->title" />
                                                 <x-admin.crud.index.status :model="$model" :name="'is_active'" />
-                                                <x-admin.crud.index.actions :model="$model" :routeName="'student_projects'" :frontRouteName="'front.student_projects'" />
+                                                <x-admin.crud.index.actions :view="false" :model="$model" :routeName="'student_projects'" :frontRouteName="'front.student_projects'" :delete2="true"/>
                                                 @php $count++ @endphp
 
                                             </tr>

@@ -71,6 +71,7 @@ class VacancyController extends Controller
             columns: ['id', 'view_counts', 'published_at', 'deadline', 'is_active'],
         );
 
+
         $attributes = Vacancy::attributes();
         $headerAttributes = Vacancy::headerAttributes();
 

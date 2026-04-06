@@ -1,4 +1,4 @@
-<x-front.layout :title="$metaTitle" :metaDescription="$metaDescription" :metaKeywords="$metaKeywords">
+<x-front.layout :title="$metaTitle" :metaDescription="$metaDescription" :metaKeywords="$metaKeywords" :folder="'careerPage'" :image="$careerPage->image">
     <style>
         .breadcrumb.background {
             background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, #000000 100%),
@@ -81,9 +81,9 @@
 
     <section class="breadcrumb background container-fluid">
         <div class="container">
-            <h1>{{ $careerPage->translate(app()->getLocale())->title ?? '' }}</h1>
+            <h1>{{ $careerPage->title ?? '' }}</h1>
             <p>
-                {!! $careerPage->translate(app()->getLocale())->description ?? '' !!}
+                {!! $careerPage->description ?? '' !!}
             </p>
         </div>
     </section>
@@ -124,7 +124,7 @@
                     @empty
                         <tr>
                             <td colspan="4" class="text-center py-5">
-                                <img src="/assets/images/no-data.svg" alt="" style="width: 100px; opacity: 0.5;">
+                                <img src="{{ asset('assets/front/images/error-file.png') }}" alt="" style="width: 100px; opacity: 0.5;">
                                 <p class="mt-3 text-muted">{{ __('translate.No vacancies available at the moment') }}</p>
                             </td>
                         </tr>

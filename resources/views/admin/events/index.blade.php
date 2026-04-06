@@ -93,8 +93,9 @@
                                                 <x-admin.crud.index.id :count="$count" />
                                                 <x-admin.crud.index.image :columnName="$model->image" :folderName="'events'" />
                                                 <x-admin.crud.index.title :columnName="$model->title" />
+                                                <x-admin.crud.index.title :columnName="$model->created_at" />
                                                 <x-admin.crud.index.status :model="$model" :name="'is_active'" />
-                                                <x-admin.crud.index.actions :model="$model" :routeName="'events'" :frontRouteName="'front.events'" />
+                                                <x-admin.crud.index.actions :model="$model" :routeName="'events'" :frontRouteName="'front.events'" :view="false" delete2="true" />
                                                 @php $count++ @endphp
 
                                             </tr>

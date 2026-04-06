@@ -30,6 +30,16 @@ class MediaGuidePageController extends Controller
         ]);
     }
 
+        public function edit()
+    {
+        $mediaGuidePage = MediaGuidePage::first();
+
+        return view(self::PATH . 'edit', [
+            'model' => $mediaGuidePage,
+            'title' => self::TITLE,
+        ]);
+    }
+
     public function update(MediaGuidePageRequest $request, MediaGuidePage $mediaGuidePage)
     {
         $payload = $request->validated();

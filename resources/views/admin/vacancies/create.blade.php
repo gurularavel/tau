@@ -32,7 +32,7 @@
                                     <div class="mb-3 col-lg-8">
                                         <x-admin.crud.input :locale="$locale" :model="''" :columnName="'title'"
                                             :label="'Title'" :placeholder="'Write a title'" :type="'text'"
-                                            :required="false" />
+                                            :required="true" />
                                     </div>
 
                                     {{-- YENİ: Tərcümə olunan Job Status (məs: Tam ştat) --}}
@@ -87,13 +87,7 @@
                                     :label="'Deadline'" :placeholder="'Deadline'" :type="'date'" :required="false" />
                             </div>
 
-                            <div class="mb-3 col-lg-4">
-                                <x-admin.crud.option :label="'Status'" :name="'is_active'" :model="''"
-                                    :options="[
-                                        ['label' => __('translate.active'), 'value' => 1],
-                                        ['label' => __('translate.inactive'), 'value' => 0],
-                                    ]" :required="true" />
-                            </div>
+
                         </div>
                     </div>
 

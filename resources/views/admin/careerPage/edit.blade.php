@@ -26,7 +26,7 @@
                 <x-admin.crud.page-title :title="$title" />
 
 
-                <x-admin.crud.card :routeName="'careerPage.update'" :method="'update'" :model="$model" :back="true">
+                <x-admin.crud.card :routeName="'careerPage.update'" :method="'update'" :model="$model" :back="true" :frontRouteName="'careerPage.index'">
 
 
                     <x-admin.crud.nav>
@@ -87,19 +87,19 @@
 
                     </x-admin.crud.tab-content>
 
-                    {{-- <x-admin.crud.image.card :title="$title">
+                    <x-admin.crud.image.card :title="$title">
                         <x-admin.crud.image.card-body>
                             <x-admin.crud.image.main-image :columnValue="$model->image" :name="'image'" :folderName="'careerPage'" />
 
                         </x-admin.crud.image.card-body>
-                    </x-admin.crud.image.card> --}}
+                    </x-admin.crud.image.card>
 
 
                 </x-admin.crud.card>
 
                 <x-admin.crud.show.sub-card :title="'Vacancies'" :route="''" :thArray="['Title', 'Published date']" :models="$vacancies"
-                    :tdArray="['title', 'published_at', 'actions']" :mainRouteName="'vacancies'" :delete="false" :add="false" :edit="true"
-                    :view="true" />
+                    :tdArray="['title', 'published_at', 'actions']" :mainRouteName="'vacancies'" :delete="false" :add="false" :edit="true" :view="false"
+                  />
 
             </x-admin.crud.page-content>
         </x-admin.crud.main-content>

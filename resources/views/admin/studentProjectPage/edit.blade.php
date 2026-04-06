@@ -26,7 +26,7 @@
                     <x-admin.crud.page-title :title="$title"/>
 
 
-                    <x-admin.crud.card :routeName="'studentProjectPage.update'" :method="'update'" :model="$model" :routeNameForBackButton="''" >
+                    <x-admin.crud.card :routeName="'studentProjectPage.update'" :method="'update'" :model="$model" :routeNameForBackButton="''" :frontRouteName="'student_projects.index'" >
 
 
                                 <x-admin.crud.nav>
@@ -83,7 +83,7 @@
                     </x-admin.crud.card>
 
        <x-admin.crud.show.sub-card :title="'Student projects'" :route="route('admin.student_projects.create')" :thArray="['Image','Title','Active']"
-                            :models="$studentProjects" :tdArray="['image', 'title','is_active', 'actions']" :mainRouteName="'student_projects'"/>
+                            :models="$studentProjects" :tdArray="['image', 'title','is_active', 'actions']" :mainRouteName="'student_projects'" :view="false" />
 
             </x-admin.crud.page-content>
         </x-admin.crud.main-content>

@@ -94,7 +94,9 @@
 
                     <x-admin.crud.image.card :title="$title">
                         <x-admin.crud.image.card-body>
+                            <h1>{{ __('translate.Logo') }}</h1>
                             <x-admin.crud.image.main-image :columnValue="$model->image"  :name="'image'"  :folderName="'mediaGuidePage'" />
+                            <h1>{{ __('translate.Vector') }}</h1>
                             <x-admin.crud.image.main-image :columnValue="$model->image2" :name="'image2'" :folderName="'mediaGuidePage'" />
                             <x-admin.crud.image.main-image :columnValue="$model->image3" :name="'image3'" :folderName="'mediaGuidePage'" />
                             <x-admin.crud.image.other-images :model="$model" :routeName="'mediaGuidePage'"

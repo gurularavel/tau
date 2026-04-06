@@ -60,7 +60,7 @@
                                                 <x-admin.crud.index.id     :count="$count" />
                                                 <x-admin.crud.index.title   :columnName="$model->title" />
                                                 <x-admin.crud.index.status  :name="'is_active'" :model="$model"/>
-                                                <x-admin.crud.index.actions :model="$model" :routeName="'event_categories'"/>
+                                                <x-admin.crud.index.actions :model="$model" :routeName="'event_categories'" :view="false" :delete2="true"/>
                                                 @php $count++ @endphp
 
                                             </tr>

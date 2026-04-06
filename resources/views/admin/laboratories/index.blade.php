@@ -100,7 +100,7 @@
                                                 <x-admin.crud.index.title :columnName="$model->title" />
                                                 <x-admin.crud.index.status :model="$model" :name="'is_active'" />
                                                 <x-admin.crud.index.actions :model="$model" :routeName="'laboratories'"
-                                                    :frontRouteName="'front.laboratories'" />
+                                                    :frontRouteName="'front.laboratories'" :view="false" :delete2="true" />
                                                 @php $count++ @endphp
 
                                             </tr>

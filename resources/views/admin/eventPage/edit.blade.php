@@ -26,7 +26,7 @@
                     <x-admin.crud.page-title :title="$title"/>
 
 
-                    <x-admin.crud.card :routeName="'careerOpportunityPage.update'" :method="'update'" :model="$model" :routeNameForBackButton="''" >
+                    <x-admin.crud.card :routeName="'eventPage.update'" :method="'update'" :model="$model" :routeNameForBackButton="''" :frontRouteName="'events.index'" >
 
 
                                 <x-admin.crud.nav>
@@ -75,15 +75,15 @@
                                 </x-admin.crud.tab-content>
                                 <x-admin.crud.image.card :title="$title">
                                     <x-admin.crud.image.card-body>
-                                        <x-admin.crud.image.main-image :columnValue="$model->image" :name="'image'" :folderName="'careerOpportunityPage'"/>
+                                        <x-admin.crud.image.main-image :columnValue="$model->image" :name="'image'" :folderName="'eventPage'"/>
                                     </x-admin.crud.image.card-body>
                                 </x-admin.crud.image.card>
 
 
                     </x-admin.crud.card>
 
-       <x-admin.crud.show.sub-card :title="'Events'" :route="route('admin.careerOpportunities.create')" :thArray="['Image','Title', 'Active']"
-                            :models="$careerOpportunities" :tdArray="['image', 'title', 'is_active', 'actions']" :mainRouteName="'careerOpportunities'"/>
+       <x-admin.crud.show.sub-card :title="'Events'" :route="route('admin.events.create')" :thArray="['Image','Title', 'Active']"
+                            :models="$events" :tdArray="['image', 'title', 'is_active', 'actions']" :mainRouteName="'events'" :view="false"/>
 
             </x-admin.crud.page-content>
         </x-admin.crud.main-content>

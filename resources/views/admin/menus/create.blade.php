@@ -129,7 +129,7 @@
 
 </x-admin.layout>
 
-{{-- <script>
+<script>
 document.addEventListener('DOMContentLoaded', function () {
     const menuLevelSelect = document.getElementById('menu-level');
     const parentSelect = document.getElementById('parent-menu');
@@ -190,4 +190,4 @@ document.addEventListener('DOMContentLoaded', function () {
     // Başlanğıc vəziyyəti qur
     updateForm();
 });
-</script> --}}
+</script>

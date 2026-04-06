@@ -19,16 +19,14 @@ class ContactPageController extends Controller
     public function index()
     {
         $contactPage            = ContactPage::with('translations')->first();
-        $title                  = __('translate.Contact Us');
 
-        $metaTitle              = __('translate.Contact Us');
-        $metaDescription        = __('translate.Contact Us');
-        $metaKeywords           = __('translate.Contact Us');
+        $metaTitle              = $contactPage->meta_title;
+        $metaDescription        = $contactPage->meta_description;
+        $metaKeywords           = $contactPage->meta_keywords;
 
 
         return view('front.contactPage.index', compact(
             'contactPage',
-            'title',
             'metaTitle',
             'metaDescription',
             'metaKeywords'

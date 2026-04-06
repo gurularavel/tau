@@ -57,7 +57,7 @@ class HomePageService extends BaseCrudService implements HomePageServiceInterfac
 
 
                 if (!is_null($file2) && isset($payload['image2'])) {
-            $payload['image'] = $this->removeOldUploadNewFile(
+            $payload['image2'] = $this->removeOldUploadNewFile(
                 self::FOLDER,
                 $file2,
                 $modelOrModelId->getAttribute('image2')
@@ -66,10 +66,10 @@ class HomePageService extends BaseCrudService implements HomePageServiceInterfac
 
 
                 if (!is_null($file3) && isset($payload['image3'])) {
-            $payload['image'] = $this->removeOldUploadNewFile(
+            $payload['image3'] = $this->removeOldUploadNewFile(
                 self::FOLDER,
                 $file3,
-                $modelOrModelId->getAttribute('image2')
+                $modelOrModelId->getAttribute('image3')
             );
         }
 

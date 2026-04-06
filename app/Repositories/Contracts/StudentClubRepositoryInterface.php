@@ -6,7 +6,7 @@ use Crud\Repositories\Contracts\EloquentRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
-interface GraduateRepositoryInterface extends EloquentRepositoryInterface
+interface StudentClubRepositoryInterface extends EloquentRepositoryInterface
 {
     public function search(string $keyword, array|string $columns = '*'): Collection;
     public function viewCount(Model $model): void;

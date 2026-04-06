@@ -11,7 +11,7 @@ class AcademicCalendarSeeder extends Seeder
     public function run(): void
     {
         $faker = Faker::create();
-        $locales = ['az', 'en', 'ru', 'tr'];
+        $locales = getLocales();
 
         // Mövcud ID-ləri bazadan çəkirik ki, əlaqələr doğru qurulsun
         $semesterIds = DB::table('semesters')->pluck('id')->toArray();
@@ -25,7 +25,7 @@ class AcademicCalendarSeeder extends Seeder
 
             // 1. Əsas cədvələ (academic_calendars) məlumat əlavə edirik
             $calendarId = DB::table('academic_calendars')->insertGetId([
-                'is_active' => $faker->boolean(80), // 80% ehtimalla aktiv
+                'is_active' => $faker->boolean(100), // 80% ehtimalla aktiv
                 'semester_id' => $faker->randomElement($semesterIds),
                 'education_level_id' => $faker->randomElement($educationLevelIds),
                 'faculty_id' => $faker->randomElement($facultyIds),

@@ -7,7 +7,7 @@
 </style>
     {{-- Breadcrumb --}}
     <section class="breadcrumb container-fluid">
-        <img src="{{ asset('assets/front/images/academic-council/breadcrumb.jpg') }}" alt="Breadcrumb" />
+        <img src="{{ getImage('projects', $project->image) }}" alt="{{$project->title ?? ''}}" />
     </section>
     <section class="research container">
         <h2>{{$project->title ?? ''}}</h2>

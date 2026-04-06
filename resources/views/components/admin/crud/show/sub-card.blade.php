@@ -10,7 +10,7 @@
     'delete' => false,
     'add' => true,
     'edit' => true,
-    'view' => true
+    'view' => true,
 ])
 
 <div class="card">
@@ -19,7 +19,9 @@
             <div class="col-lg-12">
                 <div class="card-header border-0">
                     <div class="d-flex align-items-center">
-                        <h5 class="card-title mb-0 flex-grow-1">{{ __('translate.' . $title) }}</h5>
+                        <h5 class="card-title mb-0 flex-grow-1"><a
+                                href="{{ route('admin.' . $mainRouteName . '.index') }}">{{ __('translate.' . $title) }}</a>
+                        </h5>
                         <div class="flex-shrink-0">
                             <div class="d-flex flex-wrap gap-2">
                                 @if ($add)
@@ -41,6 +43,7 @@
                             <table class="table mb-0">
                                 <thead>
                                     <tr>
+                                        <th style="width: 10px;">No</th>
                                         @foreach ($thArray as $thValue)
                                             <th style="width: 200px;">{{ __('translate.' . $thValue) }}</th>
                                         @endforeach
@@ -51,8 +54,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($models as $model)
+                                    @foreach ($models as $index => $model)
                                         <tr>
+                                            <td>{{ $index + 1 }}</td>
                                             @foreach ($tdArray as $tdValue)
                                                 @switch($tdValue)
                                                     @case('cv')
@@ -62,10 +66,6 @@
                                                                 {{ $model->cv }}
                                                             </a>
                                                         </td>
-                                                    @break
-
-                                                    @case('image')
-                                                        <td>{!! image($folderName ?? $mainRouteName, $model->image, 100, null, null, 'cursor:zoom-in;') !!}</td>
                                                     @break
 
                                                     @case('image')
@@ -105,8 +105,12 @@
                                                             </a>
                                                         </td>
                                                     @break
+
                                                     @case('code')
-                                                    <td><div  style="background: {{ $model->code ?? '' }}" class="circle"></div>{{ $model->code  ?? ''}}</td>
+                                                        <td>
+                                                            <div style="background: {{ $model->code ?? '' }}" class="circle">
+                                                            </div>{{ $model->code ?? '' }}
+                                                        </td>
                                                     @break
 
                                                     @case('image_type')
@@ -129,8 +133,8 @@
 
                                                     @case('actions')
                                                         <x-admin.crud.index.actions :model="$model" :routeName="$mainRouteName"
-                                                            :td="true" :view="$view" :delete="$delete" :edit="$edit"
-                                                            :frontRouteName="$frontRouteName" :deleteFileName="'cv'"/>
+                                                            :td="true" :view="$view" :delete="$delete"
+                                                            :edit="$edit" :frontRouteName="$frontRouteName" :deleteFileName="'cv'" />
                                                     @break
 
                                                     @default

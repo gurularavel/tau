@@ -39,6 +39,7 @@ class Event extends Model
             'meta_keywords' => __('translate.Meta keywords'),
             'meta_description' => __('translate.Meta description'),
             'images' => __('translate.Images'),
+            'created_at' => __('translate.Published date'),
 
             'actions' => __('translate.Operations'),
         ];
@@ -46,7 +47,7 @@ class Event extends Model
 
     public static function headerAttributes(): array
     {
-        return ['id', 'image', 'title', 'is_active', 'actions'];
+        return ['id', 'image', 'title','created_at', 'is_active', 'actions'];
     }
 
     public function scopeActive($query)

@@ -14,7 +14,7 @@ class StudentProjectPageService extends BaseCrudService implements StudentProjec
 {
     use FileManagable;
 
-    private const FOLDER = 'projectPage';
+    private const FOLDER = 'studentProjectPage';
 
     public function __construct(
         StudentProjectPageRepositoryInterface $repository,

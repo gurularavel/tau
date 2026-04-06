@@ -26,7 +26,7 @@
                 <x-admin.crud.page-title :title="$title" />
 
 
-                <x-admin.crud.card :routeName="'campusGalleryPage.update'" :method="'update'" :model="$model" :back="true">
+                <x-admin.crud.card :routeName="'campusGalleryPage.update'" :method="'update'" :model="$model" :back="true" :frontRouteName="'campus.index'">
 
 
                     <x-admin.crud.nav>

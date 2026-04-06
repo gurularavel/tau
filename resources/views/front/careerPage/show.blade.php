@@ -23,6 +23,12 @@
         <button type="button" class="btn btn-danger btn-lg rounded-pill px-5 mt-4" data-bs-toggle="modal" data-bs-target="#applyModal">
             {{ __('translate.Apply') }}
         </button>
+
+        <div class="mb-3">
+                <span class="text-danger ms-3">
+                    <i class="far fa-calendar-alt"></i> {{ __('translate.View count') }}: {{$vacancy->view_counts ?? 0 }}
+                </span>
+            </div>
     </section>
 
     <div class="modal fade" id="applyModal" tabindex="-1" aria-labelledby="applyModalLabel" aria-hidden="true">

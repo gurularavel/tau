@@ -15,8 +15,8 @@ class CareerPageTranslation extends Model
     protected $fillable = [
         'title',
         'description',
-        // 'meta_title',
-        // 'meta_keywords',
-        // 'meta_description',
+        'meta_title',
+        'meta_keywords',
+        'meta_description',
     ];
 }

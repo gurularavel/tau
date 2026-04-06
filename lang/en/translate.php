@@ -661,6 +661,8 @@ return [
     'Page not found' => 'Page not found',
     'The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.' => 'The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.',
     'Back to home page' => 'Back to home page',
+    'Vector' => 'Vector',
+    'e.g. Full-time' => 'e.g. Full-time'
 
 
 

@@ -76,7 +76,7 @@ class EventController extends Controller
      */
     public function index(EventRequest $request): View
     {
-        $models = $this->eventService->getAllPaginated(requestParser: $request->parser(), columns: ['id', 'image', 'is_active', 'slug']);
+        $models = $this->eventService->getAllPaginated(requestParser: $request->parser(), columns: ['id', 'image', 'created_at','is_active', 'slug']);
         $attributes = Event::attributes();
         $headerAttributes = Event::headerAttributes();
 

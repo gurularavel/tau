@@ -36,15 +36,29 @@
 
                 <x-admin.sidebar-single-nav-item :title="'CV'"                      :routeName="'cvs.index'"                :iconName="'ri-notification-2-line'" />
                 <x-admin.sidebar-single-nav-item :title="'Messages'"                :routeName="'messages.index'"           :iconName="'ri-message-2-line'" />
-                <x-admin.sidebar-single-nav-item :title="'Subscribers'"             :routeName="'subscribes.index'"         :iconName="'ri-user-2-line'" />
+                {{-- <x-admin.sidebar-single-nav-item :title="'Subscribers'"             :routeName="'subscribes.index'"         :iconName="'ri-user-2-line'" /> --}}
                 <br>
                 <x-admin.sidebar-single-nav-item :title="'Home page'"               :routeName="'homePage.index'"           :iconName="'ri-pages-line'" />
                 <x-admin.sidebar-single-nav-item :title="'Campus Gallery page'"     :routeName="'campusGalleryPage.index'"  :iconName="'ri-pages-line'" />
+
+                <br>
                 <x-admin.sidebar-single-nav-item :title="'Student clubs page'"      :routeName="'studentClubPage.index'"  :iconName="'ri-pages-line'" />
+                <x-admin.sidebar-single-nav-item :title="'Student clubs'"           :routeName="'student_clubs.index'"  :iconName="'ri-pages-line'" />
+
+                <br>
                 <x-admin.sidebar-single-nav-item :title="'Student projects page'"   :routeName="'studentProjectPage.index'"  :iconName="'ri-pages-line'" />
+                <x-admin.sidebar-single-nav-item :title="'Student projects'"        :routeName="'student_projects.index'"  :iconName="'ri-pages-line'" />
+
+                <br>
+
+
                 <x-admin.sidebar-single-nav-item :title="'Media guide page'"        :routeName="'mediaGuidePage.index'"  :iconName="'ri-pages-line'" />
 
+                <br>
                 <x-admin.sidebar-single-nav-item :title="'Career'"                  :routeName="'careerPage.index'"         :iconName="'ri-pages-line'" />
+                <x-admin.sidebar-single-nav-item :title="'Vacancies'"               :routeName="'vacancies.index'"          :iconName="'ri-pages-line'" />
+                <br>
+
                 <x-admin.sidebar-single-nav-item :title="'Contact us'"              :routeName="'contactPage.index'"        :iconName="'ri-pages-line'" />
 
 
@@ -90,7 +104,6 @@
 
                 <x-admin.sidebar-single-nav-item :title="'News'"                    :routeName="'news.index'"               :iconName="'ri-pages-line'" />
                 <x-admin.sidebar-single-nav-item :title="'Announcements'"           :routeName="'announcements.index'"      :iconName="'ri-pages-line'" />
-                <x-admin.sidebar-single-nav-item :title="'Vacancies'"               :routeName="'vacancies.index'"          :iconName="'ri-pages-line'" />
 
                 <br>
 

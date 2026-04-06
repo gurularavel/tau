@@ -81,7 +81,7 @@
 
                                                 {{-- Baxış sayı --}}
                                                 <td>
-                                                    <span class="badge badge-soft-info">{{ $model->view_counts ?? 0 }}</span>
+                                                   {{ $model->view_counts ?? 0 }}
                                                 </td>
 
                                                 {{-- Son müraciət tarixi --}}
@@ -98,7 +98,7 @@
                                                 <x-admin.crud.index.status :model="$model" :name="'is_active'" />
 
                                                 {{-- Əməliyyatlar (Edit/Delete) --}}
-                                                <x-admin.crud.index.actions :model="$model" :routeName="'vacancies'"/>
+                                                <x-admin.crud.index.actions :model="$model" :routeName="'vacancies'" :view="false" :delete2="true"/>
 
                                                 @php $count++ @endphp
                                             </tr>

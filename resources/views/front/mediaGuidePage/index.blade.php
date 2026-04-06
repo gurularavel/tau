@@ -52,7 +52,7 @@
     </section>
 
     <section class="media-guide-logo container-fluid">
-        <img src="{{ getImage('mediaGuidePage', $mediaGuidePage->image2) }}" alt="Logo" />
+        <img src="{{ getImage('mediaGuidePage', $mediaGuidePage->image) }}" alt="Logo" />
     </section>
 
     <section class="potential-logos container">

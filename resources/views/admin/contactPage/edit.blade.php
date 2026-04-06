@@ -26,7 +26,7 @@
                 <x-admin.crud.page-title :title="$title" />
 
 
-                <x-admin.crud.card :routeName="'contactPage.update'" :method="'update'" :model="$model" :routeNameForBackButton="''">
+                <x-admin.crud.card :routeName="'contactPage.update'" :method="'update'" :model="$model" :routeNameForBackButton="''" :frontRouteName="'contact.index'">
 
 
                     <x-admin.crud.nav>
@@ -34,7 +34,6 @@
                         @foreach ($locales as $key => $locale)
                             <x-admin.crud.nav-item :locale="$locale" :key="$key" />
                         @endforeach
-                        <x-admin.crud.summernote-editor-js :locales="$locales" :key="1" :height="'200'" />
 
 
 
@@ -53,16 +52,7 @@
                                             :label="'title'" :placeholder="'title'" :type="'text'"
                                             :required="false" />
                                     </div>
-                                    <div class="mb-3 col-lg-4">
-                                        <x-admin.crud.input :locale="$locale" :model="$model" :columnName="'title2'"
-                                            :label="'title'" :placeholder="'title'" :type="'text'"
-                                            :required="false" />
-                                    </div>
-                                    <div class="mb-3 col-lg-4">
-                                        <x-admin.crud.input :locale="$locale" :model="$model" :columnName="'title3'"
-                                            :label="'title'" :placeholder="'title'" :type="'text'"
-                                            :required="false" />
-                                    </div>
+
                                     <div class="mb-3 col-lg-4">
                                         <x-admin.crud.input :locale="$locale" :model="$model" :columnName="'address'"
                                             :label="'Address'" :placeholder="'Address'" :type="'text'"
@@ -72,10 +62,6 @@
                                         <x-admin.crud.input :locale="$locale" :model="$model" :columnName="'footer'"
                                             :label="'Footer'" :placeholder="'Footer'" :type="'text'"
                                             :required="false" />
-                                    </div>
-                                    <div class="mb-3 col-lg-12">
-                                        <x-admin.crud.textarea :locale="$locale" :model="$model" :columnName="'opening_hour'"
-                                            :label="'Opening hour'" :summerNoteID="1" />
                                     </div>
 
                                     <div class="mb-3 col-lg-12">

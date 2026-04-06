@@ -3,10 +3,11 @@
 namespace App\Http\Requests\Admin;
 
 use App\Models\ProjectPage;
-use App\Models\StudentClubPage;
+use App\Models\GraduateClubPage;
+use App\Models\GraduatePage;
 use App\Rules\NotEmptyHtml;
 
-class StudentClubPageRequest extends TranslatableRequest
+class GraduateClubPageRequest extends TranslatableRequest
 {
 
     /**
@@ -47,7 +48,7 @@ class StudentClubPageRequest extends TranslatableRequest
      */
     public function attributes(): array
     {
-        $model = new StudentClubPage();
+        $model = new GraduatePage();
         return $this->translatedAttributes($model);
     }
 
