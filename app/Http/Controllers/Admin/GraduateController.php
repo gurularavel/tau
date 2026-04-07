@@ -21,7 +21,7 @@ class GraduateController extends Controller
 
     private const TITLE = 'Graduates';
 
-    public function __construct(private readonly GraduateServiceInterface $studentCubService)
+    public function __construct(private readonly GraduateServiceInterface $graduateService)
     {
         // $this->authorizeResource(Graduate::class);
     }
@@ -43,9 +43,9 @@ class GraduateController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Graduate $student_club): RedirectResponse
+    public function destroy(Graduate $graduate): RedirectResponse
     {
-        $this->studentCubService->delete($student_club);
+        $this->graduateService->delete($graduate);
 
         return redirect()->route('admin.graduatePage.index')->with('success', __('translate.Successfully completed'));
     }
@@ -53,12 +53,12 @@ class GraduateController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Graduate $student_club): View
+    public function edit(Graduate $graduate): View
     {
-        $attributes = $student_club::attributes();
+        $attributes = $graduate::attributes();
         return view(self::PATH . 'edit', [
             'attributes' => $attributes,
-            'model' => $student_club,
+            'model' => $graduate,
             'title' => self::TITLE,
         ]);
     }
@@ -71,7 +71,7 @@ class GraduateController extends Controller
      */
     public function index(GraduateRequest $request): View
     {
-        $models = $this->studentCubService->getAllPaginated(requestParser: $request->parser(), columns: ['id', 'image', 'is_active', 'slug']);
+        $models = $this->graduateService->getAllPaginated(requestParser: $request->parser(), columns: ['id', 'image', 'is_active', 'slug']);
         $attributes = Graduate::attributes();
         $headerAttributes = Graduate::headerAttributes();
 
@@ -86,10 +86,10 @@ class GraduateController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Graduate $student_club): View
+    public function show(Graduate $graduate): View
     {
         return view(self::PATH . 'show', [
-            'model' => $student_club,
+            'model' => $graduate,
             'title' => self::TITLE,
         ]);
     }
@@ -105,57 +105,26 @@ class GraduateController extends Controller
         $payload = $request->validated();
         $payload['images'] = $request->file('images');
 
-        $student_club = $this->studentCubService->create(storeSlug($payload, Graduate::class), $request->file('image'));
+        $graduate = $this->graduateService->create(storeSlug($payload, Graduate::class), $request->file('image'));
 
 
-        return redirect()->route('admin.graduatePage.index')->with('success', __('translate.Successfully completed'));
+        return redirect()->route('admin.graduates.edit', $graduate)->with('success', __('translate.Successfully completed'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(GraduateRequest $request, Graduate $student_club)
+    public function update(GraduateRequest $request, Graduate $graduate)
     {
         $payload = $request->validated();
         $payload['images'] = $request->file('images');
 
-        $this->studentCubService->update($student_club, updateSlug($payload, $student_club), $request->file('image'));
+        $this->graduateService->update($graduate, updateSlug($payload, $graduate), $request->file('image'));
 
 
 
         return back()->with('success', __('translate.Successfully completed'));
     }
 
-    public function showImageOrder(Graduate $student_club): View
-    {
-        return view('admin.student_clubs.order-images', [
-            'title' => self::TITLE,
-            'model' => $student_club,
-            'images' => $student_club->images()->orderBy('order')->get(),
-        ]);
-    }
 
-    public function updateImageOrder(Graduate $student_club): RedirectResponse
-    {
-        $imageOrders = request('imageOrders');
-
-        foreach ($imageOrders as $imageId => $order) {
-            GraduateImage::where('id', $imageId)
-                ->where('student_club_id', $student_club->id)
-                ->update(['order' => $order]);
-        }
-
-        return redirect()->back()->with('success', __('translate.Successfully completed'));
-    }
-
-    public function removeGraduatesMedia()
-    {
-        $mediaId = request()->mediaId;
-        $media = GraduateImage::findOrFail($mediaId);
-
-        $this->deleteFile('student_club_images', $media->image);
-        $media->delete();
-
-        return response()->json(['success' => true, 'message' => 'Media deleted successfully']);
-    }
 }

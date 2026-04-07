@@ -31,6 +31,7 @@ class ProjectPageController extends Controller
     {
         $projectPage = ProjectPage::first();
         $projects = $this->projectService->getAll(
+            limit: 5,
             columns: ['id','image','is_active'],
             sorting:'-created_at'
         );

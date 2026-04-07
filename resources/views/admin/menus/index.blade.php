@@ -270,8 +270,8 @@
                 badge.innerText = "{{ __('translate.inactive') }}";
             }
 
-            // Sizin xüsusi bildiriş funksiyanız
-            showNotify('success', 'Status dəyişdirildi');
+             showNotify('success',
+                                        "{{ __('translate.Status changed!') }}");
         }
     })
     .catch(() => showNotify('error', "{{ __('translate.An error occurred!') }}"));
@@ -280,12 +280,3 @@
 </script>
 
 
-<script>
-            function showNotify(type, message) {
-            const notify = document.createElement('div');
-            notify.className = `admin-notify ${type}`;
-            notify.innerText = message;
-            document.body.appendChild(notify);
-            setTimeout(() => notify.remove(), 5000);
-        }
-</script>

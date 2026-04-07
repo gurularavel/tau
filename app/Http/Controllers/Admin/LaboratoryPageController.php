@@ -31,6 +31,7 @@ class LaboratoryPageController extends Controller
     {
         $laboratoryPage = LaboratoryPage::first();
         $laboratories = $this->laboratoryService->getAll(
+            limit: 5,
             columns: ['id','image','is_active'],
             sorting:'-created_at'
         );

@@ -662,7 +662,13 @@ return [
     'The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.' => 'The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.',
     'Back to home page' => 'Back to home page',
     'Vector' => 'Vector',
-    'e.g. Full-time' => 'e.g. Full-time'
+    'e.g. Full-time' => 'e.g. Full-time',
+    'No vacancies available at the moment' => 'No vacancies available at the moment',
+    'Partner countries' => 'Partner countries',
+    'Item deleted!' => 'Item deleted!',
+    'Status changed!' => 'Status changed!',
+    'Error during sorting' => 'Error during sorting',
+    'Write a tags' => 'Write a tags'
 
 
 

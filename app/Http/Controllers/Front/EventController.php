@@ -47,8 +47,7 @@ public function index(?EventCategory $event_category = null)
         $metaTitle = $event->meta_title;
         $metaDescription = $event->meta_description;
         $metaKeywords = $event->meta_keywords;
-        $events = Event::active()->get();
 
-        return view('front.eventPage.show', compact('event', 'events', 'metaTitle', 'metaDescription', 'metaKeywords'));
+        return view('front.eventPage.show', compact('event', 'metaTitle', 'metaDescription', 'metaKeywords'));
     }
 }

@@ -31,6 +31,7 @@ class AnnouncementRequest extends TranslatableRequest
                 [
                     'user_id' => ['required', 'exists:users,id'],
                     'created_at' => 'nullable',
+                    'tags' => 'nullable',
 
                     'image' => ['required', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
                     'images.*' => ['nullable', 'image', 'mimes:jpg,jpeg,png,svg,webp'],

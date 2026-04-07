@@ -31,6 +31,7 @@ class EventPageController extends Controller
     {
         $eventPage = EventPage::first();
         $events = $this->eventService->getAll(
+            limit: 5,
             columns: ['id','image','is_active'],
             sorting:'-created_at'
         );

@@ -10,7 +10,7 @@
 
         <div class="events-full-container container">
             <div class="events">
-                @forelse ($events as $event)
+                @foreach ($events as $event)
 
                     <div class="event">
                         <div class="event-content">

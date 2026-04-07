@@ -27,7 +27,7 @@
                 <x-admin.crud.page-title :title="$title" />
 
 
-                <x-admin.crud.card :routeName="'partners.update'" :method="'update'" :model="$model"
+                <x-admin.crud.card :routeName="'partners.update'" :method="'update'" :model="$model" :backButtonURL="route('admin.internshipProgramPage.index')"
                     >
 
                     <x-admin.crud.success-message :delay="'5000'" />

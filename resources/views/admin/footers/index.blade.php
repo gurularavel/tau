@@ -39,11 +39,8 @@
                                                 <x-admin.crud.index.title :columnName="$model->title" />
                                                 <x-admin.crud.index.status :model="$model" :name="'is_active'" />
 
-                                                <x-admin.crud.index.actions
-                                                    :model="$model"
-                                                    :routeName="'footers'"
-                                                    :view="false"
-                                                    :delete="true" />
+                                                <x-admin.crud.index.actions :model="$model" :routeName="'footers'"
+                                                    :view="false" :delete="true" />
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -80,7 +77,7 @@
                         // Yalnız bu cədvəlin daxilindəki sətirləri götürürük
                         el.querySelectorAll('tr').forEach((row, index) => {
                             let id = row.getAttribute('data-id');
-                            if(id) {
+                            if (id) {
                                 order.push({
                                     id: id,
                                     order: index + 1
@@ -90,37 +87,36 @@
 
                         // API-yə göndərmə
                         fetch("{{ route('admin.footers.order') }}", {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json",
-                                "Accept": "application/json",
-                                "X-CSRF-TOKEN": "{{ csrf_token() }}"
-                            },
-                            body: JSON.stringify({ order: order })
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            if(data.success || data.status === 'success') {
-                                showNotify('success', 'Status dəyişdirildi');
-                            }
-                        })
-                        .catch(error => {
-                            showNotify('success', "Sıralama zamanı xəta:", error);
-                        });
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                    "Accept": "application/json",
+                                    "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                                },
+                                body: JSON.stringify({
+                                    order: order
+                                })
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success || data.status === 'success') {
+                                    showNotify('success',
+                                        "{{ __('translate.Status changed!') }}");
+
+                                }
+                            })
+                            .catch(error => {
+                                showNotify('success',
+                                    "{{ __('translate.Error during sorting:') }} " +
+                                    error);
+                            });
                     }
                 });
             } else {
-                console.error("Xəta: 'sortable-footer' ID-li tbody tapılmadı. Zəhmət olmasa HTML strukturunu yoxlayın.");
+                console.error(
+                    "Xəta: 'sortable-footer' ID-li tbody tapılmadı. Zəhmət olmasa HTML strukturunu yoxlayın."
+                    );
             }
         }, 300);
     });
-</script>
-<script>
-            function showNotify(type, message) {
-            const notify = document.createElement('div');
-            notify.className = `admin-notify ${type}`;
-            notify.innerText = message;
-            document.body.appendChild(notify);
-            setTimeout(() => notify.remove(), 5000);
-        }
 </script>

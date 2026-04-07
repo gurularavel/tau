@@ -31,6 +31,7 @@ class GraduatePageController extends Controller
     {
         $graduatePage = GraduatePage::first();
         $graduates = $this->graduateService->getAll(
+            limit: 5,
             columns: ['id','image','is_active'],
             sorting:'-created_at'
         );

@@ -15,12 +15,12 @@
                     <div class="filter-all">
                         <div class="texts">
                             <div class="label-row"><span class="label-text">{{ __('translate.Academic Year') }}</span></div>
-                            <div class="selected-value">{{ request('academic_year') ?: 'Hamısı' }}</div>
+                            <div class="selected-value">{{ request('academic_year') ?: __('translate.All') }}</div>
                         </div>
                         <div class="icon-wrapper"><img src="{{ asset('assets/front/icons/arrow-down.svg') }}" alt="arrow" /></div>
                     </div>
                     <div class="options-menu">
-                        <div class="option" data-value="">Hamısı</div>
+                        <div class="option" data-value="">{{ __('translate.All') }}</div>
                         @foreach($academicYears as $year)
                             <div class="option" data-value="{{ $year }}">{{ $year }}</div>
                         @endforeach
@@ -34,13 +34,13 @@
                         <div class="texts">
                             <div class="label-row"><span class="label-text">{{ __('translate.Semester') }}</span></div>
                             <div class="selected-value">
-                                {{ $semesters->firstWhere('id', request('semester_id'))?->translate(app()->getLocale())->name ?? 'Hamısı' }}
+                                {{ $semesters->firstWhere('id', request('semester_id'))?->translate(app()->getLocale())->name ?? __('translate.All') }}
                             </div>
                         </div>
                         <div class="icon-wrapper"><img src="{{ asset('assets/front/icons/arrow-down.svg') }}" alt="arrow" /></div>
                     </div>
                     <div class="options-menu">
-                        <div class="option" data-value="">Hamısı</div>
+                        <div class="option" data-value="">{{ __('translate.All') }}</div>
                         @foreach($semesters as $semester)
                             <div class="option" data-value="{{ $semester->id }}">{{ $semester->translate(app()->getLocale())->name }}</div>
                         @endforeach
@@ -54,13 +54,13 @@
                         <div class="texts">
                             <div class="label-row"><span class="label-text">{{ __('translate.Education Level') }}</span></div>
                             <div class="selected-value">
-                                {{ $levels->firstWhere('id', request('education_level_id'))?->translate(app()->getLocale())->name ?? 'Hamısı' }}
+                                {{ $levels->firstWhere('id', request('education_level_id'))?->translate(app()->getLocale())->name ?? __('translate.All') }}
                             </div>
                         </div>
                         <div class="icon-wrapper"><img src="{{ asset('assets/front/icons/arrow-down.svg') }}" alt="arrow" /></div>
                     </div>
                     <div class="options-menu">
-                        <div class="option" data-value="">Hamısı</div>
+                        <div class="option" data-value="">{{ __('translate.All') }}</div>
                         @foreach($levels as $level)
                             <div class="option" data-value="{{ $level->id }}">{{ $level->translate(app()->getLocale())->name }}</div>
                         @endforeach
@@ -74,13 +74,13 @@
                         <div class="texts">
                             <div class="label-row"><span class="label-text">{{ __('translate.Faculty') }}</span></div>
                             <div class="selected-value">
-                                {{ $faculties->firstWhere('id', request('faculty_id'))?->translate(app()->getLocale())->name ?? 'Hamısı' }}
+                                {{ $faculties->firstWhere('id', request('faculty_id'))?->translate(app()->getLocale())->name ?? __('translate.All') }}
                             </div>
                         </div>
                         <div class="icon-wrapper"><img src="{{ asset('assets/front/icons/arrow-down.svg') }}" alt="arrow" /></div>
                     </div>
                     <div class="options-menu">
-                        <div class="option" data-value="">Hamısı</div>
+                        <div class="option" data-value="">{{ __('translate.All') }}</div>
                         @foreach($faculties as $faculty)
                             <div class="option" data-value="{{ $faculty->id }}">{{ $faculty->translate(app()->getLocale())->name }}</div>
                         @endforeach
@@ -94,13 +94,13 @@
                         <div class="texts">
                             <div class="label-row"><span class="label-text">{{ __('translate.Education Type') }}</span></div>
                             <div class="selected-value">
-                                {{ $types->firstWhere('id', request('education_type_id'))?->translate(app()->getLocale())->name ?? 'Hamısı' }}
+                                {{ $types->firstWhere('id', request('education_type_id'))?->translate(app()->getLocale())->name ?? __('translate.All') }}
                             </div>
                         </div>
                         <div class="icon-wrapper"><img src="{{ asset('assets/front/icons/arrow-down.svg') }}" alt="arrow" /></div>
                     </div>
                     <div class="options-menu">
-                        <div class="option" data-value="">Hamısı</div>
+                        <div class="option" data-value="">{{ __('translate.All') }}</div>
                         @foreach($types as $type)
                             <div class="option" data-value="{{ $type->id }}">{{ $type->translate(app()->getLocale())->name }}</div>
                         @endforeach
@@ -114,13 +114,13 @@
                         <div class="texts">
                             <div class="label-row"><span class="label-text">{{ __('translate.Event Type') }}</span></div>
                             <div class="selected-value">
-                                {{ $eventTypes->firstWhere('id', request('event_type_id'))?->translate(app()->getLocale())->name ?? 'Hamısı' }}
+                                {{ $eventTypes->firstWhere('id', request('event_type_id'))?->translate(app()->getLocale())->name ?? __('translate.All') }}
                             </div>
                         </div>
                         <div class="icon-wrapper"><img src="{{ asset('assets/front/icons/arrow-down.svg') }}" alt="arrow" /></div>
                     </div>
                     <div class="options-menu">
-                        <div class="option" data-value="">Hamısı</div>
+                        <div class="option" data-value="">{{ __('translate.All') }}</div>
                         @foreach($eventTypes as $eType)
                             <div class="option" data-value="{{ $eType->id }}">{{ $eType->translate(app()->getLocale())->name }}</div>
                         @endforeach

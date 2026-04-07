@@ -31,6 +31,7 @@ class StudentProjectPageController extends Controller
     {
         $studentProjectPage = StudentProjectPage::first();
         $studentProjects = $this->studentProjectService->getAll(
+            limit: 5,
             columns: ['id','image','is_active'],
             sorting:'-created_at'
         );

@@ -132,8 +132,20 @@ function deleteItem(button, url) {
         // Refresh olmadan row DOM-dan silinir
         const row = button.closest('tr');
         if (row) row.remove();
+        showNotify('success', "{{ __('translate.Item deleted!') }}");
     })
     .catch(error => console.error('DELETE ERROR:', error));
 }
 
+</script>
+
+
+<script>
+            function showNotify(type, message) {
+            const notify = document.createElement('div');
+            notify.className = `admin-notify ${type}`;
+            notify.innerText = message;
+            document.body.appendChild(notify);
+            setTimeout(() => notify.remove(), 5000);
+        }
 </script>

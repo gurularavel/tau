@@ -26,7 +26,7 @@
                     <x-admin.crud.page-title :title="$title"/>
 
 
-                    <x-admin.crud.card :routeName="'careerOpportunityPage.update'" :method="'update'" :model="$model" :routeNameForBackButton="''" >
+                    <x-admin.crud.card :routeName="'careerOpportunityPage.update'" :method="'update'" :model="$model" :routeNameForBackButton="''" :frontRouteName="'career_opportunities.index'">
 
 
                                 <x-admin.crud.nav>
@@ -83,7 +83,7 @@
                     </x-admin.crud.card>
 
        <x-admin.crud.show.sub-card :title="'Career opportunities'" :route="route('admin.career_opportunities.create')" :thArray="['Image','Title', 'Active']"
-                            :models="$careerOpportunities" :tdArray="['image', 'title', 'is_active', 'actions']" :mainRouteName="'career_opportunities'"/>
+                            :models="$careerOpportunities" :tdArray="['image', 'title', 'is_active', 'actions']" :mainRouteName="'career_opportunities'" :view="false"/>
 
             </x-admin.crud.page-content>
         </x-admin.crud.main-content>

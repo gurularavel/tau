@@ -105,7 +105,7 @@
                                                 <x-admin.crud.index.title :columnName="$model->view_counts" />
                                                 <x-admin.crud.index.status :model="$model" :name="'status'" />
                                                 <x-admin.crud.index.actions :model="$model" :routeName="'news'"
-                                                    :frontRouteName="'front.news'" />
+                                                    :frontRouteName="'front.news'" :view="false" :delete2="true" />
                                                 @php $count++ @endphp
 
                                             </tr>

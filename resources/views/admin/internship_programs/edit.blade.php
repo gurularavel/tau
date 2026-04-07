@@ -27,7 +27,7 @@
                 <x-admin.crud.page-title :title="$title" />
 
 
-                <x-admin.crud.card :routeName="'internship_programs.update'" :method="'update'" :model="$model" :routeNameForBackButton="'internship_programs'"
+                <x-admin.crud.card :routeName="'internship_programs.update'" :method="'update'" :model="$model" :routeNameForBackButton="'internship_programs'" :frontRouteName="'internship_programs.index'"
                     >
 
                     <x-admin.crud.success-message :delay="'5000'" />
@@ -36,7 +36,7 @@
                         @foreach ($locales as $key => $locale)
                             <x-admin.crud.nav-item :locale="$locale" :key="$key" />
                         @endforeach
-                        {{-- <x-admin.crud.summernote-editor-js :locales="$locales" :key="1" :height="'300'" /> --}}
+                        <x-admin.crud.summernote-editor-js :locales="$locales" :key="1" :height="'300'" />
 
 
                     </x-admin.crud.nav>
@@ -57,7 +57,7 @@
 
                                     <div class="mb-3 col-lg-12">
                                         <x-admin.crud.textarea :locale="$locale" :model="$model" :columnName="'description'"
-                                            :label="'description'" />
+                                            :label="'description'" :summerNoteID="1" />
                                     </div>
                                     <div class="mb-3 col-lg-4">
                                         <x-admin.crud.input :locale="$locale" :model="$model" :columnName="'meta_title'"

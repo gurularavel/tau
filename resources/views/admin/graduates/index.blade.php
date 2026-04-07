@@ -95,7 +95,7 @@
                                                 <x-admin.crud.index.title :columnName="$model->title" />
                                                     <x-admin.crud.index.title :columnName="$model->profession" />
                                                 <x-admin.crud.index.status :model="$model" :name="'is_active'" />
-                                                <x-admin.crud.index.actions :model="$model" :routeName="'graduates'" :frontRouteName="'front.graduates'" />
+                                                <x-admin.crud.index.actions :model="$model" :routeName="'graduates'" :frontRouteName="'front.graduates'" :view="false" :delete2="true"/>
                                                 @php $count++ @endphp
 
                                             </tr>

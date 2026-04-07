@@ -28,15 +28,15 @@ class InternshipProgramController extends Controller
         return view('front.internshipProgramPage.index', compact('partners','internshipPrograms', 'internshipProgramPage', 'metaTitle', 'metaDescription', 'metaKeywords'));
     }
 
-    // public function show(InternshipProgram $internshipProgram)
-    // {
-    //     if (!$internshipProgram->is_active) {
-    //         abort(404);
-    //     }
-    //     $metaTitle = $internshipProgram->meta_title;
-    //     $metaDescription = $internshipProgram->meta_description;
-    //     $metaKeywords = $internshipProgram->meta_keywords;
+    public function show(InternshipProgram $internshipProgram)
+    {
+        if (!$internshipProgram->is_active) {
+            abort(404);
+        }
+        $metaTitle = $internshipProgram->meta_title;
+        $metaDescription = $internshipProgram->meta_description;
+        $metaKeywords = $internshipProgram->meta_keywords;
 
-    //     return view('front.internshipProgramPage.show', compact('internshipProgram', 'metaTitle', 'metaDescription', 'metaKeywords'));
-    // }
+        return view('front.internshipProgramPage.show', compact('internshipProgram', 'metaTitle', 'metaDescription', 'metaKeywords'));
+    }
 }

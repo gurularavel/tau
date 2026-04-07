@@ -31,6 +31,7 @@ class CareerOpportunityPageController extends Controller
     {
         $careerOpportunityPage = CareerOpportunityPage::first();
         $careerOpportunities = $this->careerOpportunityService->getAll(
+            limit: 5,
             columns: ['id','image','is_active'],
             sorting:'-created_at'
         );

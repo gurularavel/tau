@@ -55,7 +55,7 @@
                                     <div class="mb-3 col-lg-12">
                                         <x-admin.crud.input :locale="$locale" :model="''" :columnName="'profession'"
                                             :label="'Profession'" :placeholder="'Write a profession'" :type="'text'"
-                                            :required="true" />
+                                            :required="false" />
                                     </div>
 
 

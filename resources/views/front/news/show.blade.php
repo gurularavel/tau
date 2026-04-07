@@ -1,5 +1,10 @@
 <x-front.layout :title="$metaTitle" :metaDescription="$metaDescription" :metaKeywords="$metaKeywords" :folder="'news'" :image="$news->image">
+<style>
+    .research-gallery .zoom-item {
+    cursor: zoom-in;
+}
 
+</style>
        <section class="breadcrumb container-fluid">
         <img src="{{getImage('news', $news->image)}}" alt="Breadcrumb" />
     </section>
@@ -17,7 +22,13 @@
       </div>
 
 
+        <div class="research-gallery">
+            @foreach ($news->images as $image)
+                <img src="{{getImage('news_images', $image->image)}}" alt="{{ $news->title ?? '' }}"  class="zoom-item"/>
+            @endforeach
 
+
+        </div>
 
       <div class="single-media-footer">
         <div class="media-counts">
@@ -43,7 +54,7 @@
     {{-- Whatsapp Paylaş --}}
     <a href="https://api.whatsapp.com/send?text={{ urlencode($news->title . ' - ' . url()->current()) }}"
        class="link" target="_blank">
-        <img src="{{asset('assets/front/icons/Whatsapp.svg')}}" alt="whatsapp Icon" />
+        <img src="{{asset('assets/front/icons/whatsapp.svg')}}" alt="whatsapp Icon" />
     </a>
 </div>
       </div>
@@ -91,3 +102,8 @@
 
 
 </x-front.layout>
+<script>
+    const lightbox = GLightbox({
+        selector: '.zoom-item'
+    });
+</script>

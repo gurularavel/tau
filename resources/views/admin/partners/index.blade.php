@@ -100,7 +100,7 @@
 
                                                 <x-admin.crud.index.image :columnName="$model->image" :folderName="'partners'" />
                                                 <x-admin.crud.index.status :model="$model" :name="'is_active'" />
-                                                <x-admin.crud.index.actions :model="$model" :routeName="'partners'" />
+                                                <x-admin.crud.index.actions :model="$model" :routeName="'partners'" :view="false" :delete2="false"/>
                                                 @php $count++ @endphp
 
                                             </tr>

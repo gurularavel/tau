@@ -145,10 +145,17 @@
 
                                         </tr>
                                     @endforeach
+
                                 </tbody>
+
+
                             </table>
 
+
                         </div>
+                             <h5 class="card-title mb-0 flex-grow-1" style="text-align: center; padding: 1%;"><a
+                                href="{{ route('admin.' . $mainRouteName . '.index') }}">{{ __('translate.More') }} {{ __('translate.' . $title) }}</a>
+                                  </h5>
                     </div>
                 </div>
             </div>

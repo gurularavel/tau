@@ -104,6 +104,7 @@ Route::group([
         Route::get('/projects/{project:slug}',                                  [FrontProjectController::class,                  'show'])->name('front.projects.show');
         Route::get('/projects',                                                 [FrontProjectController::class,                  'index'])->name('front.projects.index');
         Route::get('/internship-programs',                                      [FrontInternshipProgramController::class,        'index'])->name('front.internship_programs.index');
+        Route::get('/internship-programs/{internship_program:slug}',            [FrontInternshipProgramController::class,        'show'])->name('front.internship_programs.show');
         Route::get('/pages/{page:slug}',                                        [FrontPageController::class,                     'show'])->name('front.pages.show');
         Route::get('/programs/{program:slug}',                                  [FrontProgramController::class,                  'show'])->name('front.programs.show');
 
@@ -125,7 +126,9 @@ Route::group([
         Route::get('/career-opportunities/{career_opportunity:slug}',           [FrontCareerOpportunityController::class,                    'show'])->name('front.career_opportunities.show');
         Route::get('/career-opportunities',                                     [FrontCareerOpportunityController::class,                    'index'])->name('front.career_opportunities.index');
         Route::get('/career-opportunities-categories/{career_opportunity_category:slug}',                   [FrontCareerOpportunityController::class,                    'index'])->name('front.career_opportunity_categories.show');
-    Route::group(       [
+
+
+        Route::group(       [
         'prefix' => 'admin',
         'middleware' => 'auth'
     ], function () {

@@ -2,12 +2,10 @@
 
 namespace App\Http\Requests\Admin;
 
-use App\Models\ProjectPage;
-use App\Models\GraduateClubPage;
 use App\Models\GraduatePage;
 use App\Rules\NotEmptyHtml;
 
-class GraduateClubPageRequest extends TranslatableRequest
+class GraduatePageRequest extends TranslatableRequest
 {
 
     /**

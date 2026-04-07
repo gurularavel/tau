@@ -31,8 +31,8 @@ class InternshipProgramPageController extends Controller
     public function index()
     {
         $internshipProgramPage = InternshipProgramPage::first();
-        $internshipPrograms = $this->internshipProgramService->getAll(columns: ['id', 'image', 'is_active'], sorting: '-created_at');
-        $partners = $this->partnerService->getAll(columns: ['id', 'image', 'is_active'], sorting: '-created_at');
+        $internshipPrograms = $this->internshipProgramService->getAll(limit: 5,columns: ['id', 'image', 'is_active'], sorting: '-created_at');
+        $partners = $this->partnerService->getAll(limit: 5,columns: ['id', 'image', 'is_active'], sorting: '-created_at');
 
         return view(self::PATH . 'edit', [
             'model' => $internshipProgramPage,

@@ -34,7 +34,7 @@
                         @foreach ($locales as $key => $locale)
                             <x-admin.crud.nav-item :locale="$locale" :key="$key" />
                         @endforeach
-                        {{-- <x-admin.crud.summernote-editor-js :locales="$locales" :key="1" :height="'300'" /> --}}
+                        <x-admin.crud.summernote-editor-js :locales="$locales" :key="1" :height="'300'" />
 
 
                     </x-admin.crud.nav>
@@ -56,7 +56,7 @@
 
                                     <div class="mb-3 col-lg-12">
                                         <x-admin.crud.textarea :locale="$locale" :model="''" :columnName="'description'"
-                                            :label="'description'" />
+                                            :label="'description'" :summerNoteID="1" />
                                     </div>
 
 

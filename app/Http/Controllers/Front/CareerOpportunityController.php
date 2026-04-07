@@ -21,7 +21,7 @@ public function index(?CareerOpportunityCategory $career_opportunity_category = 
         $query->where('career_opportunity_category_id', $career_opportunity_category->id);
     }
 
-    $career_opportunitys = $query->paginate(6);
+    $career_opportunities = $query->paginate(6);
 
     $careerOpportunityPage = CareerOpportunityPage::with('translations')->first();
     $pCategories = CareerOpportunityCategory::with('translations')->active()->get();
@@ -31,7 +31,7 @@ public function index(?CareerOpportunityCategory $career_opportunity_category = 
     $metaKeywords    = $careerOpportunityPage->meta_keywords;
 
     return view('front.careerOpportunityPage.index', compact(
-        'career_opportunitys',
+        'career_opportunities',
         'careerOpportunityPage',
         'metaTitle',
         'metaDescription',
@@ -47,8 +47,7 @@ public function index(?CareerOpportunityCategory $career_opportunity_category = 
         $metaTitle = $career_opportunity->meta_title;
         $metaDescription = $career_opportunity->meta_description;
         $metaKeywords = $career_opportunity->meta_keywords;
-        $career_opportunitys = CareerOpportunity::active()->get();
 
-        return view('front.careerOpportunityPage.show', compact('career_opportunity', 'career_opportunitys', 'metaTitle', 'metaDescription', 'metaKeywords'));
+        return view('front.careerOpportunityPage.show', compact('career_opportunity', 'metaTitle', 'metaDescription', 'metaKeywords'));
     }
 }

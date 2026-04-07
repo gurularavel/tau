@@ -42,31 +42,37 @@ class AnnouncementSeeder extends Seeder
                     'az' => 'TAU beynəlxalq akkreditasiya aldı',
                     'en' => 'TAU received international accreditation',
                     'ru' => 'TAU получил международную аккредитацию',
+                    'tr' => 'TAU uluslararası akreditasyon aldı',
                 ],
                 'content' => [
                     'az' => 'Universitetimiz Avropa Akkreditasiya Agentliyindən beynəlxalq akkreditasiya alaraq təhsil keyfiyyətini təsdiqlədi.',
                     'en' => 'Our university has confirmed its educational quality by receiving international accreditation from the European Accreditation Agency.',
                     'ru' => 'Наш университет подтвердил качество образования, получив международную аккредитацию Европейского агентства по аккредитации.',
+                    'tr' => 'Üniversitemiz, Avrupa Akreditasyon Ajansı\'ndan uluslararası akreditasyon alarak eğitim kalitesini kanıtladı.',
                 ],
                 'description' => [
                     'az' => 'Təhsil proqramlarımızın beynəlxalq standartlara uyğunluğu rəsmən təsdiqləndi.',
                     'en' => 'Compliance of our educational programs with international standards has been officially confirmed.',
                     'ru' => 'Соответствие наших образовательных программ международным стандартам официально подтверждено.',
+                    'tr' => 'Eğitim programlarımızın uluslararası standartlara uygunluğu resmen onaylandı.',
                 ],
                 'meta_title' => [
                     'az' => 'TAU Beynəlxalq Akkreditasiya | Keyfiyyətli Təhsil',
                     'en' => 'TAU International Accreditation | Quality Education',
                     'ru' => 'TAU Международная Аккредитация | Качественное Образование',
+                    'tr' => 'TAU Uluslararası Akreditasyon | Kaliteli Eğitim',
                 ],
                 'meta_description' => [
                     'az' => 'Türkiyə-Azərbaycan Universiteti Avropa standartlarına uyğun akkreditasiyadan keçdi.',
                     'en' => 'Turkish-Azerbaijani University has been accredited according to European standards.',
                     'ru' => 'Турецко-Азербайджанский Университет прошел аккредитацию в соответствии с европейскими стандартами.',
+                    'tr' => 'Türkiye-Azerbaycan Üniversitesi Avrupa standartlarına uygun olarak akredite edildi.',
                 ],
                 'meta_keywords' => [
                     'az' => 'akkreditasiya, təhsil keyfiyyəti, beynəlxalq standart, TAU',
                     'en' => 'accreditation, education quality, international standard, TAU',
                     'ru' => 'аккредитация, качество образования, международный стандарт, TAU',
+                    'tr' => 'akreditasyon, eğitim kalitesi, uluslararası standart, TAU',
                 ],
             ],
             [
@@ -78,31 +84,37 @@ class AnnouncementSeeder extends Seeder
                     'az' => 'Yeni tədris ili üçün qəbul prosesi başladı',
                     'en' => 'Admission process for the new academic year has started',
                     'ru' => 'Начался процесс приема на новый учебный год',
+                    'tr' => 'Yeni akademik yıl için kayıt süreci başladı',
                 ],
                 'content' => [
                     'az' => '2024/2025-ci tədris ili üçün bakalavr pilləsinə sənəd qəbulu və qeydiyyat rəsmən açıq elan edilir.',
                     'en' => 'Admission and registration for the undergraduate level for the 2024/2025 academic year is officially open.',
                     'ru' => 'Прием документов и регистрация на уровень бакалавриата на 2024/2025 учебный год официально открыты.',
+                    'tr' => '2024/2025 akademik yılı lisans düzeyi için başvuru ve kayıtlar resmen açılmıştır.',
                 ],
                 'description' => [
                     'az' => 'Gələcəyinizi bizimlə qurun. Qəbul şərtləri və sənədlər haqqında ətraflı məlumat.',
                     'en' => 'Build your future with us. Detailed information about admission requirements and documents.',
                     'ru' => 'Стройте свое будущее вместе с нами. Подробная информация о требованиях к приему и документах.',
+                    'tr' => 'Geleceğinizi bizimle inşa edin. Kabul şartları ve belgeler hakkında detaylı bilgi.',
                 ],
                 'meta_title' => [
                     'az' => 'Qəbul 2024 | Türkiyə-Azərbaycan Universiteti',
                     'en' => 'Admission 2024 | Turkish-Azerbaijani University',
                     'ru' => 'Прием 2024 | Турецко-Азербайджанский Университет',
+                    'tr' => 'Kayıt 2024 | Türkiye-Azerbaycan Üniversitesi',
                 ],
                 'meta_description' => [
                     'az' => 'TAU-da təhsil almaq üçün qeydiyyatdan keçin. Yeni ixtisaslar və qəbul qaydaları.',
                     'en' => 'Register to study at TAU. New majors and admission rules.',
                     'ru' => 'Зарегистрируйтесь для обучения в TAU. Новые специальности и правила приема.',
+                    'tr' => 'TAU\'da eğitim almak için kaydolun. Yeni bölümler ve kabul kuralları.',
                 ],
                 'meta_keywords' => [
                     'az' => 'qəbul, qeydiyyat, tələbə qəbulu, TAU 2024',
                     'en' => 'admission, registration, student recruitment, TAU 2024',
                     'ru' => 'прием, регистрация, набор студентов, TAU 2024',
+                    'tr' => 'kabul, kayıt, öğrenci alımı, TAU 2024',
                 ],
             ],
             [
@@ -114,31 +126,37 @@ class AnnouncementSeeder extends Seeder
                     'az' => 'Magistratura pilləsi üzrə yeni ixtisaslar',
                     'en' => 'New programs for Master\'s degree',
                     'ru' => 'Новые программы магистратуры',
+                    'tr' => 'Yüksek Lisans düzeyi için yeni bölümler',
                 ],
                 'content' => [
                     'az' => 'Universitetimizdə MBA və mühəndislik sahələri üzrə yeni magistr proqramlarına start verilir.',
                     'en' => 'Our university is launching new Master\'s programs in MBA and engineering fields.',
                     'ru' => 'Наш университет запускает новые магистерские программы в области MBA и инженерии.',
+                    'tr' => 'Üniversitemiz, MBA ve mühendislik alanlarında yeni yüksek lisans programlarını başlatıyor.',
                 ],
                 'description' => [
                     'az' => 'Karyeranızı peşəkar magistr təhsili ilə sürətləndirin.',
                     'en' => 'Accelerate your career with professional Master\'s education.',
                     'ru' => 'Ускорьте свою карьеру с профессиональным магистерским образованием.',
+                    'tr' => 'Kariyerinizi profesyonel yüksek lisans eğitimi ile hızlandırın.',
                 ],
                 'meta_title' => [
                     'az' => 'Magistratura Qəbulu | TAU',
                     'en' => 'Master\'s Admission | TAU',
                     'ru' => 'Прием в Магистратуру | TAU',
+                    'tr' => 'Yüksek Lisans Kayıtları | TAU',
                 ],
                 'meta_description' => [
                     'az' => 'MBA və Texniki ixtisaslar üzrə magistr təhsili imkanları.',
                     'en' => 'Master\'s education opportunities in MBA and Technical specialties.',
                     'ru' => 'Возможности магистерского образования по специальностям MBA и Техническим наукам.',
+                    'tr' => 'MBA ve teknik alanlarda yüksek lisans eğitim imkanları.',
                 ],
                 'meta_keywords' => [
                     'az' => 'magistratura, MBA, yüksək təhsil, magistr qəbulu',
                     'en' => 'master, MBA, higher education, graduate admission',
                     'ru' => 'магистратура, MBA, высшее образование, прием в магистратуру',
+                    'tr' => 'yüksek lisans, MBA, yüksek eğitim, lisansüstü kabul',
                 ],
             ],
             [
@@ -150,31 +168,37 @@ class AnnouncementSeeder extends Seeder
                     'az' => 'Daxili təqaüd proqramı elan edildi',
                     'en' => 'Internal scholarship program announced',
                     'ru' => 'Объявлена программа внутренних стипендий',
+                    'tr' => 'Kurum içi burs programı duyuruldu',
                 ],
                 'content' => [
                     'az' => 'Yüksək göstəriciləri olan tələbələr üçün xüsusi təhsil təqaüdləri və güzəştlər müəyyən olunub.',
                     'en' => 'Special educational scholarships and discounts have been established for high-achieving students.',
                     'ru' => 'Для студентов с высокими показателями установлены специальные образовательные стипендии и скидки.',
+                    'tr' => 'Başarılı öğrenciler için özel eğitim bursları ve indirimler belirlendi.',
                 ],
                 'description' => [
                     'az' => 'TAU istedadlı gənclərin təhsilini tam və ya qismən maliyyələşdirir.',
                     'en' => 'TAU fully or partially funds the education of talented youth.',
                     'ru' => 'TAU полностью или частично финансирует обучение талантливой молодежи.',
+                    'tr' => 'TAU, yetenekli gençlerin eğitimini tamamen veya kısmen finanse etmektedir.',
                 ],
                 'meta_title' => [
                     'az' => 'Təqaüd İmkanları | TAU Scholarships',
                     'en' => 'Scholarship Opportunities | TAU Scholarships',
                     'ru' => 'Стипендиальные Возможности | TAU Scholarships',
+                    'tr' => 'Burs İmkanları | TAU Bursları',
                 ],
                 'meta_description' => [
                     'az' => 'Tələbə təqaüd proqramları və müraciət qaydaları haqqında elan.',
                     'en' => 'Announcement about student scholarship programs and application procedures.',
                     'ru' => 'Объявление о программах студенческих стипендий и правилах подачи заявок.',
+                    'tr' => 'Öğrenci burs programları ve başvuru prosedürleri hakkında duyuru.',
                 ],
                 'meta_keywords' => [
                     'az' => 'təqaüd, pulsuz təhsil, tələbə dəstəyi, qrant',
                     'en' => 'scholarship, free education, student support, grant',
                     'ru' => 'стипендия, бесплатное образование, поддержка студентов, грант',
+                    'tr' => 'burs, ücretsiz eğitim, öğrenci desteği, hibe',
                 ],
             ],
             [
@@ -186,31 +210,37 @@ class AnnouncementSeeder extends Seeder
                     'az' => 'İnnovasiya və Texnopark mərkəzi açıldı',
                     'en' => 'Innovation and Technopark center opened',
                     'ru' => 'Открыт центр инноваций и технопарк',
+                    'tr' => 'İnovasyon ve Teknopark merkezi açıldı',
                 ],
                 'content' => [
                     'az' => 'Tələbələrimizin startap layihələrini reallaşdırmaq üçün müasir Texnopark mərkəzi istifadəyə verildi.',
                     'en' => 'A modern Technopark center was put into use to realize the startup projects of our students.',
                     'ru' => 'Современный технопарк был введен в эксплуатацию для реализации стартап-проектов наших студентов.',
+                    'tr' => 'Öğrencilerimizin start-up projelerini gerçekleştirmeleri için modern bir Teknopark merkezi hizmete açıldı.',
                 ],
                 'description' => [
                     'az' => 'Yeni texnologiyalar və innovativ mühit artıq TAU-da.',
                     'en' => 'New technologies and innovative environment are now at TAU.',
                     'ru' => 'Новые технологии и инновационная среда теперь в TAU.',
+                    'tr' => 'Yeni teknolojiler ve inovatif ortam artık TAU\'da.',
                 ],
                 'meta_title' => [
                     'az' => 'TAU Texnopark | İnnovasiya Mərkəzi',
                     'en' => 'TAU Technopark | Innovation Center',
                     'ru' => 'TAU Технопарк | Центр Инноваций',
+                    'tr' => 'TAU Teknopark | İnovasyon Merkezi',
                 ],
                 'meta_description' => [
                     'az' => 'Startaplar və texnoloji araşdırmalar üçün nəzərdə tutulmuş yeni mərkəzimiz.',
                     'en' => 'Our new center designed for startups and technological research.',
                     'ru' => 'Наш новый центр, предназначенный для стартапов и технологических исследований.',
+                    'tr' => 'Start-up\'lar ve teknolojik araştırmalar için tasarlanmış yeni merkezimiz.',
                 ],
                 'meta_keywords' => [
                     'az' => 'texnopark, startap, innovasiya, texnologiya',
                     'en' => 'technopark, startup, innovation, technology',
                     'ru' => 'технопарк, стартап, инновации, технологии',
+                    'tr' => 'teknopark, start-up, inovasyon, teknoloji',
                 ],
             ],
             [
@@ -222,35 +252,40 @@ class AnnouncementSeeder extends Seeder
                     'az' => 'Universitetlərarası idman yarışı keçiriləcək',
                     'en' => 'Inter-university sports competition will be held',
                     'ru' => 'Состоятся межвузовские спортивные соревнования',
+                    'tr' => 'Üniversiteler arası spor müsabakaları düzenlenecek',
                 ],
                 'content' => [
                     'az' => 'Gələn ay universitetimizdə müxtəlif idman növləri üzrə genişmiqyaslı turnir təşkil olunacaq.',
                     'en' => 'Next month, a large-scale tournament in various sports will be organized at our university.',
                     'ru' => 'В следующем месяце в нашем университете будет организован масштабный турнир по различным видам спорта.',
+                    'tr' => 'Önümüzdeki ay üniversitemizde çeşitli spor dallarında geniş kapsamlı bir turnuva düzenlenecek.',
                 ],
                 'description' => [
                     'az' => 'Bütün tələbələri sağlam həyat tərzi və yarış ruhuna dəvət edirik.',
                     'en' => 'We invite all students to a healthy lifestyle and competitive spirit.',
                     'ru' => 'Приглашаем всех студентов к здоровому образу жизни и соревновательному духу.',
+                    'tr' => 'Tüm öğrencileri sağlıklı bir yaşama ve rekabet ruhuna davet ediyoruz.',
                 ],
                 'meta_title' => [
                     'az' => 'İdman Yarışları | TAU Sports',
                     'en' => 'Sports Competitions | TAU Sports',
                     'ru' => 'Спортивные Соревнования | TAU Sports',
+                    'tr' => 'Spor Müsabakaları | TAU Spor',
                 ],
                 'meta_description' => [
                     'az' => 'TAU-da tələbə idman turniri haqqında məlumat və qeydiyyat.',
                     'en' => 'Information and registration about the student sports tournament at TAU.',
                     'ru' => 'Информация и регистрация на студенческий спортивный турнир в TAU.',
+                    'tr' => 'TAU\'daki öğrenci spor turnuvası hakkında bilgi ve kayıt.',
                 ],
                 'meta_keywords' => [
                     'az' => 'idman, futbol, voleybol, turnir, TAU idman',
                     'en' => 'sports, football, volleyball, tournament, TAU sports',
                     'ru' => 'спорт, футбол, волейбол, турнир, TAU спорт',
+                    'tr' => 'spor, futbol, voleybol, turnuva, TAU spor',
                 ],
             ],
         ];
-
         seedTranslationAttributes(Announcement::class, $announcements);
 
         $this->command->info(count($announcements) . ' announcements created.');

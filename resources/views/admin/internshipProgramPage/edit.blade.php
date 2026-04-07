@@ -26,7 +26,7 @@
                 <x-admin.crud.page-title :title="$title" />
 
 
-                <x-admin.crud.card :routeName="'internshipProgramPage.update'" :method="'update'" :model="$model" :routeNameForBackButton="''">
+                <x-admin.crud.card :routeName="'internshipProgramPage.update'" :method="'update'" :model="$model" :routeNameForBackButton="''" :frontRouteName="'internship_programs.index'">
 
 
                     <x-admin.crud.nav>
@@ -145,11 +145,11 @@
                 </x-admin.crud.card>
 
                 <x-admin.crud.show.sub-card :title="'Intership programs'" :route="route('admin.internship_programs.create')" :thArray="['Image', 'Title', 'Active']" :models="$internshipPrograms"
-                    :tdArray="['image', 'title', 'is_active', 'actions']" :mainRouteName="'internship_programs'" />
+                    :tdArray="['image', 'title', 'is_active', 'actions']" :mainRouteName="'internship_programs'" :view="false"/>
 
 
                           <x-admin.crud.show.sub-card :title="'Partner companies'" :route="route('admin.partners.create')" :thArray="['Image', 'Title', 'Active']" :models="$partners"
-                    :tdArray="['image', 'title', 'is_active', 'actions']" :mainRouteName="'partners'" />
+                    :tdArray="['image', 'title', 'is_active', 'actions']" :mainRouteName="'partners'" :view="false" />
 
             </x-admin.crud.page-content>
         </x-admin.crud.main-content>

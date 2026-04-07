@@ -31,6 +31,7 @@ class StudentClubPageController extends Controller
     {
         $studentClubPage = StudentClubPage::first();
         $studentClubs = $this->studentClubService->getAll(
+            limit: 5,
             columns: ['id','image','is_active'],
             sorting:'-created_at'
         );

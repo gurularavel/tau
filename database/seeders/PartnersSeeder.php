@@ -38,7 +38,7 @@ $partners = [
         ],
         'address' => ['az' => 'Bakı, Tbilisi prospekti 149', 'en' => 'Baku, Tbilisi ave. 149', 'tr' => 'Bakü, Tiflis cad. 149', 'ru' => 'Баку, пр. Тбилиси 149'],
         'intership_location' => ['az' => '12 təcrübə yeri', 'en' => '12 internship positions', 'tr' => '12 staj yeri', 'ru' => '12 мест для стажировки'],
-        'image' => 'partners-azercell.jpg',
+        'image' => 'partners6.jpg',
     ],
     [
         'title' => ['az' => 'PASHA Bank', 'en' => 'PASHA Bank', 'tr' => 'PASHA Bank', 'ru' => 'PASHA Bank'],
@@ -51,7 +51,7 @@ $partners = [
         ],
         'address' => ['az' => 'Bakı, Port Baku Towers', 'en' => 'Baku, Port Baku Towers', 'tr' => 'Bakü, Port Baku Towers', 'ru' => 'Баку, Port Baku Towers'],
         'intership_location' => ['az' => '5 təcrübə yeri', 'en' => '5 internship positions', 'tr' => '5 staj yeri', 'ru' => '5 мест для стажировки'],
-        'image' => 'partners-pashabank.jpg',
+        'image' => 'partners1.jpg',
     ],
     [
         'title' => ['az' => 'SOCAR', 'en' => 'SOCAR', 'tr' => 'SOCAR', 'ru' => 'SOCAR'],
@@ -64,7 +64,7 @@ $partners = [
         ],
         'address' => ['az' => 'Bakı, Heydər Əliyev pr. 121', 'en' => 'Baku, Heydar Aliyev ave. 121', 'tr' => 'Bakü, Haydar Aliyev cad. 121', 'ru' => 'Баку, пр. Гейдара Алиева 121'],
         'intership_location' => ['az' => '20 təcrübə yeri', 'en' => '20 internship positions', 'tr' => '20 staj yeri', 'ru' => '20 мест для стажировки'],
-        'image' => 'partners-socar.jpg',
+        'image' => 'partners2.jpg',
     ],
     [
         'title' => ['az' => 'ASAN Xidmət', 'en' => 'ASAN Service', 'tr' => 'ASAN Hizmet', 'ru' => 'ASAN Служба'],
@@ -77,7 +77,7 @@ $partners = [
         ],
         'address' => ['az' => 'Bakı, Azərbaycan', 'en' => 'Baku, Azerbaijan', 'tr' => 'Bakü, Azerbaycan', 'ru' => 'Баку, Азербайджан'],
         'intership_location' => ['az' => '15 təcrübə yeri', 'en' => '15 internship positions', 'tr' => '15 staj yeri', 'ru' => '15 мест для стажировки'],
-        'image' => 'partners-asan.jpg',
+        'image' => 'partners3.jpg',
     ],
     [
         'title' => ['az' => 'ABB', 'en' => 'ABB', 'tr' => 'ABB', 'ru' => 'ABB'],
@@ -90,7 +90,7 @@ $partners = [
         ],
         'address' => ['az' => 'Bakı, Nizami küçəsi 67', 'en' => 'Baku, Nizami str. 67', 'tr' => 'Bakü, Nizami cad. 67', 'ru' => 'Баку, ул. Низами 67'],
         'intership_location' => ['az' => '10 təcrübə yeri', 'en' => '10 internship positions', 'tr' => '10 staj yeri', 'ru' => '10 мест для стажировки'],
-        'image' => 'partners-abb.jpg',
+        'image' => 'partners4.jpg',
     ],
     [
         'title' => ['az' => 'Deloitte', 'en' => 'Deloitte', 'tr' => 'Deloitte', 'ru' => 'Deloitte'],
@@ -103,7 +103,7 @@ $partners = [
         ],
         'address' => ['az' => 'Bakı, Bakı Ağ Şəhər', 'en' => 'Baku, Baku White City', 'tr' => 'Bakü, Bakü Beyaz Şehir', 'ru' => 'Баку, Баку Белый Город'],
         'intership_location' => ['az' => '4 təcrübə yeri', 'en' => '4 internship positions', 'tr' => '4 staj yeri', 'ru' => '4 места для стажировки'],
-        'image' => 'partners-deloitte.jpg',
+        'image' => 'partners5.jpg',
     ],
 ];
         seedTranslationAttributes(Partner::class, $partners);

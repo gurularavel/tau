@@ -115,7 +115,7 @@
                     <x-admin.crud.image.card :title="$title">
                         <x-admin.crud.image.card-body>
                             <x-admin.crud.image.main-image :columnValue="''" :name="'image'" :folderName="'news'" />
-                            {{-- <x-admin.crud.image.other-images :model="''" :routeName="'news'" :imageFolder="'news_images'" /> --}}
+                            <x-admin.crud.image.other-images :model="''" :routeName="'news'" :imageFolder="'news_images'" />
                         </x-admin.crud.image.card-body>
                     </x-admin.crud.image.card>
 
