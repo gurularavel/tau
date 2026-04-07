@@ -680,7 +680,7 @@
             }
 
             .apply-btn {
-              width: 393px;
+              width: 313px;
               height: 62px;
               border-radius: 60px;
               background: #d63832;
@@ -832,7 +832,30 @@
             }
           }
         }
+ .labs {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 20px;
 
+          .lab {
+            width: 100%;
+            max-width: none;
+            height: auto;
+            max-height: none;
+
+            .lab-image {
+              width: 100%;
+              max-width: none;
+              height: 260px;
+              max-height: 260px;
+            }
+
+            .lab-content {
+              h3 {
+                font-size: 24px;
+              }
+            }
+          }
+        }
         .about-program {
           .about,
           .goals,
@@ -888,6 +911,30 @@
           }
         }
       }
+       .labs {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 20px;
+
+          .lab {
+            width: 100%;
+            max-width: none;
+            height: auto;
+            max-height: none;
+
+            .lab-image {
+              width: 100%;
+              max-width: none;
+              height: 260px;
+              max-height: 260px;
+            }
+
+            .lab-content {
+              h3 {
+                font-size: 24px;
+              }
+            }
+          }
+        }
 
 
 
@@ -993,6 +1040,32 @@
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
   /* All tablet overrides grouped here */
+
+     .labs {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 20px;
+
+          .lab {
+            width: 100%;
+            max-width: none;
+            height: auto;
+            max-height: none;
+
+            .lab-image {
+              width: 100%;
+              max-width: none;
+              height: 260px;
+              max-height: 260px;
+            }
+
+            .lab-content {
+              h3 {
+                font-size: 24px;
+              }
+            }
+          }
+        }
+
 
   .single-program-content {
     margin-top: 1px;
@@ -1135,32 +1208,7 @@
         }
       }
 
-      #tab-4.active {
-        .labs {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 20px;
 
-          .lab {
-            width: 100%;
-            max-width: none;
-            height: auto;
-            max-height: none;
-
-            .lab-image {
-              width: 100%;
-              max-width: none;
-              height: 260px;
-              max-height: 260px;
-            }
-
-            .lab-content {
-              h3 {
-                font-size: 24px;
-              }
-            }
-          }
-        }
-      }
 
       #tab-5.active {
         .exam-content {
@@ -1254,3 +1302,76 @@
   }
 }
 }
+    .tabs-container .tab-content {
+        display: none !important;
+    }
+
+    .tabs-container .tab-content.active {
+        display: block !important;
+    }
+    @media (max-width: 480px) {
+    .why-this-program h2 {
+        font-size: 1.5rem;
+    }
+    .why-this-program h3 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .tab-buttons {
+        display: flex;
+        overflow-x: auto; /* Yana sürüşdürməni aktiv edir */
+        white-space: nowrap; /* Düymələrin alt-alta düşməsini bloklayır */
+        gap: 10px;
+        padding: 10px 5px;
+        -webkit-overflow-scrolling: touch; /* iOS üçün rəvan sürüşmə */
+        scrollbar-width: none; /* Firefox üçün scrollbar-ı gizlədir */
+    }
+
+    /* Chrome, Safari və Edge üçün scrollbar-ı gizlədir */
+    .tab-buttons::-webkit-scrollbar {
+        display: none;
+    }
+
+    .tab-btn {
+        display: flex;
+        flex-direction: column; /* İkon yuxarıda, mətn aşağıda */
+        align-items: center;
+        flex: 0 0 auto; /* Düymələrin sıxılmasını önləyir */
+        width: 100px; /* Sabit en (istəyə görə dəyişə bilərsən) */
+        padding: 12px 8px;
+        background: #ffffff;
+        border: 1px solid #eee;
+        border-radius: 12px;
+        font-size: 13px;
+        color: #444;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    /* Aktiv düymə stili */
+    .tab-btn.active {
+        background-color: #007bff; /* Öz rənginlə əvəz et */
+        color: #fff;
+        border-color: #007bff;
+        box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
+    }
+
+    .tab-btn .icon {
+        width: 35px;
+        height: 35px;
+        margin-bottom: 8px;
+    }
+
+    .tab-btn .icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        /* Aktiv olanda ikonun rəngini dəyişmək lazımdırsa bura filter əlavə edilə bilər */
+    }
+}
+
+
+
+

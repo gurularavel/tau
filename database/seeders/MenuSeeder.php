@@ -314,7 +314,7 @@ class MenuSeeder extends Seeder
                     'ru' => 'Истории успеха',
                     'tr' => 'Başarı Hikayeleri',
                 ],
-                'slug' => 'ugur-hekayeleri',
+                'slug' => 'pages/ugur-hekayeleri',
                 'parent_id' => 5,
                 'order' => 4,
             ],

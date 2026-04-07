@@ -673,7 +673,8 @@ return [
     'Validation error' => 'Validation error',
     'File not found' => 'File not found',
     'File size cannot exceed 5 MB' => 'File size cannot exceed 5 MB',
-    'Only PDF, DOC and DOCX formats are allowed' => 'Only PDF, DOC and DOCX formats are allowed'
+    'Only PDF, DOC and DOCX formats are allowed' => 'Only PDF, DOC and DOCX formats are allowed',
+    'Announcement date' => 'Announcement date'
 
 
 

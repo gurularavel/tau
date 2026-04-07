@@ -49,36 +49,28 @@
 </x-front.layout>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+    const buttons = document.querySelectorAll('.tab-btn');
+    const tabs = document.querySelectorAll('.tab-content');
 
-        const buttons = document.querySelectorAll('.tab-btn');
-        const tabs = document.querySelectorAll('.tab-content');
+    buttons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // 1. Bütün düymələrdən active klasını silirik
+            buttons.forEach(b => b.classList.remove('active'));
 
-        // 🔥 DEFAULT TAB AKTİV
-        document.querySelector('.tab-btn[data-tab="default"]')?.classList.add('active');
-        document.getElementById('tab-default')?.classList.add('active');
+            // 2. Bütün tab-content div-lərindən active klasını silirik (hamısı gizlənir)
+            tabs.forEach(tab => tab.classList.remove('active'));
 
-        // 🔥 CLICK EVENT
-        buttons.forEach(btn => {
-            btn.addEventListener('click', function() {
+            // 3. Kliklənən düyməni aktiv edirik
+            this.classList.add('active');
 
-                // bütün buttonları deaktiv et
-                buttons.forEach(b => b.classList.remove('active'));
+            // 4. Düymənin data-tab-ındakı ID-ni götürüb həmin div-i tapırıq
+            const targetId = this.getAttribute('data-tab'); // Bu tab-123 kimi dəyər qaytaracaq
+            const targetTab = document.getElementById(targetId);
 
-                // bütün tabları gizlət
-                tabs.forEach(tab => tab.classList.remove('active'));
-
-                // klik olunanı aktiv et
-                this.classList.add('active');
-
-                const target = this.dataset.tab;
-
-                if (target === 'default') {
-                    document.getElementById('tab-default')?.classList.add('active');
-                } else {
-                    document.getElementById(target)?.classList.add('active');
-                }
-            });
+            if (targetTab) {
+                targetTab.classList.add('active');
+            }
         });
-
     });
+});
 </script>

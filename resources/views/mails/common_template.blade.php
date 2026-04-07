@@ -185,7 +185,7 @@
                                             href="{{ config('app.url') }}"><img border="0"
                                                                                 vspace="0"
                                                                                 hspace="0"
-                                                                                src="{{asset('assets/front/images/mail.png')}}"
+                                                                                src="{{asset('assets/front/images/email.webp')}}"
                                                                                 alt="{{ config('app.name') }}"
                                                                                 title="{{ config('app.name') }}"
                                                                                 width="560"

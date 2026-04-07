@@ -23,7 +23,7 @@ class PageSeeder extends Seeder
         $this->remakeFolder('dynamic_items');
         $this->remakeFolder('dynamics');
 
-        for ($i = 1; $i <= 9; $i++) {
+        for ($i = 1; $i <= 10; $i++) {
             moveFactoryImageToUploads('pages', 'pages', 'page' . $i . '.jpg');
         }
         for ($i = 1; $i <= 23; $i++) {
@@ -35,271 +35,301 @@ class PageSeeder extends Seeder
         moveFactoryImageToUploads('pages', 'dynamics', 'page1dynamic1.jpg');
         moveFactoryImageToUploads('pages', 'dynamics', 'page3dynamic1.jpg');
 
-$pages = [
-    [
-        'title' => [
-            'az' => 'Tarixçə',
-            'en' => 'History',
-            'ru' => 'История',
-            'tr' => 'Tarihçe',
-        ],
-        'meta_title' => [
-            'az' => 'Tarixçə',
-            'en' => 'History',
-            'ru' => 'История',
-            'tr' => 'Tarihçe',
-        ],
-        'meta_description' => [
-            'az' => 'Tarixçə',
-            'en' => 'History of the institution',
-            'ru' => 'История учреждения',
-            'tr' => 'Kurumun tarihçesi',
-        ],
-        'meta_keywords' => [
-            'az' => 'Tarixçə',
-            'en' => 'history',
-            'ru' => 'история',
-            'tr' => 'tarihçe',
-        ],
-        'slug' => 'tarixce',
-        'image' => 'page1.jpg',
-        'dynamic_ids' => [1, 2, 3, 4],
-    ],
+        $pages = [
+            [
+                'title' => [
+                    'az' => 'Tarixçə',
+                    'en' => 'History',
+                    'ru' => 'История',
+                    'tr' => 'Tarihçe',
+                ],
+                'meta_title' => [
+                    'az' => 'Tarixçə',
+                    'en' => 'History',
+                    'ru' => 'История',
+                    'tr' => 'Tarihçe',
+                ],
+                'meta_description' => [
+                    'az' => 'Tarixçə',
+                    'en' => 'History of the institution',
+                    'ru' => 'История учреждения',
+                    'tr' => 'Kurumun tarihçesi',
+                ],
+                'meta_keywords' => [
+                    'az' => 'Tarixçə',
+                    'en' => 'history',
+                    'ru' => 'история',
+                    'tr' => 'tarihçe',
+                ],
+                'slug' => 'tarixce',
+                'image' => 'page1.jpg',
+                'dynamic_ids' => [1, 2, 3, 4],
+            ],
 
-    [
-        'title' => [
-            'az' => 'Missiyamız',
-            'en' => 'Our Mission',
-            'ru' => 'Наша миссия',
-            'tr' => 'Misyonumuz',
-        ],
-        'meta_title' => [
-            'az' => 'Missiyamız',
-            'en' => 'Our Mission',
-            'ru' => 'Наша миссия',
-            'tr' => 'Misyonumuz',
-        ],
-        'meta_description' => [
-            'az' => 'Missiyamız',
-            'en' => 'Our mission and goals',
-            'ru' => 'Наша миссия и цели',
-            'tr' => 'Misyonumuz ve hedeflerimiz',
-        ],
-        'meta_keywords' => [
-            'az' => 'Missiyamız',
-            'en' => 'mission, goals',
-            'ru' => 'миссия, цели',
-            'tr' => 'misyon, hedefler',
-        ],
-        'slug' => 'missiyamiz',
-        'image' => 'page2.jpg',
-        'dynamic_ids' => [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
-    ],
-    [
-        'title' => [
-            'az' => 'Çətir Universitetlər',
-            'en' => 'Umbrella Universities',
-            'ru' => 'Зонтичные университеты',
-            'tr' => 'Şemsiye Üniversiteler',
-        ],
-        'meta_title' => [
-            'az' => 'Çətir Universitetlər',
-            'en' => 'Umbrella Universities',
-            'ru' => 'Зонтичные университеты',
-            'tr' => 'Şemsiye Üniversiteler',
-        ],
-        'meta_description' => [
-            'az' => 'Çətir Universitetlər',
-            'en' => 'Umbrella universities program',
-            'ru' => 'Программа зонтичных университетов',
-            'tr' => 'Şemsiye üniversiteler programı',
-        ],
-        'meta_keywords' => [
-            'az' => 'Çətir Universitetlər',
-            'en' => 'umbrella universities',
-            'ru' => 'зонтичные университеты',
-            'tr' => 'şemsiye üniversiteler',
-        ],
-        'slug' => 'cetir-universitetler',
-        'image' => 'page3.jpg',
-        'dynamic_ids' => [17, 18],
-    ],
-    [
-        'title' => [
-            'az' => 'Himayəçilər şurası',
-            'en' => 'Board of Trustees',
-            'ru' => 'Попечительский совет',
-            'tr' => 'Mütevelli Heyeti',
-        ],
-        'meta_title' => [
-            'az' => 'Himayəçilər şurası',
-            'en' => 'Board of Trustees',
-            'ru' => 'Попечительский совет',
-            'tr' => 'Mütevelli Heyeti',
-        ],
-        'meta_description' => [
-            'az' => 'Himayəçilər şurası',
-            'en' => 'Members of the Board of Trustees',
-            'ru' => 'Члены Попечительского совета',
-            'tr' => 'Mütevelli Heyeti üyeleri',
-        ],
-        'meta_keywords' => [
-            'az' => 'Himayəçilər şurası',
-            'en' => 'board of trustees, management',
-            'ru' => 'попечительский совет',
-            'tr' => 'mütevelli heyeti',
-        ],
-        'slug' => 'himayeciler-surasi',
-        'image' => 'page4.jpg',
-        'dynamic_ids' => [19, 20, 21],
-    ],
-    [
-        'title' => [
-            'az' => 'Akademik siyasət',
-            'en' => 'Academic Policy',
-            'ru' => 'Академическая политика',
-            'tr' => 'Akademik Politika',
-        ],
-        'meta_title' => [
-            'az' => 'Akademik siyasət',
-            'en' => 'Academic Policy',
-            'ru' => 'Академическая политика',
-            'tr' => 'Akademik Politika',
-        ],
-        'meta_description' => [
-            'az' => 'Akademik siyasət',
-            'en' => 'Rules and academic policy',
-            'ru' => 'Правила и академическая политика',
-            'tr' => 'Kurallar ve akademik politika',
-        ],
-        'meta_keywords' => [
-            'az' => 'Akademik siyasət',
-            'en' => 'academic policy, rules',
-            'ru' => 'академическая политика',
-            'tr' => 'akademik politika, kurallar',
-        ],
-        'slug' => 'akademik-siyaset',
-        'image' => 'page5.jpg',
-        'dynamic_ids' => [22, 23, 24, 25],
-    ],
+            [
+                'title' => [
+                    'az' => 'Missiyamız',
+                    'en' => 'Our Mission',
+                    'ru' => 'Наша миссия',
+                    'tr' => 'Misyonumuz',
+                ],
+                'meta_title' => [
+                    'az' => 'Missiyamız',
+                    'en' => 'Our Mission',
+                    'ru' => 'Наша миссия',
+                    'tr' => 'Misyonumuz',
+                ],
+                'meta_description' => [
+                    'az' => 'Missiyamız',
+                    'en' => 'Our mission and goals',
+                    'ru' => 'Наша миссия и цели',
+                    'tr' => 'Misyonumuz ve hedeflerimiz',
+                ],
+                'meta_keywords' => [
+                    'az' => 'Missiyamız',
+                    'en' => 'mission, goals',
+                    'ru' => 'миссия, цели',
+                    'tr' => 'misyon, hedefler',
+                ],
+                'slug' => 'missiyamiz',
+                'image' => 'page2.jpg',
+                'dynamic_ids' => [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+            ],
+            [
+                'title' => [
+                    'az' => 'Çətir Universitetlər',
+                    'en' => 'Umbrella Universities',
+                    'ru' => 'Зонтичные университеты',
+                    'tr' => 'Şemsiye Üniversiteler',
+                ],
+                'meta_title' => [
+                    'az' => 'Çətir Universitetlər',
+                    'en' => 'Umbrella Universities',
+                    'ru' => 'Зонтичные университеты',
+                    'tr' => 'Şemsiye Üniversiteler',
+                ],
+                'meta_description' => [
+                    'az' => 'Çətir Universitetlər',
+                    'en' => 'Umbrella universities program',
+                    'ru' => 'Программа зонтичных университетов',
+                    'tr' => 'Şemsiye üniversiteler programı',
+                ],
+                'meta_keywords' => [
+                    'az' => 'Çətir Universitetlər',
+                    'en' => 'umbrella universities',
+                    'ru' => 'зонтичные университеты',
+                    'tr' => 'şemsiye üniversiteler',
+                ],
+                'slug' => 'cetir-universitetler',
+                'image' => 'page3.jpg',
+                'dynamic_ids' => [17, 18],
+            ],
+            [
+                'title' => [
+                    'az' => 'Himayəçilər şurası',
+                    'en' => 'Board of Trustees',
+                    'ru' => 'Попечительский совет',
+                    'tr' => 'Mütevelli Heyeti',
+                ],
+                'meta_title' => [
+                    'az' => 'Himayəçilər şurası',
+                    'en' => 'Board of Trustees',
+                    'ru' => 'Попечительский совет',
+                    'tr' => 'Mütevelli Heyeti',
+                ],
+                'meta_description' => [
+                    'az' => 'Himayəçilər şurası',
+                    'en' => 'Members of the Board of Trustees',
+                    'ru' => 'Члены Попечительского совета',
+                    'tr' => 'Mütevelli Heyeti üyeleri',
+                ],
+                'meta_keywords' => [
+                    'az' => 'Himayəçilər şurası',
+                    'en' => 'board of trustees, management',
+                    'ru' => 'попечительский совет',
+                    'tr' => 'mütevelli heyeti',
+                ],
+                'slug' => 'himayeciler-surasi',
+                'image' => 'page4.jpg',
+                'dynamic_ids' => [19, 20, 21],
+            ],
+            [
+                'title' => [
+                    'az' => 'Akademik siyasət',
+                    'en' => 'Academic Policy',
+                    'ru' => 'Академическая политика',
+                    'tr' => 'Akademik Politika',
+                ],
+                'meta_title' => [
+                    'az' => 'Akademik siyasət',
+                    'en' => 'Academic Policy',
+                    'ru' => 'Академическая политика',
+                    'tr' => 'Akademik Politika',
+                ],
+                'meta_description' => [
+                    'az' => 'Akademik siyasət',
+                    'en' => 'Rules and academic policy',
+                    'ru' => 'Правила и академическая политика',
+                    'tr' => 'Kurallar ve akademik politika',
+                ],
+                'meta_keywords' => [
+                    'az' => 'Akademik siyasət',
+                    'en' => 'academic policy, rules',
+                    'ru' => 'академическая политика',
+                    'tr' => 'akademik politika, kurallar',
+                ],
+                'slug' => 'akademik-siyaset',
+                'image' => 'page5.jpg',
+                'dynamic_ids' => [22, 23, 24, 25],
+            ],
 
-    [
-        'title' => [
-            'az' => 'Struktur',
-            'en' => 'Structure',
-            'ru' => 'Структура',
-            'tr' => 'Yapı',
-        ],
-        'meta_title' => [
-            'az' => 'Struktur',
-            'en' => 'Structure',
-            'ru' => 'Структура',
-            'tr' => 'Yapı',
-        ],
-        'meta_description' => [
-            'az' => 'Struktur',
-            'en' => 'Organizational structure',
-            'ru' => 'Организационная структура',
-            'tr' => 'Organizasyonel yapı',
-        ],
-        'meta_keywords' => [
-            'az' => 'Struktur',
-            'en' => 'structure, organization',
-            'ru' => 'структура',
-            'tr' => 'yapı, organizasyon',
-        ],
-        'slug' => 'struktur',
-        'image' => 'page6.jpg',
-        'dynamic_ids' => [26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37],
-    ],
-    [
-        'title' => [
-            'az' => 'Strateji plan',
-            'en' => 'Strategic Plan',
-            'ru' => 'Стратегический план',
-            'tr' => 'Stratejik Plan',
-        ],
-        'meta_title' => [
-            'az' => 'Strateji plan',
-            'en' => 'Strategic Plan',
-            'ru' => 'Стратегический план',
-            'tr' => 'Stratejik Plan',
-        ],
-        'meta_description' => [
-            'az' => 'Strateji plan',
-            'en' => 'Long-term strategic plan',
-            'ru' => 'Долгосрочный стратегический план',
-            'tr' => 'Uzun vadeli stratejik plan',
-        ],
-        'meta_keywords' => [
-            'az' => 'Strateji plan',
-            'en' => 'strategy, plan',
-            'ru' => 'стратегия, план',
-            'tr' => 'strateji, plan',
-        ],
-        'slug' => 'strateji-plan',
-        'image' => 'page7.jpg',
-        'dynamic_ids' => [38, 39, 40],
-    ],
-    [
-        'title' => [
-            'az' => 'Elmi şura',
-            'en' => 'Scientific Council',
-            'ru' => 'Ученый совет',
-            'tr' => 'Bilimsel Konsey',
-        ],
-        'meta_title' => [
-            'az' => 'Elmi şura',
-            'en' => 'Scientific Council',
-            'ru' => 'Ученый совет',
-            'tr' => 'Bilimsel Konsey',
-        ],
-        'meta_description' => [
-            'az' => 'Elmi şura',
-            'en' => 'Scientific Council members',
-            'ru' => 'Члены Ученого совета',
-            'tr' => 'Bilimsel Konsey üyeleri',
-        ],
-        'meta_keywords' => [
-            'az' => 'Elmi şura',
-            'en' => 'scientific council',
-            'ru' => 'ученый совет',
-            'tr' => 'bilimsel konsey',
-        ],
-        'slug' => 'elmi-sura',
-        'image' => 'page8.jpg',
-        'dynamic_ids' => [41, 42, 43, 44, 45],
-    ],
-    [
-        'title' => [
-            'az' => 'Qəbul balları',
-            'en' => 'Admission Scores',
-            'ru' => 'Проходные баллы',
-            'tr' => 'Giriş Puanları',
-        ],
-        'meta_title' => [
-            'az' => 'Qəbul balları',
-            'en' => 'Admission Scores',
-            'ru' => 'Проходные баллы',
-            'tr' => 'Giriş Puanları',
-        ],
-        'meta_description' => [
-            'az' => 'Qəbul balları',
-            'en' => 'Minimum admission scores',
-            'ru' => 'Минимальные проходные баллы',
-            'tr' => 'Minimum giriş puanları',
-        ],
-        'meta_keywords' => [
-            'az' => 'Qəbul balları',
-            'en' => 'admission scores, points',
-            'ru' => 'проходные баллы',
-            'tr' => 'giriş puanları',
-        ],
-        'slug' => 'qebul-ballari',
-        'image' => 'page9.jpg',
-        'dynamic_ids' => [46, 47, 48],
-    ],
-];
+            [
+                'title' => [
+                    'az' => 'Struktur',
+                    'en' => 'Structure',
+                    'ru' => 'Структура',
+                    'tr' => 'Yapı',
+                ],
+                'meta_title' => [
+                    'az' => 'Struktur',
+                    'en' => 'Structure',
+                    'ru' => 'Структура',
+                    'tr' => 'Yapı',
+                ],
+                'meta_description' => [
+                    'az' => 'Struktur',
+                    'en' => 'Organizational structure',
+                    'ru' => 'Организационная структура',
+                    'tr' => 'Organizasyonel yapı',
+                ],
+                'meta_keywords' => [
+                    'az' => 'Struktur',
+                    'en' => 'structure, organization',
+                    'ru' => 'структура',
+                    'tr' => 'yapı, organizasyon',
+                ],
+                'slug' => 'struktur',
+                'image' => 'page6.jpg',
+                'dynamic_ids' => [26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37],
+            ],
+            [
+                'title' => [
+                    'az' => 'Strateji plan',
+                    'en' => 'Strategic Plan',
+                    'ru' => 'Стратегический план',
+                    'tr' => 'Stratejik Plan',
+                ],
+                'meta_title' => [
+                    'az' => 'Strateji plan',
+                    'en' => 'Strategic Plan',
+                    'ru' => 'Стратегический план',
+                    'tr' => 'Stratejik Plan',
+                ],
+                'meta_description' => [
+                    'az' => 'Strateji plan',
+                    'en' => 'Long-term strategic plan',
+                    'ru' => 'Долгосрочный стратегический план',
+                    'tr' => 'Uzun vadeli stratejik plan',
+                ],
+                'meta_keywords' => [
+                    'az' => 'Strateji plan',
+                    'en' => 'strategy, plan',
+                    'ru' => 'стратегия, план',
+                    'tr' => 'strateji, plan',
+                ],
+                'slug' => 'strateji-plan',
+                'image' => 'page7.jpg',
+                'dynamic_ids' => [38, 39, 40],
+            ],
+            [
+                'title' => [
+                    'az' => 'Elmi şura',
+                    'en' => 'Scientific Council',
+                    'ru' => 'Ученый совет',
+                    'tr' => 'Bilimsel Konsey',
+                ],
+                'meta_title' => [
+                    'az' => 'Elmi şura',
+                    'en' => 'Scientific Council',
+                    'ru' => 'Ученый совет',
+                    'tr' => 'Bilimsel Konsey',
+                ],
+                'meta_description' => [
+                    'az' => 'Elmi şura',
+                    'en' => 'Scientific Council members',
+                    'ru' => 'Члены Ученого совета',
+                    'tr' => 'Bilimsel Konsey üyeleri',
+                ],
+                'meta_keywords' => [
+                    'az' => 'Elmi şura',
+                    'en' => 'scientific council',
+                    'ru' => 'ученый совет',
+                    'tr' => 'bilimsel konsey',
+                ],
+                'slug' => 'elmi-sura',
+                'image' => 'page8.jpg',
+                'dynamic_ids' => [41, 42, 43, 44, 45],
+            ],
+            [
+                'title' => [
+                    'az' => 'Qəbul balları',
+                    'en' => 'Admission Scores',
+                    'ru' => 'Проходные баллы',
+                    'tr' => 'Giriş Puanları',
+                ],
+                'meta_title' => [
+                    'az' => 'Qəbul balları',
+                    'en' => 'Admission Scores',
+                    'ru' => 'Проходные баллы',
+                    'tr' => 'Giriş Puanları',
+                ],
+                'meta_description' => [
+                    'az' => 'Qəbul balları',
+                    'en' => 'Minimum admission scores',
+                    'ru' => 'Минимальные проходные баллы',
+                    'tr' => 'Minimum giriş puanları',
+                ],
+                'meta_keywords' => [
+                    'az' => 'Qəbul balları',
+                    'en' => 'admission scores, points',
+                    'ru' => 'проходные баллы',
+                    'tr' => 'giriş puanları',
+                ],
+                'slug' => 'qebul-ballari',
+                'image' => 'page9.jpg',
+                'dynamic_ids' => [46, 47, 48],
+            ],
+
+            [
+                'title' => [
+                    'az' => 'Uğur hekayələri',
+                    'en' => 'Success stories',
+                    'ru' => 'Истории успеха',
+                    'tr' => 'Başarı hikayeleri',
+                ],
+                'meta_title' => [
+                    'az' => 'Uğur hekayələri - Bizimlə uğura gedən yol',
+                    'en' => 'Success stories - The path to success with us',
+                    'ru' => 'Истории успеха - Путь к успеху вместе с нами',
+                    'tr' => 'Başarı hikayeleri - Bizimle başarıya giden yol',
+                ],
+                'meta_description' => [
+                    'az' => 'Müştərilərimizin və tərəfdaşlarımızın əldə etdiyi real uğur hekayələri ilə tanış olun.',
+                    'en' => 'Discover real success stories achieved by our customers and partners.',
+                    'ru' => 'Ознакомьтесь с реальными историями успеха наших клиентов и партнеров.',
+                    'tr' => 'Müşterilerimizin ve ortaklarımızın gerçek başarı hikayelerini keşfedin.',
+                ],
+                'meta_keywords' => [
+                    'az' => 'uğur, hekayə, nailiyyət, təcrübə, inkişaf',
+                    'en' => 'success, story, achievement, experience, development',
+                    'ru' => 'успех, история, достижение, опыт, развитие',
+                    'tr' => 'başarı, hikaye, başarı hikayeleri, tecrübe, gelişim',
+                ],
+                'slug' => 'ugur-hekayeleri',
+                'image' => 'page10.jpg',
+                'dynamic_ids' => [49, 50, 51, 52],
+            ],
+        ];
         $dynamics = [
             [
                 'title' => [
@@ -830,10 +860,9 @@ $pages = [
                 'layout_width' => 'full',
             ],
 
-
             // page Elmi sura
 
-                       [
+            [
                 'dynamic_item_ids' => [31],
                 'type' => 6,
                 'order' => 1,
@@ -842,7 +871,7 @@ $pages = [
                 'layout_width' => 'full',
             ],
 
-                        [
+            [
                 'title' => [
                     'az' => 'Proqram rəhbərləri',
                     'en' => 'Proqram rəhbərləri',
@@ -856,8 +885,7 @@ $pages = [
                 'layout_width' => 'full',
             ],
 
-
-                [
+            [
                 'dynamic_item_ids' => [32, 33, 34],
                 'type' => 6,
                 'order' => 3,
@@ -866,7 +894,7 @@ $pages = [
                 'layout_width' => 'full',
             ],
 
-                [
+            [
                 'title' => [
                     'az' => 'Müəllimlər',
                     'en' => 'Müəllimlər',
@@ -879,7 +907,7 @@ $pages = [
                 'layout_column' => 1,
                 'layout_width' => 'full',
             ],
-                            [
+            [
                 'dynamic_item_ids' => [35, 36, 37, 38, 39, 40],
                 'type' => 6,
                 'order' => 5,
@@ -888,11 +916,9 @@ $pages = [
                 'layout_width' => 'full',
             ],
 
-
-
             // page 9
 
-                        [
+            [
                 'title' => [
                     'az' => 'Dövlət imtahan mərkəzi ilə qəbul',
                     'en' => 'Dövlət imtahan mərkəzi ilə qəbul',
@@ -923,12 +949,16 @@ $pages = [
                 'layout_width' => 'full',
             ],
 
-                        [
+            [
                 'description' => [
-                    'az' => '<table style="margin: 0px; padding: 0px; font-family: Inter, sans-serif; width: 1247.99px; font-size: medium;"><thead style="margin: 0px; padding: 0px; font-family: &quot;Noto Sans&quot;, sans-serif; height: 44px;"><tr style="margin: 0px; padding: 0px;"><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248); border-radius: 8px 0px 0px;">No</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248);">İxtisasın şrifti</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248);">İxtisasın adı</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248);">Cəmi</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248);">Dövlət sifarişi</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248);">Ödənişli əsaslarla</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248); border-radius: 0px 8px 0px 0px;">Təhsil haqqı</th></tr></thead><tbody style="margin: 0px; padding: 0px; font-family: &quot;Noto Sans&quot;, sans-serif;"><tr style="margin: 0px; padding: 0px;"><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">1</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">050620</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">Kompüter mühəndisliyi</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">50</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">20</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">30</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right: none; font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">3000 AZN</td></tr><tr style="margin: 0px; padding: 0px;"><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">2</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">050405</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">İqtisadiyyat</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">40</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">10</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">30</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right: none; font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">2500 AZN</td></tr><tr style="margin: 0px; padding: 0px;"><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">3</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">050211</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">Beynəlxalq münasibətlər</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">30</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">5</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">25</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right: none; font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">2800 AZN</td></tr><tr style="margin: 0px; padding: 0px;"><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">4</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">050118</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">Hüquqşünaslıq</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">25</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">2</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">23</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right: none; font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">4500 AZN</td></tr><tr style="margin: 0px; padding: 0px;"><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">5</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">050621</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">İnformasiya texnologiyaları</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">60</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">25</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">35</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right: none; font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">3500 AZN</td></tr></tbody></table>',
-                    'en' => '<table style="margin: 0px; padding: 0px; font-family: Inter, sans-serif; width: 1247.99px; font-size: medium;"><thead style="margin: 0px; padding: 0px; font-family: &quot;Noto Sans&quot;, sans-serif; height: 44px;"><tr style="margin: 0px; padding: 0px;"><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248); border-radius: 8px 0px 0px;">No</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248);">İxtisasın şrifti</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248);">İxtisasın adı</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248);">Cəmi</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248);">Dövlət sifarişi</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248);">Ödənişli əsaslarla</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248); border-radius: 0px 8px 0px 0px;">Təhsil haqqı</th></tr></thead><tbody style="margin: 0px; padding: 0px; font-family: &quot;Noto Sans&quot;, sans-serif;"><tr style="margin: 0px; padding: 0px;"><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">1</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">050620</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">Kompüter mühəndisliyi</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">50</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">20</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">30</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right: none; font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">3000 AZN</td></tr><tr style="margin: 0px; padding: 0px;"><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">2</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">050405</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">İqtisadiyyat</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">40</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">10</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">30</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right: none; font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">2500 AZN</td></tr><tr style="margin: 0px; padding: 0px;"><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">3</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">050211</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">Beynəlxalq münasibətlər</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">30</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">5</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">25</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right: none; font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">2800 AZN</td></tr><tr style="margin: 0px; padding: 0px;"><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">4</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">050118</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">Hüquqşünaslıq</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">25</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">2</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">23</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right: none; font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">4500 AZN</td></tr><tr style="margin: 0px; padding: 0px;"><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">5</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">050621</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">İnformasiya texnologiyaları</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">60</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">25</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">35</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right: none; font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">3500 AZN</td></tr></tbody></table>',
-                    'ru' => '<table style="margin: 0px; padding: 0px; font-family: Inter, sans-serif; width: 1247.99px; font-size: medium;"><thead style="margin: 0px; padding: 0px; font-family: &quot;Noto Sans&quot;, sans-serif; height: 44px;"><tr style="margin: 0px; padding: 0px;"><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248); border-radius: 8px 0px 0px;">No</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248);">İxtisasın şrifti</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248);">İxtisasın adı</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248);">Cəmi</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248);">Dövlət sifarişi</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248);">Ödənişli əsaslarla</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248); border-radius: 0px 8px 0px 0px;">Təhsil haqqı</th></tr></thead><tbody style="margin: 0px; padding: 0px; font-family: &quot;Noto Sans&quot;, sans-serif;"><tr style="margin: 0px; padding: 0px;"><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">1</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">050620</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">Kompüter mühəndisliyi</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">50</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">20</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">30</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right: none; font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">3000 AZN</td></tr><tr style="margin: 0px; padding: 0px;"><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">2</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">050405</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">İqtisadiyyat</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">40</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">10</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">30</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right: none; font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">2500 AZN</td></tr><tr style="margin: 0px; padding: 0px;"><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">3</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">050211</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">Beynəlxalq münasibətlər</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">30</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">5</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">25</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right: none; font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">2800 AZN</td></tr><tr style="margin: 0px; padding: 0px;"><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">4</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">050118</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">Hüquqşünaslıq</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">25</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">2</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">23</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right: none; font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">4500 AZN</td></tr><tr style="margin: 0px; padding: 0px;"><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">5</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">050621</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">İnformasiya texnologiyaları</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">60</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">25</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">35</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right: none; font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">3500 AZN</td></tr></tbody></table>',
-                    'tr' => '<table style="margin: 0px; padding: 0px; font-family: Inter, sans-serif; width: 1247.99px; font-size: medium;"><thead style="margin: 0px; padding: 0px; font-family: &quot;Noto Sans&quot;, sans-serif; height: 44px;"><tr style="margin: 0px; padding: 0px;"><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248); border-radius: 8px 0px 0px;">No</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248);">İxtisasın şrifti</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248);">İxtisasın adı</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248);">Cəmi</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248);">Dövlət sifarişi</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248);">Ödənişli əsaslarla</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248); border-radius: 0px 8px 0px 0px;">Təhsil haqqı</th></tr></thead><tbody style="margin: 0px; padding: 0px; font-family: &quot;Noto Sans&quot;, sans-serif;"><tr style="margin: 0px; padding: 0px;"><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">1</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">050620</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">Kompüter mühəndisliyi</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">50</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">20</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">30</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right: none; font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">3000 AZN</td></tr><tr style="margin: 0px; padding: 0px;"><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">2</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">050405</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">İqtisadiyyat</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">40</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">10</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">30</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right: none; font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">2500 AZN</td></tr><tr style="margin: 0px; padding: 0px;"><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">3</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">050211</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">Beynəlxalq münasibətlər</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">30</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">5</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">25</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right: none; font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">2800 AZN</td></tr><tr style="margin: 0px; padding: 0px;"><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">4</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">050118</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">Hüquqşünaslıq</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">25</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">2</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">23</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right: none; font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">4500 AZN</td></tr><tr style="margin: 0px; padding: 0px;"><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">5</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">050621</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">İnformasiya texnologiyaları</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">60</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">25</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">35</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right: none; font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">3500 AZN</td></tr></tbody></table>',
+                    'az' =>
+                        '<table style="margin: 0px; padding: 0px; font-family: Inter, sans-serif; width: 1247.99px; font-size: medium;"><thead style="margin: 0px; padding: 0px; font-family: &quot;Noto Sans&quot;, sans-serif; height: 44px;"><tr style="margin: 0px; padding: 0px;"><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248); border-radius: 8px 0px 0px;">No</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248);">İxtisasın şrifti</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248);">İxtisasın adı</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248);">Cəmi</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248);">Dövlət sifarişi</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248);">Ödənişli əsaslarla</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248); border-radius: 0px 8px 0px 0px;">Təhsil haqqı</th></tr></thead><tbody style="margin: 0px; padding: 0px; font-family: &quot;Noto Sans&quot;, sans-serif;"><tr style="margin: 0px; padding: 0px;"><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">1</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">050620</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">Kompüter mühəndisliyi</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">50</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">20</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">30</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right: none; font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">3000 AZN</td></tr><tr style="margin: 0px; padding: 0px;"><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">2</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">050405</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">İqtisadiyyat</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">40</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">10</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">30</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right: none; font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">2500 AZN</td></tr><tr style="margin: 0px; padding: 0px;"><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">3</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">050211</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">Beynəlxalq münasibətlər</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">30</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">5</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">25</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right: none; font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">2800 AZN</td></tr><tr style="margin: 0px; padding: 0px;"><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">4</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">050118</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">Hüquqşünaslıq</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">25</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">2</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">23</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right: none; font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">4500 AZN</td></tr><tr style="margin: 0px; padding: 0px;"><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">5</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">050621</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">İnformasiya texnologiyaları</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">60</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">25</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">35</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right: none; font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">3500 AZN</td></tr></tbody></table>',
+                    'en' =>
+                        '<table style="margin: 0px; padding: 0px; font-family: Inter, sans-serif; width: 1247.99px; font-size: medium;"><thead style="margin: 0px; padding: 0px; font-family: &quot;Noto Sans&quot;, sans-serif; height: 44px;"><tr style="margin: 0px; padding: 0px;"><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248); border-radius: 8px 0px 0px;">No</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248);">İxtisasın şrifti</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248);">İxtisasın adı</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248);">Cəmi</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248);">Dövlət sifarişi</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248);">Ödənişli əsaslarla</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248); border-radius: 0px 8px 0px 0px;">Təhsil haqqı</th></tr></thead><tbody style="margin: 0px; padding: 0px; font-family: &quot;Noto Sans&quot;, sans-serif;"><tr style="margin: 0px; padding: 0px;"><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">1</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">050620</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">Kompüter mühəndisliyi</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">50</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">20</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">30</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right: none; font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">3000 AZN</td></tr><tr style="margin: 0px; padding: 0px;"><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">2</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">050405</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">İqtisadiyyat</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">40</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">10</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">30</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right: none; font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">2500 AZN</td></tr><tr style="margin: 0px; padding: 0px;"><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">3</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">050211</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">Beynəlxalq münasibətlər</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">30</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">5</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">25</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right: none; font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">2800 AZN</td></tr><tr style="margin: 0px; padding: 0px;"><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">4</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">050118</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">Hüquqşünaslıq</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">25</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">2</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">23</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right: none; font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">4500 AZN</td></tr><tr style="margin: 0px; padding: 0px;"><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">5</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">050621</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">İnformasiya texnologiyaları</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">60</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">25</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">35</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right: none; font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">3500 AZN</td></tr></tbody></table>',
+                    'ru' =>
+                        '<table style="margin: 0px; padding: 0px; font-family: Inter, sans-serif; width: 1247.99px; font-size: medium;"><thead style="margin: 0px; padding: 0px; font-family: &quot;Noto Sans&quot;, sans-serif; height: 44px;"><tr style="margin: 0px; padding: 0px;"><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248); border-radius: 8px 0px 0px;">No</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248);">İxtisasın şrifti</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248);">İxtisasın adı</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248);">Cəmi</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248);">Dövlət sifarişi</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248);">Ödənişli əsaslarla</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248); border-radius: 0px 8px 0px 0px;">Təhsil haqqı</th></tr></thead><tbody style="margin: 0px; padding: 0px; font-family: &quot;Noto Sans&quot;, sans-serif;"><tr style="margin: 0px; padding: 0px;"><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">1</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">050620</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">Kompüter mühəndisliyi</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">50</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">20</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">30</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right: none; font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">3000 AZN</td></tr><tr style="margin: 0px; padding: 0px;"><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">2</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">050405</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">İqtisadiyyat</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">40</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">10</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">30</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right: none; font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">2500 AZN</td></tr><tr style="margin: 0px; padding: 0px;"><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">3</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">050211</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">Beynəlxalq münasibətlər</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">30</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">5</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">25</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right: none; font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">2800 AZN</td></tr><tr style="margin: 0px; padding: 0px;"><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">4</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">050118</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">Hüquqşünaslıq</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">25</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">2</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">23</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right: none; font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">4500 AZN</td></tr><tr style="margin: 0px; padding: 0px;"><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">5</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">050621</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">İnformasiya texnologiyaları</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">60</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">25</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">35</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right: none; font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">3500 AZN</td></tr></tbody></table>',
+                    'tr' =>
+                        '<table style="margin: 0px; padding: 0px; font-family: Inter, sans-serif; width: 1247.99px; font-size: medium;"><thead style="margin: 0px; padding: 0px; font-family: &quot;Noto Sans&quot;, sans-serif; height: 44px;"><tr style="margin: 0px; padding: 0px;"><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248); border-radius: 8px 0px 0px;">No</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248);">İxtisasın şrifti</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248);">İxtisasın adı</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248);">Cəmi</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248);">Dövlət sifarişi</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248);">Ödənişli əsaslarla</th><th style="margin: 0px; padding: 0px 16px; height: 44px; text-align: left; font-weight: 600; font-size: 12px; line-height: 16px; letter-spacing: 0%; color: rgb(23, 25, 35); text-wrap-mode: nowrap; background: rgb(239, 244, 248); border-radius: 0px 8px 0px 0px;">Təhsil haqqı</th></tr></thead><tbody style="margin: 0px; padding: 0px; font-family: &quot;Noto Sans&quot;, sans-serif;"><tr style="margin: 0px; padding: 0px;"><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">1</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">050620</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">Kompüter mühəndisliyi</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">50</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">20</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">30</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right: none; font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">3000 AZN</td></tr><tr style="margin: 0px; padding: 0px;"><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">2</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">050405</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">İqtisadiyyat</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">40</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">10</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">30</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right: none; font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">2500 AZN</td></tr><tr style="margin: 0px; padding: 0px;"><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">3</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">050211</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">Beynəlxalq münasibətlər</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">30</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">5</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">25</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right: none; font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">2800 AZN</td></tr><tr style="margin: 0px; padding: 0px;"><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">4</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">050118</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">Hüquqşünaslıq</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">25</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">2</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">23</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right: none; font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">4500 AZN</td></tr><tr style="margin: 0px; padding: 0px;"><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">5</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">050621</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">İnformasiya texnologiyaları</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">60</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">25</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right-color: rgb(239, 244, 248); font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">35</td><td style="margin: 0px; padding: 16px; width: fit-content; border-bottom-color: rgb(239, 244, 248); border-right: none; font-size: 14px; line-height: 20px; letter-spacing: 0%; color: rgb(45, 55, 72); text-wrap-mode: nowrap;">3500 AZN</td></tr></tbody></table>',
                 ],
                 'type' => 2,
                 'order' => 3,
@@ -936,9 +966,73 @@ $pages = [
                 'layout_column' => 3,
                 'layout_width' => 'full',
             ],
+
+
+            //page 10
+
+
+            [
+                'title' => [
+                    'az' => 'Uğur hekayələri',
+                    'en' => 'Uğur hekayələri',
+                    'ru' => 'Uğur hekayələri',
+                    'tr' => 'Uğur hekayələri',
+                ],
+                'type' => 1,
+                'order' => 1,
+                'layout_row' => 1,
+                'layout_column' => 1,
+                'layout_width' => 'full',
+            ],
+            [
+                'description' => [
+                    'az' =>
+                        '<span style="color: rgb(33, 33, 33); font-family: " noto="" sans",="" sans-serif;="" font-size:="" 18px;="" letter-spacing:="" 0%;"="">"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</span>',
+                    'en' =>
+                        '<span style="color: rgb(33, 33, 33); font-family: " noto="" sans",="" sans-serif;="" font-size:="" 18px;="" letter-spacing:="" 0%;"="">"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</span>',
+                    'ru' =>
+                        '<span style="color: rgb(33, 33, 33); font-family: " noto="" sans",="" sans-serif;="" font-size:="" 18px;="" letter-spacing:="" 0%;"="">"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</span>',
+                    'tr' =>
+                        '<span style="color: rgb(33, 33, 33); font-family: " noto="" sans",="" sans-serif;="" font-size:="" 18px;="" letter-spacing:="" 0%;"="">"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</span>',
+                ],
+                'type' => 2,
+                'order' => 2,
+                'layout_row' => 1,
+                'layout_column' => 2,
+                'layout_width' => 'full',
+            ],
+
+            [
+                'title' => [
+                    'az' => 'Uğur anları',
+                    'en' => 'Uğur anları',
+                    'ru' => 'Uğur anları',
+                    'tr' => 'Uğur anları',
+                ],
+                'type' => 1,
+                'order' => 3,
+                'layout_row' => 1,
+                'layout_column' => 3,
+                'layout_width' => 'full',
+            ],
+                        [
+                'description' => [
+                    'az' =>
+                        '<span style="color: rgb(33, 33, 33); font-family: " noto="" sans",="" sans-serif;="" font-size:="" 18px;="" letter-spacing:="" 0%;"="">"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</span>',
+                    'en' =>
+                        '<span style="color: rgb(33, 33, 33); font-family: " noto="" sans",="" sans-serif;="" font-size:="" 18px;="" letter-spacing:="" 0%;"="">"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</span>',
+                    'ru' =>
+                        '<span style="color: rgb(33, 33, 33); font-family: " noto="" sans",="" sans-serif;="" font-size:="" 18px;="" letter-spacing:="" 0%;"="">"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</span>',
+                    'tr' =>
+                        '<span style="color: rgb(33, 33, 33); font-family: " noto="" sans",="" sans-serif;="" font-size:="" 18px;="" letter-spacing:="" 0%;"="">"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</span>',
+                ],
+                'type' => 2,
+                'order' => 4,
+                'layout_row' => 1,
+                'layout_column' => 4,
+                'layout_width' => 'full',
+            ],
         ];
-
-
 
         $dynamic_items = [
             [
@@ -1664,10 +1758,9 @@ $pages = [
                 'image' => 'dynamic_item12.jpg',
             ],
 
-
             //page 7
 
-                        [
+            [
                 'title' => [
                     'az' => 'Hacettepe',
                     'en' => 'Hacettepe',
@@ -1687,9 +1780,8 @@ $pages = [
                 'image' => 'dynamic_item13.svg',
             ],
 
-
             //page elmi sura
-                  [
+            [
                 'title' => [
                     'az' => 'Abituriyentlər niyə TAU-nu seçməlidir?',
                     'en' => 'Abituriyentlər niyə TAU-nu seçməlidir?',
@@ -1738,11 +1830,7 @@ $pages = [
                 'image' => 'dynamic_item13.jpg',
             ],
 
-
-
-
-                    [
-
+            [
                 'name' => [
                     'az' => 'Prof. Dr. Vilayət Vəliyev',
                     'en' => 'Prof. Dr. Vilayət Vəliyev',
@@ -1767,7 +1855,6 @@ $pages = [
                     'ru' => '00 000 00 00',
                     'tr' => '00 000 00 00',
                 ],
-
 
                 'dynamic_id' => 43,
                 'type' => 8,
@@ -1775,11 +1862,7 @@ $pages = [
                 'image' => 'dynamic_item14.jpg',
             ],
 
-
-
-                    [
-
-
+            [
                 'name' => [
                     'az' => 'Prof. Dr. Vilayət Vəliyev',
                     'en' => 'Prof. Dr. Vilayət Vəliyev',
@@ -1804,7 +1887,6 @@ $pages = [
                     'ru' => '00 000 00 00',
                     'tr' => '00 000 00 00',
                 ],
-
 
                 'dynamic_id' => 43,
                 'type' => 8,
@@ -1812,11 +1894,7 @@ $pages = [
                 'image' => 'dynamic_item15.jpg',
             ],
 
-
-
-                    [
-
-
+            [
                 'name' => [
                     'az' => 'Prof. Dr. Vilayət Vəliyev',
                     'en' => 'Prof. Dr. Vilayət Vəliyev',
@@ -1842,19 +1920,13 @@ $pages = [
                     'tr' => '00 000 00 00',
                 ],
 
-
                 'dynamic_id' => 43,
                 'type' => 8,
                 'order' => 3,
                 'image' => 'dynamic_item16.jpg',
             ],
 
-
-
-
-
-
-               [
+            [
                 'name' => [
                     'az' => 'Prof. Dr. Ayşe Kılıç',
                     'en' => 'Prof. Dr. Ayşe Kılıç',
@@ -1892,9 +1964,7 @@ $pages = [
                 'image' => 'dynamic_item17.jpg',
             ],
 
-
-
-                           [
+            [
                 'name' => [
                     'az' => 'Prof. Dr. Ayşe Kılıç',
                     'en' => 'Prof. Dr. Ayşe Kılıç',
@@ -1932,9 +2002,7 @@ $pages = [
                 'image' => 'dynamic_item18.jpg',
             ],
 
-
-
-                           [
+            [
                 'name' => [
                     'az' => 'Prof. Dr. Ayşe Kılıç',
                     'en' => 'Prof. Dr. Ayşe Kılıç',
@@ -1972,9 +2040,7 @@ $pages = [
                 'image' => 'dynamic_item19.jpg',
             ],
 
-
-
-                           [
+            [
                 'name' => [
                     'az' => 'Prof. Dr. Ayşe Kılıç',
                     'en' => 'Prof. Dr. Ayşe Kılıç',
@@ -2012,9 +2078,7 @@ $pages = [
                 'image' => 'dynamic_item20.jpg',
             ],
 
-
-
-                           [
+            [
                 'name' => [
                     'az' => 'Prof. Dr. Ayşe Kılıç',
                     'en' => 'Prof. Dr. Ayşe Kılıç',
@@ -2052,9 +2116,7 @@ $pages = [
                 'image' => 'dynamic_item21.jpg',
             ],
 
-
-
-                           [
+            [
                 'name' => [
                     'az' => 'Prof. Dr. Ayşe Kılıç',
                     'en' => 'Prof. Dr. Ayşe Kılıç',
@@ -2091,9 +2153,6 @@ $pages = [
                 'order' => 6,
                 'image' => 'dynamic_item22.jpg',
             ],
-
-
-
         ];
 
         seedTranslationAttributes(Page::class, $pages);

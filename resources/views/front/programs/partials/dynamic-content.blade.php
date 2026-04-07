@@ -1,6 +1,59 @@
 @foreach ($rows as $rowIndex => $dynamicsInRow)
-    <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 40px; width: 100%; box-sizing: border-box;">
-        @foreach ($dynamicsInRow as $dynamic)
+<style>
+    /* Mobil üçün düzəlişlər (768px-dən kiçik ekranlar) */
+@media (max-width: 768px) {
+    /* Sətirlərin flex istiqamətini sütun formasına salırıq */
+    .single-program-content div[style*="display: flex"] {
+        flex-direction: column !important;
+        gap: 15px !important; /* Mobildə daha sıx boşluq */
+        margin-bottom: 20px !important;
+    }
+
+    /* Bütün blokları tam genişliyə gətiririk */
+    .why-this-program {
+        flex: 0 0 100% !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* Şəkillərin kənara çıxmaması üçün */
+    .why-this-program img {
+        height: auto;
+        border-radius: 8px; /* Vizual olaraq daha qəşəng görünür */
+    }
+
+    /* Akademik heyət (müəllimlər) bölməsinin mobildəki görünüşü */
+    .teacher {
+        flex-direction: column !important;
+        text-align: center;
+    }
+
+    .teacher-image {
+        margin: 0 auto 15px auto;
+    }
+
+    .teacher-contact ul {
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Elanlar (Announcements) bölməsi */
+    .announcement-header-top {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 10px;
+    }
+
+    .announcement-short-info .dates {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+</style>
+<div class="program-row" style="display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 40px; width: 100%; box-sizing: border-box;">
+            @foreach ($dynamicsInRow as $dynamic)
             @php
                 $width = $dynamic->layout_width === 'full' ? '100%' : 'calc(50% - 10px)';
             @endphp
@@ -144,13 +197,13 @@
                                                 <div class="created-at">
                                                     <img src="{{ asset('assets/front/icons/calendar-white.svg') }}"
                                                         alt="Calendar Icon" />
-                                                    {{__('translate.Announcement date')}} {{ $item->created_at ?? '' }}
+                                                    {{__('translate.Announcement date')}}: {{ $item->created_at ?? '' }}
                                                 </div>
 
                                                 <div class="deadline">
                                                     <img src="{{ asset('assets/front/icons/calendar-white.svg') }}"
                                                         alt="Calendar Icon" />
-                                                    {{__('translate.Application deadline')}} {{ $item->deadline ?? '' }}
+                                                    {{__('translate.Application deadline')}}: {{ $item->deadline ?? '' }}
                                                 </div>
                                             </div>
 
@@ -161,10 +214,8 @@
                                     </div>
 
                                     <div class="announcement-main-content">
-                                        <div class="announcement-info">
                                             {!! $item->description ?? '' !!}
 
-                                        </div>
 
                                         <a class="apply-btn" href="{{ $item->url ?? '' }}">
                                             {{ __('translate.Apply') }} </a>
