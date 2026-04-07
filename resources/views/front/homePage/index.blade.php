@@ -155,7 +155,7 @@
                     {{ $homePage->description4 ?? '' }}
                 </p>
 
-                <a href="">{{ __('translate.More') }}</a>
+                <a href="/pages/tarixce">{{ __('translate.More') }}</a>
             </div>
 
             <div class="about-center-info">
@@ -223,7 +223,7 @@
             </div>
         </div>
 
-        <div class="calendar table-responsive">
+        <div class="calendar table-responsive" style="overflow: scroll;">
             <table class="table">
                 <thead>
                     <tr>

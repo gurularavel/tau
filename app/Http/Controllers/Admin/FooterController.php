@@ -117,31 +117,45 @@ class FooterController extends Controller
 public function store(FooterRequest $request): RedirectResponse
 {
     $payload = $request->validated();
-
     $footer = $this->footerService->create($payload);
 
     foreach ($request->footer_items ?? [] as $itemData) {
-
+        // Hər sətir üçün ortaq slug-ı tapmaq (ilk mövcud dildən götürürük)
         $firstLocale = array_key_first($itemData);
+        $row = $itemData[$firstLocale];
 
-        $selectSlug = $itemData[$firstLocale]['slug_select'] ?? null;
-        $manualSlug = $itemData[$firstLocale]['slug_manual'] ?? null;
-        $programSlug = $itemData[$firstLocale]['slug_program'] ?? null;
+        // Əgər manual input (slug_manual) doludursa onu istifadə et,
+        // yoxdursa select-lərdən gələni yoxla
+        $slug = null;
+        if (!empty($row['slug_manual'])) {
+            $slug = $row['slug_manual'];
+        } elseif (!empty($row['slug_select'])) {
+            $slug = $row['slug_select'];
+        } elseif (!empty($row['slug_program'])) {
+            $slug = $row['slug_program'];
+        }
 
-        // manual > select + pages/
-        $slug = $manualSlug ? ($selectSlug ? 'pages/' . $selectSlug : null) : ($programSlug ? 'programs/' . $programSlug : null);
-
-        $item = $footer->items()->create([
-            'slug' => $slug,
-        ]);
-
-        foreach ($itemData as $locale => $data) {
+        // Əgər başlıq yoxdursa və slug yoxdursa bazaya boş sətir yazmayaq
+        $hasTitle = false;
+        foreach ($itemData as $data) {
             if (!empty($data['title'])) {
-                $item->translateOrNew($locale)->title = $data['title'];
+                $hasTitle = true;
+                break;
             }
         }
 
-        $item->save();
+        if ($hasTitle || $slug) {
+            $item = $footer->items()->create([
+                'slug' => $slug,
+            ]);
+
+            foreach ($itemData as $locale => $data) {
+                if (!empty($data['title'])) {
+                    $item->translateOrNew($locale)->title = $data['title'];
+                }
+            }
+            $item->save();
+        }
     }
 
     return redirect()
@@ -152,80 +166,55 @@ public function store(FooterRequest $request): RedirectResponse
     /**
      * Update the specified resource in storage.
      */
-    public function update(FooterRequest $request, Footer $footer)
-    {
-        $payload = $request->validated();
+  public function update(FooterRequest $request, Footer $footer)
+{
+    $payload = $request->validated();
+    $this->footerService->update($footer, $payload);
 
-        $this->footerService->update($footer, $payload);
+    $incomingItems = $request->footer_items ?? [];
+    $processedIds = [];
 
-        $incomingItems = $request->footer_items ?? [];
+    foreach ($incomingItems as $itemId => $itemData) {
+        $firstLocale = array_key_first($itemData);
+        $row = $itemData[$firstLocale];
 
-        $existingIds = $footer->items()->pluck('id')->toArray();
+        // Slug təyini: Manual üstündür, yoxsa select-lərdən biri
+        $slug = null;
+        if (!empty($row['slug_manual'])) {
+            $slug = $row['slug_manual'];
+        } elseif (!empty($row['slug_select'])) {
+            $slug = $row['slug_select'];
+        } elseif (!empty($row['slug_program'])) {
+            $slug = $row['slug_program'];
+        }
 
-        $processedIds = [];
-
-        foreach ($incomingItems as $itemId => $itemData) {
-            $firstLocale = array_key_first($itemData);
-
-            // slug logic (manual > select)
-            $selectSlug = $itemData[$firstLocale]['slug_select'] ?? null;
-            $manualSlug = $itemData[$firstLocale]['slug_manual'] ?? null;
-            $programSlug = $itemData[$firstLocale]['slug_program'] ?? null;
-
-            if (!empty($manualSlug)) {
-                $slug = $manualSlug;
-            } elseif (!empty($selectSlug)) {
-                $slug = 'pages/' . $selectSlug;
-            }else if(!empty($programSlug)){
-                $slug = 'programs/' . $programSlug;
-            } else {
-                $slug = null;
-            }
-
-            // UPDATE
-            if (is_numeric($itemId) && in_array($itemId, $existingIds)) {
-                $item = $footer->items()->find($itemId);
-
-                if ($item) {
-                    $item->update([
-                        'slug' => $slug,
-                    ]);
-
-                    foreach ($itemData as $locale => $data) {
-                        if (!empty($data['title'])) {
-                            $item->translateOrNew($locale)->title = $data['title'];
-                        }
-                    }
-
-                    $item->save();
-
-                    $processedIds[] = $item->id;
-                }
-            } else {
-                // CREATE
-                $item = $footer->items()->create([
-                    'slug' => $slug,
-                ]);
-
-                foreach ($itemData as $locale => $data) {
-                    if (!empty($data['title'])) {
-                        $item->translateOrNew($locale)->title = $data['title'];
-                    }
-                }
-
-                $item->save();
-
+        // Mövcud ID-dirsə UPDATE, "new_" ilə başlayırsa CREATE
+        if (is_numeric($itemId)) {
+            $item = $footer->items()->find($itemId);
+            if ($item) {
+                $item->update(['slug' => $slug]);
                 $processedIds[] = $item->id;
             }
+        } else {
+            $item = $footer->items()->create(['slug' => $slug]);
+            $processedIds[] = $item->id;
         }
 
-        // SAFE DELETE
-        if (!empty($processedIds)) {
-            $footer->items()->whereNotIn('id', $processedIds)->delete();
+        if ($item) {
+            foreach ($itemData as $locale => $data) {
+                if (!empty($data['title'])) {
+                    $item->translateOrNew($locale)->title = $data['title'];
+                }
+            }
+            $item->save();
         }
-
-        return back()->with('success', __('translate.Successfully completed'));
     }
+
+    // Silinmiş sətirləri təmizlə
+    $footer->items()->whereNotIn('id', $processedIds)->delete();
+
+    return back()->with('success', __('translate.Successfully completed'));
+}
 
 
 

@@ -80,3 +80,7 @@
     }
   }
 }
+
+  .scores-table {
+      overflow-x: scroll;
+    }

@@ -6,13 +6,13 @@ return [
     [
         'name' => 'Azərbaycanca',
         'locale' => 'az',
-        'is_main' => 0,
+        'is_main' => 1,
         'is_active' => 1,
     ],
     [
         'name' => 'English',
         'locale' => 'en',
-        'is_main' => 1,
+        'is_main' => 0,
         'is_active' => 1,
     ],
     [

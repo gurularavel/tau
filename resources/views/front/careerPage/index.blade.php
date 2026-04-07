@@ -25,9 +25,6 @@
             line-height: 1.6;
         }
 
-        .vacancies-section {
-            padding: 60px 0;
-        }
 
         .vacancy-table {
             width: 100%;
@@ -88,7 +85,7 @@
         </div>
     </section>
 
-    <section class="vacancies-section container">
+    <section class="vacancies container">
         <div class="table-responsive">
             <table class="vacancy-table">
                 <thead>

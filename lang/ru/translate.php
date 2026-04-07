@@ -420,7 +420,7 @@ return [
     'All' => 'Все',
     'Media' => 'Медиа',
     'Special Links' => 'Специальные ссылки',
-    'CV sent successfully! ✅' => 'Резюме успешно отправлено! ✅',
+    'CV sent successfully!' => 'Резюме успешно отправлено!',
     'Slides' => 'Слайды',
     'Categories' => 'Категории',
     'Search by size' => 'Поиск по размеру',

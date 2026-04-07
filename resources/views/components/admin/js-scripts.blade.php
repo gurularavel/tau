@@ -132,7 +132,7 @@ function deleteItem(button, url) {
         // Refresh olmadan row DOM-dan silinir
         const row = button.closest('tr');
         if (row) row.remove();
-        showNotify('success', "{{ __('translate.Item deleted!') }}");
+        showNotify('success', "{{ __('translate.Deleted successfully') }}");
     })
     .catch(error => console.error('DELETE ERROR:', error));
 }

@@ -665,10 +665,16 @@ return [
     'e.g. Full-time' => 'e.g. Full-time',
     'No vacancies available at the moment' => 'No vacancies available at the moment',
     'Partner countries' => 'Partner countries',
-    'Item deleted!' => 'Item deleted!',
+    'Deleted successfully' => 'Deleted successfully',
     'Status changed!' => 'Status changed!',
     'Error during sorting' => 'Error during sorting',
-    'Write a tags' => 'Write a tags'
+    'Write a tags' => 'Write a tags',
+    'Server error' => 'Server error',
+    'Validation error' => 'Validation error',
+    'File not found' => 'File not found',
+    'File size cannot exceed 5 MB' => 'File size cannot exceed 5 MB',
+    'Only PDF, DOC and DOCX formats are allowed' => 'Only PDF, DOC and DOCX formats are allowed'
+
 
 
 

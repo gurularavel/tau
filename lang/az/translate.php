@@ -412,7 +412,7 @@ return [
     'All' => 'Hamısı',
     'Media' => 'Media',
     'Special Links' => 'Xüsusi keçidlər',
-    'CV sent successfully! ✅' => 'CV uğurla göndərildi! ✅',
+    'CV sent successfully!' => 'CV uğurla göndərildi!',
     'Slides' => 'Slaydlar',
     'Categories' => 'Kateqoriyalar',
     'Search by size' => 'Ölçüyə görə axtar',

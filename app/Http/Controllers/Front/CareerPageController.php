@@ -37,14 +37,12 @@ class CareerPageController extends Controller
         $metaTitle = $vacancy->meta_title;
         $metaDescription = $vacancy->meta_description;
         $metaKeywords = $vacancy->meta_keywords;
-        $title = __('translate.Vacancies');
         $this->vacancyService->viewCount($vacancy);
 
         return view(
             'front.careerPage.show',
             compact(
                 'vacancy',
-                'title',
 
                 'metaTitle',
                 'metaDescription',

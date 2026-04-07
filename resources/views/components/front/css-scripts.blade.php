@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="{{asset('assets/front/styles/pages/academic-council.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/front/styles/pages/single-media.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/front/styles/pages/exchange.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/front/styles/pages/admission-scores.css')}}" />
 
 
 <link href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" rel="stylesheet">
