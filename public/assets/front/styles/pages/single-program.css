@@ -1374,4 +1374,374 @@
 
 
 
+/* ===== MOBİL ÜÇÜN ƏLAVƏ DÜZƏLİŞLƏR (max-width: 768px) ===== */
+@media screen and (max-width: 768px) {
 
+  .single-program-content {
+    margin-top: 30px !important;
+    gap: 50px !important;
+  }
+
+  /* 1. TAB DÜYMƏLƏRİ (həm .tab-btn, həm də button elementləri üçün) */
+  .tab-buttons {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    gap: 12px !important;
+    padding: 5px 5px 15px 5px !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .tab-buttons::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Həm button, həm də .tab-btn klassı olan elementlərə tətbiq olunsun */
+  .tab-buttons button,
+  .tab-buttons .tab-btn {
+    flex: 0 0 auto !important;
+    width: 120px !important;
+    min-width: 100px !important;
+    max-width: 150px !important;
+    height: auto !important;
+    min-height: 100px !important;
+    padding: 12px 5px !important;
+    font-size: 14px !important;
+    border-radius: 16px !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    white-space: normal !important;
+    word-break: break-word;
+  }
+
+  .tab-buttons button .icon,
+  .tab-buttons .tab-btn .icon {
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  .tab-buttons button .icon img,
+  .tab-buttons .tab-btn .icon img {
+    width: 24px !important;
+    height: 24px !important;
+  }
+
+  /* 2. TAB KONTENTİ */
+  .tabs-container .tab-content.active {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .tab-default {
+    gap: 40px !important;
+  }
+
+  /* 3. "NİYƏ BU PROQRAM" BÖLMƏSİ */
+  .why-this-program h2 {
+    font-size: 24px !important;
+    line-height: 32px !important;
+  }
+
+
+  .reasons {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .reason {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    padding: 20px 16px !important;
+    border-left-width: 4px !important;
+  }
+
+  .reason-icon {
+    min-width: 48px !important;
+    min-height: 48px !important;
+  }
+
+  .reason-icon img {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  .reason-content h3 {
+    font-size: 20px !important;
+    line-height: 28px !important;
+  }
+
+  .reason-content p {
+    font-size: 14px !important;
+    line-height: 20px !important;
+  }
+
+  /* 4. HAQQINDA / MƏQSƏDLƏR / KARYERA */
+  .about-program {
+    padding: 16px !important;
+    gap: 24px !important;
+  }
+
+  .about-program h2,
+  .about h2,
+  .goals h2,
+  .future-careers h2 {
+    font-size: 24px !important;
+    line-height: 32px !important;
+  }
+
+  .about-program p,
+  .about p,
+  .goals p,
+  .future-careers p,
+  .about-program li,
+  .goals li {
+    font-size: 14px !important;
+    line-height: 22px !important;
+  }
+
+  .careers {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .career {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    padding: 16px !important;
+  }
+
+  .career h3 {
+    font-size: 20px !important;
+  }
+
+  .career p {
+    font-size: 14px !important;
+  }
+
+  /* 5. LABORATORİYALAR */
+  .labs {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .lab {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+  }
+
+  .lab-image {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 200px !important;
+    max-height: 200px !important;
+  }
+
+  .lab-content h3 {
+    font-size: 22px !important;
+  }
+
+  .lab-content ul li {
+    font-size: 14px !important;
+    line-height: 22px !important;
+  }
+
+  /* 6. MÜƏLLİMLƏR */
+  .teachers {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .teacher {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 20px 16px !important;
+  }
+
+  .teacher-image img {
+    width: 100px !important;
+    height: 100px !important;
+  }
+
+  .teacher-info {
+    align-items: center !important;
+  }
+
+  .teacher-contact ul {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 10px !important;
+  }
+
+  /* 7. ELANLAR */
+  .announcements {
+    gap: 30px !important;
+  }
+
+  .announcement {
+    width: 100% !important;
+    min-width: auto !important;
+  }
+
+  .announcement-header {
+    padding: 20px !important;
+  }
+
+  .announcement-header-top {
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+
+  .announcement-header-top .icon {
+    min-width: 48px !important;
+    min-height: 48px !important;
+  }
+
+  .header-top-content h2 {
+    font-size: 24px !important;
+  }
+
+  .header-top-content p {
+    font-size: 16px !important;
+  }
+
+  .announcement-short-info .dates {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+  }
+
+  .announcement-main-content {
+    padding: 20px !important;
+  }
+
+  .announcement-info {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    flex-direction: column !important;
+    gap: 24px !important;
+  }
+
+  .announcement-info .info h3 {
+    font-size: 22px !important;
+  }
+
+  .announcement-info .info ul li {
+    font-size: 16px !important;
+  }
+
+  .apply-btn {
+    width: 100% !important;
+    max-width: 280px !important;
+    height: 50px !important;
+    font-size: 18px !important;
+    align-self: center !important;
+  }
+
+  /* 8. PROGRAM-ROW (Partial içindəki inline flex konteyneri) */
+  .program-row {
+    flex-direction: column !important;
+  }
+
+  .program-row > div[style*="flex:"] {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* 9. Şəkillərin responsivliyi */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* ===== ÇOX KİÇİK EKRANLAR ÜÇÜN ƏLAVƏ (max-width: 480px) ===== */
+@media screen and (max-width: 480px) {
+  .tab-buttons button,
+  .tab-buttons .tab-btn {
+    width: 100px !important;
+    min-width: 90px !important;
+    padding: 10px 4px !important;
+    font-size: 13px !important;
+  }
+
+  .tab-buttons button .icon,
+  .tab-buttons .tab-btn .icon {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .reason-content h3 {
+    font-size: 18px !important;
+  }
+
+  .teacher-image img {
+    width: 80px !important;
+    height: 80px !important;
+  }
+}
+
+/* ===== TABLET ÜÇÜN TƏKMİLLƏŞDİRMƏ (768px - 1024px) ===== */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .reasons {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  .teachers {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  .labs {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  .careers {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+/* ===== AKTİV TAB DÜYMƏSİ STİLİNİ TƏKRAR TƏYİN EDİRİK ===== */
+/* (Mobildə rəng itməməsi üçün) */
+.tab-buttons .tab-btn.active,
+.tab-buttons button.active {
+  background: #2464f3 !important;
+  color: white !important;
+  border-color: #2464f3 !important;
+}
+
+.tab-buttons .tab-btn.active .icon,
+.tab-buttons button.active .icon {
+  background: rgba(255, 255, 255, 0.2) !important;
+}
+
+.tab-buttons .tab-btn.active .icon img,
+.tab-buttons button.active .icon img {
+  filter: brightness(0) invert(1) !important;
+}
+
+/* ===== ƏLAVƏ TƏMİZLƏMƏLƏR ===== */
+/* Partial içindəki inline stillərin yaratdığı problemləri aradan qaldırmaq üçün */
+.why-this-program {
+  overflow: hidden; /* Şəkillərin və mətnin kənara çıxmasını önləyir */
+}
+
+/* Tab məzmunu içərisindəki bütün geniş elementlərin adaptasiyası */
+.tabs-container * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Əgər inline stillə "width: 100% !important" tələb olunursa */
+.program-row > * {
+  width: 100% !important;
+}

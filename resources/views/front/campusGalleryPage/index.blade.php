@@ -1,5 +1,42 @@
 <x-front.layout :title="$metaTitle" :metaDescription="$metaDescription" :metaKeywords="$metaKeywords" :folder="'campusGalleryPage'" :image="$campusGalleryPage->image">
-        <section class="breadcrumb container-fluid">
+    <style>
+        /* Ümumi konteyner üçün */
+.video-container {
+    width: 100%;
+    margin-top: 30px;    /* Desktop üçün yuxarı məsafə */
+    margin-bottom: 30px; /* Desktop üçün aşağı məsafə */
+    padding: 0 15px;     /* Kənarlardan sıxılmaması üçün */
+}
+
+/* Videonun 16:9 nisbətini qorumaq üçün wrapper */
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 nisbəti */
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px;    /* Kənarların yuvarlaq olması */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Yüngül kölgə */
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* Mobil cihazlar üçün xüsusi tənzimləmə */
+@media (max-width: 768px) {
+    .video-container {
+        margin-top: 50px;    /* Mobildə yuxarıdan daha çox məsafə */
+        margin-bottom: 50px; /* Mobildə aşağıdan daha çox məsafə */
+        padding: 0 10px;     /* Mobil ekranlarda kənar boşluğu */
+    }
+}
+        </style>
+    <section class="breadcrumb container-fluid">
       <img src="{{getImage('campusGalleryPage', $campusGalleryPage->image)}}" alt="Breadcrumb" />
     </section>
 
@@ -43,22 +80,20 @@
       </div>
     </section>
 
-    <section class="image container">
-      @php
-    // əgər sadəcə standart YouTube link varsa
-    preg_match("/v=([a-zA-Z0-9_-]+)/", $campusGalleryPage->video_url, $matches);
-    $videoId = $matches[1] ?? '';
-    $embedUrl = $videoId ? "https://www.youtube.com/embed/$videoId" : '';
-@endphp
+<section class="video-container">
+        @php
+            preg_match('/v=([a-zA-Z0-9_-]+)/', $campusGalleryPage->video_url, $matches);
+            $videoId = $matches[1] ?? '';
+            $embedUrl = $videoId ? "https://www.youtube.com/embed/$videoId" : '';
+        @endphp
 
-<iframe
-    width="100%"
-    height="500"
-    src="{{ $embedUrl }}"
-    title="YouTube video player"
-    frameborder="0"
-    allowfullscreen>
-</iframe>
+        <div class="video-wrapper">
+            <iframe src="{{ $embedUrl }}"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allowfullscreen>
+            </iframe>
+        </div>
     </section>
 
 </x-front.layout>

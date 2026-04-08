@@ -25,10 +25,48 @@
                 flex: 0 0 100% !important;
                 max-width: 100% !important;
             }
+
             .dynamic-row {
-                gap: 15px; /* Mobildə ara məsafəsini bir az azaltdıq */
+                gap: 15px;
+                /* Mobildə ara məsafəsini bir az azaltdıq */
             }
         }
+
+        /* Ümumi konteyner üçün */
+.video-container {
+    width: 100%;
+    margin-top: 30px;    /* Desktop üçün yuxarı məsafə */
+    margin-bottom: 30px; /* Desktop üçün aşağı məsafə */
+    padding: 0 15px;     /* Kənarlardan sıxılmaması üçün */
+}
+
+/* Videonun 16:9 nisbətini qorumaq üçün wrapper */
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 nisbəti */
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px;    /* Kənarların yuvarlaq olması */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Yüngül kölgə */
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* Mobil cihazlar üçün xüsusi tənzimləmə */
+@media (max-width: 768px) {
+    .video-container {
+        margin-top: 50px;    /* Mobildə yuxarıdan daha çox məsafə */
+        margin-bottom: 50px; /* Mobildə aşağıdan daha çox məsafə */
+        padding: 0 10px;     /* Mobil ekranlarda kənar boşluğu */
+    }
+}
     </style>
 
     <section class="breadcrumb container-fluid">
@@ -44,8 +82,7 @@
                         $desktopWidth = $dynamic->layout_width === 'full' ? '100%' : 'calc(50% - 10px)';
                     @endphp
 
-                    <div class="about-header about-header-item"
-                         style="--item-width: {{ $desktopWidth }};">
+                    <div class="about-header about-header-item" style="--item-width: {{ $desktopWidth }};">
 
                         @if ($dynamic->type == 1)
                             <h2>{{ $dynamic->title ?? '' }}</h2>
@@ -54,19 +91,35 @@
                         @endif
 
                         @if ($dynamic->image)
-                            <img src="{{ getImage('dynamics', $dynamic->image) }}" style="width: 100%; height: auto; display: block;" />
+                            <img src="{{ getImage('dynamics', $dynamic->image) }}"
+                                style="width: 100%; height: auto; display: block;" />
                         @endif
 
                         @if ($dynamic->images->isNotEmpty())
                             <section class="student-club container">
                                 <div class="club-gallery">
                                     @foreach ($dynamic->images as $image)
-                                        <img src="{{ getImage('dynamics', $image->image) }}" style="width: 100%; height: auto;" />
+                                        <img src="{{ getImage('dynamics', $image->image) }}"
+                                            style="width: 100%; height: auto;" />
                                     @endforeach
                                 </div>
                             </section>
                         @endif
+                        @if ($dynamic->video)
+                            <section class="video-container">
+                                @php
+                                    preg_match('/v=([a-zA-Z0-9_-]+)/', $dynamic->video, $matches);
+                                    $videoId = $matches[1] ?? '';
+                                    $embedUrl = $videoId ? "https://www.youtube.com/embed/$videoId" : '';
+                                @endphp
 
+                                <div class="video-wrapper">
+                                    <iframe src="{{ $embedUrl }}" title="YouTube video player" frameborder="0"
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                            </section>
+                        @endif
                         @if ($dynamic->type == \App\Models\Dynamic::TYPE_DYNAMIC_ITEMS && $dynamic->items->isNotEmpty())
                             @php
                                 $type1Items = $dynamic->items->where('type', 1);
@@ -85,7 +138,8 @@
                                     @foreach ($type1Items as $item)
                                         <div class="info">
                                             @if ($item->image)
-                                                <img src="{{ getImage('dynamic_items', $item->image) }}" alt="{{ $item->title ?? '' }}" />
+                                                <img src="{{ getImage('dynamic_items', $item->image) }}"
+                                                    alt="{{ $item->title ?? '' }}" />
                                             @endif
                                             <h3>{{ $item->title ?? '' }}</h3>
                                             <p>{!! $item->description ?? '' !!}</p>
@@ -101,7 +155,8 @@
                                         <div class="official-order simple-paragraph">
                                             <h2>
                                                 @if ($item->image)
-                                                    <img src="{{ getImage('dynamic_items', $item->image) }}" alt="{{ $item->title ?? '' }}" />
+                                                    <img src="{{ getImage('dynamic_items', $item->image) }}"
+                                                        alt="{{ $item->title ?? '' }}" />
                                                 @endif
                                                 {{ $item->title ?? '' }}
                                             </h2>
@@ -121,7 +176,8 @@
                                                     <div class="our-mission-element-contents">
                                                         <div class="left">
                                                             @if ($item->image)
-                                                                <img src="{{ getImage('dynamic_items', $item->image) }}" alt="{{ $item->title ?? '' }}" />
+                                                                <img src="{{ getImage('dynamic_items', $item->image) }}"
+                                                                    alt="{{ $item->title ?? '' }}" />
                                                             @endif
                                                         </div>
                                                         <div class="right">
@@ -164,7 +220,8 @@
                                                     <div class="info">
                                                         <div class="trustee-image">
                                                             @if ($item->image)
-                                                                <img src="{{ getImage('dynamic_items', $item->image) }}" alt="{{ $item->title ?? '' }}" />
+                                                                <img src="{{ getImage('dynamic_items', $item->image) }}"
+                                                                    alt="{{ $item->title ?? '' }}" />
                                                             @endif
                                                         </div>
                                                         <div class="professor-info">
@@ -190,7 +247,8 @@
                                                     <div class="director-card-content">
                                                         <div class="director-card-header">
                                                             @if ($item->image)
-                                                                <img src="{{ getImage('dynamic_items', $item->image) }}" alt="{{ $item->name ?? '' }}" />
+                                                                <img src="{{ getImage('dynamic_items', $item->image) }}"
+                                                                    alt="{{ $item->name ?? '' }}" />
                                                             @endif
                                                             <div class="director-info">
                                                                 <h4 class="director-name">{{ $item->name ?? '' }}</h4>
@@ -199,11 +257,13 @@
                                                         </div>
                                                         <div class="director-card-contact">
                                                             <div class="director-email">
-                                                                <img src="{{ asset('assets/front/icons/email-white.svg') }}" alt="Email" />
+                                                                <img src="{{ asset('assets/front/icons/email-white.svg') }}"
+                                                                    alt="Email" />
                                                                 <p>{{ $item->email ?? '' }}</p>
                                                             </div>
                                                             <div class="director-phone">
-                                                                <img src="{{ asset('assets/front/icons/phone-white.svg') }}" alt="Phone" />
+                                                                <img src="{{ asset('assets/front/icons/phone-white.svg') }}"
+                                                                    alt="Phone" />
                                                                 <p>{{ $item->phone ?? '' }}</p>
                                                             </div>
                                                         </div>
@@ -228,7 +288,8 @@
                                                 <div class="teacher">
                                                     @if ($item->image)
                                                         <div class="teacher-image">
-                                                            <img src="{{ getImage('dynamic_items', $item->image) }}" alt="{{ $item->name ?? '' }}" />
+                                                            <img src="{{ getImage('dynamic_items', $item->image) }}"
+                                                                alt="{{ $item->name ?? '' }}" />
                                                         </div>
                                                     @endif
                                                     <div class="teacher-info">
@@ -239,8 +300,10 @@
                                                         </div>
                                                         <div class="teacher-contact">
                                                             <ul>
-                                                                <li><img src="{{ asset('assets/front/icons/email-gray.svg') }}" alt="Email" /> {{ $item->email ?? '' }}</li>
-                                                                <li><img src="{{ asset('assets/front/icons/phone-gray.svg') }}" alt="Phone" /> {{ $item->phone ?? '' }}</li>
+                                                                <li><img src="{{ asset('assets/front/icons/email-gray.svg') }}"
+                                                                        alt="Email" /> {{ $item->email ?? '' }}</li>
+                                                                <li><img src="{{ asset('assets/front/icons/phone-gray.svg') }}"
+                                                                        alt="Phone" /> {{ $item->phone ?? '' }}</li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -259,7 +322,8 @@
                                             <div class="manager">
                                                 <div class="manager-card-content">
                                                     <div class="manager-header">
-                                                        <img src="{{ getImage('dynamic_items', $item->image) }}" alt="{{ $item->name ?? '' }}" />
+                                                        <img src="{{ getImage('dynamic_items', $item->image) }}"
+                                                            alt="{{ $item->name ?? '' }}" />
                                                         <div class="manager-info">
                                                             <h4>{{ $item->name ?? '' }}</h4>
                                                             <p>{{ $item->profession ?? '' }}</p>
@@ -267,11 +331,13 @@
                                                     </div>
                                                     <div class="manager-card-contact">
                                                         <div class="manager-email">
-                                                            <img src="{{ asset('assets/front/icons/email-white.svg') }}" alt="Email" />
+                                                            <img src="{{ asset('assets/front/icons/email-white.svg') }}"
+                                                                alt="Email" />
                                                             <p>{{ $item->email ?? '' }}</p>
                                                         </div>
                                                         <div class="manager-phone">
-                                                            <img src="{{ asset('assets/front/icons/phone-white.svg') }}" alt="Phone" />
+                                                            <img src="{{ asset('assets/front/icons/phone-white.svg') }}"
+                                                                alt="Phone" />
                                                             <p>{{ $item->phone ?? '' }}</p>
                                                         </div>
                                                     </div>
