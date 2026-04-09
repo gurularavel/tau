@@ -35,27 +35,64 @@ class InterpreterController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Add a new key to all locale translate.php files.
      */
-    public function store(Request $request)
+    public function addKey(Request $request)
     {
-        //
+        $request->validate([
+            'new_key' => 'required|string|max:255',
+        ]);
+
+        $newKey = trim($request->input('new_key'));
+        $locales = array_keys(LaravelLocalization::getSupportedLocales());
+
+        foreach ($locales as $locale) {
+            $filePath = base_path("lang/{$locale}/translate.php");
+            if (!file_exists($filePath)) {
+                continue;
+            }
+
+            $translations = require $filePath;
+
+            if (!array_key_exists($newKey, $translations)) {
+                $value = $request->input("values.{$locale}", '');
+                $translations[$newKey] = $value;
+                ksort($translations);
+                $content = "<?php\n\nreturn " . var_export($translations, true) . ";\n";
+                file_put_contents($filePath, $content);
+            }
+        }
+
+        return redirect()->route('admin.interpreter.index')
+            ->with('success', __('translate.Translations updated successfully!'));
     }
 
     /**
-     * Display the specified resource.
+     * Remove a key from all locale translate.php files.
      */
-    public function show(string $id)
+    public function removeKey(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'key' => 'required|string',
+        ]);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
+        $key = $request->input('key');
+        $locales = array_keys(LaravelLocalization::getSupportedLocales());
+
+        foreach ($locales as $locale) {
+            $filePath = base_path("lang/{$locale}/translate.php");
+            if (!file_exists($filePath)) {
+                continue;
+            }
+
+            $translations = require $filePath;
+            unset($translations[$key]);
+            $content = "<?php\n\nreturn " . var_export($translations, true) . ";\n";
+            file_put_contents($filePath, $content);
+        }
+
+        return redirect()->route('admin.interpreter.index')
+            ->with('success', __('translate.Translations updated successfully!'));
     }
 
     /**

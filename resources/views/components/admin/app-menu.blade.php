@@ -51,6 +51,7 @@
                 <x-admin.sidebar-single-nav-item :title="'Home page'"           :routeName="'homePage.index'"          :iconName="'ri-home-5-line'" />
                 <x-admin.sidebar-single-nav-item :title="'Campus Gallery page'" :routeName="'campusGalleryPage.index'" :iconName="'ri-image-2-line'" />
                 <x-admin.sidebar-single-nav-item :title="'Media guide page'"    :routeName="'mediaGuidePage.index'"    :iconName="'ri-newspaper-line'" />
+                <x-admin.sidebar-single-nav-item :title="'History page'"          :routeName="'historyPage.index'"       :iconName="'ri-history-line'" />
                 <x-admin.sidebar-single-nav-item :title="'Contact us'"          :routeName="'contactPage.index'"       :iconName="'ri-phone-line'" />
 
                 {{-- ═══════════════════════════════════════

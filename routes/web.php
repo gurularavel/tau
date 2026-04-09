@@ -37,6 +37,7 @@ use App\Http\Controllers\Admin\{
 
 use App\Http\Controllers\Admin\CareerPageController;
 use App\Http\Controllers\Admin\ContactPageController;
+use App\Http\Controllers\Admin\HistoryPageController;
 use App\Http\Controllers\Admin\HomePageController;
 use App\Http\Controllers\Admin\HeroSlideController;
 use App\Http\Controllers\Admin\PageController;
@@ -65,6 +66,7 @@ use App\Http\Controllers\Front\MediaGuidePageController as FrontMediaGuidePageCo
 use App\Http\Controllers\Front\ProgramController as FrontProgramController;
 use App\Http\Controllers\Front\StudentClubController as FrontStudentClubController;
 use App\Http\Controllers\Front\StudentProjectPageController as FrontStudentProjectPageController;
+use App\Http\Controllers\Front\HistoryPageController as FrontHistoryPageController;
 use App\Http\Controllers\Front\VacancyController as FrontVacancyController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -93,6 +95,7 @@ Route::group([
         Route::post('/messages/send',                                           [FrontMessageController::class,                  'send'])->name('front.messages.send');
         Route::post('/subscribe',                                               [FrontMessageController::class,                  'subscribe'])->name('front.home.subscribe');
         Route::get('/contact-us',                                               [FrontContactPageController::class,              'index'])->name('front.contact.index');
+        Route::get('/haqqimizda/tarixce',                                       [FrontHistoryPageController::class,              'index'])->name('front.historyPage.index');
         Route::get('/campus-gallery',                                           [FrontCampusGalleryPageController::class,        'index'])->name('front.campus.index');
         Route::get('/media-guide',                                              [FrontMediaGuidePageController::class,           'index'])->name('front.mediaGuidePage.index');
         Route::get('/news/{news:slug}',                                         [FrontNewsController::class,                     'show'])->name('front.news.show');
@@ -134,6 +137,8 @@ Route::group([
 
           Route::get('/interpreter',              [InterpreterController::class,      'index'])->name('admin.interpreter.index');
         Route::post('/interpreter/update',      [InterpreterController::class,      'update'])->name('admin.interpreter.update');
+        Route::post('/interpreter/add-key',     [InterpreterController::class,      'addKey'])->name('admin.interpreter.addKey');
+        Route::delete('/interpreter/remove-key',[InterpreterController::class,      'removeKey'])->name('admin.interpreter.removeKey');
         Route::resource('subscribes',            FrontMessageController::class)->names('admin.subscribes');
         Route::resource('settings',              SettingController::class)->names('admin.settings');
         Route::resource('users',                 UserController::class)->names('admin.users');
@@ -177,6 +182,10 @@ Route::post('/academic-lookups/event-type', [AcademicLookupController::class, 'e
         Route::post('programs/{program}/duplicate',  [ProgramController::class, 'duplicate'])->name('admin.programs.duplicate');
 
 
+        Route::resource('history-page',          HistoryPageController::class)->names('admin.historyPage');
+        Route::post('history-page-infos',                        [HistoryPageController::class, 'storeInfo'])->name('admin.historyPage.infos.store');
+        Route::post('history-page-infos/{historyPageInfo}',      [HistoryPageController::class, 'updateInfo'])->name('admin.historyPage.infos.update');
+        Route::delete('history-page-infos/{historyPageInfo}',    [HistoryPageController::class, 'destroyInfo'])->name('admin.historyPage.infos.destroy');
         Route::resource('contact-page',          ContactPageController::class)->names('admin.contactPage');
         Route::resource('campus-gallery-page',   CampusGalleryPageController::class)->names('admin.campusGalleryPage');
         Route::resource('media-guide-page',      MediaGuidePageController::class)->names('admin.mediaGuidePage');
