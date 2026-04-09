@@ -174,6 +174,7 @@ Route::post('/academic-lookups/event-type', [AcademicLookupController::class, 'e
         Route::resource('pages',                 PageController::class)->names('admin.pages');
         Route::post('pages/{page}/duplicate',    [PageController::class, 'duplicate'])->name('admin.pages.duplicate');
         Route::resource('programs',                 ProgramController::class)->names('admin.programs');
+        Route::post('programs/{program}/duplicate',  [ProgramController::class, 'duplicate'])->name('admin.programs.duplicate');
 
 
         Route::resource('contact-page',          ContactPageController::class)->names('admin.contactPage');

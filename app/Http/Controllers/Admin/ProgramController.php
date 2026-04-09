@@ -404,6 +404,108 @@ class ProgramController extends Controller
         }
     }
 
+    public function duplicate(Program $program): RedirectResponse
+    {
+        DB::beginTransaction();
+
+        try {
+            // Clone program
+            $newProgram = $program->replicate();
+            $newProgram->slug = $program->slug . '-copy-' . time();
+            $newProgram->is_active = 0;
+            $newProgram->program_dynamic_ids = null;
+            $newProgram->save();
+
+            // Copy translations
+            foreach ($program->translations as $translation) {
+                $newProgram->translateOrNew($translation->locale)->title = $translation->title;
+                $newProgram->translateOrNew($translation->locale)->content = $translation->content;
+                $newProgram->translateOrNew($translation->locale)->meta_title = $translation->meta_title;
+                $newProgram->translateOrNew($translation->locale)->meta_description = $translation->meta_description;
+                $newProgram->translateOrNew($translation->locale)->meta_keywords = $translation->meta_keywords;
+            }
+            $newProgram->save();
+
+            // Clone program dynamics
+            $oldDynamicIds = $program->program_dynamic_ids ?? [];
+            if (!empty($oldDynamicIds)) {
+                $dynamics = ProgramDynamic::with(['translations', 'images', 'items.translations'])
+                    ->whereIn('id', $oldDynamicIds)
+                    ->get()
+                    ->keyBy('id');
+
+                $newDynamicIds = [];
+
+                foreach ($oldDynamicIds as $oldId) {
+                    $dynamic = $dynamics[$oldId] ?? null;
+                    if (!$dynamic) continue;
+
+                    $newDynamic = $dynamic->replicate();
+                    $newDynamic->program_dynamic_item_ids = null;
+                    $newDynamic->save();
+
+                    // Copy dynamic translations
+                    foreach ($dynamic->translations as $t) {
+                        $newDynamic->translateOrNew($t->locale)->title = $t->title;
+                        $newDynamic->translateOrNew($t->locale)->description = $t->description;
+                    }
+                    $newDynamic->save();
+
+                    // Copy images (type 5)
+                    foreach ($dynamic->images as $img) {
+                        ProgramDynamicImage::create([
+                            'program_dynamic_id' => $newDynamic->id,
+                            'image' => $img->image,
+                            'order' => $img->order,
+                        ]);
+                    }
+
+                    // Copy items (type 6)
+                    $newItemIds = [];
+                    foreach ($dynamic->items as $item) {
+                        $newItem = $item->replicate();
+                        $newItem->program_dynamic_id = $newDynamic->id;
+                        $newItem->save();
+
+                        foreach ($item->translations as $t) {
+                            $newItem->translateOrNew($t->locale)->title = $t->title ?? null;
+                            $newItem->translateOrNew($t->locale)->description = $t->description ?? null;
+                            $newItem->translateOrNew($t->locale)->name = $t->name ?? null;
+                            $newItem->translateOrNew($t->locale)->profession = $t->profession ?? null;
+                            $newItem->translateOrNew($t->locale)->subject_name = $t->subject_name ?? null;
+                            $newItem->translateOrNew($t->locale)->education_type = $t->education_type ?? null;
+                            $newItem->translateOrNew($t->locale)->subtitle = $t->subtitle ?? null;
+                            $newItem->translateOrNew($t->locale)->day = $t->day ?? null;
+                            $newItem->translateOrNew($t->locale)->professor = $t->professor ?? null;
+                        }
+                        $newItem->save();
+
+                        $newItemIds[] = $newItem->id;
+                    }
+
+                    if (!empty($newItemIds)) {
+                        $newDynamic->program_dynamic_item_ids = $newItemIds;
+                        $newDynamic->save();
+                    }
+
+                    $newDynamicIds[] = $newDynamic->id;
+                }
+
+                $newProgram->program_dynamic_ids = $newDynamicIds;
+                $newProgram->save();
+            }
+
+            DB::commit();
+
+            return redirect()->route('admin.programs.edit', $newProgram->id)
+                ->with('success', __('translate.Successfully completed'));
+
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return back()->withErrors(['error' => $e->getMessage()]);
+        }
+    }
+
     public function updateDynamicsLayout(Request $request)
     {
         $request->validate([
