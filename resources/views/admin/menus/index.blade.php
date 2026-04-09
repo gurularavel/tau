@@ -91,6 +91,39 @@
         .bg-light-blue {
             min-height: 50px;
         }
+
+        /* Accordion toggle */
+        .toggle-children {
+            background: none;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            color: #6c757d;
+            transition: background .2s, transform .25s ease;
+            line-height: 1;
+        }
+        .toggle-children:hover { background: #f1f3f5; color: #343a40; }
+        .toggle-children .ri { font-size: 18px; transition: transform .25s ease; }
+        .toggle-children.open .ri { transform: rotate(90deg); }
+
+        .nested-sortable {
+            overflow: hidden;
+            transition: max-height .3s ease, opacity .3s ease;
+        }
+        .nested-sortable.collapsed {
+            max-height: 0 !important;
+            opacity: 0;
+            pointer-events: none;
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
+        }
+
+        .children-count {
+            font-size: 11px;
+            color: #6c757d;
+            margin-left: 6px;
+        }
     </style>
 
     <div id="layout-wrapper">
@@ -116,16 +149,26 @@
 
                                     {{-- ANA MENYU KARTI --}}
                                     <div class="main-card">
-                                        <div>
+                                        <div class="d-flex align-items-center">
+                                            @if($parent->children->count() > 0)
+                                                <button type="button"
+                                                        class="toggle-children me-2"
+                                                        data-target="children-{{ $parent->id }}"
+                                                        title="Expand/Collapse">
+                                                    <i class="ri ri-arrow-right-s-line"></i>
+                                                </button>
+                                            @else
+                                                <span style="width:32px; display:inline-block;"></span>
+                                            @endif
                                             <i class="ri-drag-move-2-line me-2 text-muted"></i>
                                             <strong style="font-size: 15px;">{{ $parent->title }}</strong>
-                                            <span
-                                                class="badge bg-primary-subtle text-primary ms-2">{{ __('translate.Main Menu') }}</span>
+                                            <span class="badge bg-primary-subtle text-primary ms-2">{{ __('translate.Main Menu') }}</span>
+                                            @if($parent->children->count() > 0)
+                                                <span class="children-count">({{ $parent->children->count() }})</span>
+                                            @endif
                                         </div>
                                         <div class="d-flex align-items-center gap-2">
-                                            @include('components.admin.crud.status-badge', [
-                                                'model' => $parent,
-                                            ])
+                                            @include('components.admin.crud.status-badge', ['model' => $parent])
                                             <a href="{{ route('admin.menus.edit', $parent) }}" class="edit-btn-static">
                                                 {{ __('translate.edit') }}
                                             </a>
@@ -133,7 +176,7 @@
                                     </div>
 
                                     {{-- ALT MENYULAR --}}
-                                    <div class="nested-sortable row g-2" data-parent-id="{{ $parent->id }}">
+                                    <div class="nested-sortable row g-2 collapsed" id="children-{{ $parent->id }}" data-parent-id="{{ $parent->id }}">
                                         @foreach ($parent->children->sortBy('order') as $child)
                                             {{-- Əgər tip small_blocks-dursa col-md-6 (2*2 üçün), deyilsə tam en (col-12) --}}
                                             <div class="draggable-item {{ $child->type == 'small_block' ? 'col-md-6' : 'col-12' }}"
@@ -181,6 +224,55 @@
     document.addEventListener('DOMContentLoaded', function() {
         const blockList = document.getElementById('block-list');
         if (!blockList) return;
+
+        // --- Accordion ---
+        const STORAGE_KEY = 'menu_accordion_state';
+        let openIds = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+
+        function setHeight(panel) {
+            if (!panel.classList.contains('collapsed')) {
+                panel.style.maxHeight = panel.scrollHeight + 'px';
+            }
+        }
+
+        function openPanel(btn, panel) {
+            panel.classList.remove('collapsed');
+            panel.style.maxHeight = panel.scrollHeight + 'px';
+            panel.style.opacity  = '1';
+            btn.classList.add('open');
+        }
+
+        function closePanel(btn, panel) {
+            panel.style.maxHeight = '0';
+            panel.style.opacity   = '0';
+            panel.classList.add('collapsed');
+            btn.classList.remove('open');
+        }
+
+        document.querySelectorAll('.toggle-children').forEach(btn => {
+            const targetId = btn.dataset.target;
+            const panel    = document.getElementById(targetId);
+            if (!panel) return;
+
+            // Restore saved state
+            if (openIds.includes(targetId)) {
+                openPanel(btn, panel);
+            }
+
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const isOpen = !panel.classList.contains('collapsed');
+                if (isOpen) {
+                    closePanel(btn, panel);
+                    openIds = openIds.filter(id => id !== targetId);
+                } else {
+                    openPanel(btn, panel);
+                    if (!openIds.includes(targetId)) openIds.push(targetId);
+                }
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(openIds));
+            });
+        });
+        // --- /Accordion ---
 
         // Bütün konteynerləri aktivləşdir
         const setupSortable = (el) => {
