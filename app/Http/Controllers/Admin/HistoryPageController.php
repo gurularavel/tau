@@ -27,7 +27,7 @@ class HistoryPageController extends Controller
 
     public function index(): View
     {
-        $historyPage = HistoryPage::first();
+        $historyPage = HistoryPage::firstOrCreate([]);
         $infos = HistoryPageInfo::with('translations')->orderBy('order')->get();
 
         return view(self::PATH . 'edit', [

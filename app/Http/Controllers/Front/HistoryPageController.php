@@ -10,7 +10,7 @@ class HistoryPageController extends Controller
 {
     public function index()
     {
-        $historyPage = HistoryPage::with('translations')->first();
+        $historyPage = HistoryPage::with('translations')->firstOrCreate([]);
         $infos = HistoryPageInfo::with('translations')->orderBy('order')->get();
 
         return view('front.historyPage.index', [
