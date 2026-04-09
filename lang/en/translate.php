@@ -638,6 +638,16 @@ return [
     'Other news' => 'Other news',
     'Other announcements' => 'Other announcements',
 
+    // Sidebar section headers
+    'Navigation'            => 'Navigation',
+    'Inbox'                 => 'Inbox',
+    'Page Settings'         => 'Page Settings',
+    'Academic'              => 'Academic',
+    'Events & Projects'     => 'Events & Projects',
+    'Research & Internship' => 'Research & Internship',
+    'News & Graduates'      => 'News & Graduates',
+    'System'                => 'System',
+
 
 
 

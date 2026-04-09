@@ -632,4 +632,14 @@ return [
     'File size cannot exceed 5 MB' => 'Dosya boyutu 5 MB\'ı geçemez',
     'Only PDF, DOC and DOCX formats are allowed' => 'Sadece PDF, DOC ve DOCX formatlarına izin verilir',
     'Announcement date' => 'İlan tarihi',
+
+    // Sidebar section headers
+    'Navigation'            => 'Navigasyon',
+    'Inbox'                 => 'Gelen Kutusu',
+    'Page Settings'         => 'Sayfa Ayarları',
+    'Academic'              => 'Akademik',
+    'Events & Projects'     => 'Etkinlikler & Projeler',
+    'Research & Internship' => 'Araştırma & Staj',
+    'News & Graduates'      => 'Haberler & Mezunlar',
+    'System'                => 'Sistem',
 ];

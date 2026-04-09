@@ -653,4 +653,14 @@ return [
     'File size cannot exceed 5 MB' => 'Размер файла не может превышать 5 МБ',
     'Only PDF, DOC and DOCX formats are allowed' => 'Допускаются только форматы PDF, DOC и DOCX',
     'Announcement date' => 'Дата объявления',
+
+    // Sidebar section headers
+    'Navigation'            => 'Навигация',
+    'Inbox'                 => 'Входящие',
+    'Page Settings'         => 'Настройки страниц',
+    'Academic'              => 'Академический',
+    'Events & Projects'     => 'Мероприятия & Проекты',
+    'Research & Internship' => 'Исследования & Практика',
+    'News & Graduates'      => 'Новости & Выпускники',
+    'System'                => 'Система',
 ];

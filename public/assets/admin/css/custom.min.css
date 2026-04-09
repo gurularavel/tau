@@ -1,2 +1,56 @@
+/* ─── Admin Sidebar Section Headers ─────────────────────────────────── */
+.menu-section-header {
+    padding: 20px 20px 5px !important;
+    margin-top: 4px;
+    pointer-events: none;
+}
+
+.menu-section-header .menu-section-text {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.35);
+    white-space: nowrap;
+    position: relative;
+}
+
+.menu-section-header .menu-section-text::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    margin-left: 4px;
+}
+
+.menu-section-header .menu-section-text i {
+    font-size: 13px;
+    flex-shrink: 0;
+    opacity: 0.7;
+}
+
+/* Light sidebar variant */
+[data-sidebar="light"] .menu-section-header .menu-section-text {
+    color: rgba(0, 0, 0, 0.35);
+}
+[data-sidebar="light"] .menu-section-header .menu-section-text::after {
+    background: rgba(0, 0, 0, 0.08);
+}
+
+/* ─── Nav item icon polish ───────────────────────────────────────────── */
+#navbar-nav .nav-link.menu-link i {
+    font-size: 16px;
+    line-height: 1;
+    vertical-align: -2px;
+    transition: transform 0.2s ease;
+}
+
+#navbar-nav .nav-link.menu-link:hover i,
+#navbar-nav .nav-link.menu-link.active i {
+    transform: translateX(1px);
+}
 
 /*# sourceMappingURL=custom.min.css.map */
