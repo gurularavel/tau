@@ -11,14 +11,14 @@
     <!-- Layout config Js -->
     <script src="{{ asset('/assets/admin/js/layout.js') }}"></script>
     <!-- Bootstrap Css -->
-    <link href="{{ asset('/assets/admin/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('/assets/admin/css/bootstrap.min.css') }}?v={{ filemtime(public_path('assets/admin/css/bootstrap.min.css')) }}" rel="stylesheet" type="text/css" />
     <script src="{{ asset('/assets/admin/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- Icons Css -->
-    <link href="{{ asset('/assets/admin/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('/assets/admin/css/icons.min.css') }}?v={{ filemtime(public_path('assets/admin/css/icons.min.css')) }}" rel="stylesheet" type="text/css" />
     <!-- App Css-->
-    <link href="{{ asset('/assets/admin/css/app.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('/assets/admin/css/app.min.css') }}?v={{ filemtime(public_path('assets/admin/css/app.min.css')) }}" rel="stylesheet" type="text/css" />
     <!-- custom Css-->
-    <link href="{{ asset('/assets/admin/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('/assets/admin/css/custom.min.css') }}?v={{ filemtime(public_path('assets/admin/css/custom.min.css')) }}" rel="stylesheet" type="text/css" />
     <!-- Plugins css -->
     <link href="{{ asset('/assets/admin/libs/dropzone/dropzone.css') }}" rel="stylesheet" type="text/css" />
     <!-- Summernote css -->
