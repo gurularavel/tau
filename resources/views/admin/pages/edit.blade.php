@@ -372,7 +372,8 @@
                 '3': 'Image',
                 '4': 'Video',
                 '5': 'Images',
-                '6': 'Dynamic Items'
+                '6': 'Dynamic Items',
+                '7': 'File'
             };
 
             let firstLocale = Object.keys(dynamicIndexes)[0];
@@ -390,6 +391,7 @@
                         <option value="4" ${dynamic.type == 4 ? 'selected' : ''}>Video</option>
                         <option value="5" ${dynamic.type == 5 ? 'selected' : ''}>Images (Multiple)</option>
                         <option value="6" ${dynamic.type == 6 ? 'selected' : ''}>Dynamic Items</option>
+                        <option value="7" ${dynamic.type == 7 ? 'selected' : ''}>File</option>
                     </select>
                 </div>
 
@@ -598,6 +600,49 @@
                 `;
             }
 
+            // Type 7: File
+            if (type == 7) {
+                if (isFirstLocale) {
+                    html += `<div class="col-lg-12 mb-3">
+                        <label class="form-label">File</label>`;
+
+                    if (dynamic.file) {
+                        let ext = dynamic.file.split('.').pop().toLowerCase();
+                        let iconClass = ext === 'pdf' ? 'ri-file-pdf-line text-danger' :
+                                        ['doc','docx'].includes(ext) ? 'ri-file-word-line text-primary' :
+                                        ['xls','xlsx'].includes(ext) ? 'ri-file-excel-line text-success' :
+                                        ['zip','rar'].includes(ext) ? 'ri-file-zip-line text-warning' : 'ri-file-line';
+                        html += `
+                            <div class="existing-file-wrapper mb-2 d-flex align-items-center gap-2 p-2 border rounded bg-white">
+                                <i class="${iconClass}" style="font-size:24px;"></i>
+                                <a href="/uploads/dynamics_files/${dynamic.file}" target="_blank" class="text-truncate" style="max-width:300px;">${dynamic.file}</a>
+                                <button type="button" class="btn btn-sm btn-outline-danger ms-auto"
+                                        onclick="markFileForDeletion(${index})">
+                                    <i class="ri-delete-bin-line"></i> Remove
+                                </button>
+                                <input type="hidden" name="dynamics[${index}][keep_file]" value="1" id="keep-file-${index}">
+                            </div>
+                            <small class="text-muted d-block mb-2">Upload a new file to replace</small>
+                        `;
+                    }
+
+                    html += `
+                        <input type="file"
+                               name="dynamics[${index}][file]"
+                               class="form-control"
+                               id="file-input-${index}">
+                        <small class="text-muted">PDF, DOC, DOCX, XLS, XLSX, ZIP and other files are supported</small>
+                    </div>`;
+                } else {
+                    html += `
+                        <div class="col-lg-12 mb-3">
+                            <div class="alert alert-info py-2 mb-0">
+                                <i class="ri-file-line"></i> File is managed in the first language tab
+                            </div>
+                        </div>`;
+                }
+            }
+
             html += '</div>';
             container.innerHTML = html;
 
@@ -640,6 +685,7 @@
                         <option value="4">Video</option>
                         <option value="5">Images (Multiple)</option>
                         <option value="6">Dynamic Items</option>
+                        <option value="7">File</option>
                     </select>
                 </div>
 
@@ -710,6 +756,18 @@
             }
         }
 
+        function markFileForDeletion(dynamicIndex) {
+            let keepInput = document.getElementById('keep-file-' + dynamicIndex);
+            if (keepInput) {
+                keepInput.value = '0';
+            }
+            let wrapper = keepInput ? keepInput.closest('.existing-file-wrapper') : null;
+            if (wrapper) {
+                wrapper.style.opacity = '0.4';
+                wrapper.style.textDecoration = 'line-through';
+            }
+        }
+
         function toggleDynamicFields(select, locale, index) {
             let firstLocale = Object.keys(dynamicIndexes)[0];
             let isFirstLocale = (locale === firstLocale);
@@ -723,7 +781,8 @@
                 '3': 'Image',
                 '4': 'Video',
                 '5': 'Images',
-                '6': 'Dynamic Items'
+                '6': 'Dynamic Items',
+                '7': 'File'
             };
 
             if (badge) badge.textContent = typeNames[type];
@@ -846,6 +905,28 @@
                         </div>
                     </div>
                 `;
+            }
+
+            // Type 7: File
+            if (type == '7') {
+                if (isFirstLocale) {
+                    html += `
+                        <div class="col-lg-12 mb-3">
+                            <label class="form-label">File</label>
+                            <input type="file"
+                                   name="dynamics[${index}][file]"
+                                   class="form-control">
+                            <small class="text-muted">PDF, DOC, DOCX, XLS, XLSX, ZIP and other files are supported</small>
+                        </div>
+                    `;
+                } else {
+                    html += `
+                        <div class="col-lg-12 mb-3">
+                            <div class="alert alert-info py-2 mb-0">
+                                <i class="ri-file-line"></i> File is managed in the first language tab
+                            </div>
+                        </div>`;
+                }
             }
 
             html += '</div>';

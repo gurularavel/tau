@@ -105,6 +105,30 @@
                                 </div>
                             </section>
                         @endif
+                        @if ($dynamic->type == \App\Models\Dynamic::TYPE_FILE && $dynamic->file)
+                            @php
+                                $ext = strtolower(pathinfo($dynamic->file, PATHINFO_EXTENSION));
+                            @endphp
+                            <div class="file-download-block" style="margin: 16px 0;">
+                                <a href="{{ asset('uploads/dynamics_files/' . $dynamic->file) }}"
+                                   target="_blank"
+                                   download
+                                   style="display:inline-flex; align-items:center; gap:10px; padding:12px 20px; background:#f5f5f5; border:1px solid #ddd; border-radius:8px; text-decoration:none; color:inherit;">
+                                    @if($ext === 'pdf')
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#e74c3c" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/><path d="M14 2v6h6"/></svg>
+                                    @elseif(in_array($ext, ['doc','docx']))
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#2980b9" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/><path d="M14 2v6h6"/></svg>
+                                    @elseif(in_array($ext, ['xls','xlsx']))
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#27ae60" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/><path d="M14 2v6h6"/></svg>
+                                    @else
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#7f8c8d" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/><path d="M14 2v6h6"/></svg>
+                                    @endif
+                                    <span>{{ $dynamic->title ?? __('translate.Download File') }}</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5z"/><path d="M20 18H4v2h16v-2z"/></svg>
+                                </a>
+                            </div>
+                        @endif
+
                         @if ($dynamic->video)
                             <section class="video-container">
                                 @php

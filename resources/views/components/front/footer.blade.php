@@ -18,7 +18,11 @@
                                 <ul>
                                     @foreach ($footer->items as $item)
                                         <li>
-                                            <a href="/{{ $item->slug ?? '#' }}">{{ $item->title ?? '' }}</a>
+                                            @if(str_starts_with($item->slug ?? '', 'http'))
+                                                <a href="{{ $item->slug }}" target="_blank" rel="noopener noreferrer">{{ $item->title ?? '' }}</a>
+                                            @else
+                                                <a href="/{{ $item->slug ?? '#' }}">{{ $item->title ?? '' }}</a>
+                                            @endif
                                         </li>
                                     @endforeach
 

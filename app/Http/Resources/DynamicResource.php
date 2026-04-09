@@ -51,6 +51,7 @@ class DynamicResource extends JsonResource
             'type' => $this->type,
             'image' => $this->image,
             'video' => $this->video,
+            'file' => $this->file,
             'order' => $this->order,
             'is_active' => $this->is_active,
             'translations' => $translationsArray,

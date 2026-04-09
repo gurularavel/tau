@@ -62,6 +62,14 @@
                                                 <x-admin.crud.index.title   :columnName="$model->slug" :hyperlink="true" :hyperlinkValue="route('front.pages.show', $model->slug)"/>
                                                 <x-admin.crud.index.status :model="$model" :name="'is_active'"/>
                                                 <x-admin.crud.index.actions :model="$model" :routeName="'pages'" :delete="true"/>
+                                                <td>
+                                                    <form method="POST" action="{{ route('admin.pages.duplicate', $model) }}" style="display:inline;">
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-sm btn-outline-info" title="{{ __('translate.Duplicate') }}">
+                                                            <i class="ri-file-copy-line"></i>
+                                                        </button>
+                                                    </form>
+                                                </td>
                                                 @php $count++ @endphp
                                             </tr>
                                         @empty

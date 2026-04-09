@@ -127,7 +127,9 @@ public function store(FooterRequest $request): RedirectResponse
         // Əgər manual input (slug_manual) doludursa onu istifadə et,
         // yoxdursa select-lərdən gələni yoxla
         $slug = null;
-        if (!empty($row['slug_manual'])) {
+        if (!empty($row['slug_external'])) {
+            $slug = $row['slug_external'];
+        } elseif (!empty($row['slug_manual'])) {
             $slug = $row['slug_manual'];
         } elseif (!empty($row['slug_select'])) {
             $slug = $row['slug_select'];
@@ -178,9 +180,11 @@ public function store(FooterRequest $request): RedirectResponse
         $firstLocale = array_key_first($itemData);
         $row = $itemData[$firstLocale];
 
-        // Slug təyini: Manual üstündür, yoxsa select-lərdən biri
+        // Slug təyini: External > Manual > Page > Program
         $slug = null;
-        if (!empty($row['slug_manual'])) {
+        if (!empty($row['slug_external'])) {
+            $slug = $row['slug_external'];
+        } elseif (!empty($row['slug_manual'])) {
             $slug = $row['slug_manual'];
         } elseif (!empty($row['slug_select'])) {
             $slug = $row['slug_select'];

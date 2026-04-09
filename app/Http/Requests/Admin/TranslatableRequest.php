@@ -9,7 +9,7 @@ class TranslatableRequest extends AppFormRequest
 {
     protected function locales(): array
     {
-        return config('translatable.locales', []);
+        return getLocales();
     }
 
     public function translatedAttributes(Model $model): array

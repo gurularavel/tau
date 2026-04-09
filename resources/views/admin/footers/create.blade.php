@@ -49,6 +49,8 @@
 
                                                 <input type="text" name="footer_items[new_0][{{ $locale }}][slug_manual]"
                                                     class="form-control slug-manual" placeholder="Custom slug">
+                                                <input type="url" name="footer_items[new_0][{{ $locale }}][slug_external]"
+                                                    class="form-control slug-external" placeholder="https://external-link.com">
                                             </div>
                                             <button type="button" class="btn btn-danger remove-item">✕</button>
                                         </div>
@@ -94,6 +96,7 @@
                         @endforeach
                     </select>
                     <input type="text" name="footer_items[new_${footerIndex}][${locale}][slug_manual]" class="form-control slug-manual" placeholder="Custom slug">
+                    <input type="url" name="footer_items[new_${footerIndex}][${locale}][slug_external]" class="form-control slug-external" placeholder="https://external-link.com">
                 </div>
                 <button type="button" class="btn btn-danger remove-item">✕</button>
             </div>`;
@@ -107,21 +110,32 @@
         }
     });
 
-    // Slug ötürmə məntiqi
     document.addEventListener('change', function(e) {
-        const isSelect = e.target.classList.contains('slug-select');
-        const isProgram = e.target.classList.contains('slug-program');
+        const isSelect   = e.target.classList.contains('slug-select');
+        const isProgram  = e.target.classList.contains('slug-program');
+        const isExternal = e.target.classList.contains('slug-external');
+        const isManual   = e.target.classList.contains('slug-manual');
 
-        if (isSelect || isProgram) {
-            const container = e.target.closest('.slug-container');
-            const manualInput = container.querySelector('.slug-manual');
+        const container = e.target.closest('.slug-container');
+        if (!container) return;
 
-            if (e.target.value !== "") {
-                manualInput.value = e.target.value;
+        if ((isSelect || isProgram) && e.target.value !== "") {
+            container.querySelector('.slug-manual').value   = "";
+            container.querySelector('.slug-external').value = "";
+            if (isSelect)  container.querySelector('.slug-program').value = "";
+            if (isProgram) container.querySelector('.slug-select').value  = "";
+        }
 
-                if (isSelect) container.querySelector('.slug-program').value = "";
-                if (isProgram) container.querySelector('.slug-select').value = "";
-            }
+        if (isManual && e.target.value !== "") {
+            container.querySelector('.slug-select').value   = "";
+            container.querySelector('.slug-program').value  = "";
+            container.querySelector('.slug-external').value = "";
+        }
+
+        if (isExternal && e.target.value !== "") {
+            container.querySelector('.slug-select').value  = "";
+            container.querySelector('.slug-program').value = "";
+            container.querySelector('.slug-manual').value  = "";
         }
     });
 </script>

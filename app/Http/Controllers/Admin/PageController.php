@@ -187,6 +187,24 @@ public function update(PageRequest $request, Page $page): RedirectResponse
                         $dynamic->video = $dynamicData['video'];
                     }
 
+                    // Handle file (type 7)
+                    if ($dynamicData['type'] == 7) {
+                        if ($request->hasFile("dynamics.{$index}.file")) {
+                            if ($dynamic->file) {
+                                $this->deleteFile($dynamic->file, 'uploads/dynamics_files');
+                            }
+                            $dynamic->file = $this->uploadFile(
+                                $request->file("dynamics.{$index}.file"),
+                                'uploads/dynamics_files'
+                            );
+                        } elseif (isset($dynamicData['keep_file']) && $dynamicData['keep_file'] == '0') {
+                            if ($dynamic->file) {
+                                $this->deleteFile($dynamic->file, 'uploads/dynamics_files');
+                                $dynamic->file = null;
+                            }
+                        }
+                    }
+
                     $dynamic->save();
 
                     // Save translations
@@ -347,6 +365,14 @@ public function update(PageRequest $request, Page $page): RedirectResponse
                         $dynamic->video = $dynamicData['video'];
                     }
 
+                    // Handle file for type 7
+                    if ($dynamicData['type'] == 7 && $request->hasFile("dynamics.{$index}.file")) {
+                        $dynamic->file = $this->uploadFile(
+                            $request->file("dynamics.{$index}.file"),
+                            'uploads/dynamics_files'
+                        );
+                    }
+
                     $dynamic->save();
 
                     // Save translations
@@ -460,6 +486,43 @@ public function update(PageRequest $request, Page $page): RedirectResponse
     }
 
     /**
+     * Upload any file to public folder (preserves original extension)
+     */
+    private function uploadFile($file, $folder = 'uploads/dynamics_files')
+    {
+        if (!$file) {
+            return null;
+        }
+
+        $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+        $destinationPath = public_path($folder);
+
+        if (!file_exists($destinationPath)) {
+            mkdir($destinationPath, 0755, true);
+        }
+
+        $file->move($destinationPath, $filename);
+
+        return $filename;
+    }
+
+    /**
+     * Delete file from public folder
+     */
+    private function deleteFile($filename, $folder = 'uploads/dynamics_files')
+    {
+        if (!$filename) {
+            return;
+        }
+
+        $filePath = public_path($folder . '/' . $filename);
+
+        if (File::exists($filePath)) {
+            File::delete($filePath);
+        }
+    }
+
+    /**
      * Delete image from public folder
      */
     private function deleteImage($filename, $folder = 'uploads/dynamics')
@@ -475,7 +538,106 @@ public function update(PageRequest $request, Page $page): RedirectResponse
         }
     }
 
-        public function updateDynamicsLayout(Request $request)
+        public function duplicate(Page $page): RedirectResponse
+    {
+        DB::beginTransaction();
+
+        try {
+            // Clone page
+            $newPage = $page->replicate();
+            $newPage->slug = $page->slug . '-copy-' . time();
+            $newPage->is_active = 0;
+            $newPage->dynamic_ids = null;
+            $newPage->save();
+
+            // Copy translations
+            foreach ($page->translations as $translation) {
+                $newPage->translateOrNew($translation->locale)->title = $translation->title;
+                $newPage->translateOrNew($translation->locale)->content = $translation->content;
+                $newPage->translateOrNew($translation->locale)->meta_title = $translation->meta_title;
+                $newPage->translateOrNew($translation->locale)->meta_description = $translation->meta_description;
+                $newPage->translateOrNew($translation->locale)->meta_keywords = $translation->meta_keywords;
+            }
+            $newPage->save();
+
+            // Clone dynamics
+            $oldDynamicIds = $page->dynamic_ids ?? [];
+            if (!empty($oldDynamicIds)) {
+                $dynamics = Dynamic::with(['translations', 'images', 'items.translations'])
+                    ->whereIn('id', $oldDynamicIds)
+                    ->get()
+                    ->keyBy('id');
+
+                $newDynamicIds = [];
+
+                foreach ($oldDynamicIds as $oldId) {
+                    $dynamic = $dynamics[$oldId] ?? null;
+                    if (!$dynamic) continue;
+
+                    $newDynamic = $dynamic->replicate();
+                    $newDynamic->dynamic_item_ids = null;
+                    $newDynamic->save();
+
+                    // Copy dynamic translations
+                    foreach ($dynamic->translations as $t) {
+                        $newDynamic->translateOrNew($t->locale)->title = $t->title;
+                        $newDynamic->translateOrNew($t->locale)->description = $t->description;
+                    }
+                    $newDynamic->save();
+
+                    // Copy images (type 5)
+                    foreach ($dynamic->images as $img) {
+                        DynamicImage::create([
+                            'dynamic_id' => $newDynamic->id,
+                            'image' => $img->image,
+                            'order' => $img->order,
+                        ]);
+                    }
+
+                    // Copy items (type 6)
+                    $newItemIds = [];
+                    foreach ($dynamic->items as $item) {
+                        $newItem = $item->replicate();
+                        $newItem->dynamic_id = $newDynamic->id;
+                        $newItem->save();
+
+                        foreach ($item->translations as $t) {
+                            $newItem->translateOrNew($t->locale)->title = $t->title;
+                            $newItem->translateOrNew($t->locale)->description = $t->description;
+                            $newItem->translateOrNew($t->locale)->phone = $t->phone ?? null;
+                            $newItem->translateOrNew($t->locale)->email = $t->email ?? null;
+                            $newItem->translateOrNew($t->locale)->name = $t->name ?? null;
+                            $newItem->translateOrNew($t->locale)->profession = $t->profession ?? null;
+                        }
+                        $newItem->save();
+
+                        $newItemIds[] = $newItem->id;
+                    }
+
+                    if (!empty($newItemIds)) {
+                        $newDynamic->dynamic_item_ids = $newItemIds;
+                        $newDynamic->save();
+                    }
+
+                    $newDynamicIds[] = $newDynamic->id;
+                }
+
+                $newPage->dynamic_ids = $newDynamicIds;
+                $newPage->save();
+            }
+
+            DB::commit();
+
+            return redirect()->route('admin.pages.edit', $newPage->id)
+                ->with('success', __('translate.Successfully completed'));
+
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return back()->withErrors(['error' => $e->getMessage()]);
+        }
+    }
+
+    public function updateDynamicsLayout(Request $request)
     {
         $request->validate([
             'layout' => 'required|array',

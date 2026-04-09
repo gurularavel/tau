@@ -16,6 +16,7 @@ class Dynamic extends Model
     const TYPE_IMAGES = 5;
     const TYPE_ITEMS = 6;
     const TYPE_DYNAMIC_ITEMS = 6;
+    const TYPE_FILE = 7;
 
     use HasFactory;
     use Translatable;
@@ -32,6 +33,8 @@ class Dynamic extends Model
     ];
     protected $fillable = [
         'image',
+        'video',
+        'file',
         'order',
         'dynamic_item_ids',
         'is_active',
@@ -103,6 +106,7 @@ public function items()
             self::TYPE_VIDEO => 'Video',
             self::TYPE_IMAGES => 'Multiple Images',
             self::TYPE_DYNAMIC_ITEMS => 'Dynamic Items',
+            self::TYPE_FILE => 'File',
         ];
 
         return $types[$this->type] ?? 'Unknown';
