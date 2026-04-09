@@ -38,6 +38,7 @@ use App\Http\Controllers\Admin\{
 use App\Http\Controllers\Admin\CareerPageController;
 use App\Http\Controllers\Admin\ContactPageController;
 use App\Http\Controllers\Admin\HomePageController;
+use App\Http\Controllers\Admin\HeroSlideController;
 use App\Http\Controllers\Admin\PageController;
 
 use App\Http\Controllers\Admin\ProjectController;
@@ -168,6 +169,10 @@ Route::post('/academic-lookups/event-type', [AcademicLookupController::class, 'e
 
 
         Route::resource('home-page',             HomePageController::class)->names('admin.homePage');
+        Route::post('hero-slides',               [HeroSlideController::class, 'store'])->name('admin.hero_slides.store');
+        Route::post('hero-slides/order',         [HeroSlideController::class, 'order'])->name('admin.hero_slides.order');
+        Route::post('hero-slides/{heroSlide}',   [HeroSlideController::class, 'update'])->name('admin.hero_slides.update');
+        Route::delete('hero-slides/{heroSlide}', [HeroSlideController::class, 'destroy'])->name('admin.hero_slides.destroy');
         Route::resource('pages',                 PageController::class)->names('admin.pages');
         Route::post('pages/{page}/duplicate',    [PageController::class, 'duplicate'])->name('admin.pages.duplicate');
         Route::resource('programs',                 ProgramController::class)->names('admin.programs');

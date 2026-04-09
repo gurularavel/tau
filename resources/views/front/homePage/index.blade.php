@@ -3,14 +3,86 @@
 
 
 
+    @if($heroSlides->count() > 0)
+    <section class="hero-slider container-fluid p-0">
+        <div class="swiper hero-swiper">
+            <div class="swiper-wrapper">
+                @foreach($heroSlides as $slide)
+                <div class="swiper-slide hero-slide"
+                     style="background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%), url('{{ asset('uploads/hero_slides/'.$slide->image) }}') center/cover no-repeat;">
+                    <div class="container hero-slide-content">
+                        @if($slide->title)
+                            <h1>{{ $slide->title }}</h1>
+                        @endif
+                        @if($slide->description)
+                            <p>{{ $slide->description }}</p>
+                        @endif
+                        @if($slide->button_text && $slide->button_url)
+                            <a href="{{ $slide->button_url }}" class="hero-slide-btn">{{ $slide->button_text }}</a>
+                        @endif
+                    </div>
+                </div>
+                @endforeach
+            </div>
+            @if($heroSlides->count() > 1)
+            <div class="swiper-pagination hero-pagination"></div>
+            <div class="swiper-button-prev hero-prev"></div>
+            <div class="swiper-button-next hero-next"></div>
+            @endif
+        </div>
+    </section>
+    @else
     <section class="hero container-fluid"
-        style="background: linear-gradient(180deg, rgba(0,0,0,0) 0%, #000000 100%), url('{{ getImage('homePage', $homePage->image) }}');
-                background-size: cover;
-                background-position: center;">
+        style="background: linear-gradient(180deg, rgba(0,0,0,0) 0%, #000000 100%), url('{{ getImage('homePage', $homePage->image) }}') center/cover no-repeat;">
         <div class="container">
             <h1>{{ $homePage->title ?? '' }}</h1>
         </div>
     </section>
+    @endif
+
+    <style>
+        .hero-slider { position: relative; }
+        .hero-swiper { width: 100%; }
+        .hero-slide {
+            min-height: 600px;
+            display: flex;
+            align-items: flex-end;
+        }
+        .hero-slide-content {
+            padding-bottom: 80px;
+            color: #fff;
+        }
+        .hero-slide-content h1 { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 700; margin-bottom: 12px; }
+        .hero-slide-content p  { font-size: 1.1rem; margin-bottom: 24px; opacity: .9; max-width: 600px; }
+        .hero-slide-btn {
+            display: inline-block;
+            padding: 12px 32px;
+            background: #fff;
+            color: #000;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background .2s, color .2s;
+        }
+        .hero-slide-btn:hover { background: #e2e2e2; color: #000; }
+        .hero-pagination { bottom: 20px !important; }
+        .hero-pagination .swiper-pagination-bullet-active { background: #fff; }
+        .hero-prev, .hero-next { color: #fff; }
+        .hero-prev::after, .hero-next::after { font-size: 20px; }
+        @media(max-width:768px) { .hero-slide { min-height: 350px; } .hero-slide-content { padding-bottom: 50px; } }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            new Swiper('.hero-swiper', {
+                loop: true,
+                autoplay: { delay: 5000, disableOnInteraction: false },
+                speed: 800,
+                pagination: { el: '.hero-pagination', clickable: true },
+                navigation: { nextEl: '.hero-next', prevEl: '.hero-prev' },
+            });
+        });
+    </script>
 
     <section class="media container">
         <div class="media-header">

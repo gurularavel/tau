@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Models\AcademicCalendar;
 use App\Models\Announcement;
+use App\Models\HeroSlide;
 use App\Models\HomePage;
 use App\Models\News;
 use App\Models\Program;
@@ -23,6 +24,7 @@ class HomePageController extends Controller
     public function index()
     {
         $homePage        = HomePage::with('translations')->first();
+        $heroSlides      = HeroSlide::with('translations')->active()->get();
 
         $news            = News::active()->get();
         $announcements          = Announcement::active()->get();
@@ -47,6 +49,7 @@ class HomePageController extends Controller
 
         return view('front.homePage.index', compact(
             'homePage',
+            'heroSlides',
             'calendars',
             'news',
             'announcements',

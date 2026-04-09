@@ -1,3 +1,4 @@
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="{{ asset('assets/front/utils/navbar-toggle.js') }}"></script>
     <script src="{{ asset('assets/front/utils/homapage-media-carousel.js') }}"></script>
     <script src="{{asset('assets/front/utils/academic-calendar-filters.js')}}"></script>
