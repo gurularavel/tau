@@ -63,10 +63,10 @@ class HeroSlideController extends Controller
 
     public function order(Request $request)
     {
-        foreach ($request->order as $item) {
+        foreach ($request->orders as $item) {
             HeroSlide::where('id', $item['id'])->update(['order' => $item['order']]);
         }
-        return response()->json(['success' => true]);
+        return response()->json(['status' => 'success']);
     }
 
     private function uploadImage($file): string

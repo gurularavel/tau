@@ -11,10 +11,13 @@
 
 </head>
 @php
-    $menus = App\Models\Menu::with('children.translations', 'translations')
+    $menus = App\Models\Menu::with([
+        'children' => fn($q) => $q->where('is_active', 1)->orderBy('order'),
+        'children.translations',
+        'translations',
+    ])
         ->whereNull('parent_id')
         ->active()
-        ->orderBy('order')
         ->get();
 
     $contactPage = cache()->remember('contact_page', 10, function () {

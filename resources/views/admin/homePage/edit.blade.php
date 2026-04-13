@@ -168,7 +168,7 @@
                             <div id="slides-list">
                                 @foreach(\App\Models\HeroSlide::with('translations')->orderBy('order')->get() as $slide)
                                 <div class="slide-row card mb-3 border" data-id="{{ $slide->id }}">
-                                    <div class="card-header d-flex justify-content-between align-items-center py-2 bg-light" style="cursor:grab;">
+                                    <div class="card-header d-flex justify-content-between align-items-center py-2 bg-light" style="cursor:grab;" title="Drag to reorder">
                                         <span><i class="ri-drag-move-2-line me-2 text-muted"></i><strong>Slide #{{ $loop->iteration }}</strong></span>
                                         <div class="d-flex gap-2">
                                             <button type="button" class="btn btn-sm btn-outline-secondary toggle-slide-body">
@@ -278,6 +278,37 @@
 <script>
 const CSRF = '{{ csrf_token() }}';
 const locales = @json(getLocales());
+
+// Hero Slides Ordering (drag-and-drop)
+document.addEventListener('DOMContentLoaded', function() {
+    const slidesList = document.getElementById('slides-list');
+    if (!slidesList) return;
+
+    new Sortable(slidesList, {
+        animation: 150,
+        handle: '.card-header',
+        ghostClass: 'bg-light-blue',
+        onEnd: function() {
+            const orders = [];
+            slidesList.querySelectorAll(':scope > .slide-row').forEach((row, index) => {
+                if (row.dataset.id && row.dataset.id !== 'new') {
+                    orders.push({ id: row.dataset.id, order: index + 1 });
+                }
+            });
+            if (!orders.length) return;
+            fetch('{{ route("admin.hero_slides.order") }}', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': CSRF },
+                body: JSON.stringify({ orders })
+            })
+            .then(r => r.json())
+            .then(data => {
+                if (data.status === 'success') showNotify('success', 'Order saved!');
+            })
+            .catch(() => showNotify('error', 'Error!'));
+        }
+    });
+});
 
 // Toggle slide body
 document.addEventListener('click', function(e) {
