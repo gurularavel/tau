@@ -959,19 +959,19 @@
                 <div class="dynamic-item-block" id="dynamic-item-${locale}-${dynamicIndex}-${itemIndex}">
                     ${idInput}
 
-                    <div class="position-absolute end-0 top-0 m-2 d-flex gap-1">
+                    <div class="position-absolute end-0 top-0 m-2 d-flex gap-1" style="z-index:10">
                         <button type="button"
                                 class="btn btn-info btn-sm"
                                 title="Duplicate"
                                 style="cursor:pointer"
                                 onclick="duplicateDynamicItem('${locale}', ${dynamicIndex}, ${itemIndex})">
-                            <i class="ri-file-copy-line" style="pointer-events:none"></i>
+                            <i class="ri-file-copy-line"></i>
                         </button>
                         <button type="button"
                                 class="btn btn-danger btn-sm"
                                 style="cursor:pointer"
                                 onclick="removeDynamicItem('${locale}', ${dynamicIndex}, ${itemIndex}, ${item.id})">
-                            <i class="ri-close-line" style="pointer-events:none"></i>
+                            <i class="ri-close-line"></i>
                         </button>
                     </div>
 
@@ -1148,19 +1148,19 @@
 
             let html = `
                 <div class="dynamic-item-block" id="dynamic-item-${locale}-${dynamicIndex}-${itemIndex}">
-                    <div class="position-absolute end-0 top-0 m-2 d-flex gap-1">
+                    <div class="position-absolute end-0 top-0 m-2 d-flex gap-1" style="z-index:10">
                         <button type="button"
                                 class="btn btn-info btn-sm"
                                 title="Duplicate"
                                 style="cursor:pointer"
                                 onclick="duplicateDynamicItem('${locale}', ${dynamicIndex}, ${itemIndex})">
-                            <i class="ri-file-copy-line" style="pointer-events:none"></i>
+                            <i class="ri-file-copy-line"></i>
                         </button>
                         <button type="button"
                                 class="btn btn-danger btn-sm"
                                 style="cursor:pointer"
                                 onclick="removeDynamicItem('${locale}', ${dynamicIndex}, ${itemIndex})">
-                            <i class="ri-close-line" style="pointer-events:none"></i>
+                            <i class="ri-close-line"></i>
                         </button>
                     </div>
 
