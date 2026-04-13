@@ -288,6 +288,15 @@ public function update(PageRequest $request, Page $page): RedirectResponse
                                     $this->deleteImage($item->image, 'uploads/dynamic_items');
                                     $item->image = null;
                                 }
+                            } elseif (!isset($itemData['id']) && !empty($itemData['copy_image'])) {
+                                // Duplicate: copy source file to a new filename
+                                $src = public_path('uploads/dynamic_items/' . basename($itemData['copy_image']));
+                                if (File::exists($src)) {
+                                    $ext = pathinfo($src, PATHINFO_EXTENSION);
+                                    $newName = time() . '_' . uniqid() . '.' . $ext;
+                                    File::copy($src, public_path('uploads/dynamic_items/' . $newName));
+                                    $item->image = $newName;
+                                }
                             }
 
                             $item->save();
@@ -418,6 +427,14 @@ public function update(PageRequest $request, Page $page): RedirectResponse
                                     $request->file("dynamics.{$index}.items.{$itemIndex}.image"),
                                     'uploads/dynamic_items'
                                 );
+                            } elseif (!empty($itemData['copy_image'])) {
+                                $src = public_path('uploads/dynamic_items/' . basename($itemData['copy_image']));
+                                if (File::exists($src)) {
+                                    $ext = pathinfo($src, PATHINFO_EXTENSION);
+                                    $newName = time() . '_' . uniqid() . '.' . $ext;
+                                    File::copy($src, public_path('uploads/dynamic_items/' . $newName));
+                                    $item->image = $newName;
+                                }
                             }
 
                             $item->save();

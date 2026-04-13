@@ -950,15 +950,30 @@
             let isFirstLocale = (locale === firstLocale);
             let translation = item.translations ? item.translations[locale] : null;
 
+            // Avoid nested template literals — build conditional parts first
+            let idInput = item.id
+                ? '<input type="hidden" name="dynamics[' + dynamicIndex + '][items][' + itemIndex + '][id]" value="' + item.id + '">'
+                : '';
+
             let html = `
                 <div class="dynamic-item-block" id="dynamic-item-${locale}-${dynamicIndex}-${itemIndex}">
-                    <input type="hidden" name="dynamics[${dynamicIndex}][items][${itemIndex}][id]" value="${item.id}">
+                    ${idInput}
 
-                    <button type="button"
-                            class="btn btn-danger btn-sm position-absolute end-0 top-0 m-2"
-                            onclick="removeDynamicItem('${locale}', ${dynamicIndex}, ${itemIndex}, ${item.id})">
-                        <i class="ri-close-line"></i>
-                    </button>
+                    <div class="position-absolute end-0 top-0 m-2 d-flex gap-1">
+                        <button type="button"
+                                class="btn btn-info btn-sm"
+                                title="Duplicate"
+                                style="cursor:pointer"
+                                onclick="duplicateDynamicItem('${locale}', ${dynamicIndex}, ${itemIndex})">
+                            <i class="ri-file-copy-line" style="pointer-events:none"></i>
+                        </button>
+                        <button type="button"
+                                class="btn btn-danger btn-sm"
+                                style="cursor:pointer"
+                                onclick="removeDynamicItem('${locale}', ${dynamicIndex}, ${itemIndex}, ${item.id})">
+                            <i class="ri-close-line" style="pointer-events:none"></i>
+                        </button>
+                    </div>
 
                     <div class="row">
                         <div class="col-lg-12 mb-2">
@@ -1050,20 +1065,34 @@
                     <label class="form-label">Image</label>`;
 
                 if (item.image) {
-                    html += `
-                        <div class="existing-image-wrapper mb-2">
-                            <img src="/uploads/dynamic_items/${item.image}" class="existing-image" alt="Item image">
-                            <button type="button" class="remove-existing-image"
-                                    onclick="markItemImageForDeletion(${dynamicIndex}, ${itemIndex})">
-                                <i class="ri-close-line"></i>
-                            </button>
-                            <input type="hidden"
-                                   name="dynamics[${dynamicIndex}][items][${itemIndex}][keep_image]"
-                                   value="1"
-                                   id="keep-item-image-${dynamicIndex}-${itemIndex}">
-                        </div>
-                        <small class="text-muted d-block mb-2">Upload new image to replace</small>
-                    `;
+                    if (item.id) {
+                        // Existing saved item — keep/delete behaviour
+                        html += `
+                            <div class="existing-image-wrapper mb-2">
+                                <img src="/uploads/dynamic_items/${item.image}" class="existing-image" alt="Item image">
+                                <button type="button" class="remove-existing-image"
+                                        onclick="markItemImageForDeletion(${dynamicIndex}, ${itemIndex})">
+                                    <i class="ri-close-line"></i>
+                                </button>
+                                <input type="hidden"
+                                       name="dynamics[${dynamicIndex}][items][${itemIndex}][keep_image]"
+                                       value="1"
+                                       id="keep-item-image-${dynamicIndex}-${itemIndex}">
+                            </div>
+                            <small class="text-muted d-block mb-2">Upload new image to replace</small>
+                        `;
+                    } else {
+                        // Duplicated item — tell server to copy the source file
+                        html += `
+                            <div class="existing-image-wrapper mb-2">
+                                <img src="/uploads/dynamic_items/${item.image}" class="existing-image" alt="Item image">
+                                <input type="hidden"
+                                       name="dynamics[${dynamicIndex}][items][${itemIndex}][copy_image]"
+                                       value="${item.image}">
+                            </div>
+                            <small class="text-muted d-block mb-2">Upload new image to replace</small>
+                        `;
+                    }
                 }
 
                 html += `
@@ -1119,11 +1148,21 @@
 
             let html = `
                 <div class="dynamic-item-block" id="dynamic-item-${locale}-${dynamicIndex}-${itemIndex}">
-                    <button type="button"
-                            class="btn btn-danger btn-sm position-absolute end-0 top-0 m-2"
-                            onclick="removeDynamicItem('${locale}', ${dynamicIndex}, ${itemIndex})">
-                        <i class="ri-close-line"></i>
-                    </button>
+                    <div class="position-absolute end-0 top-0 m-2 d-flex gap-1">
+                        <button type="button"
+                                class="btn btn-info btn-sm"
+                                title="Duplicate"
+                                style="cursor:pointer"
+                                onclick="duplicateDynamicItem('${locale}', ${dynamicIndex}, ${itemIndex})">
+                            <i class="ri-file-copy-line" style="pointer-events:none"></i>
+                        </button>
+                        <button type="button"
+                                class="btn btn-danger btn-sm"
+                                style="cursor:pointer"
+                                onclick="removeDynamicItem('${locale}', ${dynamicIndex}, ${itemIndex})">
+                            <i class="ri-close-line" style="pointer-events:none"></i>
+                        </button>
+                    </div>
 
                     <div class="row">
                         <div class="col-lg-12 mb-2">
@@ -1248,6 +1287,71 @@
             }, 100);
 
             dynamicItemIndexes[locale][dynamicIndex]++;
+        }
+
+        function duplicateDynamicItem(callerLocale, dynamicIndex, itemIndex) {
+            try {
+                let allLocales = Object.keys(dynamicIndexes);
+                let firstLocale = allLocales[0];
+
+                // Collect translations from every locale's block
+                let translations = {};
+                allLocales.forEach(function(locale) {
+                    translations[locale] = {};
+                    let block = document.getElementById('dynamic-item-' + locale + '-' + dynamicIndex + '-' + itemIndex);
+                    if (!block) return;
+
+                    ['name', 'profession', 'email', 'phone', 'title'].forEach(function(field) {
+                        let input = block.querySelector('input[name*="[translations][' + locale + '][' + field + ']"]');
+                        if (input) translations[locale][field] = input.value;
+                    });
+
+                    // Description — read from Summernote if initialised
+                    let descId = 'item-desc-' + locale + '-' + dynamicIndex + '-' + itemIndex;
+                    try {
+                        let val = $('#' + descId).summernote('code');
+                        translations[locale]['description'] = (val && val !== '<p><br></p>') ? val : '';
+                    } catch(e) {
+                        let el = document.getElementById(descId);
+                        if (el) translations[locale]['description'] = el.value || '';
+                    }
+                });
+
+                // Type, is_active & image live only in first-locale block
+                let typeVal = '1', isActiveVal = '1', imageFilename = null;
+                let firstBlock = document.getElementById('dynamic-item-' + firstLocale + '-' + dynamicIndex + '-' + itemIndex);
+                if (firstBlock) {
+                    let ts = firstBlock.querySelector('select[name*="[items][' + itemIndex + '][type]"]');
+                    let as = firstBlock.querySelector('select[name*="[items][' + itemIndex + '][is_active]"]');
+                    if (ts) typeVal = ts.value;
+                    if (as) isActiveVal = as.value;
+
+                    // Read image filename from the existing image src
+                    let imgEl = firstBlock.querySelector('.item-image-block .existing-image');
+                    if (imgEl) {
+                        let src = imgEl.getAttribute('src') || '';
+                        imageFilename = src.split('/').pop() || null;
+                    }
+                }
+
+                let fakeItem = { id: null, type: typeVal, is_active: isActiveVal, image: imageFilename, translations: translations };
+
+                allLocales.forEach(function(locale) {
+                    if (!dynamicItemIndexes[locale]) dynamicItemIndexes[locale] = {};
+                    if (dynamicItemIndexes[locale][dynamicIndex] === undefined) {
+                        // Fallback: count existing items in the DOM
+                        let container = document.getElementById('dynamic-items-' + locale + '-' + dynamicIndex);
+                        dynamicItemIndexes[locale][dynamicIndex] = container
+                            ? container.querySelectorAll(':scope > .dynamic-item-block').length
+                            : 0;
+                    }
+                    let newIdx = dynamicItemIndexes[locale][dynamicIndex];
+                    addExistingDynamicItem(locale, dynamicIndex, fakeItem, newIdx);
+                    dynamicItemIndexes[locale][dynamicIndex]++;
+                });
+            } catch(err) {
+                console.error('duplicateDynamicItem error:', err);
+            }
         }
 
         function removeDynamicItem(locale, dynamicIndex, itemIndex, itemId = null) {
