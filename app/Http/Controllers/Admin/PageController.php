@@ -556,7 +556,17 @@ public function update(PageRequest $request, Page $page): RedirectResponse
         }
     }
 
-        public function duplicate(Page $page): RedirectResponse
+        public function destroyDynamicItem(DynamicItem $dynamicItem)
+    {
+        if ($dynamicItem->image) {
+            $this->deleteImage($dynamicItem->image, 'uploads/dynamic_items');
+        }
+        $dynamicItem->delete();
+
+        return response()->json(['success' => true]);
+    }
+
+    public function duplicate(Page $page): RedirectResponse
     {
         DB::beginTransaction();
 

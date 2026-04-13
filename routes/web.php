@@ -178,6 +178,7 @@ Route::post('/academic-lookups/event-type', [AcademicLookupController::class, 'e
         Route::delete('hero-slides/{heroSlide}', [HeroSlideController::class, 'destroy'])->name('admin.hero_slides.destroy');
         Route::resource('pages',                 PageController::class)->names('admin.pages');
         Route::post('pages/{page}/duplicate',    [PageController::class, 'duplicate'])->name('admin.pages.duplicate');
+        Route::delete('dynamic-items/{dynamicItem}', [PageController::class, 'destroyDynamicItem'])->name('admin.dynamic_items.destroy');
         Route::resource('programs',                 ProgramController::class)->names('admin.programs');
         Route::post('programs/{program}/duplicate',  [ProgramController::class, 'duplicate'])->name('admin.programs.duplicate');
 

@@ -1355,21 +1355,35 @@
         }
 
         function removeDynamicItem(locale, dynamicIndex, itemIndex, itemId = null) {
-            if (confirm('Are you sure you want to remove this item?')) {
-                // Remove from ALL locale tabs so no orphan inputs remain in the form
+            if (!confirm('Are you sure you want to remove this item?')) return;
+
+            const removeFromDom = () => {
                 Object.keys(dynamicIndexes).forEach(function(loc) {
                     try { $(`#item-desc-${loc}-${dynamicIndex}-${itemIndex}`).summernote('destroy'); } catch(e) {}
                     let el = document.getElementById('dynamic-item-' + loc + '-' + dynamicIndex + '-' + itemIndex);
                     if (el) el.remove();
                 });
+            };
 
-                if (itemId) {
-                    let input = document.createElement('input');
-                    input.type = 'hidden';
-                    input.name = 'delete_dynamic_items[]';
-                    input.value = itemId;
-                    document.querySelector('form').appendChild(input);
-                }
+            if (itemId) {
+                // Existing DB item — delete via AJAX immediately
+                fetch(`/admin/dynamic-items/${itemId}`, {
+                    method: 'DELETE',
+                    headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}', 'Content-Type': 'application/json' }
+                })
+                .then(r => r.json())
+                .then(data => {
+                    if (data.success) {
+                        removeFromDom();
+                        showNotify('success', "{{ __('translate.Successfully completed') }}");
+                    } else {
+                        showNotify('error', "{{ __('translate.An error occurred!') }}");
+                    }
+                })
+                .catch(() => showNotify('error', "{{ __('translate.An error occurred!') }}"));
+            } else {
+                // Unsaved new item — just remove from DOM
+                removeFromDom();
             }
         }
 
