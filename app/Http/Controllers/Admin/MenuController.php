@@ -51,9 +51,13 @@ class MenuController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Menu $menu): RedirectResponse
+    public function destroy(Menu $menu)
     {
         $this->menuService->delete($menu);
+
+        if (request()->wantsJson()) {
+            return response()->json(['success' => true]);
+        }
 
         return redirect()->route('admin.menus.index')->with('success', __('translate.Successfully completed'));
     }

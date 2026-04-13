@@ -172,6 +172,13 @@
                                             <a href="{{ route('admin.menus.edit', $parent) }}" class="edit-btn-static">
                                                 {{ __('translate.edit') }}
                                             </a>
+                                            @can('delete', $parent)
+                                            <button type="button" class="btn btn-danger btn-sm"
+                                                    style="cursor:pointer; font-size:12px; padding:4px 8px;"
+                                                    onclick="deleteMenu({{ $parent->id }}, this, 'parent')">
+                                                <i class="ri-delete-bin-line"></i>
+                                            </button>
+                                            @endcan
                                         </div>
                                     </div>
 
@@ -200,6 +207,13 @@
                                                             class="edit-btn-static" style="font-size: 11px;">
                                                             {{ __('translate.edit') }}
                                                         </a>
+                                                        @can('delete', $child)
+                                                        <button type="button" class="btn btn-danger btn-sm"
+                                                                style="cursor:pointer; font-size:11px; padding:3px 7px;"
+                                                                onclick="deleteMenu({{ $child->id }}, this, 'child')">
+                                                            <i class="ri-delete-bin-line"></i>
+                                                        </button>
+                                                        @endcan
                                                     </div>
                                                 </div>
                                             </div>
@@ -331,6 +345,64 @@
 
 
     });
+</script>
+<script>
+    function deleteMenu(id, btn, type) {
+        if (!confirm('{{ __('translate.Are you sure?') }}')) return;
+
+        btn.disabled = true;
+
+        const deleteUrl = '{{ route("admin.menus.destroy", "__ID__") }}'.replace('__ID__', id);
+        fetch(deleteUrl, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                'Accept': 'application/json'
+            }
+        })
+        .then(r => r.json())
+        .then(data => {
+            if (data.success) {
+                const draggableItem = btn.closest('.draggable-item');
+                if (type === 'child') {
+                    // Update parent's children count
+                    const nestedSortable = draggableItem.closest('.nested-sortable');
+                    if (nestedSortable) {
+                        const parentId = nestedSortable.dataset.parentId;
+                        const parentItem = document.querySelector('#block-list > .draggable-item[data-id="' + parentId + '"]');
+                        draggableItem.remove();
+                        const remaining = nestedSortable.querySelectorAll(':scope > .draggable-item').length;
+                        if (parentItem) {
+                            const countEl = parentItem.querySelector('.children-count');
+                            if (countEl) {
+                                if (remaining > 0) {
+                                    countEl.textContent = '(' + remaining + ')';
+                                } else {
+                                    countEl.remove();
+                                    // Hide toggle button if no children left
+                                    const toggleBtn = parentItem.querySelector('.toggle-children');
+                                    if (toggleBtn) {
+                                        toggleBtn.style.display = 'none';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    draggableItem.remove();
+                }
+                showNotify('success', '{{ __('translate.Successfully completed') }}');
+            } else {
+                btn.disabled = false;
+                showNotify('error', '{{ __('translate.An error occurred!') }}');
+            }
+        })
+        .catch(() => {
+            btn.disabled = false;
+            showNotify('error', '{{ __('translate.An error occurred!') }}');
+        });
+    }
 </script>
 <script>
     document.addEventListener('click', function(e) {
