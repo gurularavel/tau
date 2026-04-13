@@ -261,6 +261,7 @@ public function update(PageRequest $request, Page $page): RedirectResponse
                             // Update or create item
                             if (isset($itemData['id'])) {
                                 $item = DynamicItem::find($itemData['id']);
+                                if (!$item) continue; // already deleted earlier in this request
                             } else {
                                 $item = new DynamicItem();
                                 $item->dynamic_id = $dynamic->id;

@@ -1356,7 +1356,12 @@
 
         function removeDynamicItem(locale, dynamicIndex, itemIndex, itemId = null) {
             if (confirm('Are you sure you want to remove this item?')) {
-                $(`#item-desc-${locale}-${dynamicIndex}-${itemIndex}`).summernote('destroy');
+                // Remove from ALL locale tabs so no orphan inputs remain in the form
+                Object.keys(dynamicIndexes).forEach(function(loc) {
+                    try { $(`#item-desc-${loc}-${dynamicIndex}-${itemIndex}`).summernote('destroy'); } catch(e) {}
+                    let el = document.getElementById('dynamic-item-' + loc + '-' + dynamicIndex + '-' + itemIndex);
+                    if (el) el.remove();
+                });
 
                 if (itemId) {
                     let input = document.createElement('input');
@@ -1365,7 +1370,6 @@
                     input.value = itemId;
                     document.querySelector('form').appendChild(input);
                 }
-                document.getElementById('dynamic-item-' + locale + '-' + dynamicIndex + '-' + itemIndex).remove();
             }
         }
 
