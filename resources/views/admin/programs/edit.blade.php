@@ -133,64 +133,192 @@
     <x-admin.preloader />
 
     <style>
-        .dynamic-block {
-            background: #f8f9fa;
+        .dynamic-sections-container {
+            min-height: 50px;
+        }
+
+        .dynamic-accordion-item {
             border: 2px solid #e9ecef;
             border-radius: 8px;
-            position: relative;
+            margin-bottom: 12px;
+            overflow: hidden;
             transition: all 0.3s ease;
         }
 
-        .dynamic-block:hover {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        .dynamic-accordion-item:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             border-color: #dee2e6;
         }
 
-        .dynamic-header {
+        .dynamic-accordion-header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 12px 15px;
-            border-radius: 6px 6px 0 0;
-            margin: -1rem -1rem 1rem -1rem;
+            padding: 14px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            transition: all 0.3s ease;
         }
 
-        .btn-remove-dynamic {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            z-index: 10;
+        .dynamic-accordion-header:hover {
+            background: linear-gradient(135deg, #5568d3 0%, #653a8a 100%);
         }
 
-        .dynamic-item-block {
-            background: white;
-            border: 1px solid #dee2e6;
-            border-radius: 6px;
-            padding: 15px;
-            margin-bottom: 10px;
-            position: relative;
+        .dynamic-accordion-header::after {
+            content: '\F0140';
+            font-family: 'remixicon';
+            font-size: 20px;
+            transition: transform 0.3s ease;
+            transform: rotate(180deg);
         }
 
-        .dynamic-item-block:hover {
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        .dynamic-accordion-header.collapsed::after {
+            transform: rotate(0deg);
+        }
+
+        .dynamic-header-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+        }
+
+        .dynamic-header-title {
+            font-weight: 600;
+            font-size: 14px;
         }
 
         .type-badge {
             display: inline-block;
             padding: 4px 12px;
             border-radius: 20px;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
         }
 
-        .dynamic-sections-container {
-            min-height: 50px;
+        .btn-remove-dynamic {
+            background: rgba(220, 53, 69, 0.9);
+            border: none;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            margin-left: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-remove-dynamic:hover {
+            background: #c82333;
+            transform: scale(1.05);
+        }
+
+        .dynamic-accordion-body {
+            background: #f8f9fa;
+            padding: 20px;
+            display: none;
+        }
+
+        .dynamic-accordion-body.show {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; max-height: 0; }
+            to   { opacity: 1; max-height: 9999px; }
+        }
+
+        /* Item-level accordion */
+        .dynamic-item-accordion {
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+
+        .dynamic-item-accordion:hover {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border-color: #667eea;
+        }
+
+        .dynamic-item-accordion-header {
+            background: linear-gradient(135deg, #4facfe 0%, #5568d3 100%);
+            color: white;
+            padding: 10px 16px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            transition: all 0.2s ease;
+        }
+
+        .dynamic-item-accordion-header:hover {
+            background: linear-gradient(135deg, #3d9ae8 0%, #4456c0 100%);
+        }
+
+        .dynamic-item-accordion-header::after {
+            content: '\F0140';
+            font-family: 'remixicon';
+            font-size: 16px;
+            transition: transform 0.3s ease;
+            transform: rotate(180deg);
+        }
+
+        .dynamic-item-accordion-header.collapsed::after {
+            transform: rotate(0deg);
+        }
+
+        .dynamic-item-accordion-body {
+            background: white;
+            padding: 15px;
+            display: none;
+        }
+
+        .dynamic-item-accordion-body.show {
+            display: block;
+            animation: slideDown 0.2s ease;
+        }
+
+        .item-header-content {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+        }
+
+        .item-header-title {
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .btn-remove-item {
+            background: rgba(220, 53, 69, 0.9);
+            border: none;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            margin-left: 8px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .btn-remove-item:hover {
+            background: #c82333;
         }
 
         .form-label {
             font-weight: 600;
             color: #495057;
             margin-bottom: 8px;
+            font-size: 13px;
         }
 
         .image-preview {
@@ -280,6 +408,20 @@
             });
         }
 
+        function toggleAccordion(locale, index) {
+            let header = document.getElementById('dynamic-header-' + locale + '-' + index);
+            let body = document.getElementById('dynamic-body-' + locale + '-' + index);
+            header.classList.toggle('collapsed');
+            body.classList.toggle('show');
+        }
+
+        function toggleItemAccordion(locale, dynamicIndex, itemIndex) {
+            let header = document.getElementById('item-header-' + locale + '-' + dynamicIndex + '-' + itemIndex);
+            let body = document.getElementById('item-body-' + locale + '-' + dynamicIndex + '-' + itemIndex);
+            header.classList.toggle('collapsed');
+            body.classList.toggle('show');
+        }
+
         function addExistingDynamic(locale, dynamic, index) {
             let typeNames = {
                 '1': 'Title',
@@ -322,20 +464,22 @@
     `;
 
             let html = `
-        <div class="card dynamic-block mb-3" id="dynamic-${locale}-${index}">
-            <button type="button" class="btn btn-danger btn-sm btn-remove-dynamic"
-                    onclick="removeDynamic('${locale}', ${index}, ${dynamic.id})">
-                <i class="ri-delete-bin-line"></i>
-            </button>
-
-            <div class="dynamic-header">
-                <h6 class="mb-0">
-                    <i class="ri-layout-grid-line"></i> Dynamic Section #${index + 1}
+        <div class="dynamic-accordion-item" id="dynamic-${locale}-${index}">
+            <div class="dynamic-accordion-header collapsed"
+                 id="dynamic-header-${locale}-${index}"
+                 onclick="toggleAccordion('${locale}', ${index})">
+                <div class="dynamic-header-content">
+                    <span class="dynamic-header-title">
+                        <i class="ri-layout-grid-line"></i> Dynamic Section #${index + 1}
+                    </span>
                     <span class="type-badge" id="type-badge-${locale}-${index}">${typeNames[dynamic.type]}</span>
-                </h6>
+                </div>
+                <button type="button" class="btn-remove-dynamic"
+                        onclick="event.stopPropagation(); removeDynamic('${locale}', ${index}, ${dynamic.id})">
+                    <i class="ri-delete-bin-line"></i> Delete
+                </button>
             </div>
-
-            <div class="card-body">
+            <div class="dynamic-accordion-body" id="dynamic-body-${locale}-${index}">
                 <div class="row">
                     ${sharedFieldsHtml}
                     <div class="col-lg-12" id="dynamic-fields-${locale}-${index}">
@@ -578,20 +722,22 @@
     ` : '';
 
             let html = `
-        <div class="card dynamic-block mb-3" id="dynamic-${locale}-${index}">
-            <button type="button" class="btn btn-danger btn-sm btn-remove-dynamic"
-                    onclick="removeDynamic('${locale}', ${index})">
-                <i class="ri-delete-bin-line"></i>
-            </button>
-
-            <div class="dynamic-header">
-                <h6 class="mb-0">
-                    <i class="ri-layout-grid-line"></i> Dynamic Section #${index + 1}
+        <div class="dynamic-accordion-item" id="dynamic-${locale}-${index}">
+            <div class="dynamic-accordion-header"
+                 id="dynamic-header-${locale}-${index}"
+                 onclick="toggleAccordion('${locale}', ${index})">
+                <div class="dynamic-header-content">
+                    <span class="dynamic-header-title">
+                        <i class="ri-layout-grid-line"></i> Dynamic Section #${index + 1}
+                    </span>
                     <span class="type-badge" id="type-badge-${locale}-${index}">Title</span>
-                </h6>
+                </div>
+                <button type="button" class="btn-remove-dynamic"
+                        onclick="event.stopPropagation(); removeDynamic('${locale}', ${index})">
+                    <i class="ri-delete-bin-line"></i> Delete
+                </button>
             </div>
-
-            <div class="card-body">
+            <div class="dynamic-accordion-body show" id="dynamic-body-${locale}-${index}">
                 <div class="row">
                     ${sharedFieldsHtml}
                     <div class="col-lg-12" id="dynamic-fields-${locale}-${index}">
@@ -809,19 +955,23 @@
             let translation = item.translations ? item.translations[locale] : null;
 
             let html = `
-        <div class="dynamic-item-block" id="dynamic-item-${locale}-${dynamicIndex}-${itemIndex}">
+        <div class="dynamic-item-accordion" id="dynamic-item-${locale}-${dynamicIndex}-${itemIndex}">
             <input type="hidden" name="program_dynamics[${dynamicIndex}][items][${itemIndex}][id]" value="${item.id}">
-
-            <button type="button"
-                    class="btn btn-danger btn-sm position-absolute end-0 top-0 m-2"
-                    onclick="removeDynamicItem('${locale}', ${dynamicIndex}, ${itemIndex}, ${item.id})">
-                <i class="ri-close-line"></i>
-            </button>
-
-            <div class="row">
-                <div class="col-lg-12 mb-2">
-                    <strong class="text-primary">Item #${itemIndex + 1}</strong>
+            <div class="dynamic-item-accordion-header collapsed"
+                 id="item-header-${locale}-${dynamicIndex}-${itemIndex}"
+                 onclick="toggleItemAccordion('${locale}', ${dynamicIndex}, ${itemIndex})">
+                <div class="item-header-content">
+                    <span class="item-header-title">
+                        <i class="ri-list-check-2"></i> Item #${itemIndex + 1}
+                    </span>
                 </div>
+                <button type="button" class="btn-remove-item"
+                        onclick="event.stopPropagation(); removeDynamicItem('${locale}', ${dynamicIndex}, ${itemIndex}, ${item.id})">
+                    <i class="ri-close-line"></i> Remove
+                </button>
+            </div>
+            <div class="dynamic-item-accordion-body" id="item-body-${locale}-${dynamicIndex}-${itemIndex}">
+            <div class="row">
                 <div class="col-lg-3 mb-3 item-day-block">
                     <label class="form-label">Day (${locale.toUpperCase()})</label>
                     <input type="text"
@@ -1058,6 +1208,7 @@
 
             html += `
             </div>
+            </div>
         </div>
     `;
 
@@ -1095,17 +1246,22 @@
             let itemIndex = dynamicItemIndexes[locale][dynamicIndex];
 
             let html = `
-        <div class="dynamic-item-block" id="dynamic-item-${locale}-${dynamicIndex}-${itemIndex}">
-            <button type="button"
-                    class="btn btn-danger btn-sm position-absolute end-0 top-0 m-2"
-                    onclick="removeDynamicItem('${locale}', ${dynamicIndex}, ${itemIndex})">
-                <i class="ri-close-line"></i>
-            </button>
-
-            <div class="row">
-                <div class="col-lg-12 mb-2">
-                    <strong class="text-primary">Item #${itemIndex + 1}</strong>
+        <div class="dynamic-item-accordion" id="dynamic-item-${locale}-${dynamicIndex}-${itemIndex}">
+            <div class="dynamic-item-accordion-header"
+                 id="item-header-${locale}-${dynamicIndex}-${itemIndex}"
+                 onclick="toggleItemAccordion('${locale}', ${dynamicIndex}, ${itemIndex})">
+                <div class="item-header-content">
+                    <span class="item-header-title">
+                        <i class="ri-list-check-2"></i> Item #${itemIndex + 1}
+                    </span>
                 </div>
+                <button type="button" class="btn-remove-item"
+                        onclick="event.stopPropagation(); removeDynamicItem('${locale}', ${dynamicIndex}, ${itemIndex})">
+                    <i class="ri-close-line"></i> Remove
+                </button>
+            </div>
+            <div class="dynamic-item-accordion-body show" id="item-body-${locale}-${dynamicIndex}-${itemIndex}">
+            <div class="row">
                 <div class="col-lg-3 mb-3 item-day-block">
                     <label class="form-label">Day (${locale.toUpperCase()})</label>
                     <input type="text"
@@ -1306,6 +1462,7 @@
 
             html += `
             </div>
+            </div>
         </div>
     `;
 
@@ -1376,7 +1533,7 @@
         }
 
         function toggleItemImage(select) {
-            let itemBlock = select.closest('.dynamic-item-block');
+            let itemBlock = select.closest('.dynamic-item-accordion-body');
             let imageBlock = itemBlock.querySelectorAll('.item-image-block');
             let descriptionBlock = itemBlock.querySelectorAll('.item-description-block');
 
