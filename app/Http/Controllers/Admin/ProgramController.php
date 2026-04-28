@@ -46,7 +46,7 @@ class ProgramController extends Controller
             ->map(function ($program) {
                 return [
                     'id' => $program->id,
-                    'description' => $program->title, // accessor varsa
+                    'description' => $program->title . ' (' . $program->slug . ')',
                 ];
             })
             ->toArray();
@@ -86,7 +86,7 @@ class ProgramController extends Controller
             ->map(function ($program) {
                 return [
                     'id' => $program->id,
-                    'description' => $program->title, // accessor varsa
+                    'description' => $program->title . ' (' . $program->slug . ')',
                 ];
             })
             ->toArray();
