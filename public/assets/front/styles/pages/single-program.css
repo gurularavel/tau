@@ -175,7 +175,7 @@
               }
             }
 
-            &:nth-of-type(1) {
+            &:nth-of-type(4n+1) {
               border: 1px solid #2d6af3;
               border-left-width: 6px;
 
@@ -183,7 +183,7 @@
                 background: #2d6af333;
               }
             }
-            &:nth-of-type(2) {
+            &:nth-of-type(4n+2) {
               border: 1px solid #e35606;
               border-left-width: 6px;
 
@@ -191,7 +191,7 @@
                 background: #e3560633;
               }
             }
-            &:nth-of-type(3) {
+            &:nth-of-type(4n+3) {
               border: 1px solid #8a36f1;
               border-left-width: 6px;
 
@@ -199,7 +199,7 @@
                 background: #8a36f133;
               }
             }
-            &:nth-of-type(4) {
+            &:nth-of-type(4n) {
               border: 1px solid #e35606;
               border-left-width: 6px;
 
