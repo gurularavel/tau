@@ -14,8 +14,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 ['misc', ['undo', 'redo']],
                 ['view', ['codeview', 'help']]
             ],
-             fontNames: ['Inter'],
-            fontNamesIgnoreCheck: ['Inter']
+            fontNames: [
+                'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New',
+                'Georgia', 'Impact', 'Inter', 'Lato', 'Montserrat',
+                'Nunito', 'Open Sans', 'Poppins', 'Roboto',
+                'Tahoma', 'Times New Roman', 'Trebuchet MS', 'Verdana'
+            ],
+            fontNamesIgnoreCheck: true
         });
 
         $('body').on('click', '.note-popover .dropdown-menu', function (e) {
