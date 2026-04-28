@@ -1,8 +1,8 @@
     {{-- <script src="{{asset('/assets/admin/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script> --}}
 
-    <script src="{{asset('/assets/admin/libs/simplebar/simplebar.min.js')}}"></script>
-    <script src="{{asset('/assets/admin/libs/node-waves/waves.min.js')}}"></script>
-    <script src="{{asset('/assets/admin/libs/feather-icons/feather.min.js')}}"></script>
+    <script src="{{asset('/assets/admin/libs/simplebar/simplebar.min.js')}}?v={{ filemtime(public_path('assets/admin/libs/simplebar/simplebar.min.js')) }}"></script>
+    <script src="{{asset('/assets/admin/libs/node-waves/waves.min.js')}}?v={{ filemtime(public_path('assets/admin/libs/node-waves/waves.min.js')) }}"></script>
+    <script src="{{asset('/assets/admin/libs/feather-icons/feather.min.js')}}?v={{ filemtime(public_path('assets/admin/libs/feather-icons/feather.min.js')) }}"></script>
     {{-- <script src="{{asset('/assets/admin/js/pages/plugins/lord-icon-2.1.0.js')}}"></script> --}}
     {{-- <script src="{{asset('/assets/admin/js/plugins.js')}}"></script> --}}
     {{-- <script src="{{asset('/assets/admin/js/jquery/jquery.min.js')}}"></script> --}}
@@ -14,7 +14,7 @@
     {{-- <script src="{{asset('/assets/admin/js/pages/particles.app.js')}}"></script> --}}
 
     <!-- password-addon init -->
-    <script src="{{asset('/assets/admin/js/pages/password-addon.init.js')}}"></script>
+    <script src="{{asset('/assets/admin/js/pages/password-addon.init.js')}}?v={{ filemtime(public_path('assets/admin/js/pages/password-addon.init.js')) }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
@@ -45,15 +45,15 @@
     {{-- <script src="{{asset('/assets/admin/libs/swiper/swiper-bundle.min.js')}}"></script> --}}
 
     <!-- dropzone js -->
-    <script src="{{asset('/assets/admin/libs/dropzone/dropzone-min.js')}}"></script>
+    <script src="{{asset('/assets/admin/libs/dropzone/dropzone-min.js')}}?v={{ filemtime(public_path('assets/admin/libs/dropzone/dropzone-min.js')) }}"></script>
 
     <!-- Dashboard init -->
     {{-- <script src="{{asset('/assets/admin/js/pages/dashboard-ecommerce.init.js')}}"></script> --}}
-    <script src="{{asset('/assets/admin/js/pages/ecommerce-product-create.init.js')}}"></script>
+    <script src="{{asset('/assets/admin/js/pages/ecommerce-product-create.init.js')}}?v={{ filemtime(public_path('assets/admin/js/pages/ecommerce-product-create.init.js')) }}"></script>
     {{-- <script src="{{asset('/assets/admin/js/pages/apps-nft-item-details.init.js')}}"></script> --}}
 
     <!-- App js -->
-    <script src="{{asset('/assets/admin/js/app.js')}}"></script>
+    <script src="{{asset('/assets/admin/js/app.js')}}?v={{ filemtime(public_path('assets/admin/js/app.js')) }}"></script>
 
     <!-- JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta3/js/bootstrap-select.min.js"></script>

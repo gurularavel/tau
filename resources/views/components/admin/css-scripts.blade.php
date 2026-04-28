@@ -2,17 +2,17 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
 
-    <script src="{{ asset('/assets/admin/js/jquery/jquery.min.js') }}"></script>
-    <link href="{{ asset('/assets/admin/libs/jsvectormap/css/jsvectormap.min.css') }}" rel="stylesheet" type="text/css" />
+    <script src="{{ asset('/assets/admin/js/jquery/jquery.min.js') }}?v={{ filemtime(public_path('assets/admin/js/jquery/jquery.min.js')) }}"></script>
+    <link href="{{ asset('/assets/admin/libs/jsvectormap/css/jsvectormap.min.css') }}?v={{ filemtime(public_path('assets/admin/libs/jsvectormap/css/jsvectormap.min.css')) }}" rel="stylesheet" type="text/css" />
 
     <!--Swiper slider css-->
-    <link href="{{ asset('/assets/admin/libs/swiper/swiper-bundle.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('/assets/admin/libs/swiper/swiper-bundle.min.css') }}?v={{ filemtime(public_path('assets/admin/libs/swiper/swiper-bundle.min.css')) }}" rel="stylesheet" type="text/css" />
 
     <!-- Layout config Js -->
-    <script src="{{ asset('/assets/admin/js/layout.js') }}"></script>
+    <script src="{{ asset('/assets/admin/js/layout.js') }}?v={{ filemtime(public_path('assets/admin/js/layout.js')) }}"></script>
     <!-- Bootstrap Css -->
     <link href="{{ asset('/assets/admin/css/bootstrap.min.css') }}?v={{ filemtime(public_path('assets/admin/css/bootstrap.min.css')) }}" rel="stylesheet" type="text/css" />
-    <script src="{{ asset('/assets/admin/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('/assets/admin/libs/bootstrap/js/bootstrap.bundle.min.js') }}?v={{ filemtime(public_path('assets/admin/libs/bootstrap/js/bootstrap.bundle.min.js')) }}"></script>
     <!-- Icons Css -->
     <link href="{{ asset('/assets/admin/css/icons.min.css') }}?v={{ filemtime(public_path('assets/admin/css/icons.min.css')) }}" rel="stylesheet" type="text/css" />
     <!-- App Css-->
@@ -20,7 +20,7 @@
     <!-- custom Css-->
     <link href="{{ asset('/assets/admin/css/custom.min.css') }}?v={{ filemtime(public_path('assets/admin/css/custom.min.css')) }}" rel="stylesheet" type="text/css" />
     <!-- Plugins css -->
-    <link href="{{ asset('/assets/admin/libs/dropzone/dropzone.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('/assets/admin/libs/dropzone/dropzone.css') }}?v={{ filemtime(public_path('assets/admin/libs/dropzone/dropzone.css')) }}" rel="stylesheet" type="text/css" />
     <!-- Summernote css -->
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.js"></script>
