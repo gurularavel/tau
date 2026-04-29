@@ -144,8 +144,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                {{-- Hidden inputs: form submit üçün --}}
-                                <div id="dlb-hidden-inputs"></div>
+                                {{-- Hidden inputs: form submit üçün (Blade ilə başlanğıc dəyərlər) --}}
+                                <div id="dlb-hidden-inputs">
+                                    @foreach ($model->program_ids ?? [] as $pid)
+                                        <input type="hidden" name="program_ids[]" value="{{ $pid }}">
+                                    @endforeach
+                                </div>
                             </div>
                             <div class="mb-3 col-lg-4">
                                 <x-admin.crud.input :locale="''" :model="$model" :columnName="'slug'"
@@ -1829,25 +1833,19 @@
         }
     }
 
-    // səhifə açılarkən də yoxlasın (edit üçün)
+    // Səhifə açılarkən yoxla (edit üçün)
     document.addEventListener('DOMContentLoaded', function() {
         let typeSelect = document.getElementById('product-type-input');
         if (typeSelect) {
             toggleProgramMultiple(typeSelect);
         }
-        dlbSyncHidden();
         dlbInitSearch();
     });
 
-    // Form submit olarkən hidden input-ları sinxronlaşdır
-    document.addEventListener('DOMContentLoaded', function() {
-        let form = document.querySelector('form');
-        if (form) {
-            form.addEventListener('submit', function() {
-                dlbSyncHidden();
-            });
-        }
-    });
+    // Submit capture fazasında: formdan əvvəl hidden input-ları sinxronlaşdır
+    document.addEventListener('submit', function() {
+        dlbSyncHidden();
+    }, true);
 
     function dlbMoveRight() {
         let left = document.getElementById('dlb-left');

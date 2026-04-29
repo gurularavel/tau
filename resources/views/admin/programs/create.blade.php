@@ -157,14 +157,13 @@
         if (typeSelect) {
             toggleProgramMultiple(typeSelect);
         }
-        dlbSyncHidden();
         dlbInitSearch();
-
-        let form = document.querySelector('form');
-        if (form) {
-            form.addEventListener('submit', function() { dlbSyncHidden(); });
-        }
     });
+
+    // Submit capture fazasında: formdan əvvəl hidden input-ları sinxronlaşdır
+    document.addEventListener('submit', function() {
+        dlbSyncHidden();
+    }, true);
 
     function dlbMoveRight() {
         let left = document.getElementById('dlb-left');
