@@ -103,9 +103,49 @@
 />
                             </div>
                             <div class="mb-3 col-lg-12" id="program-multiple-block" style="display:none;">
-
-                                <x-admin.crud.option-multiple label="Programs" name="program_ids[]" :options="$programs"
-                                    valueField="id" textField="description" :selected="$model->program_ids ?? []" :multiple="true" />
+                                <label class="form-label">{{ __('translate.Programs') }}</label>
+                                <div class="dual-listbox-wrapper d-flex gap-3 align-items-start">
+                                    {{-- Sol: mövcud proqramlar --}}
+                                    <div class="flex-fill">
+                                        <div class="fw-semibold small mb-1 text-muted">{{ __('translate.available') ?? 'Available' }}</div>
+                                        <input type="text" id="dlb-search-left" class="form-control form-control-sm mb-1" placeholder="Axtar...">
+                                        <select id="dlb-left" class="form-select" size="10" multiple style="min-height:220px;">
+                                            @foreach ($programs as $prog)
+                                                @if (!in_array($prog['id'], $model->program_ids ?? []))
+                                                    <option value="{{ $prog['id'] }}">{{ $prog['description'] }}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    {{-- Ortadakı düymələr --}}
+                                    <div class="d-flex flex-column justify-content-center gap-2 pt-4 mt-3">
+                                        <button type="button" class="btn btn-sm btn-primary" onclick="dlbMoveRight()" title="Sağa köçür">&#8250;&#8250;</button>
+                                        <button type="button" class="btn btn-sm btn-secondary" onclick="dlbMoveLeft()" title="Sola köçür">&#8249;&#8249;</button>
+                                    </div>
+                                    {{-- Sağ: seçilmiş proqramlar --}}
+                                    <div class="flex-fill">
+                                        <div class="fw-semibold small mb-1 text-muted">{{ __('translate.selected') ?? 'Selected' }}</div>
+                                        <input type="text" id="dlb-search-right" class="form-control form-control-sm mb-1" placeholder="Axtar...">
+                                        <select id="dlb-right" class="form-select" size="10" multiple style="min-height:220px;">
+                                            @php
+                                                $selectedIds = $model->program_ids ?? [];
+                                                $programMap = collect($programs)->keyBy('id');
+                                            @endphp
+                                            @foreach ($selectedIds as $sid)
+                                                @if ($programMap->has($sid))
+                                                    <option value="{{ $sid }}">{{ $programMap[$sid]['description'] }}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                        {{-- Sıralama düymələri --}}
+                                        <div class="d-flex gap-2 mt-1">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary flex-fill" onclick="dlbMoveUp()" title="Yuxarı">&#8593; Yuxarı</button>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary flex-fill" onclick="dlbMoveDown()" title="Aşağı">&#8595; Aşağı</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- Hidden inputs: form submit üçün --}}
+                                <div id="dlb-hidden-inputs"></div>
                             </div>
                             <div class="mb-3 col-lg-4">
                                 <x-admin.crud.input :locale="''" :model="$model" :columnName="'slug'"
@@ -1795,5 +1835,88 @@
         if (typeSelect) {
             toggleProgramMultiple(typeSelect);
         }
+        dlbSyncHidden();
+        dlbInitSearch();
     });
+
+    // Form submit olarkən hidden input-ları sinxronlaşdır
+    document.addEventListener('DOMContentLoaded', function() {
+        let form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', function() {
+                dlbSyncHidden();
+            });
+        }
+    });
+
+    function dlbMoveRight() {
+        let left = document.getElementById('dlb-left');
+        let right = document.getElementById('dlb-right');
+        Array.from(left.selectedOptions).forEach(opt => {
+            right.appendChild(opt);
+            opt.selected = false;
+        });
+        dlbSyncHidden();
+    }
+
+    function dlbMoveLeft() {
+        let left = document.getElementById('dlb-left');
+        let right = document.getElementById('dlb-right');
+        Array.from(right.selectedOptions).forEach(opt => {
+            left.appendChild(opt);
+            opt.selected = false;
+        });
+        dlbSyncHidden();
+    }
+
+    function dlbMoveUp() {
+        let right = document.getElementById('dlb-right');
+        let opts = Array.from(right.options);
+        for (let i = 1; i < opts.length; i++) {
+            if (opts[i].selected && !opts[i - 1].selected) {
+                right.insertBefore(opts[i], opts[i - 1]);
+            }
+        }
+        dlbSyncHidden();
+    }
+
+    function dlbMoveDown() {
+        let right = document.getElementById('dlb-right');
+        let opts = Array.from(right.options);
+        for (let i = opts.length - 2; i >= 0; i--) {
+            if (opts[i].selected && !opts[i + 1].selected) {
+                right.insertBefore(opts[i + 1], opts[i]);
+            }
+        }
+        dlbSyncHidden();
+    }
+
+    function dlbSyncHidden() {
+        let right = document.getElementById('dlb-right');
+        let container = document.getElementById('dlb-hidden-inputs');
+        if (!right || !container) return;
+        container.innerHTML = '';
+        Array.from(right.options).forEach(opt => {
+            let inp = document.createElement('input');
+            inp.type = 'hidden';
+            inp.name = 'program_ids[]';
+            inp.value = opt.value;
+            container.appendChild(inp);
+        });
+    }
+
+    function dlbInitSearch() {
+        document.getElementById('dlb-search-left').addEventListener('input', function() {
+            let q = this.value.toLowerCase();
+            Array.from(document.getElementById('dlb-left').options).forEach(opt => {
+                opt.style.display = opt.text.toLowerCase().includes(q) ? '' : 'none';
+            });
+        });
+        document.getElementById('dlb-search-right').addEventListener('input', function() {
+            let q = this.value.toLowerCase();
+            Array.from(document.getElementById('dlb-right').options).forEach(opt => {
+                opt.style.display = opt.text.toLowerCase().includes(q) ? '' : 'none';
+            });
+        });
+    }
 </script>
