@@ -31,10 +31,33 @@
                     <x-admin.crud.index.card-body>
                         <x-admin.crud.success-message :delay="'5000'"/>
 
-
-                        {{-- <x-admin.crud.index.search-box :placeholder="'Search for ticket details or something...'"/> --}}
-
-                        {{-- <x-admin.crud.index.status-option/> --}}
+                        @if ($models->count() > 0)
+                            <div class="d-flex justify-content-end mt-2">
+                                <div class="pagination-wrap hstack gap-2">
+                                    @if ($models->onFirstPage())
+                                        <span class="page-item pagination-prev disabled">{{ __('translate.Previous') }}</span>
+                                    @else
+                                        <a class="page-item pagination-prev" href="{{ $models->previousPageUrl() }}">{{ __('translate.Previous') }}</a>
+                                    @endif
+                                    <ul class="pagination listjs-pagination mb-0">
+                                        @foreach ($models->appends(request()->query())->links()->elements as $element)
+                                            @if (is_array($element))
+                                                @foreach ($element as $page => $url)
+                                                    <li class="page-item{{ $models->currentPage() == $page ? ' active' : '' }}">
+                                                        <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                                                    </li>
+                                                @endforeach
+                                            @endif
+                                        @endforeach
+                                    </ul>
+                                    @if ($models->hasMorePages())
+                                        <a class="page-item pagination-next" href="{{ $models->nextPageUrl() }}">{{ __('translate.Next') }}</a>
+                                    @else
+                                        <span class="page-item pagination-next disabled">{{ __('translate.Next') }}</span>
+                                    @endif
+                                </div>
+                            </div>
+                        @endif
 
                         <x-admin.crud.index.item-list>
                             <x-admin.crud.index.item-table-card>
@@ -86,8 +109,33 @@
 
                             </x-admin.crud.index.item-table-card>
 
-                            {{-- <x-admin.crud.index.pagination/> --}}
-
+                            @if ($models->count() > 0)
+                                <div class="d-flex justify-content-end mt-2">
+                                    <div class="pagination-wrap hstack gap-2">
+                                        @if ($models->onFirstPage())
+                                            <span class="page-item pagination-prev disabled">{{ __('translate.Previous') }}</span>
+                                        @else
+                                            <a class="page-item pagination-prev" href="{{ $models->previousPageUrl() }}">{{ __('translate.Previous') }}</a>
+                                        @endif
+                                        <ul class="pagination listjs-pagination mb-0">
+                                            @foreach ($models->appends(request()->query())->links()->elements as $element)
+                                                @if (is_array($element))
+                                                    @foreach ($element as $page => $url)
+                                                        <li class="page-item{{ $models->currentPage() == $page ? ' active' : '' }}">
+                                                            <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                                                        </li>
+                                                    @endforeach
+                                                @endif
+                                            @endforeach
+                                        </ul>
+                                        @if ($models->hasMorePages())
+                                            <a class="page-item pagination-next" href="{{ $models->nextPageUrl() }}">{{ __('translate.Next') }}</a>
+                                        @else
+                                            <span class="page-item pagination-next disabled">{{ __('translate.Next') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                            @endif
 
                         </x-admin.crud.index.item-list>
 
