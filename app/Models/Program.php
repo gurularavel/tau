@@ -112,6 +112,7 @@ public function getProgramsListAttribute()
 
     return \App\Models\Program::whereIn('id', $this->program_ids)
         ->where('is_active', 1)
+        ->orderByRaw('FIELD(id, ' . implode(',', array_map('intval', $this->program_ids)) . ')')
         ->get();
 }
 }
