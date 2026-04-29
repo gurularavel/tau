@@ -19,7 +19,7 @@
                         @foreach ($locales as $key => $locale)
                             <x-admin.crud.nav-item :locale="$locale" :key="$key" />
                         @endforeach
-                        {{-- <x-admin.crud.summernote-editor-js :locales="$locales" :key="1" :height="'200'" /> --}}
+                        <x-admin.crud.summernote-editor-js :locales="$locales" :key="1" :height="'200'" />
                     </x-admin.crud.nav>
 
                     <x-admin.crud.tab-content>
@@ -33,11 +33,10 @@
                                             :label="'title'" :placeholder="'Write a title'" :type="'text'"
                                             :required="true" />
                                     </div>
-                                    {{--
                                     <div class="mb-3 col-lg-12">
                                         <x-admin.crud.textarea :locale="$locale" :model="$model" :columnName="'content'"
                                             :label="'content'" :summerNoteID="1" />
-                                    </div> --}}
+                                    </div>
 
                                     <div class="mb-3 col-lg-4">
                                         <x-admin.crud.input :locale="$locale" :model="$model" :columnName="'meta_title'"
