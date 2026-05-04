@@ -211,7 +211,7 @@
             .reason-content {
               display: flex;
               flex-direction: column;
-              gap: 16px;
+              gap: 8px;
               max-width: 426px;
 
               h3 {
@@ -821,7 +821,7 @@
               .reason-content {
                 h3 {
                   font-size: 24px !important;
-                  line-height: 28px !important;
+                  line-height: 22px !important;
                 }
 
                 p {
