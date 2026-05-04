@@ -253,67 +253,85 @@ class ProgramController extends Controller
                     }
 
                     // Handle dynamic items (type 6)
-                    if ($dynamicData['type'] == 6 && isset($dynamicData['items'])) {
+                    if ($dynamicData['type'] == 6) {
+                        // Collect IDs of items submitted in the form (these are kept)
+                        $submittedItemIds = [];
+                        if (isset($dynamicData['items'])) {
+                            foreach ($dynamicData['items'] as $itemData) {
+                                if (isset($itemData['id'])) {
+                                    $submittedItemIds[] = (int) $itemData['id'];
+                                }
+                            }
+                        }
+
+                        // Delete items in DB that were removed from form
+                        $itemsToDelete = $dynamic->items()
+                            ->when(!empty($submittedItemIds), fn($q) => $q->whereNotIn('id', $submittedItemIds))
+                            ->get();
+
+                        foreach ($itemsToDelete as $itemToDelete) {
+                            if ($itemToDelete->image) {
+                                $this->deleteImage($itemToDelete->image, 'uploads/program_dynamic_items');
+                            }
+                            $itemToDelete->delete();
+                        }
+
+                        // Save submitted items
                         $itemIds = [];
+                        if (isset($dynamicData['items'])) {
+                            foreach ($dynamicData['items'] as $itemIndex => $itemData) {
+                                if (isset($itemData['id'])) {
+                                    $item = ProgramDynamicItem::find($itemData['id']);
+                                    if (!$item) continue;
+                                } else {
+                                    $item = new ProgramDynamicItem();
+                                    $item->program_dynamic_id = $dynamic->id;
+                                }
+                                $item->order = $itemData['order'] ?? 0;
+                                $item->is_active = $itemData['is_active'] ?? 1;
+                                $item->hour = $itemData['hour'] ?? null;
+                                $item->room = $itemData['room'] ?? null;
+                                $item->code = $itemData['code'] ?? null;
+                                $item->credit = $itemData['credit'] ?? null;
+                                $item->type = $itemData['type'] ?? null;
+                                $item->email = $itemData['email'] ?? null;
+                                $item->phone = $itemData['phone'] ?? null;
+                                $item->url = $itemData['url'] ?? null;
+                                $item->deadline = $itemData['deadline'] ?? now();
+                                $item->created_at = $itemData['created_at'] ?? now();
 
-                        foreach ($dynamicData['items'] as $itemIndex => $itemData) {
-                            // Update or create item
-                            if (isset($itemData['id'])) {
-                                $item = ProgramDynamicItem::find($itemData['id']);
-                            } else {
-                                $item = new ProgramDynamicItem();
-                                $item->program_dynamic_id = $dynamic->id;
-                            }
-                            $item->order = $itemData['order'] ?? 0;
-                            $item->is_active = $itemData['is_active'] ?? 1;
-                            $item->hour = $itemData['hour'] ?? null;
-                            $item->room = $itemData['room'] ?? null;
-                            $item->code = $itemData['code'] ?? null;
-                            $item->credit = $itemData['credit'] ?? null;
-                            $item->type = $itemData['type'] ?? null;
-                            $item->email = $itemData['email'] ?? null;
-                            $item->phone = $itemData['phone'] ?? null;
-                            $item->url = $itemData['url'] ?? null;
-
-                            $item->deadline = $itemData['deadline'] ?? now();
-                            $item->created_at = $itemData['created_at'] ?? now();
-                            // Handle item image
-                            if ($request->hasFile("program_dynamics.{$index}.items.{$itemIndex}.image")) {
-                                // Delete old image
-                                if ($item->image) {
-                                    $this->deleteImage($item->image, 'uploads/program_dynamic_items');
+                                if ($request->hasFile("program_dynamics.{$index}.items.{$itemIndex}.image")) {
+                                    if ($item->image) {
+                                        $this->deleteImage($item->image, 'uploads/program_dynamic_items');
+                                    }
+                                    $item->image = $this->uploadImage($request->file("program_dynamics.{$index}.items.{$itemIndex}.image"), 'uploads/program_dynamic_items');
+                                } elseif (isset($itemData['keep_image']) && $itemData['keep_image'] == '0') {
+                                    if ($item->image) {
+                                        $this->deleteImage($item->image, 'uploads/program_dynamic_items');
+                                        $item->image = null;
+                                    }
                                 }
 
-                                // Upload new image
-                                $item->image = $this->uploadImage($request->file("program_dynamics.{$index}.items.{$itemIndex}.image"), 'uploads/program_dynamic_items');
-                            } elseif (isset($itemData['keep_image']) && $itemData['keep_image'] == '0') {
-                                // Delete if marked for deletion
-                                if ($item->image) {
-                                    $this->deleteImage($item->image, 'uploads/program_dynamic_items');
-                                    $item->image = null;
-                                }
-                            }
-
-                            $item->save();
-
-                            // Save item translations
-                            if (isset($itemData['translations'])) {
-                                foreach ($itemData['translations'] as $locale => $translation) {
-                                    $item->translateOrNew($locale)->title = $translation['title'] ?? null;
-                                    $item->translateOrNew($locale)->description = $translation['description'] ?? null;
-                                    $item->translateOrNew($locale)->name = $translation['name'] ?? null;
-                                    $item->translateOrNew($locale)->profession = $translation['profession'] ?? null;
-                                    $item->translateOrNew($locale)->subject_name = $translation['subject_name'] ?? null;
-                                    $item->translateOrNew($locale)->education_type = $translation['education_type'] ?? null;
-                                    $item->translateOrNew($locale)->examine_type = $translation['profession'] ?? null;
-                                    $item->translateOrNew($locale)->day = $translation['day'] ?? null;
-                                    $item->translateOrNew($locale)->professor = $translation['professor'] ?? null;
-                                    $item->translateOrNew($locale)->subtitle = $translation['subtitle'] ?? null;
-                                }
                                 $item->save();
-                            }
 
-                            $itemIds[] = $item->id;
+                                if (isset($itemData['translations'])) {
+                                    foreach ($itemData['translations'] as $locale => $translation) {
+                                        $item->translateOrNew($locale)->title = $translation['title'] ?? null;
+                                        $item->translateOrNew($locale)->description = $translation['description'] ?? null;
+                                        $item->translateOrNew($locale)->name = $translation['name'] ?? null;
+                                        $item->translateOrNew($locale)->profession = $translation['profession'] ?? null;
+                                        $item->translateOrNew($locale)->subject_name = $translation['subject_name'] ?? null;
+                                        $item->translateOrNew($locale)->education_type = $translation['education_type'] ?? null;
+                                        $item->translateOrNew($locale)->examine_type = $translation['examine_type'] ?? null;
+                                        $item->translateOrNew($locale)->day = $translation['day'] ?? null;
+                                        $item->translateOrNew($locale)->professor = $translation['professor'] ?? null;
+                                        $item->translateOrNew($locale)->subtitle = $translation['subtitle'] ?? null;
+                                    }
+                                    $item->save();
+                                }
+
+                                $itemIds[] = $item->id;
+                            }
                         }
 
                         $dynamic->program_dynamic_item_ids = $itemIds;

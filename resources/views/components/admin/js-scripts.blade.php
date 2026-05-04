@@ -100,6 +100,7 @@ document.addEventListener("DOMContentLoaded", function() {
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         let container = document.getElementById('sortable-images');
+        if (!container) return;
 
         new Sortable(container, {
             animation: 150,

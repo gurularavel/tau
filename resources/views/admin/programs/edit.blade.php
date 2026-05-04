@@ -1113,7 +1113,7 @@
     `;
 
             //  is_active, type — yalnız ilk locale
-            // if (isFirstLocale) {
+            if (isFirstLocale) {
                 html += `
             <div class="col-lg-3 mb-3">
                 <label class="form-label">Type</label>
@@ -1212,7 +1212,7 @@
                            placeholder="Item url">
                 </div>
         `;
-            // }
+            }
 
             // Image — yalnız ilk locale
             if (isFirstLocale) {
@@ -1539,8 +1539,11 @@
 
         function removeDynamicItem(locale, dynamicIndex, itemIndex, itemId = null) {
             if (confirm('Are you sure you want to remove this item?')) {
-                // Destroy summernote before removing
-                $(`#item-desc-${locale}-${dynamicIndex}-${itemIndex}`).summernote('destroy');
+                Object.keys(dynamicIndexes).forEach(loc => {
+                    $(`#item-desc-${loc}-${dynamicIndex}-${itemIndex}`).summernote('destroy');
+                    let el = document.getElementById('dynamic-item-' + loc + '-' + dynamicIndex + '-' + itemIndex);
+                    if (el) el.remove();
+                });
 
                 if (itemId) {
                     let input = document.createElement('input');
@@ -1549,7 +1552,6 @@
                     input.value = itemId;
                     document.querySelector('form').appendChild(input);
                 }
-                document.getElementById('dynamic-item-' + locale + '-' + dynamicIndex + '-' + itemIndex).remove();
             }
         }
 

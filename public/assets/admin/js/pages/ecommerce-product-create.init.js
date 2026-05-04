@@ -48,10 +48,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Initialize Choices.js for category input
-    var m = new Choices("#choices-category-input", { searchEnabled: false }),
+    var categoryInputEl = document.querySelector("#choices-category-input");
+    var m = categoryInputEl ? new Choices(categoryInputEl, { searchEnabled: false }) : null,
         g = sessionStorage.getItem("editInputValue");
 
-    if (g) {
+    if (m && g) {
         g = JSON.parse(g);
         document.getElementById("formAction").value = "edit";
         document.getElementById("product-id-input").value = g.id;
