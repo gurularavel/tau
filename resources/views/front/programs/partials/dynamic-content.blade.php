@@ -167,7 +167,7 @@
                                                     <li>
                                                         <img src="{{ asset('assets/front/icons/phone-gray.svg') }}"
                                                             alt="Gray Phone Icon" />
-                                                        {{ $item->email ?? '' }}
+                                                        {{ $item->phone ?? '' }}
                                                     </li>
                                                 </ul>
                                             </div>
