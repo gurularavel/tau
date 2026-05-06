@@ -17,30 +17,16 @@ class AcademicCalendarRequest extends TranslatableRequest
 
             self::SCENARIO_INSERT => array_merge(
                 [
-                    'academic_year' => ['nullable', 'string'],
-                    'semester_id' => ['nullable', 'exists:semesters,id'],
-                    'education_level_id' => ['nullable', 'exists:education_levels,id'],
-                    'faculty_id' => ['nullable', 'exists:faculties,id'],
-                    'education_type_id' => ['nullable', 'exists:education_types,id'],
-                    'event_type_id' => ['nullable', 'exists:event_types,id'],
-                    'event_date' => ['required', 'date'],
-                    'order' => ['nullable', 'integer'],
                     'is_active' => ['nullable', 'boolean'],
+                    'order'     => ['nullable', 'integer'],
                 ],
                 $this->translations()
             ),
 
             self::SCENARIO_UPDATE => array_merge(
                 [
-                    'academic_year' => ['nullable', 'string'],
-                    'semester_id' => ['nullable', 'exists:semesters,id'],
-                    'education_level_id' => ['nullable', 'exists:education_levels,id'],
-                    'faculty_id' => ['nullable', 'exists:faculties,id'],
-                    'education_type_id' => ['nullable', 'exists:education_types,id'],
-                    'event_type_id' => ['nullable', 'exists:event_types,id'],
-                    'event_date' => ['required', 'date'],
-                    'order' => ['nullable', 'integer'],
                     'is_active' => ['required', 'boolean'],
+                    'order'     => ['nullable', 'integer'],
                 ],
                 $this->translations()
             ),
@@ -60,7 +46,8 @@ class AcademicCalendarRequest extends TranslatableRequest
         $rules = [];
 
         foreach ($this->locales() as $locale) {
-            $rules["subject:$locale"] = ['required', 'string'];
+            $rules["subject:$locale"] = ['nullable', 'string'];
+            $rules["content:$locale"] = ['nullable', 'string'];
         }
 
         return $rules;

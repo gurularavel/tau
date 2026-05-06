@@ -11,8 +11,8 @@ class AcademicCalendarTranslation extends Model
     public $timestamps = false;
     protected $fillable = [
         'subject',
-
-        ];
+        'content',
+    ];
 
     protected $table = 'academic_calendar_translations';
 

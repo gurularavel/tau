@@ -25,6 +25,8 @@
                         <x-admin.crud.nav-item :locale="$locale" :key="$key" />
                     @endforeach
 
+                    <x-admin.crud.summernote-editor-js :locales="$locales" :key="1" :height="'500'" />
+
                     <x-admin.crud.success-message :delay="'5000'" />
                 </x-admin.crud.nav>
 
@@ -36,16 +38,15 @@
 
                             <x-admin.crud.card-body-row>
 
-                                <!-- SUBJECT -->
+                                <!-- CONTENT -->
                                 <div class="mb-3 col-lg-12">
-                                    <x-admin.crud.input
+                                    <x-admin.crud.textarea
                                         :locale="$locale"
                                         :model="''"
-                                        :columnName="'subject'"
-                                        :label="'Subject'"
-                                        :placeholder="'Event name'"
-                                        :type="'text'"
-                                        :required="true"
+                                        :columnName="'content'"
+                                        :label="'Content'"
+                                        :summerNoteID="1"
+                                        :rowCount="'10'"
                                     />
                                 </div>
 
@@ -57,117 +58,6 @@
                     @endforeach
 
                 </x-admin.crud.tab-content>
-
-                <!-- 🔥 MAIN DATA -->
-                <div class="card">
-                    <div class="card-body row">
-
-                        <!-- Academic Year -->
-                        <div class="mb-3 col-lg-4">
-                            <x-admin.crud.input
-                                :locale="''"
-                                :model="''"
-                                :columnName="'academic_year'"
-                                :label="'Academic Year'"
-                                :placeholder="'2025-2026'"
-                                :type="'text'"
-                            />
-                        </div>
-
-                        <!-- Semester -->
-                        <div class="mb-3 col-lg-4">
-                            <x-admin.crud.option
-                                :label="'Semester'"
-                                :name="'semester_id'"
-                                :model="''"
-                                :options="$semesters->map(fn($item) => [
-                                    'label' => $item->translate(app()->getLocale())->name ?? '',
-                                    'value' => $item->id,
-                                ])->toArray()"
-                            />
-                        </div>
-
-                        <!-- Education Level -->
-                        <div class="mb-3 col-lg-4">
-                            <x-admin.crud.option
-                                :label="'Education Level'"
-                                :name="'education_level_id'"
-                                :model="''"
-                                :options="$educationLevels->map(fn($item) => [
-                                    'label' => $item->translate(app()->getLocale())->name ?? '',
-                                    'value' => $item->id,
-                                ])->toArray()"
-                            />
-                        </div>
-
-                        <!-- Faculty -->
-                        <div class="mb-3 col-lg-4">
-                            <x-admin.crud.option
-                                :label="'Faculty'"
-                                :name="'faculty_id'"
-                                :model="''"
-                                :options="$faculties->map(fn($item) => [
-                                    'label' => $item->translate(app()->getLocale())->name ?? '',
-                                    'value' => $item->id,
-                                ])->toArray()"
-                            />
-                        </div>
-
-                        <!-- Education Type -->
-                        <div class="mb-3 col-lg-4">
-                            <x-admin.crud.option
-                                :label="'Education Type'"
-                                :name="'education_type_id'"
-                                :model="''"
-                                :options="$educationTypes->map(fn($item) => [
-                                    'label' => $item->translate(app()->getLocale())->name ?? '',
-                                    'value' => $item->id,
-                                ])->toArray()"
-                            />
-                        </div>
-
-                        <!-- Event Type -->
-                        <div class="mb-3 col-lg-4">
-                            <x-admin.crud.option
-                                :label="'Event Type'"
-                                :name="'event_type_id'"
-                                :model="''"
-                                :options="$eventTypes->map(fn($item) => [
-                                    'label' => $item->translate(app()->getLocale())->name ?? '',
-                                    'value' => $item->id,
-                                ])->toArray()"
-                            />
-                        </div>
-
-                        <!-- Event Date -->
-                        <div class="mb-3 col-lg-4">
-                            <x-admin.crud.input
-                                :locale="''"
-                                :model="''"
-                                :columnName="'event_date'"
-                                :label="'Event Date'"
-                                :type="'date'"
-                                :placeholder="'Event date'"
-                                :required="true"
-                            />
-                        </div>
-
-                        <!-- Order -->
-                        <div class="mb-3 col-lg-4">
-                            <x-admin.crud.input
-                                :locale="''"
-                                :model="''"
-                                :columnName="'order'"
-                                :label="'Order'"
-                                :placeholder="'Sorting'"
-                                :type="'number'"
-                            />
-                        </div>
-
-
-
-                    </div>
-                </div>
 
             </x-admin.crud.card>
 

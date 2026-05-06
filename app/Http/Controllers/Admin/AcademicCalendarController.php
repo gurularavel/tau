@@ -4,24 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\AcademicCalendarRequest;
-use App\Models\Language;
 use App\Models\AcademicCalendar;
-use App\Models\AcademicCalendarImage;
-use App\Models\EducationLevel;
-use App\Models\EducationType;
-use App\Models\EventType;
-use App\Models\Faculty;
-use App\Models\Semester;
-use App\Models\User;
 use App\Services\Contracts\AcademicCalendarServiceInterface;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
-use App\Traits\FileManagable;
 use Illuminate\Http\Request;
 
 class AcademicCalendarController extends Controller
 {
-    use FileManagable;
 
     private const PATH = 'admin.academic_calendars.';
 
@@ -41,12 +31,6 @@ class AcademicCalendarController extends Controller
     {
         return view(self::PATH . 'create', [
             'title' => self::TITLE,
-
-            'semesters' => Semester::with('translations')->get(),
-            'educationLevels' => EducationLevel::with('translations')->get(),
-            'faculties' => Faculty::with('translations')->get(),
-            'educationTypes' => EducationType::with('translations')->get(),
-            'eventTypes' => EventType::with('translations')->get(),
         ]);
     }
     /**
@@ -67,12 +51,6 @@ class AcademicCalendarController extends Controller
         return view(self::PATH . 'edit', [
             'model' => $academicCalendar,
             'title' => self::TITLE,
-
-            'semesters' => Semester::with('translations')->get(),
-            'educationLevels' => EducationLevel::with('translations')->get(),
-            'faculties' => Faculty::with('translations')->get(),
-            'educationTypes' => EducationType::with('translations')->get(),
-            'eventTypes' => EventType::with('translations')->get(),
         ]);
     }
 
@@ -82,36 +60,20 @@ class AcademicCalendarController extends Controller
      * @param AcademicCalendarRequest $request
      * @return View
      */
-    public function index(AcademicCalendarRequest $request): View
+    public function index(Request $request): View
     {
         $attributes = AcademicCalendar::attributes();
         $headerAttributes = AcademicCalendar::headerAttributes();
-        $query = AcademicCalendar::with(['translations', 'semester.translations', 'educationLevel.translations', 'faculty.translations', 'educationType.translations', 'eventType.translations']);
 
-        // 🔥 filterlər
-        if ($request->semester_id) {
-            $query->where('semester_id', $request->semester_id);
-        }
-
-        if ($request->faculty_id) {
-            $query->where('faculty_id', $request->faculty_id);
-        }
-
-        if ($request->event_type_id) {
-            $query->where('event_type_id', $request->event_type_id);
-        }
-
-        if ($request->academic_year) {
-            $query->where('academic_year', $request->academic_year);
-        }
-
-        $models = $query->orderBy('event_date')->paginate(10);
+        $models = AcademicCalendar::with('translations')
+            ->orderBy('order')
+            ->paginate(10);
 
         return view(self::PATH . 'index', [
             'models' => $models,
             'title' => self::TITLE,
             'attributes' => $attributes,
-            'headerAttributes' => $headerAttributes
+            'headerAttributes' => $headerAttributes,
         ]);
     }
     /**

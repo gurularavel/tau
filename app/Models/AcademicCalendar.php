@@ -13,7 +13,7 @@ class AcademicCalendar extends Model
     public const IS_ACTIVE = 1;
 
     // 🔥 yalnız subject qalır
-    public array $translatedAttributes = ['subject'];
+    public array $translatedAttributes = ['subject', 'content'];
 
 
     protected $fillable = [
@@ -66,6 +66,7 @@ public static function attributes(): array
     return [
         'id' => '#',
         'subject' => __('translate.Subject'),
+        'content' => __('translate.Content'),
         'academic_year' => __('translate.Academic Year'),
         'semester' => __('translate.Semester'),
         'education_level' => __('translate.Education Level'),
