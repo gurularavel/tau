@@ -146,14 +146,15 @@
                         @endif
                         @if ($dynamic->type == \App\Models\Dynamic::TYPE_DYNAMIC_ITEMS && $dynamic->items->isNotEmpty())
                             @php
-                                $type1Items = $dynamic->items->where('type', 1);
-                                $type2Items = $dynamic->items->where('type', 2);
-                                $type3Items = $dynamic->items->where('type', 3);
-                                $type4Items = $dynamic->items->where('type', 4);
-                                $type5Items = $dynamic->items->where('type', 5);
-                                $type6Items = $dynamic->items->where('type', 6);
-                                $type7Items = $dynamic->items->where('type', 7);
-                                $type8Items = $dynamic->items->where('type', 8);
+                                $activeItems = $dynamic->items->where('is_active', 1);
+                                $type1Items = $activeItems->where('type', 1);
+                                $type2Items = $activeItems->where('type', 2);
+                                $type3Items = $activeItems->where('type', 3);
+                                $type4Items = $activeItems->where('type', 4);
+                                $type5Items = $activeItems->where('type', 5);
+                                $type6Items = $activeItems->where('type', 6);
+                                $type7Items = $activeItems->where('type', 7);
+                                $type8Items = $activeItems->where('type', 8);
                             @endphp
 
                             {{-- Type 1 --}}

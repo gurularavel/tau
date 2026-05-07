@@ -143,13 +143,14 @@ public function update(PageRequest $request, Page $page): RedirectResponse
                 DynamicItem::whereIn('id', $request->delete_dynamic_items)->delete();
             }
 
-            if ($request->has('dynamics')) {
-                $dynamicIds = [];
+            $dynamicIds = [];
 
+            if ($request->has('dynamics')) {
                 foreach ($request->dynamics as $index => $dynamicData) {
                     // Update or create dynamic
                     if (isset($dynamicData['id'])) {
                         $dynamic = Dynamic::find($dynamicData['id']);
+                        if (!$dynamic) continue; // already deleted earlier in this request
                     } else {
                         $dynamic = new Dynamic();
                     }
@@ -324,7 +325,9 @@ public function update(PageRequest $request, Page $page): RedirectResponse
 
                     $dynamicIds[] = $dynamic->id;
                 }
+            }
 
+            if ($request->has('dynamics') || $request->has('delete_dynamics')) {
                 $page->dynamic_ids = $dynamicIds;
                 $page->save();
             }

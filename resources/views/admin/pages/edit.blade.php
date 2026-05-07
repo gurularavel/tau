@@ -748,7 +748,11 @@
 
         function removeDynamic(locale, index, dynamicId = null) {
             if (confirm('Are you sure you want to remove this dynamic section?')) {
-                $(`#dynamic-desc-${locale}-${index}`).summernote('destroy');
+                Object.keys(dynamicIndexes).forEach(function(loc) {
+                    try { $(`#dynamic-desc-${loc}-${index}`).summernote('destroy'); } catch(e) {}
+                    let el = document.getElementById('dynamic-' + loc + '-' + index);
+                    if (el) el.remove();
+                });
 
                 if (dynamicId) {
                     let input = document.createElement('input');
@@ -757,7 +761,6 @@
                     input.value = dynamicId;
                     document.querySelector('form').appendChild(input);
                 }
-                document.getElementById('dynamic-' + locale + '-' + index).remove();
             }
         }
 
