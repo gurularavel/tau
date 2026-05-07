@@ -992,6 +992,12 @@
                 ? '<input type="hidden" name="dynamics[' + dynamicIndex + '][items][' + itemIndex + '][id]" value="' + item.id + '">'
                 : '';
 
+            let firstLocaleLabel = Object.keys(dynamicIndexes)[0];
+            let labelTranslation = item.translations ? (item.translations[firstLocaleLabel] || item.translations[Object.keys(item.translations)[0]]) : null;
+            let headerLabel = (labelTranslation && (labelTranslation.title || labelTranslation.name))
+                ? (labelTranslation.title || labelTranslation.name)
+                : 'Item #' + (itemIndex + 1);
+
             let html = `
                 <div class="dynamic-item-block" id="dynamic-item-${locale}-${dynamicIndex}-${itemIndex}">
                     ${idInput}
@@ -999,7 +1005,7 @@
                     <div class="dynamic-item-accordion-header" onclick="toggleItemAccordion('${locale}', ${dynamicIndex}, ${itemIndex})">
                         <div class="d-flex align-items-center gap-2">
                             <i class="ri-arrow-right-s-line" id="item-chevron-${locale}-${dynamicIndex}-${itemIndex}" style="font-size:18px;transition:transform 0.3s;"></i>
-                            <strong class="text-primary small">Item #${itemIndex + 1}</strong>
+                            <strong class="text-primary small">${headerLabel}</strong>
                         </div>
                         <div class="d-flex gap-1" onclick="event.stopPropagation()">
                             <button type="button" class="btn btn-info btn-sm" title="Duplicate"
