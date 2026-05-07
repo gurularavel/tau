@@ -227,15 +227,34 @@
             background: white;
             border: 1px solid #dee2e6;
             border-radius: 6px;
-            padding: 15px;
-            margin-bottom: 10px;
-            position: relative;
-            transition: all 0.3s ease;
+            padding: 5px;
+            margin-bottom: 8px;
+            overflow: hidden;
+            transition: border-color 0.2s ease;
         }
 
         .dynamic-item-block:hover {
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
             border-color: #667eea;
+        }
+
+        .dynamic-item-accordion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 12px;
+            background: #f0f4ff;
+            border-radius: 4px;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.2s;
+        }
+
+        .dynamic-item-accordion-header:hover {
+            background: #e0eaff;
+        }
+
+        .dynamic-item-accordion-body {
+            padding: 12px 8px 4px 8px;
         }
 
         .form-label {
@@ -953,12 +972,22 @@
 
         let dynamicItemIndexes = {};
 
+        function toggleItemAccordion(locale, dynamicIndex, itemIndex) {
+            Object.keys(dynamicIndexes).forEach(function(loc) {
+                let body    = document.getElementById('item-body-'    + loc + '-' + dynamicIndex + '-' + itemIndex);
+                let chevron = document.getElementById('item-chevron-' + loc + '-' + dynamicIndex + '-' + itemIndex);
+                if (!body) return;
+                let opening = body.style.display !== 'block';
+                body.style.display = opening ? 'block' : 'none';
+                if (chevron) chevron.style.transform = opening ? 'rotate(90deg)' : '';
+            });
+        }
+
         function addExistingDynamicItem(locale, dynamicIndex, item, itemIndex) {
             let firstLocale = Object.keys(dynamicIndexes)[0];
             let isFirstLocale = (locale === firstLocale);
             let translation = item.translations ? item.translations[locale] : null;
 
-            // Avoid nested template literals — build conditional parts first
             let idInput = item.id
                 ? '<input type="hidden" name="dynamics[' + dynamicIndex + '][items][' + itemIndex + '][id]" value="' + item.id + '">'
                 : '';
@@ -967,104 +996,103 @@
                 <div class="dynamic-item-block" id="dynamic-item-${locale}-${dynamicIndex}-${itemIndex}">
                     ${idInput}
 
-                    <div class="position-absolute end-0 top-0 m-2 d-flex gap-1" style="z-index:10">
-                        <button type="button"
-                                class="btn btn-info btn-sm"
-                                title="Duplicate"
-                                style="cursor:pointer"
-                                onclick="duplicateDynamicItem('${locale}', ${dynamicIndex}, ${itemIndex})">
-                            <i class="ri-file-copy-line"></i>
-                        </button>
-                        <button type="button"
-                                class="btn btn-danger btn-sm"
-                                style="cursor:pointer"
-                                onclick="removeDynamicItem('${locale}', ${dynamicIndex}, ${itemIndex}, ${item.id})">
-                            <i class="ri-close-line"></i>
-                        </button>
+                    <div class="dynamic-item-accordion-header" onclick="toggleItemAccordion('${locale}', ${dynamicIndex}, ${itemIndex})">
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="ri-arrow-right-s-line" id="item-chevron-${locale}-${dynamicIndex}-${itemIndex}" style="font-size:18px;transition:transform 0.3s;"></i>
+                            <strong class="text-primary small">Item #${itemIndex + 1}</strong>
+                        </div>
+                        <div class="d-flex gap-1" onclick="event.stopPropagation()">
+                            <button type="button" class="btn btn-info btn-sm" title="Duplicate"
+                                    onclick="duplicateDynamicItem('${locale}', ${dynamicIndex}, ${itemIndex})">
+                                <i class="ri-file-copy-line"></i>
+                            </button>
+                            <button type="button" class="btn btn-danger btn-sm"
+                                    onclick="removeDynamicItem('${locale}', ${dynamicIndex}, ${itemIndex}, ${item.id})">
+                                <i class="ri-close-line"></i>
+                            </button>
+                        </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-lg-12 mb-2">
-                            <strong class="text-primary">Item #${itemIndex + 1}</strong>
-                        </div>
+                    <div class="dynamic-item-accordion-body" id="item-body-${locale}-${dynamicIndex}-${itemIndex}" style="display:none;">
+                        <div class="row">
 
-                        <div class="col-lg-6 mb-3 item-name-block">
-                            <label class="form-label">Name (${locale.toUpperCase()})</label>
-                            <input type="text"
-                                   name="dynamics[${dynamicIndex}][items][${itemIndex}][translations][${locale}][name]"
-                                   class="form-control"
-                                   value="${translation && translation.name ? translation.name : ''}"
-                                   placeholder="Item name">
-                        </div>
-                        <div class="col-lg-6 mb-3 item-profession-block">
-                            <label class="form-label">Profession (${locale.toUpperCase()})</label>
-                            <input type="text"
-                                   name="dynamics[${dynamicIndex}][items][${itemIndex}][translations][${locale}][profession]"
-                                   class="form-control"
-                                   value="${translation && translation.profession ? translation.profession : ''}"
-                                   placeholder="Item profession">
-                        </div>
-                        <div class="col-lg-6 mb-3 item-email-block">
-                            <label class="form-label">Email (${locale.toUpperCase()})</label>
-                            <input type="text"
-                                   name="dynamics[${dynamicIndex}][items][${itemIndex}][translations][${locale}][email]"
-                                   class="form-control"
-                                   value="${translation && translation.email ? translation.email : ''}"
-                                   placeholder="Item email">
-                        </div>
-                        <div class="col-lg-6 mb-3 item-phone-block">
-                            <label class="form-label">Phone (${locale.toUpperCase()})</label>
-                            <input type="text"
-                                   name="dynamics[${dynamicIndex}][items][${itemIndex}][translations][${locale}][phone]"
-                                   class="form-control"
-                                   value="${translation && translation.phone ? translation.phone : ''}"
-                                   placeholder="Item phone">
-                        </div>
+                            <div class="col-lg-6 mb-3 item-name-block">
+                                <label class="form-label">Name (${locale.toUpperCase()})</label>
+                                <input type="text"
+                                       name="dynamics[${dynamicIndex}][items][${itemIndex}][translations][${locale}][name]"
+                                       class="form-control"
+                                       value="${translation && translation.name ? translation.name : ''}"
+                                       placeholder="Item name">
+                            </div>
+                            <div class="col-lg-6 mb-3 item-profession-block">
+                                <label class="form-label">Profession (${locale.toUpperCase()})</label>
+                                <input type="text"
+                                       name="dynamics[${dynamicIndex}][items][${itemIndex}][translations][${locale}][profession]"
+                                       class="form-control"
+                                       value="${translation && translation.profession ? translation.profession : ''}"
+                                       placeholder="Item profession">
+                            </div>
+                            <div class="col-lg-6 mb-3 item-email-block">
+                                <label class="form-label">Email (${locale.toUpperCase()})</label>
+                                <input type="text"
+                                       name="dynamics[${dynamicIndex}][items][${itemIndex}][translations][${locale}][email]"
+                                       class="form-control"
+                                       value="${translation && translation.email ? translation.email : ''}"
+                                       placeholder="Item email">
+                            </div>
+                            <div class="col-lg-6 mb-3 item-phone-block">
+                                <label class="form-label">Phone (${locale.toUpperCase()})</label>
+                                <input type="text"
+                                       name="dynamics[${dynamicIndex}][items][${itemIndex}][translations][${locale}][phone]"
+                                       class="form-control"
+                                       value="${translation && translation.phone ? translation.phone : ''}"
+                                       placeholder="Item phone">
+                            </div>
 
-                        <div class="col-lg-12 mb-3 item-title-block">
-                            <label class="form-label">Title (${locale.toUpperCase()})</label>
-                            <input type="text"
-                                   name="dynamics[${dynamicIndex}][items][${itemIndex}][translations][${locale}][title]"
-                                   class="form-control"
-                                   placeholder="Item title"
-                                   value="${translation && translation.title ? translation.title : ''}">
-                        </div>
+                            <div class="col-lg-12 mb-3 item-title-block">
+                                <label class="form-label">Title (${locale.toUpperCase()})</label>
+                                <input type="text"
+                                       name="dynamics[${dynamicIndex}][items][${itemIndex}][translations][${locale}][title]"
+                                       class="form-control"
+                                       placeholder="Item title"
+                                       value="${translation && translation.title ? translation.title : ''}">
+                            </div>
 
-                        <div class="col-lg-12 mb-3 item-description-block">
-                            <label class="form-label">Description (${locale.toUpperCase()})</label>
-                            <textarea name="dynamics[${dynamicIndex}][items][${itemIndex}][translations][${locale}][description]"
-                                      class="form-control summernote-editor"
-                                      id="item-desc-${locale}-${dynamicIndex}-${itemIndex}"
-                                      rows="5"
-                                      placeholder="Enter description">${translation && translation.description ? translation.description : ''}</textarea>
-                        </div>
+                            <div class="col-lg-12 mb-3 item-description-block">
+                                <label class="form-label">Description (${locale.toUpperCase()})</label>
+                                <textarea name="dynamics[${dynamicIndex}][items][${itemIndex}][translations][${locale}][description]"
+                                          class="form-control summernote-editor"
+                                          id="item-desc-${locale}-${dynamicIndex}-${itemIndex}"
+                                          rows="5"
+                                          placeholder="Enter description">${translation && translation.description ? translation.description : ''}</textarea>
+                            </div>
             `;
 
             if (isFirstLocale) {
                 html += `
-                    <div class="col-lg-4 mb-3">
-                        <label class="form-label">Type</label>
-                        <select name="dynamics[${dynamicIndex}][items][${itemIndex}][type]"
-                                class="form-select"
-                                onchange="toggleItemImage(this)">
-                            <option value="1" ${item.type == 1 ? 'selected' : ''}>Type 1</option>
-                            <option value="2" ${item.type == 2 ? 'selected' : ''}>Type 2</option>
-                            <option value="3" ${item.type == 3 ? 'selected' : ''}>Type 3</option>
-                            <option value="4" ${item.type == 4 ? 'selected' : ''}>Type 4</option>
-                            <option value="5" ${item.type == 5 ? 'selected' : ''}>Type 5</option>
-                            <option value="6" ${item.type == 6 ? 'selected' : ''}>Type 6</option>
-                            <option value="7" ${item.type == 7 ? 'selected' : ''}>Type 7</option>
-                            <option value="8" ${item.type == 8 ? 'selected' : ''}>Type 8</option>
-                        </select>
-                    </div>
+                            <div class="col-lg-4 mb-3">
+                                <label class="form-label">Type</label>
+                                <select name="dynamics[${dynamicIndex}][items][${itemIndex}][type]"
+                                        class="form-select"
+                                        onchange="toggleItemImage(this)">
+                                    <option value="1" ${item.type == 1 ? 'selected' : ''}>Type 1</option>
+                                    <option value="2" ${item.type == 2 ? 'selected' : ''}>Type 2</option>
+                                    <option value="3" ${item.type == 3 ? 'selected' : ''}>Type 3</option>
+                                    <option value="4" ${item.type == 4 ? 'selected' : ''}>Type 4</option>
+                                    <option value="5" ${item.type == 5 ? 'selected' : ''}>Type 5</option>
+                                    <option value="6" ${item.type == 6 ? 'selected' : ''}>Type 6</option>
+                                    <option value="7" ${item.type == 7 ? 'selected' : ''}>Type 7</option>
+                                    <option value="8" ${item.type == 8 ? 'selected' : ''}>Type 8</option>
+                                </select>
+                            </div>
 
-                    <div class="col-lg-4 mb-3">
-                        <label class="form-label">Active</label>
-                        <select name="dynamics[${dynamicIndex}][items][${itemIndex}][is_active]" class="form-select">
-                            <option value="1" ${item.is_active == 1 ? 'selected' : ''}>Yes</option>
-                            <option value="0" ${item.is_active == 0 ? 'selected' : ''}>No</option>
-                        </select>
-                    </div>
+                            <div class="col-lg-4 mb-3">
+                                <label class="form-label">Active</label>
+                                <select name="dynamics[${dynamicIndex}][items][${itemIndex}][is_active]" class="form-select">
+                                    <option value="1" ${item.is_active == 1 ? 'selected' : ''}>Yes</option>
+                                    <option value="0" ${item.is_active == 0 ? 'selected' : ''}>No</option>
+                                </select>
+                            </div>
                 `;
             }
 
@@ -1074,7 +1102,6 @@
 
                 if (item.image) {
                     if (item.id) {
-                        // Existing saved item — keep/delete behaviour
                         html += `
                             <div class="existing-image-wrapper mb-2">
                                 <img src="/uploads/dynamic_items/${item.image}" class="existing-image" alt="Item image">
@@ -1090,7 +1117,6 @@
                             <small class="text-muted d-block mb-2">Upload new image to replace</small>
                         `;
                     } else {
-                        // Duplicated item — tell server to copy the source file
                         html += `
                             <div class="existing-image-wrapper mb-2">
                                 <img src="/uploads/dynamic_items/${item.image}" class="existing-image" alt="Item image">
@@ -1121,6 +1147,7 @@
             }
 
             html += `
+                        </div>
                     </div>
                 </div>
             `;
@@ -1156,124 +1183,125 @@
 
             let html = `
                 <div class="dynamic-item-block" id="dynamic-item-${locale}-${dynamicIndex}-${itemIndex}">
-                    <div class="position-absolute end-0 top-0 m-2 d-flex gap-1" style="z-index:10">
-                        <button type="button"
-                                class="btn btn-info btn-sm"
-                                title="Duplicate"
-                                style="cursor:pointer"
-                                onclick="duplicateDynamicItem('${locale}', ${dynamicIndex}, ${itemIndex})">
-                            <i class="ri-file-copy-line"></i>
-                        </button>
-                        <button type="button"
-                                class="btn btn-danger btn-sm"
-                                style="cursor:pointer"
-                                onclick="removeDynamicItem('${locale}', ${dynamicIndex}, ${itemIndex})">
-                            <i class="ri-close-line"></i>
-                        </button>
+
+                    <div class="dynamic-item-accordion-header" onclick="toggleItemAccordion('${locale}', ${dynamicIndex}, ${itemIndex})">
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="ri-arrow-right-s-line" id="item-chevron-${locale}-${dynamicIndex}-${itemIndex}" style="font-size:18px;transition:transform 0.3s;transform:rotate(90deg);"></i>
+                            <strong class="text-primary small">Item #${itemIndex + 1}</strong>
+                        </div>
+                        <div class="d-flex gap-1" onclick="event.stopPropagation()">
+                            <button type="button" class="btn btn-info btn-sm" title="Duplicate"
+                                    onclick="duplicateDynamicItem('${locale}', ${dynamicIndex}, ${itemIndex})">
+                                <i class="ri-file-copy-line"></i>
+                            </button>
+                            <button type="button" class="btn btn-danger btn-sm"
+                                    onclick="removeDynamicItem('${locale}', ${dynamicIndex}, ${itemIndex})">
+                                <i class="ri-close-line"></i>
+                            </button>
+                        </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-lg-12 mb-2">
-                            <strong class="text-primary">Item #${itemIndex + 1}</strong>
-                        </div>
+                    <div class="dynamic-item-accordion-body" id="item-body-${locale}-${dynamicIndex}-${itemIndex}" style="display:block;">
+                        <div class="row">
 
-                        <div class="col-lg-6 mb-3 item-name-block">
-                            <label class="form-label">Name (${locale.toUpperCase()})</label>
-                            <input type="text"
-                                   name="dynamics[${dynamicIndex}][items][${itemIndex}][translations][${locale}][name]"
-                                   class="form-control"
-                                   placeholder="Item name">
-                        </div>
-                        <div class="col-lg-6 mb-3 item-profession-block">
-                            <label class="form-label">Profession (${locale.toUpperCase()})</label>
-                            <input type="text"
-                                   name="dynamics[${dynamicIndex}][items][${itemIndex}][translations][${locale}][profession]"
-                                   class="form-control"
-                                   placeholder="Item profession">
-                        </div>
-                        <div class="col-lg-6 mb-3 item-email-block">
-                            <label class="form-label">Email (${locale.toUpperCase()})</label>
-                            <input type="text"
-                                   name="dynamics[${dynamicIndex}][items][${itemIndex}][translations][${locale}][email]"
-                                   class="form-control"
-                                   placeholder="Item email">
-                        </div>
-                        <div class="col-lg-6 mb-3 item-phone-block">
-                            <label class="form-label">Phone (${locale.toUpperCase()})</label>
-                            <input type="text"
-                                   name="dynamics[${dynamicIndex}][items][${itemIndex}][translations][${locale}][phone]"
-                                   class="form-control"
-                                   placeholder="Item phone">
-                        </div>
+                            <div class="col-lg-6 mb-3 item-name-block">
+                                <label class="form-label">Name (${locale.toUpperCase()})</label>
+                                <input type="text"
+                                       name="dynamics[${dynamicIndex}][items][${itemIndex}][translations][${locale}][name]"
+                                       class="form-control"
+                                       placeholder="Item name">
+                            </div>
+                            <div class="col-lg-6 mb-3 item-profession-block">
+                                <label class="form-label">Profession (${locale.toUpperCase()})</label>
+                                <input type="text"
+                                       name="dynamics[${dynamicIndex}][items][${itemIndex}][translations][${locale}][profession]"
+                                       class="form-control"
+                                       placeholder="Item profession">
+                            </div>
+                            <div class="col-lg-6 mb-3 item-email-block">
+                                <label class="form-label">Email (${locale.toUpperCase()})</label>
+                                <input type="text"
+                                       name="dynamics[${dynamicIndex}][items][${itemIndex}][translations][${locale}][email]"
+                                       class="form-control"
+                                       placeholder="Item email">
+                            </div>
+                            <div class="col-lg-6 mb-3 item-phone-block">
+                                <label class="form-label">Phone (${locale.toUpperCase()})</label>
+                                <input type="text"
+                                       name="dynamics[${dynamicIndex}][items][${itemIndex}][translations][${locale}][phone]"
+                                       class="form-control"
+                                       placeholder="Item phone">
+                            </div>
 
-                        <div class="col-lg-12 mb-3 item-title-block">
-                            <label class="form-label">Title (${locale.toUpperCase()})</label>
-                            <input type="text"
-                                   name="dynamics[${dynamicIndex}][items][${itemIndex}][translations][${locale}][title]"
-                                   class="form-control"
-                                   placeholder="Item title">
-                        </div>
+                            <div class="col-lg-12 mb-3 item-title-block">
+                                <label class="form-label">Title (${locale.toUpperCase()})</label>
+                                <input type="text"
+                                       name="dynamics[${dynamicIndex}][items][${itemIndex}][translations][${locale}][title]"
+                                       class="form-control"
+                                       placeholder="Item title">
+                            </div>
 
-                        <div class="col-lg-12 mb-3 item-description-block">
-                            <label class="form-label">Description (${locale.toUpperCase()})</label>
-                            <textarea name="dynamics[${dynamicIndex}][items][${itemIndex}][translations][${locale}][description]"
-                                      class="form-control summernote-editor"
-                                      id="item-desc-${locale}-${dynamicIndex}-${itemIndex}"
-                                      rows="5"
-                                      placeholder="Enter description"></textarea>
-                        </div>
+                            <div class="col-lg-12 mb-3 item-description-block">
+                                <label class="form-label">Description (${locale.toUpperCase()})</label>
+                                <textarea name="dynamics[${dynamicIndex}][items][${itemIndex}][translations][${locale}][description]"
+                                          class="form-control summernote-editor"
+                                          id="item-desc-${locale}-${dynamicIndex}-${itemIndex}"
+                                          rows="5"
+                                          placeholder="Enter description"></textarea>
+                            </div>
             `;
 
             if (isFirstLocale) {
                 html += `
-                    <div class="col-lg-4 mb-3">
-                        <label class="form-label">Type</label>
-                        <select name="dynamics[${dynamicIndex}][items][${itemIndex}][type]"
-                                class="form-select"
-                                onchange="toggleItemImage(this)">
-                            <option value="1">Type 1</option>
-                            <option value="2">Type 2</option>
-                            <option value="3">Type 3</option>
-                            <option value="4">Type 4</option>
-                            <option value="5">Type 5</option>
-                            <option value="6">Type 6</option>
-                            <option value="7">Type 7</option>
-                            <option value="8">Type 8</option>
-                        </select>
-                    </div>
+                            <div class="col-lg-4 mb-3">
+                                <label class="form-label">Type</label>
+                                <select name="dynamics[${dynamicIndex}][items][${itemIndex}][type]"
+                                        class="form-select"
+                                        onchange="toggleItemImage(this)">
+                                    <option value="1">Type 1</option>
+                                    <option value="2">Type 2</option>
+                                    <option value="3">Type 3</option>
+                                    <option value="4">Type 4</option>
+                                    <option value="5">Type 5</option>
+                                    <option value="6">Type 6</option>
+                                    <option value="7">Type 7</option>
+                                    <option value="8">Type 8</option>
+                                </select>
+                            </div>
 
-                    <div class="col-lg-4 mb-3">
-                        <label class="form-label">Active</label>
-                        <select name="dynamics[${dynamicIndex}][items][${itemIndex}][is_active]" class="form-select">
-                            <option value="1" selected>Yes</option>
-                            <option value="0">No</option>
-                        </select>
-                    </div>
+                            <div class="col-lg-4 mb-3">
+                                <label class="form-label">Active</label>
+                                <select name="dynamics[${dynamicIndex}][items][${itemIndex}][is_active]" class="form-select">
+                                    <option value="1" selected>Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                            </div>
                 `;
             }
 
             if (isFirstLocale) {
                 html += `
-                    <div class="col-lg-12 mb-3 item-image-block">
-                        <label class="form-label">Image</label>
-                        <input type="file"
-                               name="dynamics[${dynamicIndex}][items][${itemIndex}][image]"
-                               class="form-control"
-                               accept="image/*"
-                               onchange="previewImage(this, 'item-preview-${locale}-${dynamicIndex}-${itemIndex}')">
-                        <img id="item-preview-${locale}-${dynamicIndex}-${itemIndex}" class="image-preview" style="display:none;">
-                    </div>
+                            <div class="col-lg-12 mb-3 item-image-block">
+                                <label class="form-label">Image</label>
+                                <input type="file"
+                                       name="dynamics[${dynamicIndex}][items][${itemIndex}][image]"
+                                       class="form-control"
+                                       accept="image/*"
+                                       onchange="previewImage(this, 'item-preview-${locale}-${dynamicIndex}-${itemIndex}')">
+                                <img id="item-preview-${locale}-${dynamicIndex}-${itemIndex}" class="image-preview" style="display:none;">
+                            </div>
                 `;
             } else {
                 html += `
-                    <div class="col-lg-12 mb-3">
-                        <div class="alert alert-info py-2 mb-0">
-                            <i class="ri-image-line"></i> Image is managed in the first language tab
-                        </div>
-                    </div>`;
+                            <div class="col-lg-12 mb-3">
+                                <div class="alert alert-info py-2 mb-0">
+                                    <i class="ri-image-line"></i> Image is managed in the first language tab
+                                </div>
+                            </div>`;
             }
 
             html += `
+                        </div>
                     </div>
                 </div>
             `;
