@@ -50,8 +50,8 @@
 
           .trustee-image {
             img {
-              width: 93px;
-              height: 93px;
+              width: 150px;
+              height: 150px;
               opacity: 1;
               border: 4px dashed #cccccc;
               border-radius: 50%;
