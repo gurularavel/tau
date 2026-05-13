@@ -231,7 +231,7 @@
             </div>
 
             <div class="about-center-info">
-                <h4>{{ $homePage->teacher ?? '' }}+</h4>
+                <h4>{{ $homePage->student ?? '' }}+</h4>
                 <p>{{ __('translate.Student') }}</p>
                 <div class="students">
                     <img src="{{ asset('assets/front/images/homepage/student1.jpg') }}" alt="Student 1" />
