@@ -60,6 +60,7 @@
                 <x-admin.sidebar-section-header title="Student" icon="ri-user-2-line" />
                 <x-admin.sidebar-single-nav-item :title="'Student clubs page'"    :routeName="'studentClubPage.index'"    :iconName="'ri-group-line'" />
                 <x-admin.sidebar-single-nav-item :title="'Student clubs'"         :routeName="'student_clubs.index'"      :iconName="'ri-team-line'" />
+                <x-admin.sidebar-single-nav-item :title="'Student life club'"     :routeName="'studentLifeClub.index'"    :iconName="'ri-heart-line'" />
                 <x-admin.sidebar-single-nav-item :title="'Student projects page'" :routeName="'studentProjectPage.index'" :iconName="'ri-lightbulb-flash-line'" />
                 <x-admin.sidebar-single-nav-item :title="'Student projects'"      :routeName="'student_projects.index'"   :iconName="'ri-code-s-slash-line'" />
 

@@ -86,8 +86,11 @@
 
                             </x-admin.crud.index.item-table-card>
 
-                            {{-- <x-admin.crud.index.pagination/> --}}
-
+                            @if ($models->hasPages())
+                                <div class="d-flex justify-content-end mt-3">
+                                    {{ $models->links() }}
+                                </div>
+                            @endif
 
                         </x-admin.crud.index.item-list>
 

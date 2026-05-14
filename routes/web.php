@@ -30,7 +30,7 @@ use App\Http\Controllers\Admin\{
     ProgramController,
     ProjectCategoryController,
 
-    StudentClubController, StudentClubPageController,StudentProjectsController, StudentProjectPageController,
+    StudentClubController, StudentClubPageController, StudentLifeClubController, StudentProjectsController, StudentProjectPageController,
 
 
 };
@@ -194,6 +194,7 @@ Route::post('/academic-lookups/event-type', [AcademicLookupController::class, 'e
         Route::resource('project-page',          ProjectPageController::class)->names('admin.projectPage');
         Route::resource('event-page',            EventPageController::class)->names('admin.eventPage');
         Route::resource('student-club-page',     StudentClubPageController::class)->names('admin.studentClubPage');
+        Route::resource('student-life-club',     StudentLifeClubController::class)->names('admin.studentLifeClub');
         Route::resource('student-clubs',         StudentClubController::class)->names('admin.student_clubs');
         Route::resource('student-project-page',  StudentProjectPageController::class)->names('admin.studentProjectPage');
         Route::resource('student-projects',      StudentProjectsController::class)->names('admin.student_projects');
