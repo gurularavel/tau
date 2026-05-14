@@ -89,7 +89,7 @@
                 <x-admin.sidebar-single-nav-item :title="'Event categories'"  :routeName="'event_categories.index'" :iconName="'ri-folder-chart-line'" />
                 <x-admin.sidebar-single-nav-item :title="'Events'"            :routeName="'events.index'"           :iconName="'ri-calendar-check-line'" />
                 <x-admin.sidebar-single-nav-item :title="'Projects page'"     :routeName="'projectPage.index'"        :iconName="'ri-folder-5-line'" />
-                <x-admin.sidebar-single-nav-item :title="'Project categories'":routeName="'project_categories.index'" :iconName="'ri-stack-line'" />
+                <x-admin.sidebar-single-nav-item :title="'Project categories'" :routeName="'project_categories.index'" :iconName="'ri-stack-line'" />
                 <x-admin.sidebar-single-nav-item :title="'Projects'"          :routeName="'projects.index'"           :iconName="'ri-git-repository-line'" />
 
                 {{-- ═══════════════════════════════════════
