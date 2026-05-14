@@ -15,7 +15,7 @@ class StudentProject extends Model
     public const IS_ACTIVE = 1;
 
     protected $fillable = ['created_at', 'image', 'is_active', 'slug'];
-    public array $translatedAttributes = ['title', 'description', 'meta_title', 'meta_keywords', 'meta_description'];
+    public array $translatedAttributes = ['title', 'short_description', 'description', 'meta_title', 'meta_keywords', 'meta_description'];
     /**
      * Attributes
      *
@@ -30,6 +30,7 @@ class StudentProject extends Model
             'slug' => __('translate.Slug'),
             'is_active' => __('translate.Active'),
             'title' => __('translate.Title'),
+            'short_description' => __('translate.Short description'),
             'description' => __('translate.Description'),
             'meta_title' => __('translate.Meta title'),
             'meta_keywords' => __('translate.Meta keywords'),

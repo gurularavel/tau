@@ -65,6 +65,7 @@ use App\Http\Controllers\Front\LaboratoryController as FrontLaboratoryController
 use App\Http\Controllers\Front\MediaGuidePageController as FrontMediaGuidePageController;
 use App\Http\Controllers\Front\ProgramController as FrontProgramController;
 use App\Http\Controllers\Front\StudentClubController as FrontStudentClubController;
+use App\Http\Controllers\Front\StudentLifeClubController as FrontStudentLifeClubController;
 use App\Http\Controllers\Front\StudentProjectPageController as FrontStudentProjectPageController;
 use App\Http\Controllers\Front\HistoryPageController as FrontHistoryPageController;
 use App\Http\Controllers\Front\VacancyController as FrontVacancyController;
@@ -121,6 +122,7 @@ Route::group([
         Route::get('/student-projects',                                         [FrontStudentProjectPageController::class,       'index'])->name('front.student_projects.index');
         Route::get('/student-clubs/{student_club:slug}',                        [FrontStudentClubController::class,              'show'])->name('front.student_clubs.show');
         Route::get('/student-clubs',                                            [FrontStudentClubController::class,              'index'])->name('front.student_clubs.index');
+        Route::get('/student-life-club',                                        [FrontStudentLifeClubController::class,          'index'])->name('front.student_life_club.index');
         Route::get('/laboratories/{laboratory:slug}',                           [FrontLaboratoryController::class,               'show'])->name('front.laboratories.show');
         Route::get('/laboratories',                                             [FrontLaboratoryController::class,               'index'])->name('front.laboratories.index');
         Route::get('/graduates/{graduate:slug}',                                [FrontGraduateController::class,                 'show'])->name('front.graduates.show');

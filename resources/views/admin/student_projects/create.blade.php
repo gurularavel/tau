@@ -52,8 +52,10 @@
                                             :required="true" />
                                     </div>
 
-
-
+                                    <div class="mb-3 col-lg-12">
+                                        <x-admin.crud.textarea :locale="$locale" :model="''" :columnName="'short_description'"
+                                            :label="__('translate.Short description')" :rowCount="'3'" />
+                                    </div>
 
                                     <div class="mb-3 col-lg-12">
                                         <x-admin.crud.textarea :locale="$locale" :model="''" :columnName="'description'"

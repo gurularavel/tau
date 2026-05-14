@@ -115,6 +115,7 @@ return array (
   'Deleted successfully' => 'Успешно удалено',
   'Density' => 'Плотность',
   'Description' => 'Описание',
+  'Short description' => 'Краткое описание',
   'Discover How We Can' => 'Узнайте, как мы можем помочь',
   'Discoveries' => 'Открытия',
   'Discovery' => 'Открытие',

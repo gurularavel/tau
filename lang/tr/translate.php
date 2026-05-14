@@ -112,6 +112,7 @@ return array (
   'Deleted successfully' => 'Başarıyla silindi',
   'Density' => 'Yoğunluk',
   'Description' => 'Açıklama',
+  'Short description' => 'Kısa açıklama',
   'Discover How We Can' => 'Nasıl Yapabileceğimizi Keşfedin',
   'Download' => 'İndir',
   'Download File' => 'Fayli indir',

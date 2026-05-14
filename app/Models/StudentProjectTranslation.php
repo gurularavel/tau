@@ -9,7 +9,7 @@ class StudentProjectTranslation extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    protected $fillable = ['title', 'description', 'meta_title', 'meta_keywords', 'meta_description'];
+    protected $fillable = ['title', 'short_description', 'description', 'meta_title', 'meta_keywords', 'meta_description'];
 
 
     protected $table = 'student_project_translations';

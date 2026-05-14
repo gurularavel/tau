@@ -100,7 +100,11 @@
                                 <div class="club-gallery">
                                     @foreach ($dynamic->images as $image)
                                         <img src="{{ getImage('dynamics', $image->image) }}"
-                                            style="width: 100%; height: auto;" />
+                                            style="width: 100%; height: auto; cursor: pointer;"
+                                            class="gallery-trigger"
+                                            data-gallery="gallery-{{ $dynamic->id }}"
+                                            data-src="{{ getImage('dynamics', $image->image) }}"
+                                            data-index="{{ $loop->index }}" />
                                     @endforeach
                                 </div>
                             </section>
@@ -379,5 +383,73 @@
             </div>
         @endforeach
     </section>
+
+    {{-- Lightbox Modal --}}
+    <div id="gallery-lightbox" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.92); z-index:9999; align-items:center; justify-content:center;">
+        <button id="lb-close" onclick="closeLightbox()" style="position:absolute; top:16px; right:24px; background:none; border:none; color:#fff; font-size:40px; line-height:1; cursor:pointer; z-index:10001; opacity:0.8;">&times;</button>
+        <button id="lb-prev" onclick="lbNavigate(-1)" style="position:absolute; left:16px; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.15); border:none; color:#fff; font-size:36px; padding:10px 18px; cursor:pointer; border-radius:6px; z-index:10001; line-height:1;">&#8249;</button>
+        <div style="max-width:90vw; max-height:90vh; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+            <img id="lb-img" src="" alt="" style="max-width:90vw; max-height:80vh; object-fit:contain; border-radius:8px; box-shadow:0 8px 40px rgba(0,0,0,0.6);" />
+            <span id="lb-counter" style="color:rgba(255,255,255,0.6); margin-top:12px; font-size:14px;"></span>
+        </div>
+        <button id="lb-next" onclick="lbNavigate(1)" style="position:absolute; right:16px; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.15); border:none; color:#fff; font-size:36px; padding:10px 18px; cursor:pointer; border-radius:6px; z-index:10001; line-height:1;">&#8250;</button>
+    </div>
+
+    <script>
+        var lbGalleries = {};
+        var lbCurrentGallery = null;
+        var lbCurrentIndex = 0;
+
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.gallery-trigger').forEach(function (img) {
+                var gid = img.dataset.gallery;
+                if (!lbGalleries[gid]) lbGalleries[gid] = [];
+                lbGalleries[gid].push(img.dataset.src);
+
+                img.addEventListener('click', function () {
+                    openLightbox(gid, parseInt(img.dataset.index));
+                });
+            });
+
+            document.getElementById('gallery-lightbox').addEventListener('click', function (e) {
+                if (e.target === this) closeLightbox();
+            });
+
+            document.addEventListener('keydown', function (e) {
+                if (document.getElementById('gallery-lightbox').style.display === 'none') return;
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') lbNavigate(-1);
+                if (e.key === 'ArrowRight') lbNavigate(1);
+            });
+        });
+
+        function openLightbox(galleryId, index) {
+            lbCurrentGallery = galleryId;
+            lbCurrentIndex = index;
+            lbUpdate();
+            document.getElementById('gallery-lightbox').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('gallery-lightbox').style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        function lbNavigate(dir) {
+            var images = lbGalleries[lbCurrentGallery];
+            lbCurrentIndex = (lbCurrentIndex + dir + images.length) % images.length;
+            lbUpdate();
+        }
+
+        function lbUpdate() {
+            var images = lbGalleries[lbCurrentGallery];
+            var hasMultiple = images.length > 1;
+            document.getElementById('lb-img').src = images[lbCurrentIndex];
+            document.getElementById('lb-counter').textContent = hasMultiple ? (lbCurrentIndex + 1) + ' / ' + images.length : '';
+            document.getElementById('lb-prev').style.display = hasMultiple ? 'block' : 'none';
+            document.getElementById('lb-next').style.display = hasMultiple ? 'block' : 'none';
+        }
+    </script>
 
 </x-front.layout>

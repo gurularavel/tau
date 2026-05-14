@@ -67,6 +67,7 @@ class StudentProjectRequest extends TranslatableRequest
         $rules = [];
         foreach ($this->locales() as $locale) {
             $rules["title:$locale"] = ['required', 'string'];
+            $rules["short_description:$locale"] = ['nullable', 'string'];
             $rules["description:$locale"] = ['nullable', 'string'];
             $rules["meta_title:$locale"] = ['nullable', 'string'];
             $rules["meta_keywords:$locale"] = ['nullable', 'string'];

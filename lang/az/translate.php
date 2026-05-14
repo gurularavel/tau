@@ -115,6 +115,7 @@ return array (
   'Deleted successfully' => 'Uğurla silindi',
   'Density' => 'Sıxlıq',
   'Description' => 'Təsvir',
+  'Short description' => 'Qısa təsvir',
   'Discover How We Can' => 'Necə kömək edə biləcəyimizi kəşf edin',
   'Discoveries' => 'Kəşflər',
   'Discovery' => 'Kəşf',

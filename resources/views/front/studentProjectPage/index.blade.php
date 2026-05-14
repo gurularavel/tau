@@ -22,11 +22,7 @@
                         <a style="text-decoration: none; color: inherit;" href="{{ route('front.student_projects.show', $studentProject->slug) }}">
                             <h3>{{ $studentProject->title ?? '' }}</h3>
                         </a>
-                        <p>
-                            {!! $studentProject->description ?? '' !!}
-                        </p>
-
-
+                        <p>{{ $studentProject->short_description ?? '' }}</p>
                     </div>
                 </div>
             @endforeach

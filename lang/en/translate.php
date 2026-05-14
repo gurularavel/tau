@@ -112,6 +112,7 @@ return array (
   'Deleted successfully' => 'Deleted successfully',
   'Density' => 'Density',
   'Description' => 'Description',
+  'Short description' => 'Short description',
   'Discover How We Can' => 'Discover How We Can',
   'Download' => 'Download',
   'Download File' => 'download file',
