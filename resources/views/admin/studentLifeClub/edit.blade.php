@@ -26,7 +26,7 @@
                     <x-admin.crud.page-title :title="$title"/>
 
 
-                    <x-admin.crud.card :routeName="'studentLifeClub.update'" :method="'update'" :model="$model" :routeNameForBackButton="''" :frontRouteName="'front.student_life_club.index'" >
+                    <x-admin.crud.card :routeName="'studentLifeClub.update'" :method="'update'" :model="$model" :routeNameForBackButton="''" :frontRouteName="'student_life_club.index'" >
 
 
                                 <x-admin.crud.nav>
