@@ -295,26 +295,10 @@
             </div>
         </div>
 
-        <div class="calendar table-responsive" style="overflow: scroll;">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>{{ __('translate.Subject') }}</th>
-                        <th>{{ __('translate.Academic Year') }}</th>
-                        <th>{{ __('translate.Semester') }}</th>
-                        <th>{{ __('translate.Education Level') }}</th>
-                        <th>{{ __('translate.Faculty') }}</th>
-                        <th>{{ __('translate.Education Type') }}</th>
-                        <th>{{ __('translate.Event Type') }}</th>
-                        <th>{{ __('translate.Event Date') }}</th>
-                        <th>{{ __('translate.Remaining days') }}</th>
-                    </tr>
-                </thead>
-                <tbody id="calendar-table-body">
-                    @include('front.academicCalendar.partials.table')
-                </tbody>
-            </table>
+        <div class="calendar-content">
+            @if($calendar)
+                {!! $calendar->content !!}
+            @endif
         </div>
 
         <a href="{{ route('front.academic_calendar.index') }}">{{__('translate.More')}}</a>

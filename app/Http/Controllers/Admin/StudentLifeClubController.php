@@ -21,7 +21,7 @@ class StudentLifeClubController extends Controller
 
     public function index()
     {
-        $studentLifeClub = StudentLifeClub::first();
+        $studentLifeClub = StudentLifeClub::firstOrCreate([]);
         return view(self::PATH . 'edit', [
             'model' => $studentLifeClub,
             'title' => self::TITLE,

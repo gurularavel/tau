@@ -17,26 +17,23 @@
                 :routeName="'academic_calendars.update'"
                 :method="'update'"
                 :model="$model"
-                :routeNameForBackButton="'academic_calendars'"
+                :routeNameForBackButton="''"
+                :frontRouteName="''"
             >
                 <x-admin.crud.success-message :delay="'5000'" />
 
-                <!-- 🔥 NAV (languages) -->
                 <x-admin.crud.nav>
                     @foreach ($locales as $key => $locale)
                         <x-admin.crud.nav-item :locale="$locale" :key="$key" />
                     @endforeach
-
                     <x-admin.crud.summernote-editor-js :locales="$locales" :key="1" :height="'500'" />
                 </x-admin.crud.nav>
 
-                <!-- 🔥 TAB CONTENT -->
                 <x-admin.crud.tab-content>
                     @foreach ($locales as $key => $locale)
                         <x-admin.crud.tab-pane :key="$key">
                             <x-admin.crud.card-body-row>
 
-                                <!-- CONTENT -->
                                 <div class="mb-3 col-lg-12">
                                     <x-admin.crud.textarea
                                         :locale="$locale"
@@ -55,7 +52,6 @@
                     @endforeach
                 </x-admin.crud.tab-content>
 
-                <!-- Status -->
                 <div class="card">
                     <div class="card-body row">
                         <div class="mb-3 col-lg-4">

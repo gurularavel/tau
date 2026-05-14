@@ -8,7 +8,6 @@ use App\Models\AcademicCalendar;
 use App\Services\Contracts\AcademicCalendarServiceInterface;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
-use Illuminate\Http\Request;
 
 class AcademicCalendarController extends Controller
 {
@@ -60,21 +59,11 @@ class AcademicCalendarController extends Controller
      * @param AcademicCalendarRequest $request
      * @return View
      */
-    public function index(Request $request): View
+    public function index(): RedirectResponse
     {
-        $attributes = AcademicCalendar::attributes();
-        $headerAttributes = AcademicCalendar::headerAttributes();
-
-        $models = AcademicCalendar::with('translations')
-            ->orderBy('order')
-            ->paginate(10);
-
-        return view(self::PATH . 'index', [
-            'models' => $models,
-            'title' => self::TITLE,
-            'attributes' => $attributes,
-            'headerAttributes' => $headerAttributes,
-        ]);
+        $calendar = AcademicCalendar::with('translations')->first()
+            ?? AcademicCalendar::create(['is_active' => 1]);
+        return redirect()->route('admin.academic_calendars.edit', $calendar);
     }
     /**
      * Display the specified resource.
@@ -109,8 +98,15 @@ class AcademicCalendarController extends Controller
     {
         $payload = $request->validated();
 
-        $this->academicCalendarService->update($academicCalendar, $payload);
+        $academicCalendar->is_active = $payload['is_active'] ?? 1;
+        $academicCalendar->save();
 
-        return redirect()->back()->with('success', __('translate.Successfully completed'));
+        foreach (getLocales() as $locale) {
+            $translation = $academicCalendar->translateOrNew($locale);
+            $translation->content = $payload["content:$locale"] ?? null;
+            $translation->save();
+        }
+
+        return redirect()->route('admin.academic_calendars.edit', $academicCalendar)->with('success', __('translate.Successfully completed'));
     }
 }

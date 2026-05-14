@@ -10,16 +10,14 @@ class AcademicCalendarController extends Controller
 {
     public function index(Request $request)
     {
-        $calendars = AcademicCalendar::where('is_active', 1)
-            ->orderBy('order', 'asc')
-            ->get();
+        $calendar = AcademicCalendar::with('translations')->first();
 
         $metaTitle = __('translate.Academic calendar');
         $metaDescription = '';
         $metaKeywords = '';
 
         return view('front.academicCalendar.index', compact(
-            'calendars',
+            'calendar',
             'metaTitle',
             'metaDescription',
             'metaKeywords'

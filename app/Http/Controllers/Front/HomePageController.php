@@ -35,22 +35,12 @@ class HomePageController extends Controller
         $metaKeywords    = $homePage->meta_keywords;
 
 
-          $academicYears = AcademicCalendar::distinct()->pluck('academic_year')->filter()->values();
-
-        // 2. Query Builder-i başladırıq
-        $query = AcademicCalendar::with([
-            'semester',
-            'educationLevel',
-            'faculty',
-            'educationType',
-            'eventType'
-        ])->where('is_active', 1);
-        $calendars = $query->orderBy('order', 'asc')->get();
+        $calendar = AcademicCalendar::with('translations')->first();
 
         return view('front.homePage.index', compact(
             'homePage',
             'heroSlides',
-            'calendars',
+            'calendar',
             'news',
             'announcements',
             'metaTitle',

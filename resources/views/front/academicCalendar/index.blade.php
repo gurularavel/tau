@@ -7,19 +7,13 @@
     <section class="academic-calendar container">
         <h3>{{ __('translate.Academic calendar') }}</h3>
 
-        @forelse($calendars as $item)
-            @php $locale = app()->getLocale(); @endphp
-
-            <div class="academic-calendar-item">
-                @if($item->translate($locale)?->content)
-                    <div class="academic-calendar-content">
-                        {!! $item->translate($locale)->content !!}
-                    </div>
-                @endif
+        @if($calendar?->content)
+            <div class="academic-calendar-content">
+                {!! $calendar->content !!}
             </div>
-        @empty
+        @else
             <p>{{ __('translate.No information found') }}</p>
-        @endforelse
+        @endif
     </section>
 
 </x-front.layout>
