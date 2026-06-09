@@ -380,6 +380,8 @@ class ProgramController extends Controller
         }
     }
 
+    private const ALLOWED_IMAGE_EXTENSIONS = ['jpg', 'jpeg', 'png', 'webp', 'gif'];
+
     /**
      * Upload image to public folder
      */
@@ -389,8 +391,13 @@ class ProgramController extends Controller
             return null;
         }
 
+        $ext = strtolower($file->getClientOriginalExtension());
+        if (!in_array($ext, self::ALLOWED_IMAGE_EXTENSIONS, true)) {
+            abort(422, 'Bu fayl tipi icazəli deyil.');
+        }
+
         // Generate unique filename
-        $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+        $filename = time() . '_' . uniqid() . '.' . $ext;
 
         // Define public path
         $destinationPath = public_path($folder);

@@ -26,9 +26,9 @@ class HomePageRequest extends TranslatableRequest
         return match ($this->scenario) {
             self::SCENARIO_INSERT => array_merge(
                 [
-                    'image' => ['required', 'image', 'mimes:jpg,jpeg,png,webp,svg'],
-                    'image2' => ['required', 'image', 'mimes:jpg,jpeg,png,webp,svg'],
-                    'image3' => ['required', 'image', 'mimes:jpg,jpeg,png,webp,svg'],
+                    'image' => ['required', 'image', 'mimes:jpg,jpeg,png,webp'],
+                    'image2' => ['required', 'image', 'mimes:jpg,jpeg,png,webp'],
+                    'image3' => ['required', 'image', 'mimes:jpg,jpeg,png,webp'],
                     'student' => 'nullable',
                     'course' => 'nullable',
                     'startup' => 'nullable',
@@ -39,9 +39,9 @@ class HomePageRequest extends TranslatableRequest
             ),
             self::SCENARIO_UPDATE => array_merge(
                 [
-                    'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp,svg'],
-                    'image2' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp,svg'],
-                    'image3' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp,svg'],
+                    'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp'],
+                    'image2' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp'],
+                    'image3' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp'],
                     'student' => 'nullable',
                     'course' => 'nullable',
                     'startup' => 'nullable',
@@ -52,9 +52,9 @@ class HomePageRequest extends TranslatableRequest
             ),
             default => [
                 'id' => 'integer|nullable',
-                'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp,svg'],
-                'image2' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp,svg'],
-                'image3' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp,svg'],
+                'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp'],
+                'image2' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp'],
+                'image3' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp'],
                 'student' => 'nullable',
                 'course' => 'nullable',
                 'startup' => 'nullable',

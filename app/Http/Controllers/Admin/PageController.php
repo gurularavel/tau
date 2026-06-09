@@ -480,6 +480,8 @@ public function update(PageRequest $request, Page $page): RedirectResponse
         }
     }
 
+    private const ALLOWED_IMAGE_EXTENSIONS = ['jpg', 'jpeg', 'png', 'webp', 'gif'];
+
     /**
      * Upload image to public folder
      */
@@ -489,8 +491,13 @@ public function update(PageRequest $request, Page $page): RedirectResponse
             return null;
         }
 
+        $ext = strtolower($file->getClientOriginalExtension());
+        if (!in_array($ext, self::ALLOWED_IMAGE_EXTENSIONS, true)) {
+            abort(422, 'Bu fayl tipi icazəli deyil.');
+        }
+
         // Generate unique filename
-        $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+        $filename = time() . '_' . uniqid() . '.' . $ext;
 
         // Define public path
         $destinationPath = public_path($folder);
@@ -506,6 +513,8 @@ public function update(PageRequest $request, Page $page): RedirectResponse
         return $filename;
     }
 
+    private const ALLOWED_FILE_EXTENSIONS = ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'zip', 'jpg', 'jpeg', 'png', 'webp'];
+
     /**
      * Upload any file to public folder (preserves original extension)
      */
@@ -515,7 +524,12 @@ public function update(PageRequest $request, Page $page): RedirectResponse
             return null;
         }
 
-        $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+        $ext = strtolower($file->getClientOriginalExtension());
+        if (!in_array($ext, self::ALLOWED_FILE_EXTENSIONS, true)) {
+            abort(422, 'Bu fayl tipi icazəli deyil.');
+        }
+
+        $filename = time() . '_' . uniqid() . '.' . $ext;
         $destinationPath = public_path($folder);
 
         if (!file_exists($destinationPath)) {

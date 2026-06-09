@@ -35,6 +35,8 @@ if (!function_exists('getLocales')) {
 
 function saveImageWithoutBASE64($item){
     //Modified by Hasan Musa to contribute SummerNote
+    $allowedEditorImageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+
     if($item){
         $dom = new \DomDocument();
             @$dom->loadHTML(mb_convert_encoding($item ?? ' ', 'HTML-ENTITIES', 'UTF-8'));
@@ -45,7 +47,11 @@ function saveImageWithoutBASE64($item){
 
                 if (strpos($image_64, 'data:image/') === 0) {
 
-                $extenion = explode('/', explode(':', substr($image_64, 0, strpos($image_64, ';')))[1])[1];
+                $extenion = strtolower(explode('/', explode(':', substr($image_64, 0, strpos($image_64, ';')))[1])[1]);
+
+                if (!in_array($extenion, $allowedEditorImageExtensions, true)) {
+                    continue;
+                }
 
                 $replace = substr($image_64, 0, strpos($image_64, ',') +1);
 

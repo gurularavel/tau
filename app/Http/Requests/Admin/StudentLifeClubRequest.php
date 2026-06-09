@@ -17,14 +17,14 @@ class StudentLifeClubRequest extends TranslatableRequest
     {
         return match ($this->scenario) {
             self::SCENARIO_INSERT => array_merge([
-                'image' => ['required', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
+                'image' => ['required', 'image', 'mimes:jpg,jpeg,png,webp'],
             ], $this->translations()),
             self::SCENARIO_UPDATE => array_merge([
-                'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
+                'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp'],
             ], $this->translations()),
             default => [
                 'id' => 'integer|nullable',
-                'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
+                'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp'],
             ],
         };
     }

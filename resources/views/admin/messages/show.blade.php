@@ -42,7 +42,7 @@
                                                                     @break
 
                                                                     @default
-                                                                        {!! $model->{$attribute} !!}
+                                                                        {{ $model->{$attribute} }}
                                                                 @endswitch
                                                             </td>
                                                         </tr>

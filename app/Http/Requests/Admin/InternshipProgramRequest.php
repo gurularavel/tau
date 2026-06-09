@@ -29,7 +29,7 @@ class InternshipProgramRequest extends TranslatableRequest
         return match ($this->scenario) {
             self::SCENARIO_INSERT => array_merge(
                 [
-                    'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
+                    'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp'],
                     'slug' => 'nullable',
                     'place_count' => 'nullable',
                     'duration' => 'nullable',
@@ -41,7 +41,7 @@ class InternshipProgramRequest extends TranslatableRequest
             self::SCENARIO_UPDATE => array_merge(
                 [
 
-                    'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
+                    'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp'],
                     'slug' => 'nullable',
 
                     'place_count' => 'nullable',
@@ -54,7 +54,7 @@ class InternshipProgramRequest extends TranslatableRequest
             default => [
                 'id' => 'integer|nullable',
 
-                'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
+                'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp'],
                 'slug' => 'nullable',
                 'created_at' => 'nullable',
 

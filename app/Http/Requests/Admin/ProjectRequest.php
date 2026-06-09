@@ -30,8 +30,8 @@ class ProjectRequest extends TranslatableRequest
             self::SCENARIO_INSERT => array_merge(
                 [
                     'project_category_id' => ['exists:project_categories,id'],
-                    'image' => ['required', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
-                    'images.*' => ['nullable', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
+                    'image' => ['required', 'image', 'mimes:jpg,jpeg,png,webp'],
+                    'images.*' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp'],
                     'slug' => 'nullable',
                     'publisher_count' => 'nullable',
                     'participant_count' => 'nullable',
@@ -44,8 +44,8 @@ class ProjectRequest extends TranslatableRequest
                 [
                     'project_category_id' => ['exists:project_categories,id'],
 
-                    'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
-                    'images.*' => ['nullable', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
+                    'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp'],
+                    'images.*' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp'],
                     'slug' => 'nullable',
                     'partners' => 'nullable',
                     'publisher_count' => 'nullable',
@@ -60,8 +60,8 @@ class ProjectRequest extends TranslatableRequest
                 'id' => 'integer|nullable',
                 'project_category_id' => ['exists:project_categories,id'],
 
-                'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
-                'images.*' => ['nullable', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
+                'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp'],
+                'images.*' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp'],
                 'slug' => 'nullable',
                 'created_at' => 'nullable',
                 'partners' => 'nullable',

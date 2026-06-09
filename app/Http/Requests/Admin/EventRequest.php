@@ -30,8 +30,8 @@ class EventRequest extends TranslatableRequest
             self::SCENARIO_INSERT => array_merge(
                 [
                     'event_category_id' => ['exists:event_categories,id'],
-                    'image' => ['required', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
-                    'images.*' => ['nullable', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
+                    'image' => ['required', 'image', 'mimes:jpg,jpeg,png,webp'],
+                    'images.*' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp'],
                     'slug' => 'nullable',
                     'created_at' => 'nullable'
                 ],
@@ -41,8 +41,8 @@ class EventRequest extends TranslatableRequest
                 [
                     'event_category_id' => ['exists:event_categories,id'],
 
-                    'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
-                    'images.*' => ['nullable', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
+                    'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp'],
+                    'images.*' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp'],
                     'slug' => 'nullable',
                     'created_at' => 'nullable',
                     'is_active' => ['nullable', 'boolean'],
@@ -53,8 +53,8 @@ class EventRequest extends TranslatableRequest
                 'id' => 'integer|nullable',
                 'event_category_id' => ['exists:event_categories,id'],
 
-                'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
-                'images.*' => ['nullable', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
+                'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp'],
+                'images.*' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp'],
                 'slug' => 'nullable',
                 'created_at' => 'nullable',
                 'is_active' => ['nullable', 'boolean'],

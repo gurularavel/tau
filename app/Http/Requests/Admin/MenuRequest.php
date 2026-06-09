@@ -16,7 +16,7 @@ class MenuRequest extends TranslatableRequest
         $commonRules = [
             'parent_id' => ['nullable', 'exists:menus,id'],
             'type'      => ['nullable', Rule::in(['link', 'text_block', 'image_block', 'small_block'])],
-            'image'     => ['nullable', 'image', 'mimes:jpg,jpeg,png,svg,webp', 'max:2048'],
+            'image'     => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
             'slug'      => ['nullable', 'string', 'max:255'],
             'order'     => ['nullable', 'integer'],
             'is_active' => ['nullable', 'boolean'],

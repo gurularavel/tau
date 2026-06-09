@@ -93,8 +93,8 @@ Route::group([
 
         Route::get('/',                                                         [FrontHomePageController::class,                 'index'])->name('front.homePage.index');
 
-        Route::post('/messages/send',                                           [FrontMessageController::class,                  'send'])->name('front.messages.send');
-        Route::post('/subscribe',                                               [FrontMessageController::class,                  'subscribe'])->name('front.home.subscribe');
+        Route::post('/messages/send',                                           [FrontMessageController::class,                  'send'])->name('front.messages.send')->middleware('throttle:10,1');
+        Route::post('/subscribe',                                               [FrontMessageController::class,                  'subscribe'])->name('front.home.subscribe')->middleware('throttle:5,1');
         Route::get('/contact-us',                                               [FrontContactPageController::class,              'index'])->name('front.contact.index');
         Route::get('/haqqimizda/tarixce',                                       [FrontHistoryPageController::class,              'index'])->name('front.historyPage.index');
         Route::get('/campus-gallery',                                           [FrontCampusGalleryPageController::class,        'index'])->name('front.campus.index');

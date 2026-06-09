@@ -32,8 +32,8 @@ class DynamicRequest extends TranslatableRequest
 
                     'order' => 'nullable',
 
-                    'image' => ['required', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
-                    'images.*' => ['nullable', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
+                    'image' => ['required', 'image', 'mimes:jpg,jpeg,png,webp'],
+                    'images.*' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp'],
                 ],
                 $this->translations(),
             ),
@@ -41,7 +41,7 @@ class DynamicRequest extends TranslatableRequest
                 [
 
 
-                    'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
+                    'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp'],
                     'is_active' => ['required', 'boolean'],
                     'created_at' => 'nullable',
 
@@ -54,7 +54,7 @@ class DynamicRequest extends TranslatableRequest
 
                 'order' => ['nullable'],
 
-                'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
+                'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp'],
                 'is_active' => ['nullable', 'boolean'],
                 'delete_images' => ['nullable', 'integer'],
 

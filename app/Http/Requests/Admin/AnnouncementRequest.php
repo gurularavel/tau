@@ -33,8 +33,8 @@ class AnnouncementRequest extends TranslatableRequest
                     'created_at' => 'nullable',
                     'tags' => 'nullable',
 
-                    'image' => ['required', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
-                    'images.*' => ['nullable', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
+                    'image' => ['required', 'image', 'mimes:jpg,jpeg,png,webp'],
+                    'images.*' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp'],
                 ],
                 $this->translations(),
             ),
@@ -42,7 +42,7 @@ class AnnouncementRequest extends TranslatableRequest
                 [
                     'user_id' => ['nullable', 'exists:users,id'],
 
-                    'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
+                    'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp'],
                     'status' => ['required', 'boolean'],
                     'tags' => 'nullable',
                     'created_at' => 'nullable',
@@ -56,7 +56,7 @@ class AnnouncementRequest extends TranslatableRequest
                 'tags' => 'nullable',
                 'user_id' => ['nullable', 'exists:users,id'],
 
-                'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
+                'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp'],
                 'view_counts' => ['nullable', 'boolean'],
                 'status' => ['nullable', 'boolean'],
                 'delete_images' => ['nullable', 'integer'],

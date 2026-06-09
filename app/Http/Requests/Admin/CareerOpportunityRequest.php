@@ -30,8 +30,8 @@ class CareerOpportunityRequest extends TranslatableRequest
             self::SCENARIO_INSERT => array_merge(
                 [
                     'career_opportunity_category_id' => ['exists:career_opportunity_categories,id'],
-                    'image' => ['required', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
-                    'images.*' => ['nullable', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
+                    'image' => ['required', 'image', 'mimes:jpg,jpeg,png,webp'],
+                    'images.*' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp'],
                     'slug' => 'nullable',
                     'created_at' => 'nullable'
                 ],
@@ -41,8 +41,8 @@ class CareerOpportunityRequest extends TranslatableRequest
                 [
                     'career_opportunity_category_id' => ['exists:career_opportunity_categories,id'],
 
-                    'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
-                    'images.*' => ['nullable', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
+                    'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp'],
+                    'images.*' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp'],
                     'slug' => 'nullable',
                     'created_at' => 'nullable',
                     'is_active' => ['nullable', 'boolean'],
@@ -53,8 +53,8 @@ class CareerOpportunityRequest extends TranslatableRequest
                 'id' => 'integer|nullable',
                 'career_opportunity_category_id' => ['exists:career_opportunity_categories,id'],
 
-                'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
-                'images.*' => ['nullable', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
+                'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp'],
+                'images.*' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp'],
                 'slug' => 'nullable',
                 'created_at' => 'nullable',
                 'is_active' => ['nullable', 'boolean'],
