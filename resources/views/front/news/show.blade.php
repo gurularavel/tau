@@ -17,7 +17,7 @@
       <div class="content">
 
         <p>
-         {!! $news->content ?? '' !!}
+         {!! clean_html($news->content ?? '') !!}
         </p>
       </div>
 
@@ -89,7 +89,7 @@
               >
             </h3>
             <p>
-              {!! $recentNewsItem->content ?? '' !!}
+              {!! clean_html($recentNewsItem->content ?? '') !!}
             </p>
           </div>
         </div>
@@ -102,7 +102,7 @@
 
 
 </x-front.layout>
-<script>
+<script nonce="{{ csp_nonce() }}">
     const lightbox = GLightbox({
         selector: '.zoom-item'
     });

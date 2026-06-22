@@ -118,7 +118,7 @@
         </div>
 
         <div class="responsibilities">
-            {!! $vacancy->content !!}
+            {!! clean_html($vacancy->content) !!}
         </div>
 
         <a href="javascript:void(0)" class="apply" id="openModalBtn">
@@ -154,8 +154,8 @@
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
+    <script src="{{ asset('assets/front/js/vendor/jquery-3.7.1.min.js') }}"></script>
+    <script nonce="{{ csp_nonce() }}">
         $(document).ready(function() {
             const overlay = $('#modalOverlay');
 

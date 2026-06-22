@@ -12,7 +12,7 @@
     <section class="research container">
         <h2>{{$project->title ?? ''}}</h2>
         <p>
-            {!! $project->description ?? '' !!}
+            {!! clean_html($project->description ?? '') !!}
         </p>
 
         <div class="research-gallery">
@@ -27,7 +27,7 @@
         {{-- <a class="upload" href="#">PDF Yüklə</a> --}}
     </section>
 </x-front.layout>
-<script>
+<script nonce="{{ csp_nonce() }}">
     const lightbox = GLightbox({
         selector: '.zoom-item'
     });

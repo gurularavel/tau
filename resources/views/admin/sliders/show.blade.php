@@ -46,7 +46,7 @@
                                                                     <th scope="row" style="width: 200px;">
                                                                         {{ $title . ' (' . str($locale)->upper() . ')' }}
                                                                     </th>
-                                                                    <td>{!! $model->{$attribute . ':' . $locale} !!}</td>
+                                                                    <td>{!! clean_html($model->{$attribute . ':' . $locale}) !!}</td>
                                                                 </tr>
                                                             @endforeach
                                                         @else
@@ -66,7 +66,7 @@
                                                                         @break
 
                                                                         @default
-                                                                            {!! $model->{$attribute} !!}
+                                                                            {!! clean_html($model->{$attribute}) !!}
                                                                     @endswitch
                                                                 </td>
                                                             </tr>

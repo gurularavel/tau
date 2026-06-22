@@ -1,4 +1,4 @@
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{{ asset('assets/front/js/vendor/jquery-3.7.1.min.js') }}"></script>
    <link rel="stylesheet" href="{{asset('assets/front/styles/layout.css') }}?v={{ filemtime(public_path('assets/front/styles/layout.css')) }}" />
     <link rel="stylesheet" href="{{asset('assets/front/styles/components.css') }}?v={{ filemtime(public_path('assets/front/styles/components.css')) }}" />
     @if(Route::currentRouteName() === 'front.homePage.index')
@@ -33,5 +33,5 @@
     <link rel="stylesheet" href="{{asset('assets/front/styles/pages/admission-scores.css')}}?v={{ filemtime(public_path('assets/front/styles/pages/admission-scores.css')) }}" />
 
 
-<link href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+<link href="{{ asset('assets/front/vendor/glightbox/glightbox.min.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="{{ asset('assets/front/vendor/swiper/swiper-bundle.min.css') }}"/>

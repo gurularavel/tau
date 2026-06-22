@@ -12,7 +12,7 @@
     <section class="student-club container">
         <h2>{{ $studentClub->title ?? '' }}</h2>
         <p>
-            {!! $studentClub->description ?? '' !!}
+            {!! clean_html($studentClub->description ?? '') !!}
         </p>
 
         <div class="club-gallery">
@@ -24,7 +24,7 @@
     </section>
 
 </x-front.layout>
-<script>
+<script nonce="{{ csp_nonce() }}">
     const lightbox = GLightbox({
         selector: '.zoom-item'
     });

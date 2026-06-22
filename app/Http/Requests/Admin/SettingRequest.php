@@ -35,7 +35,8 @@ class SettingRequest extends AppFormRequest
                 'file' => [
                     'required_if:type,' . SettingType::FILE?->value,
                     'exclude_if:type,' . SettingType::TEXT?->value,
-                    File::types(['pdf', 'svg', 'jpg', 'png', 'jpeg', 'xlsx', 'xls', 'doc', 'docx'])->max('10mb'),
+                    File::types(['pdf', 'jpg', 'png', 'jpeg', 'xlsx', 'xls', 'doc', 'docx'])->max('10mb'),
+                    new \App\Rules\SafeUpload(),
                 ],
                 'value' => [
                     'required_if:type,' . SettingType::TEXT?->value,

@@ -5,6 +5,6 @@
 
     <section class="student-clubs container">
         <h2>{{ $studentLifeClub->title ?? '' }}</h2>
-        <p>{!! $studentLifeClub->description ?? '' !!}</p>
+        <p>{!! clean_html($studentLifeClub->description ?? '') !!}</p>
     </section>
 </x-front.layout>

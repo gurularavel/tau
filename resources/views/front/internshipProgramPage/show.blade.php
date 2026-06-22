@@ -9,7 +9,7 @@
     <section class="research container">
         <h2>{{$internshipProgram->title ?? ''}}</h2>
         <p>
-            {!! $internshipProgram->description ?? '' !!}
+            {!! clean_html($internshipProgram->description ?? '') !!}
         </p>
 
 

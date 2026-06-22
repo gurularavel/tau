@@ -42,7 +42,7 @@
                                                                     @foreach($locales as $locale)
                                                                         <tr>
                                                                             <th scope="row" style="width: 200px;">{{ $title . ' (' .str($locale)->upper() . ')'}}</th>
-                                                                            <td>{!! $model->{$attribute.':' . $locale} !!}</td>
+                                                                            <td>{!! clean_html($model->{$attribute.':' . $locale}) !!}</td>
                                                                         </tr>
                                                                     @endforeach
                                                                 @else
@@ -73,7 +73,7 @@
                                                                                 <x-admin.crud.index.actions :model="$model" :routeName="'academic_calendars'" :td="false" :view="false" :delete="true" :frontRouteName="null"/>
                                                                                 @break
                                                                             @default
-                                                                                {!! $model->{$attribute} !!}
+                                                                                {!! clean_html($model->{$attribute}) !!}
                                                                         @endswitch
                                                                     </td>
                                                                 </tr>

@@ -47,7 +47,7 @@
 
 
 </x-front.layout>
-<script>
+<script nonce="{{ csp_nonce() }}">
     document.addEventListener('DOMContentLoaded', function() {
     const buttons = document.querySelectorAll('.tab-btn');
     const tabs = document.querySelectorAll('.tab-content');

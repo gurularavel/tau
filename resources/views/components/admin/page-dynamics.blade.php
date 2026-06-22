@@ -29,7 +29,7 @@
                                 @case(2) {{-- Description --}}
                                     <div class="dynamic-description">
                                         <div class="content">
-                                            {!! $dynamic->description !!}
+                                            {!! clean_html($dynamic->description) !!}
                                         </div>
                                     </div>
                                     @break

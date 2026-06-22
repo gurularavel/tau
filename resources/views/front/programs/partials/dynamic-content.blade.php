@@ -64,7 +64,7 @@
                 @if ($dynamic->type == 1)
                     <h2>{{ $dynamic->title ?? '' }}</h2>
                 @elseif ($dynamic->type == 2)
-                    <p>{!! $dynamic->description ?? '' !!}</p>
+                    <p>{!! clean_html($dynamic->description ?? '') !!}</p>
                 @endif
 
                 @if ($dynamic->image)
@@ -94,7 +94,7 @@
 
                                     <div class="reason-content">
                                         <h3>{{ $item->title ?? '' }}</h3>
-                                        <p>{!! $item->description ?? '' !!}</p>
+                                        <p>{!! clean_html($item->description ?? '') !!}</p>
                                     </div>
                                 </div>
                             @endforeach
@@ -106,7 +106,7 @@
                                 <div class="careers">
                                     @foreach ($type2Items as $item)
                                         <div class="career">
-                                            <p>{!! $item->description ?? '' !!}</p>
+                                            <p>{!! clean_html($item->description ?? '') !!}</p>
                                         </div>
                                     @endforeach
                                 </div>
@@ -130,7 +130,7 @@
                                     <div class="lab-content">
                                         <h3>{{ $item->title ?? '' }}</h3>
 
-                                        {!! $item->description !!}
+                                        {!! clean_html($item->description) !!}
                                     </div>
                                 </div>
                             @endforeach
@@ -152,7 +152,7 @@
                                                 <h4>{{ $item->name ?? '' }}</h4>
                                                 <span>{{ $item->profession ?? '' }}</span>
                                                 <p>
-                                                    {!! $item->description ?? '' !!}
+                                                    {!! clean_html($item->description ?? '') !!}
                                                 </p>
                                             </div>
 
@@ -214,7 +214,7 @@
                                     </div>
 
                                     <div class="announcement-main-content">
-                                            {!! $item->description ?? '' !!}
+                                            {!! clean_html($item->description ?? '') !!}
 
 
                                         <a class="apply-btn" href="{{ $item->url ?? '' }}">

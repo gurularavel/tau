@@ -33,7 +33,7 @@ class ContactPageRequest extends TranslatableRequest
                 'facebook' => 'nullable',
                 'instagram' => 'nullable',
                 'linkedin' => 'nullable',
-                'location_url' => 'nullable'
+                'location_url' => $this->locationUrlRule()
             ], $this->translations()),
             self::SCENARIO_UPDATE => array_merge([
                 'phone' => 'nullable',
@@ -43,7 +43,7 @@ class ContactPageRequest extends TranslatableRequest
                 'facebook' => 'nullable',
                 'instagram' => 'nullable',
                 'linkedin' => 'nullable',
-                'location_url' => 'nullable'
+                'location_url' => $this->locationUrlRule()
 
             ], $this->translations()),
             default => [
@@ -54,7 +54,7 @@ class ContactPageRequest extends TranslatableRequest
                 'facebook' => 'nullable',
                 'instagram' => 'nullable',
                 'linkedin' => 'nullable',
-                'location_url' => 'nullable'
+                'location_url' => $this->locationUrlRule()
 
 
             ],
@@ -74,6 +74,20 @@ class ContactPageRequest extends TranslatableRequest
 
         return $attributes;    }
 
+
+    /**
+     * location_url yalnız Google Maps embed URL-i ola bilər.
+     * Front-da birbaşa <iframe src> kimi istifadə olunduğu üçün server-side whitelist.
+     */
+    private function locationUrlRule(): array
+    {
+        return [
+            'nullable',
+            'string',
+            'max:2048',
+            'regex:#^https://((www\.)?google\.com/maps|maps\.google\.com)#i',
+        ];
+    }
 
     private function translations(): array
     {

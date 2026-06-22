@@ -9,7 +9,7 @@
 
         @if($calendar?->content)
             <div class="academic-calendar-content">
-                {!! $calendar->content !!}
+                {!! clean_html($calendar->content) !!}
             </div>
         @else
             <p>{{ __('translate.No information found') }}</p>

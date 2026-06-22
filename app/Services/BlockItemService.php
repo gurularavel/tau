@@ -35,7 +35,8 @@ public function updateOrCreateWithTranslations($id, array $data, array $translat
             @unlink(public_path('uploads/block_items/' . $item->image));
         }
 
-        // Yeni şəkili yükləyirik
+        // Yeni şəkili yükləyirik (server-side təhlükəsizlik yoxlaması)
+        assert_safe_upload($file, ['jpg', 'jpeg', 'png', 'webp', 'gif']);
         $fileName = time() . '_' . rand(111, 999) . '.' . $file->getClientOriginalExtension();
         $file->move(public_path('uploads/block_items'), $fileName);
         $data['image'] = $fileName;

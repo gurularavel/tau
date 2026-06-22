@@ -204,7 +204,7 @@
 			color: #000000;
 			font-family: sans-serif;" class="paragraph">
                         @if(!is_array($content))
-                            <p style="line-height: 30px">{!! $content !!}</p>
+                            <p style="line-height: 30px">{!! clean_html($content) !!}</p>
                         @else
                             <table class="request-table">
                                 @foreach($content as $key => $value)

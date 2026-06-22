@@ -7,7 +7,7 @@
       <div class="student-content">
         <h2>{{ $graduate->title ?? '' }}</h2>
         <p>
-         {!! $graduate->description ?? '' !!}
+         {!! clean_html($graduate->description ?? '') !!}
         </p>
       </div>
 

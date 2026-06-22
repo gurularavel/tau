@@ -33,6 +33,157 @@ if (!function_exists('getLocales')) {
     }
 }
 
+if (!function_exists('assert_safe_upload')) {
+    /**
+     * Yüklənən faylı SERVER tərəfdə təhlükəsizlik üçün yoxlayır (mərkəzi qoruyucu).
+     *
+     * Vacibdir: production nginx-dədir, ona görə `.htaccess` PHP-icra blokları işləmir.
+     * Yeganə etibarlı müdafiə server-side extension whitelist + kontent skanıdır.
+     *
+     * @param  array<int,string>|null  $allowedExtensions  null → ümumi təhlükəsiz siyahı
+     * @throws \Symfony\Component\HttpKernel\Exception\HttpException  (422)
+     */
+    function assert_safe_upload(\Illuminate\Http\UploadedFile $file, ?array $allowedExtensions = null): void
+    {
+        if (!$file->isValid()) {
+            abort(422, 'Fayl düzgün yüklənmədi.');
+        }
+
+        $default = [
+            'jpg', 'jpeg', 'png', 'webp', 'gif',
+            'pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx',
+            'zip', 'csv', 'txt', 'mp4', 'webm',
+        ];
+        $allowed = array_map('strtolower', $allowedExtensions ?? $default);
+
+        $ext = strtolower($file->getClientOriginalExtension());
+        if (!in_array($ext, $allowed, true)) {
+            abort(422, 'Bu fayl tipi icazəli deyil.');
+        }
+
+        // Defense-in-depth: fayl məzmununda zərərli skript/aktiv kod axtar.
+        $path = $file->getRealPath();
+        if ($path && is_readable($path)) {
+            $content = @file_get_contents($path, false, null, 0, 2 * 1024 * 1024); // 2 MB
+            if ($content !== false) {
+                $needles = ['<script', 'javascript:', '<?php', '<?=', '/JavaScript', '/JS', '/OpenAction', '/AA', '/Launch', '/EmbeddedFile'];
+                foreach ($needles as $needle) {
+                    if (stripos($content, $needle) !== false) {
+                        abort(422, 'Faylın içində icazə verilməyən aktiv kod aşkar edildi.');
+                    }
+                }
+            }
+        }
+    }
+}
+
+if (!function_exists('csp_nonce')) {
+    /**
+     * Content-Security-Policy üçün hər sorğuya unikal nonce qaytarır.
+     *
+     * Front (publik) səhifələrdə inline <script>-lərə `nonce="{{ csp_nonce() }}"`
+     * əlavə edilir ki, CSP-də 'unsafe-inline' olmadan yalnız bu nonce-a malik
+     * skriptlər icra olunsun (stored XSS-ə qarşı tam müdafiə).
+     */
+    function csp_nonce(): string
+    {
+        if (!app()->bound('csp_nonce')) {
+            app()->instance('csp_nonce', base64_encode(random_bytes(16)));
+        }
+        return app('csp_nonce');
+    }
+}
+
+if (!function_exists('clean_html')) {
+    /**
+     * Redaktor (Summernote) məzmununu təhlükəsiz HTML-ə çevirir.
+     *
+     * Stored XSS müdafiəsi (XDMX audit, CVSS 5.1): formatlaşdırmanı saxlayır,
+     * lakin zərərli elementləri/atributları silir:
+     *  - <script>, <iframe>, <object>, <embed>, <link>, <style>, <form> elementləri
+     *  - on* hadisə atributları (onclick, onerror, onload, ...)
+     *  - javascript: / data:text/html / vbscript: URI-ləri
+     *
+     * `{!! clean_html($content) !!}` şəklində render nöqtələrində istifadə olunur.
+     */
+    function clean_html(?string $html): string
+    {
+        if ($html === null || trim($html) === '') {
+            return '';
+        }
+
+        $dom = new \DOMDocument();
+        libxml_use_internal_errors(true);
+        $dom->loadHTML(
+            '<?xml encoding="UTF-8"><div>' . $html . '</div>',
+            LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD
+        );
+        libxml_clear_errors();
+
+        $xpath = new \DOMXPath($dom);
+
+        // Təhlükəli elementləri tam sil.
+        $dangerousTags = ['script', 'object', 'embed', 'link', 'style', 'form', 'meta', 'base'];
+        foreach ($dangerousTags as $tag) {
+            $nodes = iterator_to_array($dom->getElementsByTagName($tag));
+            foreach ($nodes as $node) {
+                $node->parentNode?->removeChild($node);
+            }
+        }
+
+        // iframe: yalnız etibarlı hostlardan (video/xəritə embed) saxla, qalanını sil.
+        $allowedFrameHosts = [
+            'youtube.com', 'www.youtube.com', 'youtube-nocookie.com', 'www.youtube-nocookie.com',
+            'player.vimeo.com', 'vimeo.com', 'www.google.com', 'maps.google.com',
+        ];
+        foreach (iterator_to_array($dom->getElementsByTagName('iframe')) as $frame) {
+            $src = strtolower($frame->getAttribute('src'));
+            $host = parse_url($src, PHP_URL_HOST);
+            if (!$host || !in_array($host, $allowedFrameHosts, true)) {
+                $frame->parentNode?->removeChild($frame);
+            }
+        }
+
+        // Təhlükəli atributları sil (on*, javascript:/data:html/vbscript: URI-lər).
+        foreach ($xpath->query('//*') as $el) {
+            if (!$el instanceof \DOMElement) {
+                continue;
+            }
+            foreach (iterator_to_array($el->attributes ?? []) as $attr) {
+                $name = strtolower($attr->nodeName);
+                $value = $attr->nodeValue ?? '';
+
+                if (str_starts_with($name, 'on')) {
+                    $el->removeAttribute($attr->nodeName);
+                    continue;
+                }
+
+                if (in_array($name, ['href', 'src', 'xlink:href', 'action', 'formaction', 'background'], true)) {
+                    $normalized = strtolower(preg_replace('/\s+/', '', $value));
+                    if (str_starts_with($normalized, 'javascript:')
+                        || str_starts_with($normalized, 'vbscript:')
+                        || str_starts_with($normalized, 'data:text/html')) {
+                        $el->removeAttribute($attr->nodeName);
+                    }
+                }
+            }
+        }
+
+        // Wrapper <div>-in daxili HTML-ini geri qaytar.
+        $body = $dom->getElementsByTagName('div')->item(0);
+        if (!$body) {
+            return '';
+        }
+
+        $output = '';
+        foreach ($body->childNodes as $child) {
+            $output .= $dom->saveHTML($child);
+        }
+
+        return $output;
+    }
+}
+
 function saveImageWithoutBASE64($item){
     //Modified by Hasan Musa to contribute SummerNote
     $allowedEditorImageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'webp'];

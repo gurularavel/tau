@@ -2,9 +2,15 @@
 
     <section class="map container-fluid">
 
-        <iframe src="{{ $contactPage->location_url }}" width="100%" height="800" style="border:0;" allowfullscreen
+        @php
+            $mapUrl = $contactPage->location_url;
+            $safeMapUrl = ($mapUrl && preg_match('#^https://((www\.)?google\.com/maps|maps\.google\.com)#i', $mapUrl)) ? $mapUrl : null;
+        @endphp
+        @if($safeMapUrl)
+        <iframe src="{{ $safeMapUrl }}" width="100%" height="800" style="border:0;" allowfullscreen
             loading="lazy">
         </iframe>
+        @endif
         <div class="container">
             <div class="pin-container">
                 <div class="layer-3">
@@ -75,6 +81,11 @@
 
             <form action="{{ route('front.messages.send') }}" method="POST">
                 @csrf
+                {{-- Anti-bot honeypot: gizli saxlanılır, real istifadəçilər doldurmur --}}
+                <div style="position:absolute;left:-9999px;top:-9999px;" aria-hidden="true">
+                    <label for="website">Website</label>
+                    <input type="text" name="website" id="website" tabindex="-1" autocomplete="off" />
+                </div>
                 <div class="form-header">
                     <div class="form-item">
                         <label for="name">{{ __('translate.Fullname') }}</label>

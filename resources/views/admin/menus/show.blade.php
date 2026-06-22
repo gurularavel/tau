@@ -42,7 +42,7 @@
 
                                                                         <tr>
                                                                             <th scope="row" style="width: 200px;">{{ $title . ' (' .str($locale)->upper() . ')'}}</th>
-                                                                            <td>{!! $model->{$attribute.':' . $locale} !!}</td>
+                                                                            <td>{!! clean_html($model->{$attribute.':' . $locale}) !!}</td>
                                                                         </tr>
                                                                     @endforeach
                                                                 @else
@@ -59,7 +59,7 @@
                                                                                 @break
 
                                                                             @default
-                                                                                {!! $model->{$attribute} !!}
+                                                                                {!! clean_html($model->{$attribute}) !!}
                                                                         @endswitch
                                                                     </td>
                                                                 </tr>
@@ -105,7 +105,7 @@
                                             @if ($block->type == 1)
                                                 <div class="p-3 mb-3 border rounded" data-block="{{ $block->id }}">
                                                     <h4 class="mb-2">{{ $block->title }}</h4>
-                                                    <p class="mb-0">{!! $block->description !!}</p>
+                                                    <p class="mb-0">{!! clean_html($block->description) !!}</p>
                                                     <a
                                                         style="margin-top:2%; margin-bottom: 2%;" href="{{ route('admin.blocks.edit', $block) }}">{{ __('translate.edit') }}</a>
                                                 </div>
@@ -114,7 +114,7 @@
                                             {{-- ===================== TYPE 2 ===================== --}}
                                             @if ($block->type == 2)
                                                 <div class="p-3 mb-3 border rounded bg-light" data-block="{{ $block->id }}">
-                                                    <p class="mb-0">{!! $block->description !!}</p>
+                                                    <p class="mb-0">{!! clean_html($block->description) !!}</p>
                                                     <a
                                                         style="margin-top:2%; margin-bottom: 2%;" href="{{ route('admin.blocks.edit', $block) }}">{{ __('translate.edit') }}</a>
 

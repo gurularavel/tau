@@ -160,7 +160,7 @@
                                                 </div>
                                             @endif
                                             <div class="col">
-                                                <p class="mb-0 text-muted">{!! Str::limit($info->description, 120) !!}</p>
+                                                <p class="mb-0 text-muted">{!! clean_html(Str::limit($info->description, 120)) !!}</p>
                                             </div>
                                         </div>
                                     </div>

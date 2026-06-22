@@ -34,7 +34,7 @@ class UpdateProfileRequest extends AppFormRequest
                 'password' => [
                     'required',
                     'string',
-                    Password::min(8)
+                    Password::min(12)
                         ->mixedCase()
                         ->letters()
                         ->numbers()
@@ -49,7 +49,7 @@ class UpdateProfileRequest extends AppFormRequest
                 'password' => [
                     'nullable',
                     'string',
-                    Password::min(8)
+                    Password::min(12)
                         ->mixedCase()
                         ->letters()
                         ->numbers()
@@ -65,7 +65,7 @@ class UpdateProfileRequest extends AppFormRequest
                 'password' => [
                     'nullable',
                     'string',
-                    Password::min(8)
+                    Password::min(12)
                         ->mixedCase()
                         ->letters()
                         ->numbers()

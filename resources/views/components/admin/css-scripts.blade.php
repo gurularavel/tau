@@ -1,8 +1,8 @@
     <!-- Google Fonts for Summernote font picker -->
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
     <!-- jsvectormap css -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/admin/libs/swiper/swiper-bundle.min.css') }}" />
+<link rel="stylesheet" href="{{ asset('assets/admin/vendor/lightbox2/css/lightbox.min.css') }}">
 
     <script src="{{ asset('/assets/admin/js/jquery/jquery.min.js') }}?v={{ filemtime(public_path('assets/admin/js/jquery/jquery.min.js')) }}"></script>
     <link href="{{ asset('/assets/admin/libs/jsvectormap/css/jsvectormap.min.css') }}?v={{ filemtime(public_path('assets/admin/libs/jsvectormap/css/jsvectormap.min.css')) }}" rel="stylesheet" type="text/css" />
@@ -24,12 +24,12 @@
     <!-- Plugins css -->
     <link href="{{ asset('/assets/admin/libs/dropzone/dropzone.css') }}?v={{ filemtime(public_path('assets/admin/libs/dropzone/dropzone.css')) }}" rel="stylesheet" type="text/css" />
     <!-- Summernote css -->
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.js"></script>
+    <link href="{{ asset('assets/admin/vendor/summernote/summernote-lite.min.css') }}" rel="stylesheet">
+    <script src="{{ asset('assets/admin/vendor/summernote/summernote-lite.min.js') }}"></script>
     <!-- CSS -->
     <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta3/css/bootstrap-select.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        href="{{ asset('assets/admin/vendor/bootstrap-select/css/bootstrap-select.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/admin/vendor/fancybox/fancybox.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/admin/vendor/fontawesome/css/all.min.css') }}">
     <!-- CSS -->
     {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" /> --}}

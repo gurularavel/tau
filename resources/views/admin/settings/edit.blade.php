@@ -68,7 +68,7 @@
                                                             type="file"
                                                             class="custom-file-input @error('file') is-invalid @enderror"
                                                             name="file"
-                                                            accept=".jpg,.jpeg,.png,.pdf,.xls,.xlsx,.doc,.docx,.svg"
+                                                            accept=".jpg,.jpeg,.png,.pdf,.xls,.xlsx,.doc,.docx"
                                                         >
                                                     </div>
                                                     @error('file')

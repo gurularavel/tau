@@ -47,7 +47,7 @@
     <section class="logotip container">
         <h2>{{ $mediaGuidePage->title ?? '' }}</h2>
         <p>
-            {!! $mediaGuidePage->description ?? '' !!}
+            {!! clean_html($mediaGuidePage->description ?? '') !!}
         </p>
     </section>
 

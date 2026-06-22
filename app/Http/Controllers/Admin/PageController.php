@@ -529,6 +529,19 @@ public function update(PageRequest $request, Page $page): RedirectResponse
             abort(422, 'Bu fayl tipi icazəli deyil.');
         }
 
+        // Defense-in-depth: PDF və s. faylların içində zərərli skript kodu varsa rədd et.
+        $scanPath = $file->getRealPath();
+        if ($scanPath && is_readable($scanPath)) {
+            $content = @file_get_contents($scanPath, false, null, 0, 2 * 1024 * 1024);
+            if ($content !== false) {
+                foreach (['<script', 'javascript:', '/JavaScript', '/JS', '/OpenAction', '/AA', '/Launch', '/EmbeddedFile'] as $needle) {
+                    if (stripos($content, $needle) !== false) {
+                        abort(422, 'Faylın içində icazə verilməyən aktiv kod aşkar edildi.');
+                    }
+                }
+            }
+        }
+
         $filename = time() . '_' . uniqid() . '.' . $ext;
         $destinationPath = public_path($folder);
 

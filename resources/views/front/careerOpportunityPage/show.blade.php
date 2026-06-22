@@ -12,7 +12,7 @@
     <section class="research container">
         <h2>{{$career_opportunity->title ?? ''}}</h2>
         <p>
-            {!! $career_opportunity->description ?? '' !!}
+            {!! clean_html($career_opportunity->description ?? '') !!}
         </p>
 
 
@@ -20,7 +20,7 @@
 
     </section>
 </x-front.layout>
-<script>
+<script nonce="{{ csp_nonce() }}">
     const lightbox = GLightbox({
         selector: '.zoom-item'
     });

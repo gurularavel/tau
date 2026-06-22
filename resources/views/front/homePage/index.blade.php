@@ -72,7 +72,7 @@
         @media(max-width:768px) { .hero-slide { min-height: 350px; } .hero-slide-content { padding-bottom: 50px; } }
     </style>
 
-    <script>
+    <script nonce="{{ csp_nonce() }}">
         document.addEventListener('DOMContentLoaded', function() {
             new Swiper('.hero-swiper', {
                 loop: true,
@@ -267,7 +267,7 @@
                         <div class="program-content red">
                             <h3>{{$program->title ?? ''}}</h3>
                             <p>
-                                {!! $program->content ?? '' !!}
+                                {!! clean_html($program->content ?? '') !!}
                             </p>
 
                             <a class="learn-more" href="{{ route('front.programs.show', $program->slug) }}">{{__('translate.More')}}</a>
@@ -297,7 +297,7 @@
 
         <div class="calendar-content">
             @if($calendar)
-                {!! $calendar->content !!}
+                {!! clean_html($calendar->content) !!}
             @endif
         </div>
 

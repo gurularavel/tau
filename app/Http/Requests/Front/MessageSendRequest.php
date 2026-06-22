@@ -37,14 +37,27 @@ class MessageSendRequest extends AppFormRequest
                 'email' => ['required', 'max:30', new EmailOrPhoneRule()],
                 'phone' => ['required', 'max:30'],
                 'text' => ['required', 'string', 'min:3', 'max:65535'],
-                // 'g-recaptcha-response' => ['required', function ($attribute, $value, $fail) {
-                //     $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
-                //         'secret' => env('RECAPTCHA_SECRET_KEY'),
-                //         'response' => $value,
-                //         'remoteip' => request()->ip(),
-                //     ]);
-
-                // }],
+                // Anti-bot honeypot: real istifadəçilər bu gizli sahəni doldurmur.
+                // Bot doldursa, sorğu rədd edilir (anti-automation / DoS müdafiəsi).
+                'website' => ['prohibited'],
+                // reCAPTCHA: yalnız .env-də RECAPTCHA_SECRET_KEY təyin edildikdə tətbiq olunur.
+                'g-recaptcha-response' => [
+                    config('services.recaptcha.secret') ? 'required' : 'nullable',
+                    function ($attribute, $value, $fail) {
+                        $secret = config('services.recaptcha.secret');
+                        if (!$secret) {
+                            return; // reCAPTCHA konfiqurasiya olunmayıb — yoxlamanı keç.
+                        }
+                        $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+                            'secret' => $secret,
+                            'response' => $value,
+                            'remoteip' => request()->ip(),
+                        ]);
+                        if (!($response->json('success') ?? false)) {
+                            $fail(__('translate.Captcha verification failed'));
+                        }
+                    },
+                ],
             ],
             default => [
                 'id' => 'integer|nullable',

@@ -20,7 +20,7 @@
                     <div class="internship-details">
                         <div class="internship-content">
                             <h3>  <a style="text-decoration: none; color: black;" href="{{ route('front.internship_programs.show',$internshipProgram->slug  ) }}">{{ $internshipProgram->title ?? '' }}</a></h3>
-                            <p>{!! $internshipProgram->description ?? '' !!}</p>
+                            <p>{!! clean_html($internshipProgram->description ?? '') !!}</p>
                         </div>
 
 

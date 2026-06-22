@@ -34,7 +34,7 @@
                                     <a href="{{ route('front.events.show', $event->slug) }}">
                                         {{ $event->title }}
                                     </a>
-                                    <p>{!! $event->description !!}</p>
+                                    <p>{!! clean_html($event->description) !!}</p>
 
                                 </h3>
 

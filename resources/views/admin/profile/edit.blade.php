@@ -120,18 +120,34 @@
                                                     @csrf
                                                     <div class="row g-2">
 
+                                                        <div class="col-lg-4">
+                                                            <div>
+                                                                <label class="form-label">{{__('translate.Current Password')}}*</label>
+                                                                <input name="current_password" type="password" class="form-control" placeholder="{{__('translate.Enter current password')}}">
+                                                                @error('current_password')<small class="text-danger">{{ $message }}</small>@enderror
+                                                            </div>
+                                                        </div>
+
                                                         <!--end col-->
-                                                        <div class="col-lg-6">
+                                                        <div class="col-lg-4">
                                                             <div>
                                                                 <label class="form-label">{{__('translate.New Password')}}*</label>
                                                                 <input name="password" type="password" class="form-control"  placeholder="{{__("translate.Enter new password")}}">
+                                                                @error('password')<small class="text-danger">{{ $message }}</small>@enderror
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-4">
+                                                            <div>
+                                                                <label class="form-label">{{__('translate.Confirm Password')}}*</label>
+                                                                <input name="password_confirmation" type="password" class="form-control" placeholder="{{__('translate.Repeat new password')}}">
                                                             </div>
                                                         </div>
 
 
                                                         <!--end col-->
-                                                        <div class="col-lg-6">
-                                                                <button style="margin-top: 27px;" type="submit" class="btn btn-success">{{__('translate.Change Password')}}</button>
+                                                        <div class="col-lg-12">
+                                                                <button style="margin-top: 15px;" type="submit" class="btn btn-success">{{__('translate.Change Password')}}</button>
                                                             </div>
                                                         </div>
                                                         <!--end col-->

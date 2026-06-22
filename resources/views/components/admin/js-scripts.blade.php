@@ -15,10 +15,10 @@
 
     <!-- password-addon init -->
     <script src="{{asset('/assets/admin/js/pages/password-addon.init.js')}}?v={{ filemtime(public_path('assets/admin/js/pages/password-addon.init.js')) }}"></script>
-<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+<script src="{{ asset('assets/admin/vendor/sortablejs/Sortable.min.js') }}"></script>
+<script src="{{ asset('assets/admin/vendor/sweetalert2/sweetalert2.all.min.js') }}"></script>
+<script src="{{ asset('assets/admin/vendor/choices/scripts/choices.min.js') }}"></script>
+<script src="{{ asset('assets/admin/vendor/lightbox2/js/lightbox.min.js') }}"></script>
 
 
     <!-- prismjs plugin -->
@@ -56,8 +56,8 @@
     <script src="{{asset('/assets/admin/js/app.js')}}?v={{ filemtime(public_path('assets/admin/js/app.js')) }}"></script>
 
     <!-- JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta3/js/bootstrap-select.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+    <script src="{{ asset('assets/admin/vendor/bootstrap-select/js/bootstrap-select.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/vendor/fancybox/fancybox.umd.js') }}"></script>
 
 
     <script>

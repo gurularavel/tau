@@ -119,6 +119,7 @@ trait FileManagable
 
     private function uploadFile(string $folder, UploadedFile $file): string
     {
+        assert_safe_upload($file);
         $name = uniqid() . '.' . str($file->extension())->lower();
         $file->move(public_path($this->path . "/$folder"), $name);
         return $name;

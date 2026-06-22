@@ -24,7 +24,9 @@ class VacancyController extends Controller
 
             if ($request->hasFile('cv')) {
                 $cv = $request->file('cv');
-                $cvName = time() . '_' . $cv->getClientOriginalName();
+                assert_safe_upload($cv, ['pdf', 'doc', 'docx']);
+                // Orijinal ad əvəzinə təhlükəsiz ad (double-extension / path injection qarşısı)
+                $cvName = time() . '_' . uniqid() . '.' . strtolower($cv->getClientOriginalExtension());
                 $cv->move(public_path('uploads/cvs'), $cvName);
 
                 Cv::create([

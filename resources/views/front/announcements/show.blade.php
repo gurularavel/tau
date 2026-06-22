@@ -12,7 +12,7 @@
       <div class="content">
 
         <p>
-         {!! $announcement->content ?? '' !!}
+         {!! clean_html($announcement->content ?? '') !!}
         </p>
       </div>
 
@@ -78,7 +78,7 @@
               >
             </h3>
             <p>
-              {!! $recentAnnouncementItem->content ?? '' !!}
+              {!! clean_html($recentAnnouncementItem->content ?? '') !!}
             </p>
           </div>
         </div>

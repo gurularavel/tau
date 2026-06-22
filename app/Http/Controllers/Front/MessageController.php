@@ -27,7 +27,7 @@ class MessageController extends Controller
     {
         try {
             $payload = $request->validated();
-            // unset($payload['g-recaptcha-response']);
+            unset($payload['g-recaptcha-response'], $payload['website']);
 
             $this->messageService->send($payload);
 

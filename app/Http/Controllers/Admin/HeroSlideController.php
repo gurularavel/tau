@@ -71,6 +71,7 @@ class HeroSlideController extends Controller
 
     private function uploadImage($file): string
     {
+        assert_safe_upload($file, ['jpg', 'jpeg', 'png', 'webp', 'gif']);
         $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
         $dest = public_path('uploads/hero_slides');
         if (!file_exists($dest)) mkdir($dest, 0755, true);

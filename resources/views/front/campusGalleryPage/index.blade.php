@@ -54,11 +54,11 @@
 
             <div class="grid grid-content one-column-one-row">
              <p>
-              {!! $campusGalleryPage->description ?? '' !!}  </p>
+              {!! clean_html($campusGalleryPage->description ?? '') !!}  </p>
             </div>
 
             <div class="grid grid-content one-column-one-row">
-              {!! $campusGalleryPage->description2 ?? '' !!}  </p>
+              {!! clean_html($campusGalleryPage->description2 ?? '') !!}  </p>
             </div>
             <div class="grid two-rows-one-column">
               <img src="{{getImage('campusGalleryPage', $campusGalleryPage->image4)}}" alt="Grid 1" />
@@ -73,7 +73,7 @@
             </div>
 
             <div class="grid grid-content one-column-one-row">
-              {!! $campusGalleryPage->description3 ?? '' !!}  </p>
+              {!! clean_html($campusGalleryPage->description3 ?? '') !!}  </p>
             </div>
           </div>
         </div>

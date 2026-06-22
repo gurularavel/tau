@@ -131,8 +131,8 @@ public function items()
             return 'https://player.vimeo.com/video/' . $match[1];
         }
 
-        // Direct video
-        return $url;
+        // Tanınmayan/etibarsız URL <iframe src>-ə düşməsin (XSS/clickjacking qarşısı).
+        return null;
     }
 
       public function scopeOrdered($query)

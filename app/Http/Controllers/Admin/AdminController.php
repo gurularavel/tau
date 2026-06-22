@@ -172,11 +172,12 @@ class AdminController extends Controller
     public function change_password_store(Request $request)
     {
         $user = Auth::user();
-        $validatedForm = $request->validate([
-            'password' => ['nullable', 'string', Password::min(8)->mixedCase()->letters()->numbers()->symbols()],
+        $request->validate([
+            'current_password' => ['required', 'current_password'],
+            'password' => ['required', 'string', 'confirmed', Password::min(12)->mixedCase()->letters()->numbers()->symbols()],
         ]);
 
-        $user->update($validatedForm);
+        $user->update(['password' => $request->input('password')]);
         return redirect()->route('admin.profile.edit')->with('success', __('translate.Successfully completed'));
     }
 }

@@ -64,7 +64,7 @@
                                                             @foreach ($locales as $locale)
                                                                 <tr>
                                                                     <th scope="row" style="width: 200px;">{{ $title . ' (' .str($locale)->upper() . ')'}}</th>
-                                                                    <td>{!! $model->{$attribute.':' . $locale} !!}</td>
+                                                                    <td>{!! clean_html($model->{$attribute.':' . $locale}) !!}</td>
                                                                 </tr>
                                                             @endforeach
                                                         @else
@@ -79,7 +79,7 @@
                                                                             <x-admin.crud.index.actions :model="$model" :routeName="'pages'" :td="false" :view="false" :delete="true"/>
                                                                             @break
                                                                         @default
-                                                                            {!! $model->{$attribute} !!}
+                                                                            {!! clean_html($model->{$attribute}) !!}
                                                                     @endswitch
                                                                 </td>
                                                             </tr>
@@ -174,7 +174,7 @@
 
                                                                 @case(2)
                                                                     {{-- Description --}}
-                                                                    <p class="text-muted">{!! $dynamic->description !!}</p>
+                                                                    <p class="text-muted">{!! clean_html($dynamic->description) !!}</p>
                                                                 @break
 
                                                                 @case(3)
@@ -220,7 +220,7 @@
                                                                                     @switch($item->type)
                                                                                         @case(4)
                                                                                             <strong>{{ $item->title }}</strong>
-                                                                                            <p>{!! $item->description !!}</p>
+                                                                                            <p>{!! clean_html($item->description) !!}</p>
                                                                                         @break
 
 
@@ -247,7 +247,7 @@
                                                                                             @endif
                                                                                             <strong>{{ $item->title }}</strong>
                                                                                             <p class="mb-0 small text-muted">
-                                                                                                {!! $item->description !!}</p>
+                                                                                                {!! clean_html($item->description) !!}</p>
                                                                                     @endswitch
                                                                                 </div>
                                                                             @endforeach
@@ -387,7 +387,7 @@
         }
     </style>
 
-    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script src="{{ asset('assets/admin/vendor/sortablejs/Sortable.min.js') }}"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Her row üçün Sortable initialize et

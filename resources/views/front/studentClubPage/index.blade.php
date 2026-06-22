@@ -20,7 +20,7 @@
                                 </a>
                             </h3>
                             <p>
-                                {!! $studentClub->description ?? '' !!}
+                                {!! clean_html($studentClub->description ?? '') !!}
                             </p>
 
 

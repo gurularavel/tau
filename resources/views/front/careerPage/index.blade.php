@@ -80,7 +80,7 @@
         <div class="container">
             <h1>{{ $careerPage->title ?? '' }}</h1>
             <p>
-                {!! $careerPage->description ?? '' !!}
+                {!! clean_html($careerPage->description ?? '') !!}
             </p>
         </div>
     </section>

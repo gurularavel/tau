@@ -87,7 +87,7 @@
                         @if ($dynamic->type == 1)
                             <h2>{{ $dynamic->title ?? '' }}</h2>
                         @elseif ($dynamic->type == 2)
-                            <p>{!! $dynamic->description ?? '' !!}</p>
+                            <p>{!! clean_html($dynamic->description ?? '') !!}</p>
                         @endif
 
                         @if ($dynamic->image)
@@ -171,7 +171,7 @@
                                                     alt="{{ $item->title ?? '' }}" />
                                             @endif
                                             <h3>{{ $item->title ?? '' }}</h3>
-                                            <p>{!! $item->description ?? '' !!}</p>
+                                            <p>{!! clean_html($item->description ?? '') !!}</p>
                                         </div>
                                     @endforeach
                                 </section>
@@ -189,7 +189,7 @@
                                                 @endif
                                                 {{ $item->title ?? '' }}
                                             </h2>
-                                            <p>{!! $item->description ?? '' !!}</p>
+                                            <p>{!! clean_html($item->description ?? '') !!}</p>
                                         </div>
                                     @endforeach
                                 </section>
@@ -211,7 +211,7 @@
                                                         </div>
                                                         <div class="right">
                                                             <h3>{{ $item->title ?? '' }}</h3>
-                                                            <p>{!! $item->description ?? '' !!}</p>
+                                                            <p>{!! clean_html($item->description ?? '') !!}</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -230,7 +230,7 @@
                                             @foreach ($type4Items as $item)
                                                 <div class="uni">
                                                     <h3>{{ $item->title ?? '' }}</h3>
-                                                    <p>{!! $item->description ?? '' !!}</p>
+                                                    <p>{!! clean_html($item->description ?? '') !!}</p>
                                                 </div>
                                             @endforeach
                                         </div>
@@ -258,7 +258,7 @@
                                                             <p>{{ $item->email ?? '' }}</p>
                                                         </div>
                                                     </div>
-                                                    <p class="description">{!! $item->description ?? '' !!}</p>
+                                                    <p class="description">{!! clean_html($item->description ?? '') !!}</p>
                                                 </div>
                                             </div>
                                         @endforeach
@@ -300,7 +300,7 @@
                                                 </div>
                                                 <div class="why-tau">
                                                     <h3>{{ $item->title ?? '' }}</h3>
-                                                    <p>{!! $item->description ?? '' !!}</p>
+                                                    <p>{!! clean_html($item->description ?? '') !!}</p>
                                                 </div>
                                             </div>
                                         @endforeach
@@ -325,7 +325,7 @@
                                                         <div class="teacher-content">
                                                             <h4>{{ $item->name ?? '' }}</h4>
                                                             <span>{{ $item->profession ?? '' }}</span>
-                                                            <p>{!! $item->description ?? '' !!}</p>
+                                                            <p>{!! clean_html($item->description ?? '') !!}</p>
                                                         </div>
                                                         <div class="teacher-contact">
                                                             <ul>
@@ -386,16 +386,16 @@
 
     {{-- Lightbox Modal --}}
     <div id="gallery-lightbox" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.92); z-index:9999; align-items:center; justify-content:center;">
-        <button id="lb-close" onclick="closeLightbox()" style="position:absolute; top:16px; right:24px; background:none; border:none; color:#fff; font-size:40px; line-height:1; cursor:pointer; z-index:10001; opacity:0.8;">&times;</button>
-        <button id="lb-prev" onclick="lbNavigate(-1)" style="position:absolute; left:16px; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.15); border:none; color:#fff; font-size:36px; padding:10px 18px; cursor:pointer; border-radius:6px; z-index:10001; line-height:1;">&#8249;</button>
+        <button id="lb-close" style="position:absolute; top:16px; right:24px; background:none; border:none; color:#fff; font-size:40px; line-height:1; cursor:pointer; z-index:10001; opacity:0.8;">&times;</button>
+        <button id="lb-prev" style="position:absolute; left:16px; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.15); border:none; color:#fff; font-size:36px; padding:10px 18px; cursor:pointer; border-radius:6px; z-index:10001; line-height:1;">&#8249;</button>
         <div style="max-width:90vw; max-height:90vh; display:flex; flex-direction:column; align-items:center; justify-content:center;">
             <img id="lb-img" src="" alt="" style="max-width:90vw; max-height:80vh; object-fit:contain; border-radius:8px; box-shadow:0 8px 40px rgba(0,0,0,0.6);" />
             <span id="lb-counter" style="color:rgba(255,255,255,0.6); margin-top:12px; font-size:14px;"></span>
         </div>
-        <button id="lb-next" onclick="lbNavigate(1)" style="position:absolute; right:16px; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.15); border:none; color:#fff; font-size:36px; padding:10px 18px; cursor:pointer; border-radius:6px; z-index:10001; line-height:1;">&#8250;</button>
+        <button id="lb-next" style="position:absolute; right:16px; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.15); border:none; color:#fff; font-size:36px; padding:10px 18px; cursor:pointer; border-radius:6px; z-index:10001; line-height:1;">&#8250;</button>
     </div>
 
-    <script>
+    <script nonce="{{ csp_nonce() }}">
         var lbGalleries = {};
         var lbCurrentGallery = null;
         var lbCurrentIndex = 0;
@@ -414,6 +414,11 @@
             document.getElementById('gallery-lightbox').addEventListener('click', function (e) {
                 if (e.target === this) closeLightbox();
             });
+
+            // CSP uyğunluğu üçün inline onclick əvəzinə event listener-lər:
+            document.getElementById('lb-close').addEventListener('click', closeLightbox);
+            document.getElementById('lb-prev').addEventListener('click', function () { lbNavigate(-1); });
+            document.getElementById('lb-next').addEventListener('click', function () { lbNavigate(1); });
 
             document.addEventListener('keydown', function (e) {
                 if (document.getElementById('gallery-lightbox').style.display === 'none') return;
