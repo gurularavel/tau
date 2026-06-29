@@ -225,7 +225,7 @@
                             @if ($type4Items->isNotEmpty())
                                 <section class="sub-unis container">
                                     <div class="sub-unis-content">
-                                        <h2>Çətir Universitetlər</h2>
+                                        <h2>Çətir Universitet</h2>
                                         <div class="unis">
                                             @foreach ($type4Items as $item)
                                                 <div class="uni">

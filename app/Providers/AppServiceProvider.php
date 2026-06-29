@@ -44,6 +44,11 @@ class AppServiceProvider extends ServiceProvider
         //     Log::info($query->sql, $query->bindings, $query->time);
         // });
 
+        // Admin paneldə seçilmiş əsas dili (languages.is_main) saytın default
+        // locale-i kimi tətbiq edirik. Bu, route-lar (routes/web.php) yüklənməzdən
+        // və LaravelLocalization resolve edilməzdən əvvəl baş verməlidir.
+        config(['app.locale' => getMainLocale()]);
+
         Page::observe(PageObserver::class);
         News::observe(NewsObserver::class);
         NewsImage::observe(NewsImageObserver::class);

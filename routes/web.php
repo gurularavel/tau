@@ -84,7 +84,39 @@ if ($setLocale && !in_array($setLocale, $locales)) {
 Route::post('/admin/logout',[AdminController::class,'logout'])->name('admin.logout');
 Route::get('/admin/login',[AdminController::class,'login_form'])->name('admin.login');
 Route::post('/admin/login',[AdminController::class,'login'])->name('admin.login.store');
-Route::redirect('/', '/az');
+
+// Web-dən (CLI olmadan) keşləri təmizləyib optimize edən qorunan endpoint.
+// İstifadə: /system/optimize/{OPTIMIZE_TOKEN}
+Route::get('/system/optimize/{token}', function (string $token) {
+    abort_unless(config('app.optimize_token') && hash_equals((string) config('app.optimize_token'), $token), 403);
+
+    // DİQQƏT: Bu app-da route-lar dinamikdir (routes/web.php başında dil prefiksi
+    // runtime-da hesablanır). Buna görə `route:cache` / `optimize` route-ları sındırır
+    // və /az, /en üçün 404 verir. ROUTE HEÇ VAXT KEŞLƏNMİR.
+    // `optimize:clear` hər şeyi (config, route, view, cache, events, compiled) təmizləyir,
+    // sonra yalnız təhlükəsiz keşləri qururuq (config + view) — route:cache yox.
+    $commands = [
+        'optimize:clear',
+        'config:cache',
+        'view:cache',
+    ];
+
+    $output = [];
+    foreach ($commands as $command) {
+        try {
+            \Illuminate\Support\Facades\Artisan::call($command);
+            $result = trim(\Illuminate\Support\Facades\Artisan::output());
+            $output[] = "[OK]  php artisan {$command}" . ($result !== '' ? "\n      " . str_replace("\n", "\n      ", $result) : '');
+        } catch (\Throwable $e) {
+            $output[] = "[ERR] php artisan {$command}\n      " . $e->getMessage();
+        }
+    }
+
+    return response('<pre>' . e(implode("\n\n", $output)) . "\n\nDone.</pre>")
+        ->header('Content-Type', 'text/html; charset=utf-8');
+})->withoutMiddleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']);
+
+Route::redirect('/', '/' . getMainLocale());
 
 Route::group([
     'prefix' => $setLocale,

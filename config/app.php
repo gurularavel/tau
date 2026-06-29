@@ -84,6 +84,9 @@ return [
 
     'faker_locale' => env('APP_FAKER_LOCALE', 'en_US'),
 
+    // Web-dən optimize/clear əmrlərini işlətmək üçün gizli token (.env -> OPTIMIZE_TOKEN)
+    'optimize_token' => env('OPTIMIZE_TOKEN'),
+
     /*
     |--------------------------------------------------------------------------
     | Encryption Key

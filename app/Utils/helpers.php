@@ -33,6 +33,34 @@ if (!function_exists('getLocales')) {
     }
 }
 
+if (!function_exists('getMainLocale')) {
+    /**
+     * Admin paneldə "əsas dil" (is_main) kimi seçilmiş aktiv dilin locale-ni qaytarır.
+     * DB əlçatan deyilsə və ya əsas dil tapılmazsa config('app.locale')-ə geri düşür.
+     */
+    function getMainLocale(): string
+    {
+        try {
+            if (DB::connection()->getPdo() && DB::connection()->getDatabaseName()) {
+                if (Schema::hasTable('languages')) {
+                    $locale = Language::query()
+                        ->where('is_main', Language::IS_MAIN)
+                        ->where('is_active', Language::IS_ACTIVE)
+                        ->value('locale');
+
+                    if ($locale) {
+                        return $locale;
+                    }
+                }
+            }
+        } catch (\Exception $e) {
+            // DB hələ hazır deyil (migrate, install və s.) - fallback-a düşürük
+        }
+
+        return config('app.locale', 'en');
+    }
+}
+
 if (!function_exists('assert_safe_upload')) {
     /**
      * Yüklənən faylı SERVER tərəfdə təhlükəsizlik üçün yoxlayır (mərkəzi qoruyucu).
