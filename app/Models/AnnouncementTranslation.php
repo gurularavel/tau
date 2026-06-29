@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AnnouncementTranslation extends Model
+class AnnouncementTranslation extends BaseTranslation
 {
     use HasFactory;
     public $timestamps = false;

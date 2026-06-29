@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class EventTranslation extends Model
+class EventTranslation extends BaseTranslation
 {
     use HasFactory;
     public $timestamps = false;

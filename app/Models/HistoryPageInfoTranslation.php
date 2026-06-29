@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class HistoryPageInfoTranslation extends Model
+class HistoryPageInfoTranslation extends BaseTranslation
 {
     public $timestamps = false;
 

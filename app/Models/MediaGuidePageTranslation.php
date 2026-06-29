@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MediaGuidePageTranslation extends Model
+class MediaGuidePageTranslation extends BaseTranslation
 {
 
     protected $table = 'media_guide_page_translations';

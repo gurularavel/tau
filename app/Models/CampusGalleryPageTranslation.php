@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CampusGalleryPageTranslation extends Model
+class CampusGalleryPageTranslation extends BaseTranslation
 {
 
     protected $table = 'campus_gallery_page_translations';
