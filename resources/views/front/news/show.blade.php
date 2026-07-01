@@ -4,6 +4,30 @@
     cursor: zoom-in;
 }
 
+.single-media-date {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 16px;
+}
+.single-media-date img {
+    width: 16px;
+    height: 16px;
+}
+.media-date {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: #888;
+    font-size: 13px;
+    margin: 4px 0;
+}
+.media-date img {
+    width: 14px;
+    height: 14px;
+}
 </style>
        <section class="breadcrumb container-fluid">
         <img src="{{getImage('news', $news->image)}}" alt="Breadcrumb" />
@@ -13,6 +37,13 @@
 
     <section class="single-media container">
       <h2 class="title">{{$news->title ?? ''}}</h2>
+
+      @if($news->created_at)
+      <span class="single-media-date">
+        <img src="{{ asset('assets/front/icons/calendar-black-bg.svg') }}" alt="" />
+        {{ \Carbon\Carbon::parse($news->created_at)->translatedFormat('d F Y') }}
+      </span>
+      @endif
 
       <div class="content">
 

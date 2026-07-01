@@ -1,5 +1,20 @@
 <x-front.layout :title="$metaTitle" :metaDescription="$metaDescription" :metaKeywords="$metaKeywords">
 
+<style>
+.media-date {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: #888;
+    font-size: 13px;
+    margin: 4px 0;
+}
+.media-date img {
+    width: 14px;
+    height: 14px;
+}
+</style>
+
 <section class="breadcrumb container-fluid">
     <img src="{{ asset('assets/front/images/media/breadcrumb.jpg') }}" alt="Breadcrumb" />
 </section>

@@ -9,6 +9,12 @@
                 {{ $item->title }}
             </a>
         </h3>
+        @if($item->created_at)
+        <span class="media-date">
+            <img src="{{ asset('assets/front/icons/calendar-black-bg.svg') }}" alt="" />
+            {{ \Carbon\Carbon::parse($item->created_at)->translatedFormat('d F Y') }}
+        </span>
+        @endif
         <p>
             {{ Str::limit($item->description, 120) }}
         </p>

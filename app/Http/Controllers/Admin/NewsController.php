@@ -108,6 +108,10 @@ class NewsController extends Controller
         $payload = $request->validated();
         $payload['images'] = $request->file('images');
 
+        if (empty($payload['created_at'])) {
+            unset($payload['created_at']);
+        }
+
         $this->newsService->create(storeSlug($payload, News::class), $request->file('image'));
 
         return redirect()->route('admin.news.index')->with('success', __('translate.Successfully completed'));
@@ -121,6 +125,10 @@ class NewsController extends Controller
         $payload = $request->validated();
 
         $payload['images'] = $request->file('images');
+
+        if (empty($payload['created_at'])) {
+            unset($payload['created_at']);
+        }
 
         $this->newsService->update($news, updateSlug($payload, $news), $request->file('image'));
 
