@@ -28,6 +28,33 @@
   }
 }
 
+.media-header-badge,
+.about-header-badge,
+.programs-header-badge,
+.academic-header-badge {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  .badge-line {
+    flex: 0 0 auto;
+    width: 80px;
+    height: 2px;
+    background-color: #d63832;
+  }
+
+  .badge-text {
+    flex-shrink: 0;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #d63832;
+    opacity: 0.8;
+  }
+}
+
 .media {
   margin-top: 120px;
   display: flex;

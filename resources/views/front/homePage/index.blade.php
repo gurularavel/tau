@@ -87,7 +87,8 @@
     <section class="media container">
         <div class="media-header">
             <div class="media-header-badge">
-                <img src="{{ asset('assets/front/images/homepage/media.svg') }}" alt="Media Badge" />
+                <span class="badge-line"></span>
+                <span class="badge-text">{{ __('translate.Media') }}</span>
             </div>
 
             <div class="media-header-content">
@@ -172,7 +173,8 @@
     <section class="about container">
         <div class="about-header">
             <div class="about-header-badge">
-                <img src="{{ asset('assets/front/images/homepage/about.svg') }}" alt="About" />
+                <span class="badge-line"></span>
+                <span class="badge-text">{{ __('translate.About') }}</span>
             </div>
 
             <div class="about-header-content">
@@ -244,7 +246,8 @@
     <section class="programs container">
         <div class="programs-header">
             <div class="programs-header-badge">
-                <img src="{{ asset('assets/front/images/homepage/programs.svg') }}" alt="Programs Badge" />
+                <span class="badge-line"></span>
+                <span class="badge-text">{{ __('translate.Programs') }}</span>
             </div>
 
             <div class="programs-header-content">
@@ -282,8 +285,8 @@
     <section class="academic container">
         <div class="academic-header">
             <div class="academic-header-badge">
-                <img src="{{ asset('assets/front/images/homepage/academic-calendar.svg') }}"
-                    alt="Academic Calendar Badge" />
+                <span class="badge-line"></span>
+                <span class="badge-text">{{ __('translate.Academic calendar') }}</span>
             </div>
 
             <div class="academic-header-content">
