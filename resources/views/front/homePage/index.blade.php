@@ -146,8 +146,7 @@
                                 <a
                                     href="{{ route('front.announcements.show', $announcement->slug) }}">{{ truncateText($announcement->title, 50) }}</a>
                                 <p>
-                                    {{ truncateText($newsItem->description, 100) }}
-
+                                    {{ truncateText($announcement->description, 100) }}
                                 </p>
                             </div>
                         </div>

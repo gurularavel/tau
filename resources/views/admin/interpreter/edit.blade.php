@@ -114,7 +114,8 @@
         const query = this.value.toLowerCase();
         document.querySelectorAll('.translation-item').forEach(item => {
             const key = item.getAttribute('data-key');
-            item.style.display = key.includes(query) ? 'block' : 'none';
+            const value = item.querySelector('input[type="text"]').value.toLowerCase();
+            item.style.display = (key.includes(query) || value.includes(query)) ? 'block' : 'none';
         });
     });
 

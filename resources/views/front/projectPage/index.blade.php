@@ -110,7 +110,7 @@
             </div>
 
             {{-- RIGHT: CATEGORIES --}}
-            <div class="projects-category">asasasen/projects
+            <div class="projects-category">
                 <h3>{{ __('translate.Projects') }}</h3>
 
                 <div class="categories">

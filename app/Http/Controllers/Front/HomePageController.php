@@ -26,7 +26,7 @@ class HomePageController extends Controller
         $homePage        = HomePage::with('translations')->first();
         $heroSlides      = HeroSlide::with('translations')->active()->get();
 
-        $news            = News::active()->get();
+        $news            = News::active()->latest()->get();
         $announcements          = Announcement::active()->get();
         $programs            = Program::active()->where('type', 1)->take(4)->get();
 
